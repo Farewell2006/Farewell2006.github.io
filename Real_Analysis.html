@@ -1,0 +1,779 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+           
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第一章
+        </h2>
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>
+                Prove that the Cantor set \( C \) constructed in the text is totally disconnected and perfect.
+                In other words, given two distinct points \( x, y \in C \), there is a point \( z \notin C \)
+                that lies between \( x \) and \( y \), and yet \( C \) has no isolated points.
+
+
+                <h4>Hint:</h4> If \( x, y \in C \) and \( |x - y| > \frac{1}{3^k} \), then \( x \) and \( y \) belong to two different intervals in \( C_k \).
+                Also, given any \( x \in C \) there is an end-point \( y_k \) of some interval in \( C_k \) that satisfies \( x = y_k \) and \( |x - y_k| \leq \frac{1}{3^k} \).
+
+            </p>
+        </div>
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                任取$x,y\in\mathcal{C}$, 取k足够大使得$\lvert x-y\rvert>\frac{1}{3^{k}}$, 记$C_{k}$是第k步得到的集合, 则由$C_{k}$中的区间长度为$\frac{1}{3^{k}}$可得x,y不在同一个区间里, 因此Cantor集不连通.
+
+                任取$x\in\mathcal{C}$, 对任何$\epsilon>0$, 存在k使得$\frac{1}{3^{k}}< \epsilon$, 且$x\in C_{k}$, 因此存在某个长度为$\frac{1}{3^{k}}$的闭区间I包含了x, 我们知道这个闭区间的两个端点都是Cantor集中的元素, 且至少有一个不等于x,
+                取那个不为x的端点, 记为y, 则$y\in\mathcal{C}$且 根据$x,y\in I$, 有$\lvert x-y\rvert\leq \frac{1}{3^{k}}< \epsilon$， 这说明Cantor集里没有孤立点.
+            </p>
+        </div>
+
+        
+    
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 2</h3>
+        <p>The Cantor set \( C \) can also be described in terms of ternary expansions.</p>
+        <ol type="a">
+            <li>
+                <p>Every number in \([0, 1]\) has a ternary expansion
+ 
+ 
+                \[
+                x = \sum_{k=1}^{\infty} a_k 3^{-k}, \quad \text{where } a_k = 0, 1, \text{ or } 2.
+                \]
+                Note that this decomposition is not unique since, for example, \( 1/3 = \sum_{k=2}^{\infty} 2/3^k \).
+                Prove that \( x \in C \) if and only if \( x \) has a representation as above where every \( a_k \) is either 0 or 2.</p>
+            </li>
+            <li>
+                <p>The Cantor-Lebesgue function is defined on \( C \) by
+ 
+ 
+                \[
+                F(x) = \sum_{k=1}^{\infty} \frac{b_k}{2^k} \quad \text{if } x = \sum_{k=1}^{\infty} a_k 3^{-k}, \text{ where } b_k = a_k/2.
+                \]
+                In this definition, we choose the expansion of \( x \) in which \( a_k = 0 \) or 2.
+                Show that \( F \) is well defined and continuous on \( C \), and moreover \( F(0) = 0 \) as well as \( F(1) = 1 \).</p>
+            </li>
+            <li>
+                <p>Prove that \( F : C \to [0, 1] \) is surjective, that is, for every \( y \in [0, 1] \) there exists \( x \in C \) such that \( F(x) = y \).</p>
+            </li>
+            <li>
+                <p>One can also extend \( F \) to be a continuous function on \([0, 1]\) as follows. Note that if \((a, b)\) is an open interval of the complement of \( C \), then \( F(a) = F(b) \). Hence we may define \( F \) to have the constant value \( F(a) \) in that interval.</p>
+            </li>
+        </ol>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                先证明第k次去掉的区间是形如$$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                的全体. 显然k=1时成立, 假设命题对1,...,k-1成立, 则第k-1次去掉的区间是形如$$(\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                又第k-1次去掉的区间正是$C_{k-2}$中每个子区间的中间$\frac{1}{3}$的开子集, 因此$C_{k-2}$中的区间是下列区间的全体:$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                去掉应该去掉的区间之后, 剩下的就是$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\cup[ \sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                可以视为以下区间的全体$$\begin{cases}
+                [\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=0, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\\
+                [ \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k
+                \end{cases}$$
+                从而$C_{k-1}$就是上述区间的全体, 我们注意到$a_{i}\in\left\lbrace 0,2\right\rbrace,1\leq i\leq k-1$等价于$\left\lbrace a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace \cup \left\lbrace a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace $, 所以$C_{k-1}$是下列区间的全体: $$[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+                则第k次被去掉的区间的全体就是它们中间的$\frac{1}{3}$的开子区间: $$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+                因此根据归纳原理, 结论对所有k成立.
+
+
+                $\Leftarrow$ 如果$x\notin C$, 则存在正整数k使得x在第k步被去掉, 这样的话,x含于某个第k步去除的开区间$I=(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})$中, 其中$a_{i}$要么为0, 要么为2. 现在我们设$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个三进制小数展开, $b_{i}$在0,1,2中取值. 那么必有$b_{i}=a_{i},1\leq i\leq k-1$. 如不然, 设t是第一个$b_{t}\neq a_{t},1\leq t\leq k-1$的指标, 则$$x\begin{cases}
+                \geq \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\frac{a_{t}+1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\sum_{i=t+1}^{\infty}\frac{2}{3^{i}}\geq  \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}&b_{t}>a_{t}(\text{暗含}b_{t}\geq a_{t}+1)\\
+                \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\sum_{t+1}\frac{2}{3^{i}}=\sum_{i=1}^{t-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}\leq\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}< \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}} &b_{t}< a_{t}(\text{暗含}a_{t}\geq 1) \end{cases}$$
+
+                无论哪种情况, 都会导致x落在I的外面, 因此$a_{i}=b_{i},1\leq i\leq k-1$. 如果$b_{k}=0$, 则$x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\sum_{k+1}\frac{2}{3^{i}}= \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\frac{1}{3^{k}}$, 如果$b_{k}=2$, 则$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{k+1}\frac{b_{i}}{3^{i}}\geq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}$, 无论那种情况都会落在I外, 因此$b_{k}=1$, 如果$b_{k}$之后的全部$b_{i}$都是0, 那么$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$, 是I的左端点, 而I是开的, 所以落在I外面, 所以$x\in I$说明了$b_{k}$之后的$b_{i}$不全为0, 又$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个小数展开, 因此我们证明了如果$x\notin C$, 则存在一个统一的k使得x的任何一个小数展开中$\frac{1}{3^{k}}$永远是1, 因此x没有系数仅为0或2的小数展开.
+                $\Rightarrow$ 然后再证明另一个方向, 若$x\in C$且对x的任意一个小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 都存在k使得$c_{k}=1$, 对一个固定的小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 我们取满足$c_{k}=1$的最小的k, 这意味着$c_{1},..,c_{k-1}\in \left\lbrace 0,2\right\rbrace $, 不妨把这前k-1个$c_{i}$记为$a_{i}$, 那么$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}\leq x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                从而$$x\in[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}]\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+
+                注意到这个闭区间的内部是第k步中要被去掉的区间, 因此x必须是端点. 如果$x$是左端点, 那么$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$$
+                把$\frac{1}{3^{k}}$展开成$\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}$, 则得到x的一个小数展开$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                这是一个系数只有0或2的小数展开, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x不是左端点, 如果x是右端点, 即$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{i=k+1}\frac{0}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                这也是一组x的小数展开, 且系数是0或2, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x也不能是右端点, 因此x含于I的内部, 因此x在第k步要被去掉, 这和$x\in\mathcal{C}$矛盾, 所以$x\in C$可知存在x的一个小数展开, 使得系数只有0或2
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                首先说明F是良定义的. 假设$x$有两个表示$$x=\sum_{i=1}a_{i}\frac{1}{3^{i}}=\sum_{i=1}\frac{b_{i}}{3^{i}}\qquad a_{i},b_{i}\in \left\lbrace 0,2\right\rbrace $$
+                如果$a_{i}=b_{i}$恒成立, 那么自然$\sum_{i=1}^{\infty}\frac{a_{i}}{2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}$
+
+                否则, 取一个满足$a_{k}\neq b_{k}$的最小指标k, 则前面k-1个$a_{i},b_{i}$都相等. 不妨设$a_{k}=2,b_{k}=0$, 如果k之后有某个$a_{m}=2$或某个$b_{t}=0$, 则必有$$\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{k+1}\frac{a_{j}}{3^{j}}> \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\frac{2}{3^{m}}$$
+                $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}$$
+                $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{2}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{2}{3^{j}}\geq \sum_{i=1}^{k-1}\frac{b_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{b_{j}}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{b_{j}}{3^{j}}=\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$$
+                i.e $x=\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}>\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}=x$, 矛盾, 因此k之后的所有$a_{j}$都为0, 所有$b_{j}$都为2, 这样$$\sum_{i=1}^{\infty}\frac{a_{i}}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{2\times 2^{i}}+\frac{2}{2\times 2^{k}}+\sum_{k+1}\frac{0}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{b_{i}}{2\times 2^{i}}+\frac{0}{2\times 2^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2\times 2^{i}}$$
+                从而F良定义.
+
+                然后证明F的连续性, 任取$x\in C$, 对任何$\epsilon>0$, 取足够大的k使得$\frac{1}{2^{k}}< \epsilon$, 那么令$\delta=\frac{1}{3^{k}}< \epsilon$, 若$y\in\mathcal{C}$且$\lvert x-y\rvert< \frac{1}{3^{k+1}}$, 那么$x,y\in\mathcal{C}$给出了$x,y\in \mathcal{C}_{k}$, 但$C_{k}$中每个区间长度是$\frac{1}{3^{k}}$, 且两个区间之间至少相隔$\frac{1}{3^{k}}$的距离, 因此$x,y$必须含于同一个长为$\frac{1}{3^{k}}$的区间中, 根据(a)的结论, 此时x,y有一组展开使得系数的前k个是相同的, 设x,y的系数分别为$a_{i},b_{i}$, 那么$$\lvert F(x)-F(y)\rvert\leq \sum_{i=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\frac{1}{2^{k}}< \epsilon$$
+            因此对任何$\epsilon$, 存在$\delta$使得$x,y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$时, $\lvert F(x)-F(y)\rvert< \epsilon$, 因此F在$\mathcal{C}$上连续
+
+            显然$F(0)=0,F(1)=1$, 因为$\sum_{i=1}^{\infty}0\times 3^{-k},\sum_{i=1}^{\infty}2\times 3^{-k}\in\mathcal{C}$
+            </p>
+
+            <h4>(c)</h4>
+            <p>
+                任何一个[0,1]中的数y都能展开成$$\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}\qquad b_{i}\in \left\lbrace 0,1 \right\rbrace$$
+                令$a_{i}=2b_{i}$, 则$a_{i}$要么0要么2, 记$x=\sum_{i=1}\frac{a_{i}}{3^{i}}$, 则$x\in\mathcal{C}$且$F(x)=y$
+            </p>
+            <h4>(d)</h4>
+            <p>
+                因为F在$C^{c}$上是连续的, 所以我们只需讨论F在$C$上的连续性. 对任何$x\in\mathcal{C}$, $\epsilon>0$, 取$\delta$对任何$y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$, 都有$\lvert F(x)-F(y)\rvert< \epsilon$, 然后考察$B(x,\delta)$, 对任何$z\in B(x,\delta)$, 如果$z\in \mathcal{C}$, 则根据F在$\mathcal{C}$上的连续性可知$\lvert F(z)-F(x)\rvert< \epsilon$. 如果$z\in\mathcal{C}^{c}$, 则z落在某个被去掉的开区间(a,b)中, 如果$a,b\notin B(x,\delta)$, 又$B(x,\delta)\cap(a,b)\neq \emptyset$,  这说明$B(x,\delta)\subseteq (a,b)$, 而这与$x\in\mathcal{C}$矛盾, 因此a,b 至少一个落在$B(x,\delta)$中, 又根据F的定义, $F(z)=F(a)=F(b)$, 不妨设$a\in B(x,\delta)$, 又我们知道被去掉的区间的端点a,b肯定是$\mathcal{C}$中的元素, 所以由$a\in B(x,\delta)$可得$\lvert F(a)-F(x)\rvert< \epsilon$, 从而$$\lvert F(z)-F(x)\rvert< \epsilon\qquad \forall z\in B(x,\delta)$$
+            </p>
+
+
+        </div>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 3</h3>
+        <p>Cantor sets of constant dissection. Consider the unit interval \([0, 1]\), and let \( \xi \) be a fixed real number with \( 0 < \xi < 1 \) (the case \( \xi = 1/3 \) corresponds to the Cantor set \( C \) in the text).</p>
+        <p>In stage 1 of the construction, remove the centrally situated open interval in \([0, 1]\) of length \( \xi \). In stage 2, remove two central intervals each of relative length \( \xi \), one in each of the remaining intervals after stage 1, and so on.</p>
+        <p>Let \( C_{\xi} \) denote the set which remains after applying the above procedure indefinitely.</p>
+        <ol type="a">
+            <li>
+                <p>Prove that the complement of \( C_{\xi} \) in \([0, 1]\) is the union of open intervals of total length equal to 1.</p>
+            </li>
+            <li>
+                <p>Show directly that \( m_*(C_{\xi}) = 0 \).</p>
+                <h4>Hint:</h4>
+                <p>After the \( k \)-th stage, show that the remaining set has total length \( = (1 - \xi)^k \).</p>
+            </li>
+        </ol>
+    </div>
+
+    <div class="Proof-box">
+        <h4>Proof:(a)</h4>
+        <p>
+            记第k步去掉的集合是$A_{k}^{i},1\leq i\leq 2^{k-1}$, 则$$C_{\xi}^{c}=\cup_{k=1}^{\infty}A_{k}^{i}$$
+            又$A_{k}^{i}$互不相交且$A_{k}^{i}$长度为$\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}$, 从而总长度为$$\sum_{k=1}^{\infty}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{\infty}(1-\xi)^{k-1}=1$$
+
+        </p>
+        <h4>(b)</h4>
+
+        <p>
+            前n步去掉的区间的总长度为$$\sum_{k=1}^{n}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{n}(1-\xi)^{k-1}=1-(1-\xi)^{n}$$
+            因此剩下的区间总长度为$$(1-\xi)^{n}$$
+            从而$$m_{\ast}(C_{\xi})\leq (1-\xi)^{n}$$
+        </p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 4</h3>
+        <p>Cantor-like sets. Construct a closed set \( \hat{C} \) so that at the \( k \)-th stage of the construction one removes \( 2^{k-1} \) centrally situated open intervals each of length \( \ell_k \), with
+ 
+ 
+        \[
+        \ell_1 + 2\ell_2 + \cdots + 2^{k-1}\ell_k < 1.
+        \]</p>
+        <ol type="a">
+            <li>
+                <p>If \( \ell_j \) are chosen small enough, then \( \sum_{k=1}^{\infty} 2^{k-1}\ell_k < 1 \). In this case, show that \( m(\hat{C}) > 0 \), and in fact, \( m(\hat{C}) = 1 - \sum_{k=1}^{\infty} 2^{k-1}\ell_k \).</p>
+            </li>
+            <li>
+                <p>Show that if \( x \in \hat{C} \), then there exists a sequence of points \( \{x_n\}_{n=1}^{\infty} \) such that \( x_n \notin \hat{C} \), yet \( x_n \to x \) and \( x_n \in I_n \), where \( I_n \) is a sub-interval in the complement of \( \hat{C} \) with \( |I_n| \to 0 \).</p>
+            </li>
+            <li>
+                <p>Prove as a consequence that \( \hat{C} \) is perfect, and contains no open interval.</p>
+            </li>
+            <li>
+                <p>Show also that \( \hat{C} \) is uncountable.</p>
+            </li>
+        </ol>
+    </div>
+
+    <div class="Proof-box">
+        <h4>Proof:(a)</h4>
+        <p>
+            $$m(\hat{C})=m([0,1])-m(\hat{C}^{c})=1-\sum_{k=1}^{\infty}2^{k-1}l_{k}$$
+
+        </p>
+
+        <h4>(b)</h4>
+        <p>
+            对任何$\epsilon>0$, 根据$\sum_{k=1}^{\infty}2^{k-1}l_{k}< 1$可得$l_{k}\rightarrow0$, 因此存在$K_{1}$使得$l_{k}< \frac{\epsilon}{2},\forall k>K_{1}$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的$K_{2}$使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \frac{\epsilon}{2}$, 即$\lvert I_{k}\rvert< \frac{\epsilon}{3}$, 又第k步被去掉的区间长度为$l_{k}$, 而且每个小区间左右两侧至少有一个区间是第k步去掉的, 因此$I_{k}$旁边有一个第k步被去掉的长为$l_{k}$的区间, 取这个区间的中点, 记为$y_{k}$, 则$$\lvert x-y_{k}\rvert< \lvert I_{k}\rvert+\frac{l_{k}}{2}< \epsilon\qquad\forall k>max\left\lbrace K_{1},K_{2}\right\rbrace $$
+            且$y_{k}$所在的区间长为$l_{k}$, 也是趋于0的量.
+        </p>
+        <h4>(c)</h4>
+        <p>
+            显然$\hat{C}$是闭的, 只需说明无孤立点. 对任何$\epsilon>0$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的K使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \epsilon$, 则$\lvert I_{k}\rvert< \epsilon$, 注意到$I_{k}$的两个端点都在$\hat{C}$里, 且两个端点中至少有一个不等于x, 取不等于x的那个端点, 记为a, 则$a\in\hat{C}$, $$\lvert a-x\rvert\leq \lvert I_{k}\rvert< \epsilon$$
+            因此$\hat{C}$没有孤立点.
+        </p>
+        <h4>(d)</h4>
+        <p>
+            假设$\hat{C}$是可数的,那么可数集测度为0, 和(a)矛盾
+        </p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 5</h3>
+        <p>Suppose \( E \) is a given set, and \( O_n \) is the open set:
+ 
+ 
+        \[
+        O_n = \{x : d(x, E) < 1/n\}.
+        \]</p>
+        <ol type="a">
+            <li>
+                <p>If \( E \) is compact, then \( m(E) = \lim_{n \to \infty} m(O_n) \).</p>
+            </li>
+            <li>
+                <p>However, the conclusion in (a) may be false for \( E \) closed and unbounded; or \( E \) open and bounded.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 6</h3>
+        <p>Using translations and dilations, prove the following: Let \( B \) be a ball in \( \mathbb{R}^d \) of radius \( r \). Then \( m(B) = v_d r^d \), where \( v_d = m(B_1) \), and \( B_1 \) is the unit ball, \( B_1 = \{x \in \mathbb{R}^d : |x| < 1\} \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 7</h3>
+        <p>If \( \delta = (\delta_1, \ldots, \delta_d) \) is a \( d \)-tuple of positive numbers \( \delta_i > 0 \), and \( E \) is a subset of \( \mathbb{R}^d \), we define \( \delta E \) by
+ 
+ 
+        \[
+        \delta E = \{(\delta_1 x_1, \ldots, \delta_d x_d) : \text{where } (x_1, \ldots, x_d) \in E\}.
+        \]</p>
+        <p>Prove that \( \delta E \) is measurable whenever \( E \) is measurable, and
+ 
+ 
+        \[
+        m(\delta E) = \delta_1 \cdots \delta_d m(E).
+        \]</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 8</h3>
+        <p>Suppose \( L \) is a linear transformation of \( \mathbb{R}^d \). Show that if \( E \) is a measurable subset of \( \mathbb{R}^d \), then so is \( L(E) \), by proceeding as follows:</p>
+        <ol type="a">
+            <li>
+                <p>Note that if \( E \) is compact, so is \( L(E) \). Hence if \( E \) is an \( F_{\sigma} \) set, so is \( L(E) \).</p>
+            </li>
+            <li>
+                <p>Because \( L \) automatically satisfies the inequality
+ 
+ 
+                \[
+                |L(x) - L(x')| \leq M|x - x'|
+                \]
+                for some \( M \), we can see that \( L \) maps any cube of side length \( \ell \) into a cube of side length \( c_d M \ell \), with \( c_d = 2\sqrt{d} \). Now if \( m(E) = 0 \), there is a collection of cubes \( \{Q_j\} \) such that \( E \subset \bigcup_j Q_j \), and \( \sum_j m(Q_j) < \epsilon \). Thus \( m_*(L(E)) \leq c' \epsilon \), and hence \( m(L(E)) = 0 \). Finally, use Corollary 3.5.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 9</h3>
+        <p>Give an example of an open set \( O \) with the following property: the boundary of the closure of \( O \) has positive Lebesgue measure.</p>
+        <h4>Hint:</h4>
+        <p>Consider the set obtained by taking the union of open intervals which are deleted at the odd steps in the construction of a Cantor-like set.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 10</h3>
+        <p>This exercise provides a construction of a decreasing sequence of positive continuous functions on the interval \([0, 1]\), whose pointwise limit is not Riemann integrable.</p>
+        <p>Let \( \hat{C} \) denote a Cantor-like set obtained from the construction detailed in Exercise 4, so that in particular \( m(\hat{C}) > 0 \). Let \( F_1 \) denote a piecewise-linear and continuous function on \([0, 1]\), with \( F_1 = 1 \) in the complement of the first interval removed in the construction of \( \hat{C} \), \( F_1 = 0 \) at the center of this interval, and \( 0 \leq F_1(x) \leq 1 \) for all \( x \). Similarly, construct \( F_2 = 1 \) in the complement of the intervals in stage two of the construction of \( \hat{C} \), with \( F_2 = 0 \) at the center of these intervals, and \( 0 \leq F_2 \leq 1 \). Continuing this way, let \( f_n = F_1 \cdot F_2 \cdots F_n \).</p>
+        <p>Prove the following:</p>
+        <ol type="a">
+            <li>
+                <p>For all \( n \geq 1 \) and all \( x \in [0, 1] \), one has \( 0 \leq f_n(x) \leq 1 \) and \( f_n(x) \geq f_{n+1}(x) \). Therefore, \( f_n(x) \) converges to a limit as \( n \to \infty \) which we denote by \( f(x) \).</p>
+            </li>
+            <li>
+                <p>The function \( f \) is discontinuous at every point of \( \hat{C} \).</p>
+                <h4>Hint:</h4>
+                <p>Note that \( f(x) = 1 \) if \( x \in \hat{C} \), and find a sequence of points \( \{x_n\} \) so that \( x_n \to x \) and \( f(x_n) = 0 \).</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 11</h3>
+        <p>Let \( A \) be the subset of \([0, 1]\) which consists of all numbers which do not have the digit 4 appearing in their decimal expansion. Find \( m(A) \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 12</h3>
+        <p>Theorem 1.3 states that every open set in \( \mathbb{R} \) is the disjoint union of open intervals. The analogue in \( \mathbb{R}^d \), \( d \geq 2 \), is generally false. Prove the following:</p>
+        <ol type="a">
+            <li>
+                <p>An open disc in \( \mathbb{R}^2 \) is not the disjoint union of open rectangles.</p>
+                <h4>Hint:</h4>
+                <p>What happens to the boundary of any of these rectangles?</p>
+            </li>
+            <li>
+                <p>An open connected set \( \Omega \) is the disjoint union of open rectangles if and only if \( \Omega \) is itself an open rectangle.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 13</h3>
+        <p>The following deals with \( G_{\delta} \) and \( F_{\sigma} \) sets.</p>
+        <ol type="a">
+            <li>
+                <p>Show that a closed set is a \( G_{\delta} \) and an open set an \( F_{\sigma} \).</p>
+                <h4>Hint:</h4>
+                <p>If \( F \) is closed, consider \( O_n = \{x : d(x, F) < 1/n\} \).</p>
+            </li>
+            <li>
+                <p>Give an example of an \( F_{\sigma} \) which is not a \( G_{\delta} \).</p>
+                <h4>Hint:</h4>
+                <p>This is more difficult; let \( F \) be a denumerable set that is dense.</p>
+            </li>
+            <li>
+                <p>Give an example of a Borel set which is not a \( G_{\delta} \) nor an \( F_{\sigma} \).</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 14</h3>
+        <p>The purpose of this exercise is to show that covering by a finite number of intervals will not suffice in the definition of the outer measure \( m_* \).</p>
+        <p>The outer Jordan content \( J_*(E) \) of a set \( E \) in \( \mathbb{R} \) is defined by
+ 
+ 
+        \[
+        J_*(E) = \inf \sum_{j=1}^N |I_j|,
+        \]
+        where the inf is taken over every finite covering \( E \subset \bigcup_{j=1}^N I_j \), by intervals \( I_j \).</p>
+        <ol type="a">
+            <li>
+                <p>Prove that \( J_*(E) = J_*(\overline{E}) \) for every set \( E \) (here \( \overline{E} \) denotes the closure of \( E \)).</p>
+            </li>
+            <li>
+                <p>Exhibit a countable subset \( E \subset [0, 1] \) such that \( J_*(E) = 1 \) while \( m_*(E) = 0 \).</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 15</h3>
+        <p>At the start of the theory, one might define the outer measure by taking coverings by rectangles instead of cubes. More precisely, we define
+ 
+ 
+        \[
+        m_R^*(E) = \inf \sum_{j=1}^{\infty} |R_j|,
+        \]
+        where the inf is now taken over all countable coverings \( E \subset \bigcup_{j=1}^{\infty} R_j \) by (closed) rectangles.</p>
+        <p>Show that this approach gives rise to the same theory of measure developed in the text, by proving that \( m_*(E) = m_R^*(E) \) for every subset \( E \) of \( \mathbb{R}^d \).</p>
+        <h4>Hint:</h4>
+        <p>Use Lemma 1.1.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 16</h3>
+        <p>The Borel-Cantelli lemma. Suppose \( \{E_k\}_{k=1}^{\infty} \) is a countable family of measurable subsets of \( \mathbb{R}^d \) and that
+ 
+ 
+        \[
+        \sum_{k=1}^{\infty} m(E_k) < \infty.
+        \]</p>
+        <p>Let
+ 
+ 
+        \[
+        E = \{x \in \mathbb{R}^d : x \in E_k, \text{ for infinitely many } k\} = \limsup_{k \to \infty} (E_k).
+        \]</p>
+        <ol type="a">
+            <li>
+                <p>Show that \( E \) is measurable.</p>
+            </li>
+            <li>
+                <p>Prove \( m(E) = 0 \).</p>
+                <h4>Hint:</h4>
+                <p>Write \( E = \bigcap_{n=1}^{\infty} \bigcup_{k \geq n} E_k \).</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 17</h3>
+        <p>Let \( \{f_n\} \) be a sequence of measurable functions on \([0, 1]\) with \( |f_n(x)| < \infty \) for a.e \( x \). Show that there exists a sequence \( c_n \) of positive real numbers such that
+ 
+ 
+        \[
+        \frac{f_n(x)}{c_n} \to 0 \quad \text{a.e. } x
+        \]</p>
+        <h4>Hint:</h4>
+        <p>Pick \( c_n \) such that \( m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} \), and apply the Borel-Cantelli lemma.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 18</h3>
+        <p>Prove the following assertion: Every measurable function is the limit a.e. of a sequence of continuous functions.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 19</h3>
+        <p>Here are some observations regarding the set operation \( A + B \).</p>
+        <ol type="a">
+            <li>
+                <p>Show that if either \( A \) and \( B \) is open, then \( A + B \) is open.</p>
+            </li>
+            <li>
+                <p>Show that if \( A \) and \( B \) are closed, then \( A + B \) is measurable.</p>
+            </li>
+            <li>
+                <p>Show, however, that \( A + B \) might not be closed even though \( A \) and \( B \) are closed.</p>
+                <h4>Hint:</h4>
+                <p>For (b) show that \( A + B \) is an \( F_{\sigma} \) set.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 20</h3>
+        <p>Show that there exist closed sets \( A \) and \( B \) with \( m(A) = m(B) = 0 \), but \( m(A + B) > 0 \):</p>
+        <ol type="a">
+            <li>
+                <p>In \( \mathbb{R} \), let \( A = C \) (the Cantor set), \( B = C/2 \). Note that \( A + B \supset [0, 1] \).</p>
+            </li>
+            <li>
+                <p>In \( \mathbb{R}^2 \), observe that if \( A = I \times \{0\} \) and \( B = \{0\} \times I \) (where \( I = [0, 1] \)), then \( A + B = I \times I \).</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 21</h3>
+        <p>Prove that there is a continuous function that maps a Lebesgue measurable set to a non-measurable set.</p>
+        <h4>Hint:</h4>
+        <p>Consider a non-measurable subset of \([0, 1]\), and its inverse image in \( C \) by the function \( F \) in Exercise 2.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 22</h3>
+        <p>Let \( \chi_{[0,1]} \) be the characteristic function of \([0, 1]\). Show that there is no everywhere continuous function \( f \) on \( \mathbb{R} \) such that
+ 
+ 
+        \[
+        f(x) = \chi_{[0,1]}(x) \quad \text{almost everywhere}.
+        \]</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 23</h3>
+        <p>Suppose \( f(x, y) \) is a function on \( \mathbb{R}^2 \) that is separately continuous: for each fixed variable, \( f \) is continuous in the other variable. Prove that \( f \) is measurable on \( \mathbb{R}^2 \).</p>
+        <h4>Hint:</h4>
+        <p>Approximate \( f \) in the variable \( x \) by piecewise-linear functions \( f_n \) so that \( f_n \to f \) pointwise.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 24</h3>
+        <p>Does there exist an enumeration \( \{r_n\}_{n=1}^{\infty} \) of the rationals, such that the complement of
+ 
+ 
+        \[
+        \bigcup_{n=1}^{\infty} \left( r_n - \frac{1}{n}, r_n + \frac{1}{n} \right)
+        \]
+        in \( \mathbb{R} \) is non-empty?</p>
+        <h4>Hint:</h4>
+        <p>Find an enumeration where the only rationals outside of a fixed bounded interval take the form \( r_n \), with \( n = m^2 \) for some integer \( m \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 25</h3>
+        <p>An alternative definition of measurability is as follows: \( E \) is measurable if for every \( \epsilon > 0 \) there is a closed set \( F \) contained in \( E \) with \( m_*(E - F) < \epsilon \). Show that this definition is equivalent with the one given in the text.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 26</h3>
+        <p>Suppose \( A \subset E \subset B \), where \( A \) and \( B \) are measurable sets of finite measure. Prove that if \( m(A) = m(B) \), then \( E \) is measurable.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 27</h3>
+        <p>Suppose \( E_1 \) and \( E_2 \) are a pair of compact sets in \( \mathbb{R}^d \) with \( E_1 \subset E_2 \), and let \( a = m(E_1) \) and \( b = m(E_2) \). Prove that for any \( c \) with \( a < c < b \), there is a compact set \( E \) with \( E_1 \subset E \subset E_2 \) and \( m(E) = c \).</p>
+        <h4>Hint:</h4>
+        <p>As an example, if \( d = 1 \) and \( E \) is a measurable subset of \([0, 1]\), consider \( m(E \cap [0, t]) \) as a function of \( t \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 28</h3>
+        <p>Let \( E \) be a subset of \( \mathbb{R} \) with \( m_*(E) > 0 \). Prove that for each \( 0 < \alpha < 1 \), there exists an open interval \( I \) so that
+ 
+ 
+        \[
+        m_*(E \cap I) \geq \alpha m_*(I).
+        \]</p>
+        <p>Loosely speaking, this estimate shows that \( E \) contains almost a whole interval.</p>
+        <h4>Hint:</h4>
+        <p>Choose an open set \( O \) that contains \( E \), and such that \( m_*(E) \geq \alpha m_*(O) \). Write \( O \) as the countable union of disjoint open intervals, and show that one of these intervals must satisfy the desired property.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 29</h3>
+        <p>Suppose \( E \) is a measurable subset of \( \mathbb{R} \) with \( m(E) > 0 \). Prove that the difference set of \( E \), which is defined by
+ 
+ 
+        \[
+        \{z \in \mathbb{R} : z = x - y \text{ for some } x, y \in E\},
+        \]
+        contains an open interval centered at the origin.</p>
+        <p>If \( E \) contains an interval, then the conclusion is straightforward. In general, one may rely on Exercise 28.</p>
+        <h4>Hint:</h4>
+        <p>Indeed, by Exercise 28, there exists an open interval \( I \) so that \( m(E \cap I) \geq (9/10) m(I) \). If we denote \( E \cap I \) by \( E_0 \), and suppose that the difference set of \( E_0 \) does not contain an open interval around the origin, then for arbitrarily small \( a \) the sets \( E_0 \), and \( E_0 + a \) are disjoint. From the fact that \( (E_0 \cup (E_0 + a)) \subset (I \cup (I + a)) \) we get a contradiction, since the left-hand side has measure \( 2m(E_0) \), while the right-hand side has measure only slightly larger than \( m(I) \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 30</h3>
+        <p>If \( E \) and \( F \) are measurable, and \( m(E) > 0 \), \( m(F) > 0 \), prove that
+ 
+ 
+        \[
+        E + F = \{x + y : x \in E, x \in F\}
+        \]
+        contains an interval.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 31</h3>
+        <p>The result in Exercise 29 provides an alternate proof of the non-measurability of the set \( N \) studied in the text. In fact, we may also prove the non-measurability of a set in \( \mathbb{R} \) that is very closely related to the set \( N \).</p>
+        <p>Given two real numbers \( x \) and \( y \), we shall write as before that \( x \sim y \) whenever the difference \( x - y \) is rational. Let \( N^* \) denote a set that consists of one element in each equivalence class of \( \sim \). Prove that \( N^* \) is non-measurable by using the result in Exercise 29.</p>
+        <h4>Hint:</h4>
+        <p>If \( N^* \) is measurable, then so are its translates \( N^*_n = N^* + r_n \), where \( \{r_n\}_{n=1}^{\infty} \) is an enumeration of \( \mathbb{Q} \). How does this imply that \( m(N^*) > 0 \)? Can the difference set of \( N^* \) contain an open interval centered at the origin?</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 32</h3>
+        <p>Let \( N \) denote the non-measurable subset of \( I = [0, 1] \) constructed at the end of Section 3.</p>
+        <ol type="a">
+            <li>
+                <p>Prove that if \( E \) is a measurable subset of \( N \), then \( m(E) = 0 \).</p>
+            </li>
+            <li>
+                <p>If \( G \) is a subset of \( \mathbb{R} \) with \( m_*(G) > 0 \), prove that a subset of \( G \) is non-measurable.</p>
+                <h4>Hint:</h4>
+                <p>For (a) use the translates of \( E \) by the rationals.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 33</h3>
+        <p>Let \( N \) denote the non-measurable set constructed in the text. Recall from the exercise above that measurable subsets of \( N \) have measure zero.</p>
+        <p>Show that the set \( N^c = I - N \) satisfies \( m_*(N^c) = 1 \), and conclude that if \( E_1 = N \) and \( E_2 = N^c \), then
+ 
+ 
+        \[
+        m_*(E_1) + m_*(E_2) = m_*(E_1 \cup E_2),
+        \]
+        although \( E_1 \) and \( E_2 \) are disjoint.</p>
+        <h4>Hint:</h4>
+        <p>To prove that \( m_*(N^c) = 1 \), argue by contradiction and pick a measurable set \( U \) such that \( U \subset I \), \( N^c \subset U \) and \( m_*(U) < 1 - \epsilon \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 34</h3>
+        <p>Let \( C_1 \) and \( C_2 \) be any two Cantor sets (constructed in Exercise 3). Show that there exists a function \( F : [0, 1] \to [0, 1] \) with the following properties:</p>
+        <ol type="i">
+            <li>\( F \) is continuous and bijective,</li>
+            <li>\( F \) is monotonically increasing,</li>
+            <li>\( F \) maps \( C_1 \) surjectively onto \( C_2 \).</li>
+        </ol>
+        <h4>Hint:</h4>
+        <p>Copy the construction of the standard Cantor-Lebesgue function.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 35</h3>
+        <p>Give an example of a measurable function \( f \) and a continuous function \( \Phi \) so that \( f \circ \Phi \) is non-measurable.</p>
+        <h4>Hint:</h4>
+        <p>Let \( \Phi : C_1 \to C_2 \) as in Exercise 34, with \( m(C_1) > 0 \) and \( m(C_2) = 0 \). Let \( N \subset C_1 \) be non-measurable, and take \( f = \chi_{\Phi(N)} \).</p>
+        <p>Use the construction in the hint to show that there exists a Lebesgue measurable set that is not a Borel set.</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 36</h3>
+        <p>This exercise provides an example of a measurable function \( f \) on \([0, 1]\) such that every function \( g \) equivalent to \( f \) (in the sense that \( f \) and \( g \) differ only on a set of measure zero) is discontinuous at every point.</p>
+        <ol type="a">
+            <li>
+                <p>Construct a measurable set \( E \subset [0, 1] \) such that for any non-empty open sub-interval \( I \) in \([0, 1]\), both sets \( E \cap I \) and \( E^c \cap I \) have positive measure.</p>
+            </li>
+            <li>
+                <p>Show that \( f = \chi_E \) has the property that whenever \( g(x) = f(x) \) a.e \( x \), then \( g \) must be discontinuous at every point in \([0, 1]\).</p>
+                <h4>Hint:</h4>
+                <p>For the first part, consider a Cantor-like set of positive measure, and add in each of the intervals that are omitted in the first step of its construction, another Cantor-like set. Continue this procedure indefinitely.</p>
+            </li>
+        </ol>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 37</h3>
+        <p>Suppose \( \Gamma \) is a curve \( y = f(x) \) in \( \mathbb{R}^2 \), where \( f \) is continuous. Show that \( m(\Gamma) = 0 \).</p>
+        <h4>Hint:</h4>
+        <p>Cover \( \Gamma \) by rectangles, using the uniform continuity of \( f \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 38</h3>
+        <p>Prove that \( (a + b)^{\gamma} \geq a^{\gamma} + b^{\gamma} \) whenever \( \gamma \geq 1 \) and \( a, b \geq 0 \). Also, show that the reverse inequality holds when \( 0 \leq \gamma \leq 1 \).</p>
+        <h4>Hint:</h4>
+        <p>Integrate the inequality between \( (a + t)^{\gamma-1} \) and \( t^{\gamma-1} \) from 0 to \( b \).</p>
+    </div>
+ 
+    <div class="Exercise-box">
+        <h3>Exercise 39</h3>
+        <p>Establish the inequality
+ 
+ 
+        \[
+        \frac{x_1 + \cdots + x_d}{d} \geq (x_1 \cdots x_d)^{1/d} \quad \text{for all } x_j \geq 0, j = 1, \ldots, d
+        \]
+        by using backward induction as follows:</p>
+        <ol type="a">
+            <li>
+                <p>The inequality is true whenever \( d \) is a power of 2 (\( d = 2^k \), \( k \geq 1 \)).</p>
+            </li>
+            <li>
+                <p>If (10) holds for some integer \( d \geq 2 \), then it must hold for \( d - 1 \), that is, one has \( (y_1 + \cdots + y_{d-1})/(d-1) \geq (y_1 \cdots y_{d-1})^{1/(d-1)} \) for all \( y_j \geq 0 \), with \( j = 1, \ldots, d-1 \).</p>
+            </li>
+        </ol>
+        <h4>Hint:</h4>
+        <p>For (a), if \( k \geq 2 \), write \( (x_1 + \cdots + x_{2^k})/2^k \) as \( (A + B)/2 \), where \( A = (x_1 + \cdots + x_{2^{k-1}})/2^{k-1} \), and apply the inequality when \( d = 2 \). For (b), apply the inequality to \( x_1 = y_1, \ldots, x_{d-1} = y_{d-1} \) and \( x_d = (y_1 + \cdots + y_{d-1})/(d-1) \).</p>
+    </div>
+
+
+    </div>
+
+
+    <div class="whole_page">
+
+    </div>
+    <div class="bg_box">
+        <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+    </div>
+
+
+</body>
+
+</html>
