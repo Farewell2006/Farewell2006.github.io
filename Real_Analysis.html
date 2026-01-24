@@ -379,8 +379,10 @@
 
         <h4>(b)</h4>
         <p>
-            对任何$\epsilon>0$, 根据$\sum_{k=1}^{\infty}2^{k-1}l_{k}< 1$可得$l_{k}\rightarrow0$, 因此存在$K_{1}$使得$l_{k}< \frac{\epsilon}{2},\forall k>K_{1}$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的$K_{2}$使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \frac{\epsilon}{2}$, 即$\lvert I_{k}\rvert< \frac{\epsilon}{3}$, 又第k步被去掉的区间长度为$l_{k}$, 而且每个小区间左右两侧至少有一个区间是第k步去掉的, 因此$I_{k}$旁边有一个第k步被去掉的长为$l_{k}$的区间, 取这个区间的中点, 记为$y_{k}$, 则$$\lvert x-y_{k}\rvert< \lvert I_{k}\rvert+\frac{l_{k}}{2}< \epsilon\qquad\forall k>max\left\lbrace K_{1},K_{2}\right\rbrace $$
-            且$y_{k}$所在的区间长为$l_{k}$, 也是趋于0的量.
+            对于E是无界闭集的情形, 我们考虑$\cup_{n=1}^{\infty}[n,n+\frac{1}{2^{n}}]$, 则$$O_{n}=\cup_{k=1}^{\infty}(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$$
+            我们知道当$n>2$时, $(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$互不相交, 因此根据可数可加性有$$m(O_{n})=\sum_{i=1}^{\infty}\frac{2}{n}+\frac{1}{2^{i}}=\infty\qquad m(E)=1$$
+
+            对E是有界开集的情形, 我们考虑Exercise 4中被去掉的开区间的全体, 即$E=[0,1]-\widehat{C}$, 这个集合的闭包具有正的Lebesgue测度.注意到$O_{n}\supseteq\overline{\widetilde{C}}\cup E$,  这说明$$\lim_{n \to \infty}m(O_{n})\geq m(\overline{\widetilde{C}})+m(E)>m(E)$$
         </p>
         
     </div>
