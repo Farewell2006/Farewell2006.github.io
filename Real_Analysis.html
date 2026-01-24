@@ -157,164 +157,224 @@
             </p>
         </div>
 
-        
-    
- 
-    <div class="Exercise-box">
-        <h3>Exercise 2</h3>
-        <p>The Cantor set \( C \) can also be described in terms of ternary expansions.</p>
-        <ol type="a">
-            <li>
-                <p>Every number in \([0, 1]\) has a ternary expansion
- 
- 
-                \[
-                x = \sum_{k=1}^{\infty} a_k 3^{-k}, \quad \text{where } a_k = 0, 1, \text{ or } 2.
-                \]
-                Note that this decomposition is not unique since, for example, \( 1/3 = \sum_{k=2}^{\infty} 2/3^k \).
-                Prove that \( x \in C \) if and only if \( x \) has a representation as above where every \( a_k \) is either 0 or 2.</p>
-            </li>
-            <li>
-                <p>The Cantor-Lebesgue function is defined on \( C \) by
- 
- 
-                \[
-                F(x) = \sum_{k=1}^{\infty} \frac{b_k}{2^k} \quad \text{if } x = \sum_{k=1}^{\infty} a_k 3^{-k}, \text{ where } b_k = a_k/2.
-                \]
-                In this definition, we choose the expansion of \( x \) in which \( a_k = 0 \) or 2.
-                Show that \( F \) is well defined and continuous on \( C \), and moreover \( F(0) = 0 \) as well as \( F(1) = 1 \).</p>
-            </li>
-            <li>
-                <p>Prove that \( F : C \to [0, 1] \) is surjective, that is, for every \( y \in [0, 1] \) there exists \( x \in C \) such that \( F(x) = y \).</p>
-            </li>
-            <li>
-                <p>One can also extend \( F \) to be a continuous function on \([0, 1]\) as follows. Note that if \((a, b)\) is an open interval of the complement of \( C \), then \( F(a) = F(b) \). Hence we may define \( F \) to have the constant value \( F(a) \) in that interval.</p>
-            </li>
-        </ol>
+
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>The Cantor set \( C \) can also be described in terms of ternary expansions.</p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Every number in \([0, 1]\) has a ternary expansion
+
+
+                        \[
+                        x = \sum_{k=1}^{\infty} a_k 3^{-k}, \quad \text{where } a_k = 0, 1, \text{ or } 2.
+                        \]
+                        Note that this decomposition is not unique since, for example, \( 1/3 = \sum_{k=2}^{\infty} 2/3^k \).
+                        Prove that \( x \in C \) if and only if \( x \) has a representation as above where every \( a_k \) is either 0 or 2.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        The Cantor-Lebesgue function is defined on \( C \) by
+
+
+                        \[
+                        F(x) = \sum_{k=1}^{\infty} \frac{b_k}{2^k} \quad \text{if } x = \sum_{k=1}^{\infty} a_k 3^{-k}, \text{ where } b_k = a_k/2.
+                        \]
+                        In this definition, we choose the expansion of \( x \) in which \( a_k = 0 \) or 2.
+                        Show that \( F \) is well defined and continuous on \( C \), and moreover \( F(0) = 0 \) as well as \( F(1) = 1 \).
+                    </p>
+                </li>
+                <li>
+                    <p>Prove that \( F : C \to [0, 1] \) is surjective, that is, for every \( y \in [0, 1] \) there exists \( x \in C \) such that \( F(x) = y \).</p>
+                </li>
+                <li>
+                    <p>One can also extend \( F \) to be a continuous function on \([0, 1]\) as follows. Note that if \((a, b)\) is an open interval of the complement of \( C \), then \( F(a) = F(b) \). Hence we may define \( F \) to have the constant value \( F(a) \) in that interval.</p>
+                </li>
+            </ol>
+
+            <div class="Proof-box">
+                <h4>Proof:(a)</h4>
+                <p>
+                    先证明第k次去掉的区间是形如$$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                    的全体. 显然k=1时成立, 假设命题对1,...,k-1成立, 则第k-1次去掉的区间是形如$$(\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                    又第k-1次去掉的区间正是$C_{k-2}$中每个子区间的中间$\frac{1}{3}$的开子集, 因此$C_{k-2}$中的区间是下列区间的全体:$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                    去掉应该去掉的区间之后, 剩下的就是$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\cup[ \sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
+                    可以视为以下区间的全体$$\begin{cases}
+                    [\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=0, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\\
+                    [ \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k
+                    \end{cases}$$
+                    从而$C_{k-1}$就是上述区间的全体, 我们注意到$a_{i}\in\left\lbrace 0,2\right\rbrace,1\leq i\leq k-1$等价于$\left\lbrace a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace \cup \left\lbrace a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace $, 所以$C_{k-1}$是下列区间的全体: $$[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+                    则第k次被去掉的区间的全体就是它们中间的$\frac{1}{3}$的开子区间: $$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+                    因此根据归纳原理, 结论对所有k成立.
+
+
+                    $\Leftarrow$ 如果$x\notin C$, 则存在正整数k使得x在第k步被去掉, 这样的话,x含于某个第k步去除的开区间$I=(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})$中, 其中$a_{i}$要么为0, 要么为2. 现在我们设$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个三进制小数展开, $b_{i}$在0,1,2中取值. 那么必有$b_{i}=a_{i},1\leq i\leq k-1$. 如不然, 设t是第一个$b_{t}\neq a_{t},1\leq t\leq k-1$的指标, 则$$x\begin{cases}
+                    \geq \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\frac{a_{t}+1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\sum_{i=t+1}^{\infty}\frac{2}{3^{i}}\geq  \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}&b_{t}>a_{t}(\text{暗含}b_{t}\geq a_{t}+1)\\
+                    \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\sum_{t+1}\frac{2}{3^{i}}=\sum_{i=1}^{t-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}\leq\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}< \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}} &b_{t}< a_{t}(\text{暗含}a_{t}\geq 1) \end{cases}$$
+
+                    无论哪种情况, 都会导致x落在I的外面, 因此$a_{i}=b_{i},1\leq i\leq k-1$. 如果$b_{k}=0$, 则$x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\sum_{k+1}\frac{2}{3^{i}}= \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\frac{1}{3^{k}}$, 如果$b_{k}=2$, 则$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{k+1}\frac{b_{i}}{3^{i}}\geq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}$, 无论那种情况都会落在I外, 因此$b_{k}=1$, 如果$b_{k}$之后的全部$b_{i}$都是0, 那么$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$, 是I的左端点, 而I是开的, 所以落在I外面, 所以$x\in I$说明了$b_{k}$之后的$b_{i}$不全为0, 又$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个小数展开, 因此我们证明了如果$x\notin C$, 则存在一个统一的k使得x的任何一个小数展开中$\frac{1}{3^{k}}$永远是1, 因此x没有系数仅为0或2的小数展开.
+                    $\Rightarrow$ 然后再证明另一个方向, 若$x\in C$且对x的任意一个小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 都存在k使得$c_{k}=1$, 对一个固定的小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 我们取满足$c_{k}=1$的最小的k, 这意味着$c_{1},..,c_{k-1}\in \left\lbrace 0,2\right\rbrace $, 不妨把这前k-1个$c_{i}$记为$a_{i}$, 那么$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}\leq x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                    从而$$x\in[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}]\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+
+                    注意到这个闭区间的内部是第k步中要被去掉的区间, 因此x必须是端点. 如果$x$是左端点, 那么$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$$
+                    把$\frac{1}{3^{k}}$展开成$\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}$, 则得到x的一个小数展开$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                    这是一个系数只有0或2的小数展开, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x不是左端点, 如果x是右端点, 即$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{i=k+1}\frac{0}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+                    这也是一组x的小数展开, 且系数是0或2, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x也不能是右端点, 因此x含于I的内部, 因此x在第k步要被去掉, 这和$x\in\mathcal{C}$矛盾, 所以$x\in C$可知存在x的一个小数展开, 使得系数只有0或2
+                </p>
+
+                <h4>(b)</h4>
+                <p>
+                    首先说明F是良定义的. 假设$x$有两个表示$$x=\sum_{i=1}a_{i}\frac{1}{3^{i}}=\sum_{i=1}\frac{b_{i}}{3^{i}}\qquad a_{i},b_{i}\in \left\lbrace 0,2\right\rbrace $$
+                    如果$a_{i}=b_{i}$恒成立, 那么自然$\sum_{i=1}^{\infty}\frac{a_{i}}{2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}$
+
+                    否则, 取一个满足$a_{k}\neq b_{k}$的最小指标k, 则前面k-1个$a_{i},b_{i}$都相等. 不妨设$a_{k}=2,b_{k}=0$, 如果k之后有某个$a_{m}=2$或某个$b_{t}=0$, 则必有$$\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{k+1}\frac{a_{j}}{3^{j}}> \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\frac{2}{3^{m}}$$
+                    $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}$$
+                    $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{2}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{2}{3^{j}}\geq \sum_{i=1}^{k-1}\frac{b_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{b_{j}}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{b_{j}}{3^{j}}=\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$$
+                    i.e $x=\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}>\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}=x$, 矛盾, 因此k之后的所有$a_{j}$都为0, 所有$b_{j}$都为2, 这样$$\sum_{i=1}^{\infty}\frac{a_{i}}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{2\times 2^{i}}+\frac{2}{2\times 2^{k}}+\sum_{k+1}\frac{0}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{b_{i}}{2\times 2^{i}}+\frac{0}{2\times 2^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2\times 2^{i}}$$
+                    从而F良定义.
+
+                    然后证明F的连续性, 任取$x\in C$, 对任何$\epsilon>0$, 取足够大的k使得$\frac{1}{2^{k}}< \epsilon$, 那么令$\delta=\frac{1}{3^{k}}< \epsilon$, 若$y\in\mathcal{C}$且$\lvert x-y\rvert< \frac{1}{3^{k+1}}$, 那么$x,y\in\mathcal{C}$给出了$x,y\in \mathcal{C}_{k}$, 但$C_{k}$中每个区间长度是$\frac{1}{3^{k}}$, 且两个区间之间至少相隔$\frac{1}{3^{k}}$的距离, 因此$x,y$必须含于同一个长为$\frac{1}{3^{k}}$的区间中, 根据(a)的结论, 此时x,y有一组展开使得系数的前k个是相同的, 设x,y的系数分别为$a_{i},b_{i}$, 那么$$\lvert F(x)-F(y)\rvert\leq \sum_{i=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\frac{1}{2^{k}}< \epsilon$$
+                    因此对任何$\epsilon$, 存在$\delta$使得$x,y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$时, $\lvert F(x)-F(y)\rvert< \epsilon$, 因此F在$\mathcal{C}$上连续
+
+                    显然$F(0)=0,F(1)=1$, 因为$\sum_{i=1}^{\infty}0\times 3^{-k},\sum_{i=1}^{\infty}2\times 3^{-k}\in\mathcal{C}$
+                </p>
+
+                <h4>(c)</h4>
+                <p>
+                    任何一个[0,1]中的数y都能展开成$$\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}\qquad b_{i}\in \left\lbrace 0,1 \right\rbrace$$
+                    令$a_{i}=2b_{i}$, 则$a_{i}$要么0要么2, 记$x=\sum_{i=1}\frac{a_{i}}{3^{i}}$, 则$x\in\mathcal{C}$且$F(x)=y$
+                </p>
+                <h4>(d)</h4>
+                <p>
+                    因为F在$C^{c}$上是连续的, 所以我们只需讨论F在$C$上的连续性. 对任何$x\in\mathcal{C}$, $\epsilon>0$, 取$\delta$对任何$y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$, 都有$\lvert F(x)-F(y)\rvert< \epsilon$, 然后考察$B(x,\delta)$, 对任何$z\in B(x,\delta)$, 如果$z\in \mathcal{C}$, 则根据F在$\mathcal{C}$上的连续性可知$\lvert F(z)-F(x)\rvert< \epsilon$. 如果$z\in\mathcal{C}^{c}$, 则z落在某个被去掉的开区间(a,b)中, 如果$a,b\notin B(x,\delta)$, 又$B(x,\delta)\cap(a,b)\neq \emptyset$,  这说明$B(x,\delta)\subseteq (a,b)$, 而这与$x\in\mathcal{C}$矛盾, 因此a,b 至少一个落在$B(x,\delta)$中, 又根据F的定义, $F(z)=F(a)=F(b)$, 不妨设$a\in B(x,\delta)$, 又我们知道被去掉的区间的端点a,b肯定是$\mathcal{C}$中的元素, 所以由$a\in B(x,\delta)$可得$\lvert F(a)-F(x)\rvert< \epsilon$, 从而$$\lvert F(z)-F(x)\rvert< \epsilon\qquad \forall z\in B(x,\delta)$$
+                </p>
+
+
+            </div>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>Cantor sets of constant dissection. Consider the unit interval \([0, 1]\), and let \( \xi \) be a fixed real number with \( 0 < \xi < 1 \) (the case \( \xi = 1/3 \) corresponds to the Cantor set \( C \) in the text).</p>
+            <p>In stage 1 of the construction, remove the centrally situated open interval in \([0, 1]\) of length \( \xi \). In stage 2, remove two central intervals each of relative length \( \xi \), one in each of the remaining intervals after stage 1, and so on.</p>
+            <p>Let \( C_{\xi} \) denote the set which remains after applying the above procedure indefinitely.</p>
+            <ol type="a">
+                <li>
+                    <p>Prove that the complement of \( C_{\xi} \) in \([0, 1]\) is the union of open intervals of total length equal to 1.</p>
+                </li>
+                <li>
+                    <p>Show directly that \( m_*(C_{\xi}) = 0 \).</p>
+                    <h4>Hint:</h4>
+                    <p>After the \( k \)-th stage, show that the remaining set has total length \( = (1 - \xi)^k \).</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
             <p>
-                先证明第k次去掉的区间是形如$$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
-                的全体. 显然k=1时成立, 假设命题对1,...,k-1成立, 则第k-1次去掉的区间是形如$$(\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}})\qquad a_{i}\in\left\lbrace 0,2 \right\rbrace $$
-                又第k-1次去掉的区间正是$C_{k-2}$中每个子区间的中间$\frac{1}{3}$的开子集, 因此$C_{k-2}$中的区间是下列区间的全体:$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
-                去掉应该去掉的区间之后, 剩下的就是$$[\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\cup[ \sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k-1}},\sum_{i=1}^{k-2}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-2}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace $$
-                可以视为以下区间的全体$$\begin{cases}
-                [\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=0, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\\
-                [ \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]&a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k
-                \end{cases}$$
-                从而$C_{k-1}$就是上述区间的全体, 我们注意到$a_{i}\in\left\lbrace 0,2\right\rbrace,1\leq i\leq k-1$等价于$\left\lbrace a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace \cup \left\lbrace a_{k-1}=2, a_{i}\in \left\lbrace 0,2\right\rbrace,1\leq i\leq k\right\rbrace $, 所以$C_{k-1}$是下列区间的全体: $$[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
-                则第k次被去掉的区间的全体就是它们中间的$\frac{1}{3}$的开子区间: $$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
-                因此根据归纳原理, 结论对所有k成立.
+                记第k步去掉的集合是$A_{k}^{i},1\leq i\leq 2^{k-1}$, 则$$C_{\xi}^{c}=\cup_{k=1}^{\infty}A_{k}^{i}$$
+                又$A_{k}^{i}$互不相交且$A_{k}^{i}$长度为$\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}$, 从而总长度为$$\sum_{k=1}^{\infty}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{\infty}(1-\xi)^{k-1}=1$$
+
+            </p>
+            <h4>(b)</h4>
+
+            <p>
+                前n步去掉的区间的总长度为$$\sum_{k=1}^{n}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{n}(1-\xi)^{k-1}=1-(1-\xi)^{n}$$
+                因此剩下的区间总长度为$$(1-\xi)^{n}$$
+                从而$$m_{\ast}(C_{\xi})\leq (1-\xi)^{n}$$
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>
+                Cantor-like sets. Construct a closed set \( \hat{C} \) so that at the \( k \)-th stage of the construction one removes \( 2^{k-1} \) centrally situated open intervals each of length \( \ell_k \), with
 
 
-                $\Leftarrow$ 如果$x\notin C$, 则存在正整数k使得x在第k步被去掉, 这样的话,x含于某个第k步去除的开区间$I=(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})$中, 其中$a_{i}$要么为0, 要么为2. 现在我们设$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个三进制小数展开, $b_{i}$在0,1,2中取值. 那么必有$b_{i}=a_{i},1\leq i\leq k-1$. 如不然, 设t是第一个$b_{t}\neq a_{t},1\leq t\leq k-1$的指标, 则$$x\begin{cases}
-                \geq \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\frac{a_{t}+1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}=\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}+\sum_{i=t+1}^{\infty}\frac{2}{3^{i}}\geq  \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}&b_{t}>a_{t}(\text{暗含}b_{t}\geq a_{t}+1)\\
-                \sum_{i=1}^{t-1}\frac{b_{i}}{3^{i}}+\sum_{t+1}\frac{2}{3^{i}}=\sum_{i=1}^{t-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{t}}\leq\sum_{i=1}^{t}\frac{a_{i}}{3^{i}}< \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}} &b_{t}< a_{t}(\text{暗含}a_{t}\geq 1) \end{cases}$$
+                \[
+                \ell_1 + 2\ell_2 + \cdots + 2^{k-1}\ell_k < 1.
+                \]
+            </p>
+            <ol type="a">
+                <li>
+                    <p>If \( \ell_j \) are chosen small enough, then \( \sum_{k=1}^{\infty} 2^{k-1}\ell_k < 1 \). In this case, show that \( m(\hat{C}) > 0 \), and in fact, \( m(\hat{C}) = 1 - \sum_{k=1}^{\infty} 2^{k-1}\ell_k \).</p>
+                </li>
+                <li>
+                    <p>Show that if \( x \in \hat{C} \), then there exists a sequence of points \( \{x_n\}_{n=1}^{\infty} \) such that \( x_n \notin \hat{C} \), yet \( x_n \to x \) and \( x_n \in I_n \), where \( I_n \) is a sub-interval in the complement of \( \hat{C} \) with \( |I_n| \to 0 \).</p>
+                </li>
+                <li>
+                    <p>Prove as a consequence that \( \hat{C} \) is perfect, and contains no open interval.</p>
+                </li>
+                <li>
+                    <p>Show also that \( \hat{C} \) is uncountable.</p>
+                </li>
+            </ol>
+        </div>
 
-                无论哪种情况, 都会导致x落在I的外面, 因此$a_{i}=b_{i},1\leq i\leq k-1$. 如果$b_{k}=0$, 则$x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\sum_{k+1}\frac{2}{3^{i}}= \sum_{i=1}^{k-1}\frac{a_{i}}{3}+\frac{1}{3^{k}}$, 如果$b_{k}=2$, 则$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{k+1}\frac{b_{i}}{3^{i}}\geq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}$, 无论那种情况都会落在I外, 因此$b_{k}=1$, 如果$b_{k}$之后的全部$b_{i}$都是0, 那么$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$, 是I的左端点, 而I是开的, 所以落在I外面, 所以$x\in I$说明了$b_{k}$之后的$b_{i}$不全为0, 又$\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$是x的任何一个小数展开, 因此我们证明了如果$x\notin C$, 则存在一个统一的k使得x的任何一个小数展开中$\frac{1}{3^{k}}$永远是1, 因此x没有系数仅为0或2的小数展开.
-                $\Rightarrow$ 然后再证明另一个方向, 若$x\in C$且对x的任意一个小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 都存在k使得$c_{k}=1$, 对一个固定的小数展开$x=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}$, 我们取满足$c_{k}=1$的最小的k, 这意味着$c_{1},..,c_{k-1}\in \left\lbrace 0,2\right\rbrace $, 不妨把这前k-1个$c_{i}$记为$a_{i}$, 那么$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}\leq x\leq \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
-                从而$$x\in[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}]\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $$m(\hat{C})=m([0,1])-m(\hat{C}^{c})=1-\sum_{k=1}^{\infty}2^{k-1}l_{k}$$
 
-                注意到这个闭区间的内部是第k步中要被去掉的区间, 因此x必须是端点. 如果$x$是左端点, 那么$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$$
-                把$\frac{1}{3^{k}}$展开成$\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}$, 则得到x的一个小数展开$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
-                这是一个系数只有0或2的小数展开, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x不是左端点, 如果x是右端点, 即$$x=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{i=k+1}\frac{0}{3^{i}}\qquad a_{i}\in\left\lbrace 0,2\right\rbrace $$
-                这也是一组x的小数展开, 且系数是0或2, 和之前对x的假设矛盾(假设任何一个小数展开都至少有一个系数为1), 因此x也不能是右端点, 因此x含于I的内部, 因此x在第k步要被去掉, 这和$x\in\mathcal{C}$矛盾, 所以$x\in C$可知存在x的一个小数展开, 使得系数只有0或2
             </p>
 
             <h4>(b)</h4>
             <p>
-                首先说明F是良定义的. 假设$x$有两个表示$$x=\sum_{i=1}a_{i}\frac{1}{3^{i}}=\sum_{i=1}\frac{b_{i}}{3^{i}}\qquad a_{i},b_{i}\in \left\lbrace 0,2\right\rbrace $$
-                如果$a_{i}=b_{i}$恒成立, 那么自然$\sum_{i=1}^{\infty}\frac{a_{i}}{2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}$
-
-                否则, 取一个满足$a_{k}\neq b_{k}$的最小指标k, 则前面k-1个$a_{i},b_{i}$都相等. 不妨设$a_{k}=2,b_{k}=0$, 如果k之后有某个$a_{m}=2$或某个$b_{t}=0$, 则必有$$\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\sum_{k+1}\frac{a_{j}}{3^{j}}> \sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}+\frac{2}{3^{m}}$$
-                $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{3^{j}}$$
-                $$>\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{2}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{2}{3^{j}}\geq \sum_{i=1}^{k-1}\frac{b_{i}}{3^{i}}+\frac{b_{k}}{3^{k}}+\sum_{j=k+1}^{t-1}\frac{b_{j}}{3^{j}}+\frac{b_{t}}{3^{t}}+\sum_{t+1}\frac{b_{j}}{3^{j}}=\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}$$
-                i.e $x=\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}>\sum_{i=1}^{\infty}\frac{b_{i}}{3^{i}}=x$, 矛盾, 因此k之后的所有$a_{j}$都为0, 所有$b_{j}$都为2, 这样$$\sum_{i=1}^{\infty}\frac{a_{i}}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{a_{i}}{2\times 2^{i}}+\frac{2}{2\times 2^{k}}+\sum_{k+1}\frac{0}{2\times 2^{i}}=\sum_{i=1}^{k-1}\frac{b_{i}}{2\times 2^{i}}+\frac{0}{2\times 2^{k}}+\sum_{j=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\sum_{i=1}^{\infty}\frac{b_{i}}{2\times 2^{i}}$$
-                从而F良定义.
-
-                然后证明F的连续性, 任取$x\in C$, 对任何$\epsilon>0$, 取足够大的k使得$\frac{1}{2^{k}}< \epsilon$, 那么令$\delta=\frac{1}{3^{k}}< \epsilon$, 若$y\in\mathcal{C}$且$\lvert x-y\rvert< \frac{1}{3^{k+1}}$, 那么$x,y\in\mathcal{C}$给出了$x,y\in \mathcal{C}_{k}$, 但$C_{k}$中每个区间长度是$\frac{1}{3^{k}}$, 且两个区间之间至少相隔$\frac{1}{3^{k}}$的距离, 因此$x,y$必须含于同一个长为$\frac{1}{3^{k}}$的区间中, 根据(a)的结论, 此时x,y有一组展开使得系数的前k个是相同的, 设x,y的系数分别为$a_{i},b_{i}$, 那么$$\lvert F(x)-F(y)\rvert\leq \sum_{i=k+1}^{\infty}\frac{2}{2\times 2^{i}}=\frac{1}{2^{k}}< \epsilon$$
-            因此对任何$\epsilon$, 存在$\delta$使得$x,y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$时, $\lvert F(x)-F(y)\rvert< \epsilon$, 因此F在$\mathcal{C}$上连续
-
-            显然$F(0)=0,F(1)=1$, 因为$\sum_{i=1}^{\infty}0\times 3^{-k},\sum_{i=1}^{\infty}2\times 3^{-k}\in\mathcal{C}$
+                对任何$\epsilon>0$, 根据$\sum_{k=1}^{\infty}2^{k-1}l_{k}< 1$可得$l_{k}\rightarrow0$, 因此存在$K_{1}$使得$l_{k}< \frac{\epsilon}{2},\forall k>K_{1}$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的$K_{2}$使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \frac{\epsilon}{2}$, 即$\lvert I_{k}\rvert< \frac{\epsilon}{3}$, 又第k步被去掉的区间长度为$l_{k}$, 而且每个小区间左右两侧至少有一个区间是第k步去掉的, 因此$I_{k}$旁边有一个第k步被去掉的长为$l_{k}$的区间, 取这个区间的中点, 记为$y_{k}$, 则$$\lvert x-y_{k}\rvert< \lvert I_{k}\rvert+\frac{l_{k}}{2}< \epsilon\qquad\forall k>max\left\lbrace K_{1},K_{2}\right\rbrace $$
+                且$y_{k}$所在的区间长为$l_{k}$, 也是趋于0的量.
             </p>
-
             <h4>(c)</h4>
             <p>
-                任何一个[0,1]中的数y都能展开成$$\sum_{i=1}^{\infty}\frac{b_{i}}{2^{i}}\qquad b_{i}\in \left\lbrace 0,1 \right\rbrace$$
-                令$a_{i}=2b_{i}$, 则$a_{i}$要么0要么2, 记$x=\sum_{i=1}\frac{a_{i}}{3^{i}}$, 则$x\in\mathcal{C}$且$F(x)=y$
+                显然$\hat{C}$是闭的, 只需说明无孤立点. 对任何$\epsilon>0$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的K使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \epsilon$, 则$\lvert I_{k}\rvert< \epsilon$, 注意到$I_{k}$的两个端点都在$\hat{C}$里, 且两个端点中至少有一个不等于x, 取不等于x的那个端点, 记为a, 则$a\in\hat{C}$, $$\lvert a-x\rvert\leq \lvert I_{k}\rvert< \epsilon$$
+                因此$\hat{C}$没有孤立点.
             </p>
             <h4>(d)</h4>
             <p>
-                因为F在$C^{c}$上是连续的, 所以我们只需讨论F在$C$上的连续性. 对任何$x\in\mathcal{C}$, $\epsilon>0$, 取$\delta$对任何$y\in\mathcal{C}$且$\lvert x-y\rvert< \delta$, 都有$\lvert F(x)-F(y)\rvert< \epsilon$, 然后考察$B(x,\delta)$, 对任何$z\in B(x,\delta)$, 如果$z\in \mathcal{C}$, 则根据F在$\mathcal{C}$上的连续性可知$\lvert F(z)-F(x)\rvert< \epsilon$. 如果$z\in\mathcal{C}^{c}$, 则z落在某个被去掉的开区间(a,b)中, 如果$a,b\notin B(x,\delta)$, 又$B(x,\delta)\cap(a,b)\neq \emptyset$,  这说明$B(x,\delta)\subseteq (a,b)$, 而这与$x\in\mathcal{C}$矛盾, 因此a,b 至少一个落在$B(x,\delta)$中, 又根据F的定义, $F(z)=F(a)=F(b)$, 不妨设$a\in B(x,\delta)$, 又我们知道被去掉的区间的端点a,b肯定是$\mathcal{C}$中的元素, 所以由$a\in B(x,\delta)$可得$\lvert F(a)-F(x)\rvert< \epsilon$, 从而$$\lvert F(z)-F(x)\rvert< \epsilon\qquad \forall z\in B(x,\delta)$$
+                假设$\hat{C}$是可数的,那么可数集测度为0, 和(a)矛盾
             </p>
-
-
         </div>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 3</h3>
-        <p>Cantor sets of constant dissection. Consider the unit interval \([0, 1]\), and let \( \xi \) be a fixed real number with \( 0 < \xi < 1 \) (the case \( \xi = 1/3 \) corresponds to the Cantor set \( C \) in the text).</p>
-        <p>In stage 1 of the construction, remove the centrally situated open interval in \([0, 1]\) of length \( \xi \). In stage 2, remove two central intervals each of relative length \( \xi \), one in each of the remaining intervals after stage 1, and so on.</p>
-        <p>Let \( C_{\xi} \) denote the set which remains after applying the above procedure indefinitely.</p>
-        <ol type="a">
-            <li>
-                <p>Prove that the complement of \( C_{\xi} \) in \([0, 1]\) is the union of open intervals of total length equal to 1.</p>
-            </li>
-            <li>
-                <p>Show directly that \( m_*(C_{\xi}) = 0 \).</p>
-                <h4>Hint:</h4>
-                <p>After the \( k \)-th stage, show that the remaining set has total length \( = (1 - \xi)^k \).</p>
-            </li>
-        </ol>
-    </div>
 
-    <div class="Proof-box">
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>
+                Suppose \( E \) is a given set, and \( O_n \) is the open set:
+
+
+                \[
+                O_n = \{x : d(x, E) < 1/n\}.
+                \]
+            </p>
+            <ol type="a">
+                <li>
+                    <p>If \( E \) is compact, then \( m(E) = \lim_{n \to \infty} m(O_n) \).</p>
+                </li>
+                <li>
+                    <p>However, the conclusion in (a) may be false for \( E \) closed and unbounded; or \( E \) open and bounded.</p>
+                </li>
+            </ol>
+        </div>
+
+        div class="Proof-box">
         <h4>Proof:(a)</h4>
         <p>
-            记第k步去掉的集合是$A_{k}^{i},1\leq i\leq 2^{k-1}$, 则$$C_{\xi}^{c}=\cup_{k=1}^{\infty}A_{k}^{i}$$
-            又$A_{k}^{i}$互不相交且$A_{k}^{i}$长度为$\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}$, 从而总长度为$$\sum_{k=1}^{\infty}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{\infty}(1-\xi)^{k-1}=1$$
+            显然$m(O_{n})$是有下界递减序列, 因此必有极限, 且根据保号性可知$\lim_{n \to \infty}m(O_{n})\geq m(E)$
 
-        </p>
-        <h4>(b)</h4>
+            另一方面, 对任何$\epsilon>0$, 存在E的一组可数个开方体组成的覆盖$\cup_{i=1}^{\infty}Q_{i}$, 满足$$\sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{\infty}m(Q_{n}) $$
+            又根据紧集的任意开覆盖必有有限子覆盖, 设$E\subseteq \cup_{i=1}^{K}Q_{i}$, 这个给出了$$\sum_{i=1}^{k}m(Q_{n}) -\epsilon\leq \sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{K}m(Q_{n}) $$
+            最右边的等号是根据有限覆盖.
 
-        <p>
-            前n步去掉的区间的总长度为$$\sum_{k=1}^{n}2^{k-1}\xi\frac{(1-\xi)^{k-1}}{2^{k-1}}=\xi\sum_{k=1}^{n}(1-\xi)^{k-1}=1-(1-\xi)^{n}$$
-            因此剩下的区间总长度为$$(1-\xi)^{n}$$
-            从而$$m_{\ast}(C_{\xi})\leq (1-\xi)^{n}$$
-        </p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 4</h3>
-        <p>Cantor-like sets. Construct a closed set \( \hat{C} \) so that at the \( k \)-th stage of the construction one removes \( 2^{k-1} \) centrally situated open intervals each of length \( \ell_k \), with
- 
- 
-        \[
-        \ell_1 + 2\ell_2 + \cdots + 2^{k-1}\ell_k < 1.
-        \]</p>
-        <ol type="a">
-            <li>
-                <p>If \( \ell_j \) are chosen small enough, then \( \sum_{k=1}^{\infty} 2^{k-1}\ell_k < 1 \). In this case, show that \( m(\hat{C}) > 0 \), and in fact, \( m(\hat{C}) = 1 - \sum_{k=1}^{\infty} 2^{k-1}\ell_k \).</p>
-            </li>
-            <li>
-                <p>Show that if \( x \in \hat{C} \), then there exists a sequence of points \( \{x_n\}_{n=1}^{\infty} \) such that \( x_n \notin \hat{C} \), yet \( x_n \to x \) and \( x_n \in I_n \), where \( I_n \) is a sub-interval in the complement of \( \hat{C} \) with \( |I_n| \to 0 \).</p>
-            </li>
-            <li>
-                <p>Prove as a consequence that \( \hat{C} \) is perfect, and contains no open interval.</p>
-            </li>
-            <li>
-                <p>Show also that \( \hat{C} \) is uncountable.</p>
-            </li>
-        </ol>
-    </div>
-
-    <div class="Proof-box">
-        <h4>Proof:(a)</h4>
-        <p>
-            $$m(\hat{C})=m([0,1])-m(\hat{C}^{c})=1-\sum_{k=1}^{\infty}2^{k-1}l_{k}$$
-
+            根据距离函数的性质, 由于E是紧集, 所以必定存在一个$y\in E$使得$d(x,y)=d(x,E)< \frac{1}{n}$, 因此必定存在一个方体$Q_{j},1\leq j\leq K$使得$d(x,\overline{Q}_{j})< \frac{1}{n}$, 否则$$d(x,\cup_{j=1}^{K}\overline{Q}_{j})\geq\frac{1}{n}$$
+            这将给出$d(x,E)\geq\frac{1}{n}$, 矛盾. 因此$x\in V_{j}$,其中$V_{j}$是$Q_{j}$从中心开始边长向两边分别扩大$\frac{1}{n}$得到的新的开方体, 根据x的任意性, $$E\subseteq O_{n}\subseteq  \cup_{j=1}^{K}V_{j}$$
+            从而$$m(O_{n})\leq \sum_{j=1}^{K}(d_{j}+\frac{2}{n})^{d}=\sum_{j=1}^{K}d_{j}^{d}+\sum_{j=1}^{K}\sum_{i=1}^{d}C_{d}^{i}\frac{2^{i}}{n^{i}}d_{j}^{d-i}$$
+            $$=\sum_{j=1}^{K}m(Q_{j})+O(\frac{1}{n})$$
+            因此存在一个N使得$n>N$时, $$m(O_{n})\leq\sum_{j=1}^{K}m(Q_{j})+\epsilon$$
+            因此对$n>N$, 有$$m(O_{n})\leq m(E)+2\epsilon$$
+            这给出了$$\lim_{n \to \infty}m(O_{n})=m(E)$$
         </p>
 
         <h4>(b)</h4>
@@ -322,33 +382,7 @@
             对任何$\epsilon>0$, 根据$\sum_{k=1}^{\infty}2^{k-1}l_{k}< 1$可得$l_{k}\rightarrow0$, 因此存在$K_{1}$使得$l_{k}< \frac{\epsilon}{2},\forall k>K_{1}$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的$K_{2}$使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \frac{\epsilon}{2}$, 即$\lvert I_{k}\rvert< \frac{\epsilon}{3}$, 又第k步被去掉的区间长度为$l_{k}$, 而且每个小区间左右两侧至少有一个区间是第k步去掉的, 因此$I_{k}$旁边有一个第k步被去掉的长为$l_{k}$的区间, 取这个区间的中点, 记为$y_{k}$, 则$$\lvert x-y_{k}\rvert< \lvert I_{k}\rvert+\frac{l_{k}}{2}< \epsilon\qquad\forall k>max\left\lbrace K_{1},K_{2}\right\rbrace $$
             且$y_{k}$所在的区间长为$l_{k}$, 也是趋于0的量.
         </p>
-        <h4>(c)</h4>
-        <p>
-            显然$\hat{C}$是闭的, 只需说明无孤立点. 对任何$\epsilon>0$, 记$C_{k}$是第k步得到的集合, 那么$x\in C_{k}$, 又$C_{k}$是若干长度为$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}$的闭区间的并, 因此x含于某个区间$I_{k}=[a_{k},b_{k}]$中, 取足够大的K使得$\frac{1-\sum_{k=1}^{\infty}2^{k-1}l_{k}}{2^{k}}< \epsilon$, 则$\lvert I_{k}\rvert< \epsilon$, 注意到$I_{k}$的两个端点都在$\hat{C}$里, 且两个端点中至少有一个不等于x, 取不等于x的那个端点, 记为a, 则$a\in\hat{C}$, $$\lvert a-x\rvert\leq \lvert I_{k}\rvert< \epsilon$$
-            因此$\hat{C}$没有孤立点.
-        </p>
-        <h4>(d)</h4>
-        <p>
-            假设$\hat{C}$是可数的,那么可数集测度为0, 和(a)矛盾
-        </p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 5</h3>
-        <p>Suppose \( E \) is a given set, and \( O_n \) is the open set:
- 
- 
-        \[
-        O_n = \{x : d(x, E) < 1/n\}.
-        \]</p>
-        <ol type="a">
-            <li>
-                <p>If \( E \) is compact, then \( m(E) = \lim_{n \to \infty} m(O_n) \).</p>
-            </li>
-            <li>
-                <p>However, the conclusion in (a) may be false for \( E \) closed and unbounded; or \( E \) open and bounded.</p>
-            </li>
-        </ol>
+        
     </div>
  
     <div class="Exercise-box">
