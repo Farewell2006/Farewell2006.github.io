@@ -385,7 +385,7 @@
             对E是有界开集的情形, 我们考虑Exercise 4中被去掉的开区间的全体, 即$E=[0,1]-\widehat{C}$, 这个集合的闭包具有正的Lebesgue测度.注意到$O_{n}\supseteq\overline{\widetilde{C}}\cup E$,  这说明$$\lim_{n \to \infty}m(O_{n})\geq m(\overline{\widetilde{C}})+m(E)>m(E)$$
         </p>
         
-    </div>
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 6</h3>
@@ -407,7 +407,32 @@
         m(\delta E) = \delta_1 \cdots \delta_d m(E).
         \]</p>
     </div>
- 
+        
+        <div class="Proof-box">
+        <h4>Proof:</h4>
+        <p>
+            我们证明对任何集合E, 都有$$m_{\ast}(\delta E)=\delta_{1}\cdots\delta_{d}m_{\ast}(E)$$
+
+
+            对任何$\epsilon>0$, 取覆盖E的方体$Q_{i}$满足$$\sum_{i=1}^{\infty}m(Q_{i})\leq m_{\ast}(E)+\epsilon\qquad \sum_{i=1}^{\infty}m(Q_{i})\geq m_{\ast}(E)$$
+            记$$V_{i}=\left\lbrace (\delta_{1}x_{1},..,\delta_{d}x_{d})\bigg|(x_{1},..,x_{d})\in Q_{i}\right\rbrace$$
+            则$$\cup_{i=1}^{\infty}V_{i}\supseteq \delta  E$$
+            从而$$m_{\ast}(\delta E)\leq\sum_{i=1}m(V_{i})=\delta_{1}\cdots\delta_{d}\sum_{i=1}^{\infty}m(Q_{i})\leq \delta_{1}\cdots \delta_{n}m_{\ast}(E)+\delta_{1}\cdots\delta_{d}\epsilon$$
+            根据$\epsilon$的任意性可得$$ m_{\ast}(\delta E)\leq\delta_{1}\cdots \delta_{n}m_{\ast}(E)$$
+
+            反之,我们注意到$$\delta E=\frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}E$$
+            我们记$\delta_{i}'=\frac{1}{\delta_{i}}$,  则$\delta'\delta E=E$, 则用前面的结论可以给出$$m_{\ast}(E)=m_{\ast}(\delta'\delta E)\leq \frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}m_{\ast}(\delta E)$$
+            从而$$ m_{\ast}(\delta E)=\delta_{1}\cdots \delta_{d}m_{\ast}(E)$$
+
+            然后我们证明E可测时$\delta E$也可测. 首先用前面的结论可以给出对任何包含E的开集O, $$\delta_{1}\cdots\delta_{d}m_{\ast}(O-E)=m_{\ast}(\delta O-\delta E)$$
+            我们证明$\delta O$是开集. 设$(\delta_{1}x_{1},..,\delta_{d}x_{d})\in \delta O$(这意味着$(x_{1},..,x_{d})\in O$), 从而存在以x为球心的球体$B(x,r)\subseteq O$, 然后取$\delta_{i}$里面的最小值记为$\sigma$, 则$B(\delta x,\sigma r)\subseteq\delta O$, 从而$\delta O$中每个点都是内点, 所以$\delta O$是开集, 因此对任何$\epsilon>0$, 根据E可测, 取包含E的开集O满足$$m_{\ast}(O-E)< \frac{\epsilon}{\delta_{1}\cdots\delta_{d}}$$ 则$$m_{\ast}(\delta O-\delta E)< \epsilon$$
+因此$\delta E$可测.
+        </p>
+
+        
+        </div>
+
+
     <div class="Exercise-box">
         <h3>Exercise 8</h3>
         <p>Suppose \( L \) is a linear transformation of \( \mathbb{R}^d \). Show that if \( E \) is a measurable subset of \( \mathbb{R}^d \), then so is \( L(E) \), by proceeding as follows:</p>
@@ -426,6 +451,32 @@
             </li>
         </ol>
     </div>
+
+        
+        <div class="Proof-box">
+        <h4>Proof:(a)</h4>
+        <p>
+            因为有限维空间(同构于欧式空间)的线性映射是连续的(理由见(b)), 而根据点集拓扑的知识,连续映射把紧集映射为紧集, 因此$L(E)$是紧的. 如果E是$F_{\sigma}$集, 即存在可数个闭集$K_{n}$使得$$E=\cup_{n=1}^{\infty} K_{n}$$
+            那么我们考虑$$E=\cup_{i=1}^{\infty}(\cup_{j=1}^{\infty}K_{i}\cap \overline{B(0,j)})=\cup_{i,j=1}^{\infty}K_{i}\cap \overline{B(0,j)}$$
+            因此$$L(E)=\cup_{i,j}^{\infty}L(K_{i}\cap \overline{B(0,j)})$$
+            两个可数集的直积还是可数的, 所以右边参与并集的集合总共可数多个, 且都是有界闭集, 因此$L(E)$是$F_{\sigma}$集
+        </p>
+
+        <h4>(b)</h4>
+        <p>
+            选定$R^{d}$最常用的基底之后, L成为一个d阶矩阵, 仍记为L, 则$$\lvert L(x)-L(x')\rvert\leq \|L\|_{\infty}\lvert x-x'\rvert$$
+            其中$\|L\|_{\infty}$是L中绝对值最大的元素, 记为M. 这就证明了题设中的等式, 从而L连续. 然后我们证明L把零测集映射为零测集, 设$m(E)=0$, 则对任何$\epsilon >0$, 存在一组开方体$Q_{i}$满足$$\sum_{i=1}^{n}m(Q_{i})< \epsilon\qquad E\subseteq \cup_{i=1}^{\infty}Q_{i}$$
+            对任何$x,y\in Q_{i}$, 都有$$\lvert L(x)-L(y)\rvert\leq M\lvert x-y\rvert\leq M\sqrt{d}l_{i}$$
+            其中$l_{i}$是$Q_{i}$的边长.
+            固定$x\in Q_{i}$, 则上式说明$$L(Q_{i})\subseteq B(L(x),M\sqrt{d}l_{i})$$
+            这给出了$$m_{\ast}(L(E))\subseteq\sum_{i=1}^{\infty}m(L(Q_{i}))\leq m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}l_{i}^{d}=m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}m(Q_{i})< \epsilon m(B_{1})M\sqrt{d}$$
+            根据$\epsilon$的任意性, $m_{\ast}(L(E))=0$, 因此$L(E)$是零测集, 因而可测.
+
+            又任意可测集E都能写成$F_{\sigma}$集F和零测集K的并集, 因此$$L(E)=L(F)\cup L(K)$$
+            而$L(F)$是$F_{\sigma}$集, $L(K)$是零测集,  所以$L(E)$可测.
+        </p>
+        
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 9</h3>
@@ -433,11 +484,26 @@
         <h4>Hint:</h4>
         <p>Consider the set obtained by taking the union of open intervals which are deleted at the odd steps in the construction of a Cantor-like set.</p>
     </div>
+
+        <div class="Proof-box">
+        <h4>Proof:</h4>
+        <p>
+            考虑Exercise 4中建立的集合, $\widehat{C}^{c}$是可数个开区的并, 是个开集, 且$\widehat{C}$中的点可由$\widetilde{C}^{c}$逼近, 因此$$\partial(\widehat{C}^{c})\supseteq \widehat{C}$$
+            所以$$m(\partial(\widehat{C}^{c}))\geq m(\widehat{C})>0$$
+        </p>
+
+ 
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 10</h3>
         <p>This exercise provides a construction of a decreasing sequence of positive continuous functions on the interval \([0, 1]\), whose pointwise limit is not Riemann integrable.</p>
         <p>Let \( \hat{C} \) denote a Cantor-like set obtained from the construction detailed in Exercise 4, so that in particular \( m(\hat{C}) > 0 \). Let \( F_1 \) denote a piecewise-linear and continuous function on \([0, 1]\), with \( F_1 = 1 \) in the complement of the first interval removed in the construction of \( \hat{C} \), \( F_1 = 0 \) at the center of this interval, and \( 0 \leq F_1(x) \leq 1 \) for all \( x \). Similarly, construct \( F_2 = 1 \) in the complement of the intervals in stage two of the construction of \( \hat{C} \), with \( F_2 = 0 \) at the center of these intervals, and \( 0 \leq F_2 \leq 1 \). Continuing this way, let \( f_n = F_1 \cdot F_2 \cdots F_n \).</p>
+        <div style="text-align: center;">
+            <img src="figs/C1F5.png" width="40%">
+
+        </div>
+        
         <p>Prove the following:</p>
         <ol type="a">
             <li>
@@ -450,11 +516,32 @@
             </li>
         </ol>
     </div>
+
+        <div class="Proof-box">
+        <h4>Proof:(a)</h4>
+        <p>
+            根据$0\leq F_{n}\leq 1$可知$0\leq f_{n}\leq 1$, $f_{n+1}\leq f_{n}$
+        </p>
+
+        <h4>(b)</h4>
+        <p>
+            Exercise 4中我们证明了对任何$x\in\widehat{C}$, 存在$y_{k}\rightarrow x$, 满足$y_{k}$是被去掉的区间的中点, 因此对任何$y_{k}$, 设$y_{k}$属于第$n_{k}$步被去掉的某个区间, 则$f_{N}(y_{k})=0$对$N>n_{k}$成立, 因此$f(y_{k})=0$. 又$f(x)$在$\widetilde{C}$上恒为1, 所以$\widetilde{C}$必定是f的不连续点.
+        </p>
+        
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 11</h3>
         <p>Let \( A \) be the subset of \([0, 1]\) which consists of all numbers which do not have the digit 4 appearing in their decimal expansion. Find \( m(A) \).</p>
     </div>
+
+        <div class="Proof-box">
+        <h4>Proof:</h4>
+        <p>
+            类似于Cantor集的构造, 小数点后第一位不含4说明要去掉$[0.4,0.5)$, 剩下的集合均分成9个长度为0.1的小区间,形如$[0.x,0.x+0.1]$, 小数点后第二位不含4说明每个小区间必须去掉形如$[0.x4,0.x5)$的长为0.01的区间, 剩下的部分均分成81个长度为0.01的区间, 除去$[0.xy4,0.xy5)$, 继续这个过程, 第n次去掉的小区间的个数为$9^{n-1}$, 长度为$0.1^{n}$, 因此被去掉的区间总长度为$$0.1\sum_{i=1}^{\infty}(0.9)^{n-1}=0.1\frac{1}{0.1}=1$$
+            所以$m(A)\leq m([0,1])-1=0$, 所以$m(A)=0$
+        </p>
+         </div>
  
     <div class="Exercise-box">
         <h3>Exercise 12</h3>
@@ -470,6 +557,21 @@
             </li>
         </ol>
     </div>
+
+        <div class="Proof-box">
+        <h4>Proof:(a)</h4>
+        <p>
+            如果$$D=\cup_{i=1}^{\infty}R_{i}$$
+            则对$R_{1}\subseteq D$, 我们知道$\overline{R_{1}}$的4个顶点不能在$\overline{D}$外, 否则(如果某一个顶点在D外)$R_{1}$将存在不含于D的内点.因此$\overline{R}_{1}$除了四个顶点可能不在D中之外, 其他点都在D中. 考虑$\overline{R}_{1}$的四条边的中点$z_{1},z_{2},z_{3},z_{4}$, 则$z_{1}\notin R_{1}$. 又$z_{1}\in D$, 所以存在$R_{j}$使得$z_{1}\in R_{j}$, 又$R_{j}$是开的, 因此存在$z_{j}$的邻域U使得$U\subseteq R_{j}$, 但根据$z_{1}\in\partial R_{1}$可得$U\cap R_{1}\neq\emptyset$, 因此$R_{j}\cap R_{1}\neq\emptyset$, 这和互不相交矛盾
+        </p>
+
+        <h4>(b)</h4>
+        <p>
+            $\Leftarrow$是显然的. 只需证$\Rightarrow$:
+            设$\Omega=\cup_{\alpha}R_{\alpha}$, 又$R_{\alpha}$互不相交, 所以如果存在两个非空的$R_{\alpha}$, 则$\Omega$就是若干互不相交的开集的并, 和连通性矛盾, 因此只能存在一个$\alpha$使得$R_{\alpha}\neq\emptyset$, 因此$$\Omega=R_{\alpha}$$
+        </p>
+        
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 13</h3>
@@ -490,6 +592,33 @@
             </li>
         </ol>
     </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                设F是闭集, 因为$d(x,F)$是连续函数, 所以$$O_{n}=\{x : d(x, F) < 1/n\}$$
+                是开的, 且$$F=\cap_{i=1}^{\infty}O_{i}$$
+
+                如果U是开集, 那么考虑闭集族$$F_{n}=\left\lbrace x\in R^{d}\bigg| d(x,O^{c})\geq\frac{1}{n}\right\rbrace\subseteq O$$
+                从而$$O=\cup_{i=1}^{\infty}F_{i}$$
+
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                令F是有理数的全体, 显然F是可数个闭集的并, 因为$$F=\cup_{x\in Q}\left\lbrace x \right\rbrace$$
+                假设F是可数个开集的交, 那么根据Baire纲定理, F是第二纲集, 因此无法写成可数个无处稠密集的并, 但F是可数个单点的并, 矛盾
+            </p>
+            <h4>(c)</h4>
+            <p>
+                考虑$$F=A\cup B\qquad A=Q\cap(0,1)\qquad B=Q^{c}\cap[-1,0]$$
+                显然F是Borel集, 又如果F是$G_{\delta}$, 则A也是$G_{\delta}$集(因为是$F\cap(0,1)$), 由和(b)类似的讨论可得不可能.
+
+                如果F是$F_{\delta}$集, 设$F=\cup_{i=1}^{\infty}F_{i}$, 则$$B=F\cap[-1,0]=\cup_{i=1}^{\infty}[-1,0]\cap F_{i}$$
+                是$F_{\sigma}$集, 因此$B^{c}$是$G_{\delta}$集, 因此$V=B^{c}\cap[-1,0]$是$[-1,0]$中的$G_{\delta}$集, 根据类似(b)的讨论可得V是$[-1,0]$的第二纲集, 但V又是$[-1,0]$中有理数的并, 因此是[-1,0]的第一纲集, 矛盾
+            </p>
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 14</h3>
