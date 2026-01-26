@@ -639,6 +639,27 @@
             </li>
         </ol>
     </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $\overline{E}$的有限区间覆盖$\cup^{N}_{i}I_{i}$显然也是E的有限区间覆盖, 因此$J_{\ast}(E)\leq J_{\ast}(\overline{E})$, 只需证明反向的不等号.
+
+                任取E的一组有限区间覆盖$\cup_{i=1}^{M}I_{i}$, 满足$$J_{\ast}(E)\geq \sum_{i=1}^{M}\lvert I_{i}\rvert$$则根据闭包和有限并运算可以交换次序, 得出$$\overline{E}\subseteq \overline{\cup_{i=1}^{M}I_{i}}=\cup_{i=1}^{M}\overline{I_{i}}$$
+                设$\overline{I_{j}}=[a_{j},b_{j}]$, 我们考虑$$Y_{j}=(a_{j}-\frac{\epsilon}{2M},b_{j}+\frac{\epsilon}{2M})\supseteq \overline{I}_{j}$$
+                那么$$J_{\ast}(\overline{E})\leq \sum_{i=1}^{M}\lvert Y_{j}\rvert= \sum_{i=1}^{M}(b_{j}-a_{j})+\frac{\epsilon}{M}=\sum_{i=1}^{M}\lvert I_{j}\rvert+\frac{\epsilon}{M}\leq J_{\ast}(E)+\epsilon+\sum_{i=1}^{M}\frac{\epsilon}{M}$$
+                $$=J_{\ast}(E)+2\epsilon$$
+                根据$\epsilon$的任意性, 结论成立
+
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                取$E$为$[0,1]$中的有理数, 则$\overline{E}=1$, $m_{\ast}(E)=0$. 我们注意到根据$J_{\ast}$的定义, $J_{\ast}(\overline{E})\geq m_{\ast}(\overline{E})=m([0,1])=1$, 又根据定义$J_{\ast}(\overline{E})\leq \lvert [0,1]\rvert=1$, 因此$$J_{\ast}(\overline{E})=1$$
+            </p>
+            
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 15</h3>
@@ -653,6 +674,34 @@
         <h4>Hint:</h4>
         <p>Use Lemma 1.1.</p>
     </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                正方体是特殊的长方体, 所以$$m_{R}^{\ast}(E)\leq m_{\ast}(E)$$
+                只需证反向的不等号, 对任何$\epsilon$, 取长方体覆盖满足$$m_{R}^{\ast}(E)+\epsilon\geq \sum_{j=1}^{\infty}\lvert R_{j}\rvert$$
+                根据有理数的稠密性, 存在边长为有理数的(闭)长方体$K_{j}$满足$$\lvert R_{j}\rvert\geq\lvert K_{j}\rvert-\frac{\epsilon}{2^{j}}\qquad K_{j}\supseteq R_{j}$$
+                (为了看到这一点, 我们只需说明任何一个长方体都能被边长为有理数的长方体包含, 且它们的测度之差可以任意小. 设有长方体$H=[a_{1},b_{1}]\times\cdots \times [a_{d},b_{d}]$, 不妨设$\lvert a_{i}\rvert,\lvert b_{i}\rvert$有上界M, 则考虑有理数$p_{i},q_{i}$满足$0\leq a_{i}-p_{i}\leq \frac{\epsilon}{(M+1)^{d-1}}, 0\leq q_{i}-b_{i}\leq \frac{\epsilon}{(M+1)^{d-1}}$, 考虑方体$V=[p_{1},q_{1}]\times\cdots \times [p_{d},q_{d}]$, 显然$V\supseteq H$, 且$$\lvert  V\rvert\leq \prod_{i=1}^{d}(b_{i}-a_{i}+\frac{2\epsilon}{(M+1)^{d-1}})$$
+                $$=\prod_{i=1}^{d}(b_{i}-a_{i})+C_{d}^{1}\frac{2\epsilon}{(M+1)^{d-1}}(2M)^{d-1}+\cdots+C_{d}^{k}(\frac{2\epsilon}{(M+1)^{d-1}})^{k}(2M)^{d-k}+\cdots+C_{d}^{d}(\frac{2\epsilon}{(M+1)^{d-1}})^{d}$$
+                $$=\lvert H\rvert+C_{1}\epsilon+C_{2}\epsilon^{2}\cdots+C_{d}\epsilon^{d}$$
+                其中$C_{i}$是只和M, $d$有关的常数)
+
+
+                此时$\cup_{j=1}K_{j}$还是E的长方体覆盖, 且$$m_{R}^{\ast}(E)+\epsilon\geq(\sum_{j=1}^{\infty}\lvert K_{j}\rvert)-\epsilon$$
+                对一个边长为有理数的长方体R来说, 记其边长为$\frac{a_{i}}{b_{i}},1\leq i\leq d$, 取$a_{i}$的最大公因数$u$和$b_{i}$的最小公倍数$v$, 则$$\frac{a_{i}}{b_{i}}\frac{v}{u}=\frac{a_{i}}{u}\frac{v}{b_{i}}$$
+                是两个整数的乘积, 还是整数, 记为$S_{i}$, 从而R能被均分成$\prod_{i=1}^{d}S_{i}$个边长为$\frac{u}{v}$的闭正方体.
+
+                对前面的$K_{j}$进行上述操作, 均分成变成为$d_{j}$的$N_{j}$个闭正方体$Q_{j}^{i}$, 根据Lemma 1.1, $$\lvert K_{j}\rvert=\sum_{i=1}^{N_{j}}\lvert Q_{j}^{i}\rvert$$
+                这给出了$$m_{R}^{\ast}(E)+\epsilon\geq(\sum_{j=1}^{\infty}\lvert K_{j}\rvert)-\epsilon=\sum_{i=1}^{\infty}\sum_{j=1}^{N_{j}}\lvert Q_{j}^{i}\rvert-\epsilon$$
+                注意到可数个有限集的并还是可数集, 因此$\cup_{j=1}^{\infty}\cup_{i=1}^{N_{j}} Q_{j}^{i}$是E的闭方体覆盖, 从而$$m_{R}^{\ast}(E)+\epsilon\geq m_{\ast}(E)-\epsilon\qquad m_{\ast}(E)\leq 2\epsilon+m_{R}^{\ast}(E)$$
+                根据$\epsilon$的任意性可得结论成立
+
+
+            </p>
+
+            
+            
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 16</h3>
@@ -679,6 +728,25 @@
             </li>
         </ol>
     </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $x\in\text{无穷多个}E_{k}$说明对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 写成集合的语言就是$$E\subseteq \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
+
+                另一方面若$x\in \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$, 则对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 所以$x\in E$, 所以上式的反向包含也成立, 因此$$E= \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
+                从而E是可测集$E_{k}$通过可数交和可数并得到的, 根据$\sigma-algebra$对可数交可数并的封闭性, E可测
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                对任何n, 根据单调性我们有$$m(E)\leq m(\cup_{k=n}^{\infty}E_{k})\leq \sum_{k=n}^{\infty}m(E_{k})$$
+                又$\sum_{k=1}^{\infty}m(E_{k})< \infty$, 因此对任何$\epsilon$, 存在N使得$n\geq N$时, $\sum_{k=n}^{\infty}m(E_{k})< \epsilon$, 这给出了$$m(E)\leq \sum_{k=n}^{\infty}m(E_{k})\leq \epsilon\qquad\forall n\geq N$$
+                根据$\epsilon$的任意性, $m(E)=0$
+            </p>
+            
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 17</h3>
@@ -691,11 +759,47 @@
         <h4>Hint:</h4>
         <p>Pick \( c_n \) such that \( m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} \), and apply the Borel-Cantelli lemma.</p>
     </div>
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $x\in\text{无穷多个}E_{k}$说明对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 写成集合的语言就是$$E\subseteq \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
+
+                另一方面若$x\in \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$, 则对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 所以$x\in E$, 所以上式的反向包含也成立, 因此$$E= \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
+                从而E是可测集$E_{k}$通过可数交和可数并得到的, 根据$\sigma-algebra$对可数交可数并的封闭性, E可测
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                对任何n, 根据单调性我们有$$m(E)\leq m(\cup_{k=n}^{\infty}E_{k})\leq \sum_{k=n}^{\infty}m(E_{k})$$
+                又$\sum_{k=1}^{\infty}m(E_{k})< \infty$, 因此对任何$\epsilon$, 存在N使得$n\geq N$时, $\sum_{k=n}^{\infty}m(E_{k})< \epsilon$, 这给出了$$m(E)\leq \sum_{k=n}^{\infty}m(E_{k})\leq \epsilon\qquad\forall n\geq N$$
+                根据$\epsilon$的任意性, $m(E)=0$
+            </p>
+            
+        </div>
+
  
     <div class="Exercise-box">
         <h3>Exercise 18</h3>
         <p>Prove the following assertion: Every measurable function is the limit a.e. of a sequence of continuous functions.</p>
     </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                取$c_{n}$使得$$ m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} $$
+                (为什么能取, 注意到$$\{x\big|\lvert f_{n}\rvert=\infty\}=\cap_{i=1}^{\infty}\{x\big|\lvert f(x)\rvert>i\}$$
+                又$\{x\big|\lvert f(x)\rvert>i\}\subseteq [0,1]$, 所以用Lebesgue测度的连续性可得$$0=\lim_{n \to \infty}m(\{x\big|\lvert f(x)\rvert>n\})$$
+                这说明对任何$\epsilon$, 存在N使得$m(\{x\big|\lvert f(x)\rvert>N\})< \epsilon$, 把$\epsilon$改成$\frac{1}{2^{n}}$, $f$改成$nf_{n}(x)$即可
+                                                                                    )
+                                                                                    记$E_{n}=\{x : |f_n(x) /c_n|>
+                    1/n\}$,则 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$, 设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>
+                        K_{x}$$
+                        从而$$f_{n}(x)/c_{n}\leq \frac{1}{n}\qquad\forall n>K_{x}$$
+                        因此对a.e的x, $$\frac{f_{n}(x)}{c_{n}}\rightarrow0$$
+            </p>
+            
+        </div>
  
     <div class="Exercise-box">
         <h3>Exercise 19</h3>
@@ -714,7 +818,37 @@
             </li>
         </ol>
     </div>
- 
+    
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                任取$x+y\in A+B$, 其中$x\in A,y\in B$. 不妨设B是开集, 则存在球体$B(y,r)\subset B$, 此时$$B(x+y,r)\subseteq A+B$$
+                因此$x+y$是内点, 所以$A+B$是开的
+
+
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                我们证明有界闭集C和一个闭集B的和还是闭的. 任取一个Cauchy列$x_{n}+y_{n}\in C+B$, 收敛于z, 只需证$z\in C+B$. 其中$x_{n}\in C,y_{n}\in B$, 根据欧式空间的紧集等价于有界闭集可得$x_{n}$有收敛子列, 因此不妨设$x_{n}\rightarrow x$. 因此$y_{n}\rightarrow z-x$, 根据B是闭集可得$z-x\in B$, 因此$z=x+z-x\in C+B$, 从而$C+B$是闭集, 从而$$A+B=\cup_{n=1}^{\infty}\left\lbrace x\in A\big|\lvert x\rvert\leq n\right\rbrace+B$$
+                右边是可数个闭集的并, 因此$A+B$是$F_{\sigma}$集
+
+            </p>
+            <h4>(c)</h4>
+            <p>
+                根据(b)的经验, A,B不能是有界闭集, 因此要找反例只能找无界的闭集A,B. 考虑A是整数集, $B=\sqrt{2}A$, 则A,B都是闭的, 且$$A+B=\{a+\sqrt{2}b\bigg|a,b\in Z\}$$
+                注意到$A+B$是一个对加法封闭的集合, 且$(a+\sqrt{2}b)^{n}\in A+B$, 对任何整数$a,b$是非负整数n成立. 则我们考虑$$\sum_{i=0}^{n}(\sqrt{2}-1)^{i}\rightarrow \frac{1}{2-\sqrt{2}}=\frac{2+\sqrt{2}}{2}=1+\frac{\sqrt{2}}{2}$$
+                如果$a+\sqrt{2}b=1+\frac{\sqrt{2}}{2}$, 则$$a-1=\sqrt{2}(\frac{1}{2}-b)$$
+                $$\sqrt{2}=\frac{a-1}{\frac{1}{2}-b}$$
+                即$\sqrt{2}$是有理数, 设为最简分式$\frac{m}{n}$(m,n无公因子), 则$m^{2}=2n^{2}$, 因此$m^{2}$是偶数, 因此m必须是偶数.  设$m=n+j$, 则$$2nj+2j^{2}=n^{2}$$
+                所以$n^{2}$也是偶数, 所以n也是偶数. 因此2是m,n的公因子, 这和$\frac{m}{n}$是最简分式矛盾
+
+                所以$1+\frac{\sqrt{2}}{2}\notin A+B$, 因此$A+B$不是闭集
+
+            </p>
+        </div>
+
     <div class="Exercise-box">
         <h3>Exercise 20</h3>
         <p>Show that there exist closed sets \( A \) and \( B \) with \( m(A) = m(B) = 0 \), but \( m(A + B) > 0 \):</p>
@@ -728,6 +862,28 @@
         </ol>
     </div>
  
+           <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                注意到$[0,1]$中任何一点都能写成三进小数展开$$x=\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}\qquad a_{i}\in\{0,1,2\}$$
+                令$$c_{i}=\begin{cases}
+                a_{i}&a_{i}\neq 1\\
+                0&a_{i}=1
+                \end{cases}\qquad d_{i}=\begin{cases}
+                0&a_{i}\neq 1\\
+                1&a_{i}=1
+                \end{cases}$$
+                那么$$u=\sum_{i=1}^{\infty}\frac{c_{i}}{3^{i}}\in \mathcal{C}, v=\sum_{i=1}^{\infty}\frac{d_{i}}{3^{i}}=\frac{1}{2}\sum_{i=1}^{\infty}\frac{2d_{i}}{3^{i}}\in\frac{1}{2}\mathcal{C}$$
+                且$$u+v=x$$
+                因此$A+B\supseteq [0,1]$
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                显然
+
+            </p>
+        </div>
     <div class="Exercise-box">
         <h3>Exercise 21</h3>
         <p>Prove that there is a continuous function that maps a Lebesgue measurable set to a non-measurable set.</p>
