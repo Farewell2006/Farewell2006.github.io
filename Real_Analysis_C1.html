@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实分析习题解答</title>
+    <title>实分析第一章习题解答</title>
     <script>
         MathJax = {
             tex:
@@ -93,7 +93,7 @@
         }
         .Proof-box {
             max-width: 1000px;
-            margin: -60px auto;
+            margin: -60px auto 10px;
             padding: 1rem;
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -107,7 +107,7 @@
             border-radius: 10px;
             border: 5px solid #FF9933;
             min-height: 400px;
-           
+            
             margin: 80px auto 15px;
             position: relative;
             z-index: 0;
@@ -360,238 +360,244 @@
         </div>
 
         <div class="Proof-box">
-        <h4>Proof:(a)</h4>
-        <p>
-            显然$m(O_{n})$是有下界递减序列, 因此必有极限, 且根据保号性可知$\lim_{n \to \infty}m(O_{n})\geq m(E)$
+            <h4>Proof:(a)</h4>
+            <p>
+                显然$m(O_{n})$是有下界递减序列, 因此必有极限, 且根据保号性可知$\lim_{n \to \infty}m(O_{n})\geq m(E)$
 
-            另一方面, 对任何$\epsilon>0$, 存在E的一组可数个开方体组成的覆盖$\cup_{i=1}^{\infty}Q_{i}$, 满足$$\sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{\infty}m(Q_{n}) $$
-            又根据紧集的任意开覆盖必有有限子覆盖, 设$E\subseteq \cup_{i=1}^{K}Q_{i}$, 这个给出了$$\sum_{i=1}^{k}m(Q_{n}) -\epsilon\leq \sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{K}m(Q_{n}) $$
-            最右边的等号是根据有限覆盖.
+                另一方面, 对任何$\epsilon>0$, 存在E的一组可数个开方体组成的覆盖$\cup_{i=1}^{\infty}Q_{i}$, 满足$$\sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{\infty}m(Q_{n}) $$
+                又根据紧集的任意开覆盖必有有限子覆盖, 设$E\subseteq \cup_{i=1}^{K}Q_{i}$, 这个给出了$$\sum_{i=1}^{k}m(Q_{n}) -\epsilon\leq \sum_{i=1}^{\infty}m(Q_{n}) -\epsilon\leq m(E)\leq \sum_{i=1}^{K}m(Q_{n}) $$
+                最右边的等号是根据有限覆盖.
 
-            根据距离函数的性质, 由于E是紧集, 所以必定存在一个$y\in E$使得$d(x,y)=d(x,E)< \frac{1}{n}$, 因此必定存在一个方体$Q_{j},1\leq j\leq K$使得$d(x,\overline{Q}_{j})< \frac{1}{n}$, 否则$$d(x,\cup_{j=1}^{K}\overline{Q}_{j})\geq\frac{1}{n}$$
-            这将给出$d(x,E)\geq\frac{1}{n}$, 矛盾. 因此$x\in V_{j}$,其中$V_{j}$是$Q_{j}$从中心开始边长向两边分别扩大$\frac{1}{n}$得到的新的开方体, 根据x的任意性, $$E\subseteq O_{n}\subseteq  \cup_{j=1}^{K}V_{j}$$
-            从而$$m(O_{n})\leq \sum_{j=1}^{K}(d_{j}+\frac{2}{n})^{d}=\sum_{j=1}^{K}d_{j}^{d}+\sum_{j=1}^{K}\sum_{i=1}^{d}C_{d}^{i}\frac{2^{i}}{n^{i}}d_{j}^{d-i}$$
-            $$=\sum_{j=1}^{K}m(Q_{j})+O(\frac{1}{n})$$
-            因此存在一个N使得$n>N$时, $$m(O_{n})\leq\sum_{j=1}^{K}m(Q_{j})+\epsilon$$
-            因此对$n>N$, 有$$m(O_{n})\leq m(E)+2\epsilon$$
-            这给出了$$\lim_{n \to \infty}m(O_{n})=m(E)$$
-        </p>
+                根据距离函数的性质, 由于E是紧集, 所以必定存在一个$y\in E$使得$d(x,y)=d(x,E)< \frac{1}{n}$, 因此必定存在一个方体$Q_{j},1\leq j\leq K$使得$d(x,\overline{Q}_{j})< \frac{1}{n}$, 否则$$d(x,\cup_{j=1}^{K}\overline{Q}_{j})\geq\frac{1}{n}$$
+                这将给出$d(x,E)\geq\frac{1}{n}$, 矛盾. 因此$x\in V_{j}$,其中$V_{j}$是$Q_{j}$从中心开始边长向两边分别扩大$\frac{1}{n}$得到的新的开方体, 根据x的任意性, $$E\subseteq O_{n}\subseteq  \cup_{j=1}^{K}V_{j}$$
+                从而$$m(O_{n})\leq \sum_{j=1}^{K}(d_{j}+\frac{2}{n})^{d}=\sum_{j=1}^{K}d_{j}^{d}+\sum_{j=1}^{K}\sum_{i=1}^{d}C_{d}^{i}\frac{2^{i}}{n^{i}}d_{j}^{d-i}$$
+                $$=\sum_{j=1}^{K}m(Q_{j})+O(\frac{1}{n})$$
+                因此存在一个N使得$n>N$时, $$m(O_{n})\leq\sum_{j=1}^{K}m(Q_{j})+\epsilon$$
+                因此对$n>N$, 有$$m(O_{n})\leq m(E)+2\epsilon$$
+                这给出了$$\lim_{n \to \infty}m(O_{n})=m(E)$$
+            </p>
 
-        <h4>(b)</h4>
-        <p>
-            对于E是无界闭集的情形, 我们考虑$\cup_{n=1}^{\infty}[n,n+\frac{1}{2^{n}}]$, 则$$O_{n}=\cup_{k=1}^{\infty}(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$$
-            我们知道当$n>2$时, $(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$互不相交, 因此根据可数可加性有$$m(O_{n})=\sum_{i=1}^{\infty}\frac{2}{n}+\frac{1}{2^{i}}=\infty\qquad m(E)=1$$
+            <h4>(b)</h4>
+            <p>
+                对于E是无界闭集的情形, 我们考虑$\cup_{n=1}^{\infty}[n,n+\frac{1}{2^{n}}]$, 则$$O_{n}=\cup_{k=1}^{\infty}(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$$
+                我们知道当$n>2$时, $(k-\frac{1}{n},k+\frac{1}{2^{k}}+\frac{1}{n})$互不相交, 因此根据可数可加性有$$m(O_{n})=\sum_{i=1}^{\infty}\frac{2}{n}+\frac{1}{2^{i}}=\infty\qquad m(E)=1$$
 
-            对E是有界开集的情形, 我们考虑Exercise 4中被去掉的开区间的全体, 即$E=[0,1]-\widehat{C}$, 这个集合的闭包具有正的Lebesgue测度.注意到$O_{n}\supseteq\overline{\widetilde{C}}\cup E$,  这说明$$\lim_{n \to \infty}m(O_{n})\geq m(\overline{\widetilde{C}})+m(E)>m(E)$$
-        </p>
-        
-        </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 6</h3>
-        <p>Using translations and dilations, prove the following: Let \( B \) be a ball in \( \mathbb{R}^d \) of radius \( r \). Then \( m(B) = v_d r^d \), where \( v_d = m(B_1) \), and \( B_1 \) is the unit ball, \( B_1 = \{x \in \mathbb{R}^d : |x| < 1\} \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 7</h3>
-        <p>If \( \delta = (\delta_1, \ldots, \delta_d) \) is a \( d \)-tuple of positive numbers \( \delta_i > 0 \), and \( E \) is a subset of \( \mathbb{R}^d \), we define \( \delta E \) by
- 
- 
-        \[
-        \delta E = \{(\delta_1 x_1, \ldots, \delta_d x_d) : \text{where } (x_1, \ldots, x_d) \in E\}.
-        \]</p>
-        <p>Prove that \( \delta E \) is measurable whenever \( E \) is measurable, and
- 
- 
-        \[
-        m(\delta E) = \delta_1 \cdots \delta_d m(E).
-        \]</p>
-    </div>
-        
-        <div class="Proof-box">
-        <h4>Proof:</h4>
-        <p>
-            我们证明对任何集合E, 都有$$m_{\ast}(\delta E)=\delta_{1}\cdots\delta_{d}m_{\ast}(E)$$
+                对E是有界开集的情形, 我们考虑Exercise 4中被去掉的开区间的全体, 即$E=[0,1]-\widehat{C}$, 这个集合的闭包具有正的Lebesgue测度.注意到$O_{n}\supseteq\overline{\widetilde{C}}\cup E$,  这说明$$\lim_{n \to \infty}m(O_{n})\geq m(\overline{\widetilde{C}})+m(E)>m(E)$$
+            </p>
 
-
-            对任何$\epsilon>0$, 取覆盖E的方体$Q_{i}$满足$$\sum_{i=1}^{\infty}m(Q_{i})\leq m_{\ast}(E)+\epsilon\qquad \sum_{i=1}^{\infty}m(Q_{i})\geq m_{\ast}(E)$$
-            记$$V_{i}=\left\lbrace (\delta_{1}x_{1},..,\delta_{d}x_{d})\bigg|(x_{1},..,x_{d})\in Q_{i}\right\rbrace$$
-            则$$\cup_{i=1}^{\infty}V_{i}\supseteq \delta  E$$
-            从而$$m_{\ast}(\delta E)\leq\sum_{i=1}m(V_{i})=\delta_{1}\cdots\delta_{d}\sum_{i=1}^{\infty}m(Q_{i})\leq \delta_{1}\cdots \delta_{n}m_{\ast}(E)+\delta_{1}\cdots\delta_{d}\epsilon$$
-            根据$\epsilon$的任意性可得$$ m_{\ast}(\delta E)\leq\delta_{1}\cdots \delta_{n}m_{\ast}(E)$$
-
-            反之,我们注意到$$\delta E=\frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}E$$
-            我们记$\delta_{i}'=\frac{1}{\delta_{i}}$,  则$\delta'\delta E=E$, 则用前面的结论可以给出$$m_{\ast}(E)=m_{\ast}(\delta'\delta E)\leq \frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}m_{\ast}(\delta E)$$
-            从而$$ m_{\ast}(\delta E)=\delta_{1}\cdots \delta_{d}m_{\ast}(E)$$
-
-            然后我们证明E可测时$\delta E$也可测. 首先用前面的结论可以给出对任何包含E的开集O, $$\delta_{1}\cdots\delta_{d}m_{\ast}(O-E)=m_{\ast}(\delta O-\delta E)$$
-            我们证明$\delta O$是开集. 设$(\delta_{1}x_{1},..,\delta_{d}x_{d})\in \delta O$(这意味着$(x_{1},..,x_{d})\in O$), 从而存在以x为球心的球体$B(x,r)\subseteq O$, 然后取$\delta_{i}$里面的最小值记为$\sigma$, 则$B(\delta x,\sigma r)\subseteq\delta O$, 从而$\delta O$中每个点都是内点, 所以$\delta O$是开集, 因此对任何$\epsilon>0$, 根据E可测, 取包含E的开集O满足$$m_{\ast}(O-E)< \frac{\epsilon}{\delta_{1}\cdots\delta_{d}}$$ 则$$m_{\ast}(\delta O-\delta E)< \epsilon$$
-因此$\delta E$可测.
-        </p>
-
-        
         </div>
 
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>Using translations and dilations, prove the following: Let \( B \) be a ball in \( \mathbb{R}^d \) of radius \( r \). Then \( m(B) = v_d r^d \), where \( v_d = m(B_1) \), and \( B_1 \) is the unit ball, \( B_1 = \{x \in \mathbb{R}^d : |x| < 1\} \).</p>
+        </div>
 
-    <div class="Exercise-box">
-        <h3>Exercise 8</h3>
-        <p>Suppose \( L \) is a linear transformation of \( \mathbb{R}^d \). Show that if \( E \) is a measurable subset of \( \mathbb{R}^d \), then so is \( L(E) \), by proceeding as follows:</p>
-        <ol type="a">
-            <li>
-                <p>Note that if \( E \) is compact, so is \( L(E) \). Hence if \( E \) is an \( F_{\sigma} \) set, so is \( L(E) \).</p>
-            </li>
-            <li>
-                <p>Because \( L \) automatically satisfies the inequality
- 
- 
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>
+                If \( \delta = (\delta_1, \ldots, \delta_d) \) is a \( d \)-tuple of positive numbers \( \delta_i > 0 \), and \( E \) is a subset of \( \mathbb{R}^d \), we define \( \delta E \) by
+
+
                 \[
-                |L(x) - L(x')| \leq M|x - x'|
+                \delta E = \{(\delta_1 x_1, \ldots, \delta_d x_d) : \text{where } (x_1, \ldots, x_d) \in E\}.
                 \]
-                for some \( M \), we can see that \( L \) maps any cube of side length \( \ell \) into a cube of side length \( c_d M \ell \), with \( c_d = 2\sqrt{d} \). Now if \( m(E) = 0 \), there is a collection of cubes \( \{Q_j\} \) such that \( E \subset \bigcup_j Q_j \), and \( \sum_j m(Q_j) < \epsilon \). Thus \( m_*(L(E)) \leq c' \epsilon \), and hence \( m(L(E)) = 0 \). Finally, use Corollary 3.5.</p>
-            </li>
-        </ol>
-    </div>
+            </p>
+            <p>
+                Prove that \( \delta E \) is measurable whenever \( E \) is measurable, and
 
-        
-        <div class="Proof-box">
-        <h4>Proof:(a)</h4>
-        <p>
-            因为有限维空间(同构于欧式空间)的线性映射是连续的(理由见(b)), 而根据点集拓扑的知识,连续映射把紧集映射为紧集, 因此$L(E)$是紧的. 如果E是$F_{\sigma}$集, 即存在可数个闭集$K_{n}$使得$$E=\cup_{n=1}^{\infty} K_{n}$$
-            那么我们考虑$$E=\cup_{i=1}^{\infty}(\cup_{j=1}^{\infty}K_{i}\cap \overline{B(0,j)})=\cup_{i,j=1}^{\infty}K_{i}\cap \overline{B(0,j)}$$
-            因此$$L(E)=\cup_{i,j}^{\infty}L(K_{i}\cap \overline{B(0,j)})$$
-            两个可数集的直积还是可数的, 所以右边参与并集的集合总共可数多个, 且都是有界闭集, 因此$L(E)$是$F_{\sigma}$集
-        </p>
 
-        <h4>(b)</h4>
-        <p>
-            选定$R^{d}$最常用的基底之后, L成为一个d阶矩阵, 仍记为L, 则$$\lvert L(x)-L(x')\rvert\leq \|L\|_{\infty}\lvert x-x'\rvert$$
-            其中$\|L\|_{\infty}$是L中绝对值最大的元素, 记为M. 这就证明了题设中的等式, 从而L连续. 然后我们证明L把零测集映射为零测集, 设$m(E)=0$, 则对任何$\epsilon >0$, 存在一组开方体$Q_{i}$满足$$\sum_{i=1}^{n}m(Q_{i})< \epsilon\qquad E\subseteq \cup_{i=1}^{\infty}Q_{i}$$
-            对任何$x,y\in Q_{i}$, 都有$$\lvert L(x)-L(y)\rvert\leq M\lvert x-y\rvert\leq M\sqrt{d}l_{i}$$
-            其中$l_{i}$是$Q_{i}$的边长.
-            固定$x\in Q_{i}$, 则上式说明$$L(Q_{i})\subseteq B(L(x),M\sqrt{d}l_{i})$$
-            这给出了$$m_{\ast}(L(E))\subseteq\sum_{i=1}^{\infty}m(L(Q_{i}))\leq m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}l_{i}^{d}=m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}m(Q_{i})< \epsilon m(B_{1})M\sqrt{d}$$
-            根据$\epsilon$的任意性, $m_{\ast}(L(E))=0$, 因此$L(E)$是零测集, 因而可测.
-
-            又任意可测集E都能写成$F_{\sigma}$集F和零测集K的并集, 因此$$L(E)=L(F)\cup L(K)$$
-            而$L(F)$是$F_{\sigma}$集, $L(K)$是零测集,  所以$L(E)$可测.
-        </p>
-        
+                \[
+                m(\delta E) = \delta_1 \cdots \delta_d m(E).
+                \]
+            </p>
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 9</h3>
-        <p>Give an example of an open set \( O \) with the following property: the boundary of the closure of \( O \) has positive Lebesgue measure.</p>
-        <h4>Hint:</h4>
-        <p>Consider the set obtained by taking the union of open intervals which are deleted at the odd steps in the construction of a Cantor-like set.</p>
-    </div>
 
         <div class="Proof-box">
-        <h4>Proof:</h4>
-        <p>
-            考虑Exercise 4中建立的集合, $\widehat{C}^{c}$是可数个开区的并, 是个开集, 且$\widehat{C}$中的点可由$\widetilde{C}^{c}$逼近, 因此$$\partial(\widehat{C}^{c})\supseteq \widehat{C}$$
-            所以$$m(\partial(\widehat{C}^{c}))\geq m(\widehat{C})>0$$
-        </p>
+            <h4>Proof:</h4>
+            <p>
+                我们证明对任何集合E, 都有$$m_{\ast}(\delta E)=\delta_{1}\cdots\delta_{d}m_{\ast}(E)$$
 
- 
-        </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 10</h3>
-        <p>This exercise provides a construction of a decreasing sequence of positive continuous functions on the interval \([0, 1]\), whose pointwise limit is not Riemann integrable.</p>
-        <p>Let \( \hat{C} \) denote a Cantor-like set obtained from the construction detailed in Exercise 4, so that in particular \( m(\hat{C}) > 0 \). Let \( F_1 \) denote a piecewise-linear and continuous function on \([0, 1]\), with \( F_1 = 1 \) in the complement of the first interval removed in the construction of \( \hat{C} \), \( F_1 = 0 \) at the center of this interval, and \( 0 \leq F_1(x) \leq 1 \) for all \( x \). Similarly, construct \( F_2 = 1 \) in the complement of the intervals in stage two of the construction of \( \hat{C} \), with \( F_2 = 0 \) at the center of these intervals, and \( 0 \leq F_2 \leq 1 \). Continuing this way, let \( f_n = F_1 \cdot F_2 \cdots F_n \).</p>
-        <div style="text-align: center;">
-            <img src="figs/C1F5.png" width="40%">
+
+                对任何$\epsilon>0$, 取覆盖E的方体$Q_{i}$满足$$\sum_{i=1}^{\infty}m(Q_{i})\leq m_{\ast}(E)+\epsilon\qquad \sum_{i=1}^{\infty}m(Q_{i})\geq m_{\ast}(E)$$
+                记$$V_{i}=\left\lbrace (\delta_{1}x_{1},..,\delta_{d}x_{d})\bigg|(x_{1},..,x_{d})\in Q_{i}\right\rbrace$$
+                则$$\cup_{i=1}^{\infty}V_{i}\supseteq \delta  E$$
+                从而$$m_{\ast}(\delta E)\leq\sum_{i=1}m(V_{i})=\delta_{1}\cdots\delta_{d}\sum_{i=1}^{\infty}m(Q_{i})\leq \delta_{1}\cdots \delta_{n}m_{\ast}(E)+\delta_{1}\cdots\delta_{d}\epsilon$$
+                根据$\epsilon$的任意性可得$$ m_{\ast}(\delta E)\leq\delta_{1}\cdots \delta_{n}m_{\ast}(E)$$
+
+                反之,我们注意到$$\delta E=\frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}E$$
+                我们记$\delta_{i}'=\frac{1}{\delta_{i}}$,  则$\delta'\delta E=E$, 则用前面的结论可以给出$$m_{\ast}(E)=m_{\ast}(\delta'\delta E)\leq \frac{1}{\delta_{1}}\cdots\frac{1}{\delta_{d}}m_{\ast}(\delta E)$$
+                从而$$ m_{\ast}(\delta E)=\delta_{1}\cdots \delta_{d}m_{\ast}(E)$$
+
+                然后我们证明E可测时$\delta E$也可测. 首先用前面的结论可以给出对任何包含E的开集O, $$\delta_{1}\cdots\delta_{d}m_{\ast}(O-E)=m_{\ast}(\delta O-\delta E)$$
+                我们证明$\delta O$是开集. 设$(\delta_{1}x_{1},..,\delta_{d}x_{d})\in \delta O$(这意味着$(x_{1},..,x_{d})\in O$), 从而存在以x为球心的球体$B(x,r)\subseteq O$, 然后取$\delta_{i}$里面的最小值记为$\sigma$, 则$B(\delta x,\sigma r)\subseteq\delta O$, 从而$\delta O$中每个点都是内点, 所以$\delta O$是开集, 因此对任何$\epsilon>0$, 根据E可测, 取包含E的开集O满足$$m_{\ast}(O-E)< \frac{\epsilon}{\delta_{1}\cdots\delta_{d}}$$ 则$$m_{\ast}(\delta O-\delta E)< \epsilon$$
+                因此$\delta E$可测.
+            </p>
+
 
         </div>
-        
-        <p>Prove the following:</p>
-        <ol type="a">
-            <li>
-                <p>For all \( n \geq 1 \) and all \( x \in [0, 1] \), one has \( 0 \leq f_n(x) \leq 1 \) and \( f_n(x) \geq f_{n+1}(x) \). Therefore, \( f_n(x) \) converges to a limit as \( n \to \infty \) which we denote by \( f(x) \).</p>
-            </li>
-            <li>
-                <p>The function \( f \) is discontinuous at every point of \( \hat{C} \).</p>
-                <h4>Hint:</h4>
-                <p>Note that \( f(x) = 1 \) if \( x \in \hat{C} \), and find a sequence of points \( \{x_n\} \) so that \( x_n \to x \) and \( f(x_n) = 0 \).</p>
-            </li>
-        </ol>
-    </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>Suppose \( L \) is a linear transformation of \( \mathbb{R}^d \). Show that if \( E \) is a measurable subset of \( \mathbb{R}^d \), then so is \( L(E) \), by proceeding as follows:</p>
+            <ol type="a">
+                <li>
+                    <p>Note that if \( E \) is compact, so is \( L(E) \). Hence if \( E \) is an \( F_{\sigma} \) set, so is \( L(E) \).</p>
+                </li>
+                <li>
+                    <p>
+                        Because \( L \) automatically satisfies the inequality
+
+
+                        \[
+                        |L(x) - L(x')| \leq M|x - x'|
+                        \]
+                        for some \( M \), we can see that \( L \) maps any cube of side length \( \ell \) into a cube of side length \( c_d M \ell \), with \( c_d = 2\sqrt{d} \). Now if \( m(E) = 0 \), there is a collection of cubes \( \{Q_j\} \) such that \( E \subset \bigcup_j Q_j \), and \( \sum_j m(Q_j) < \epsilon \). Thus \( m_*(L(E)) \leq c' \epsilon \), and hence \( m(L(E)) = 0 \). Finally, use Corollary 3.5.
+                    </p>
+                </li>
+            </ol>
+        </div>
+
 
         <div class="Proof-box">
-        <h4>Proof:(a)</h4>
-        <p>
-            根据$0\leq F_{n}\leq 1$可知$0\leq f_{n}\leq 1$, $f_{n+1}\leq f_{n}$
-        </p>
+            <h4>Proof:(a)</h4>
+            <p>
+                因为有限维空间(同构于欧式空间)的线性映射是连续的(理由见(b)), 而根据点集拓扑的知识,连续映射把紧集映射为紧集, 因此$L(E)$是紧的. 如果E是$F_{\sigma}$集, 即存在可数个闭集$K_{n}$使得$$E=\cup_{n=1}^{\infty} K_{n}$$
+                那么我们考虑$$E=\cup_{i=1}^{\infty}(\cup_{j=1}^{\infty}K_{i}\cap \overline{B(0,j)})=\cup_{i,j=1}^{\infty}K_{i}\cap \overline{B(0,j)}$$
+                因此$$L(E)=\cup_{i,j}^{\infty}L(K_{i}\cap \overline{B(0,j)})$$
+                两个可数集的直积还是可数的, 所以右边参与并集的集合总共可数多个, 且都是有界闭集, 因此$L(E)$是$F_{\sigma}$集
+            </p>
 
-        <h4>(b)</h4>
-        <p>
-            Exercise 4中我们证明了对任何$x\in\widehat{C}$, 存在$y_{k}\rightarrow x$, 满足$y_{k}$是被去掉的区间的中点, 因此对任何$y_{k}$, 设$y_{k}$属于第$n_{k}$步被去掉的某个区间, 则$f_{N}(y_{k})=0$对$N>n_{k}$成立, 因此$f(y_{k})=0$. 又$f(x)$在$\widetilde{C}$上恒为1, 所以$\widetilde{C}$必定是f的不连续点.
-        </p>
-        
+            <h4>(b)</h4>
+            <p>
+                选定$R^{d}$最常用的基底之后, L成为一个d阶矩阵, 仍记为L, 则$$\lvert L(x)-L(x')\rvert\leq \|L\|_{\infty}\lvert x-x'\rvert$$
+                其中$\|L\|_{\infty}$是L中绝对值最大的元素, 记为M. 这就证明了题设中的等式, 从而L连续. 然后我们证明L把零测集映射为零测集, 设$m(E)=0$, 则对任何$\epsilon >0$, 存在一组开方体$Q_{i}$满足$$\sum_{i=1}^{n}m(Q_{i})< \epsilon\qquad E\subseteq \cup_{i=1}^{\infty}Q_{i}$$
+                对任何$x,y\in Q_{i}$, 都有$$\lvert L(x)-L(y)\rvert\leq M\lvert x-y\rvert\leq M\sqrt{d}l_{i}$$
+                其中$l_{i}$是$Q_{i}$的边长.
+                固定$x\in Q_{i}$, 则上式说明$$L(Q_{i})\subseteq B(L(x),M\sqrt{d}l_{i})$$
+                这给出了$$m_{\ast}(L(E))\subseteq\sum_{i=1}^{\infty}m(L(Q_{i}))\leq m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}l_{i}^{d}=m(B_{1})M\sqrt{d}\sum_{i=1}^{\infty}m(Q_{i})< \epsilon m(B_{1})M\sqrt{d}$$
+                根据$\epsilon$的任意性, $m_{\ast}(L(E))=0$, 因此$L(E)$是零测集, 因而可测.
+
+                又任意可测集E都能写成$F_{\sigma}$集F和零测集K的并集, 因此$$L(E)=L(F)\cup L(K)$$
+                而$L(F)$是$F_{\sigma}$集, $L(K)$是零测集,  所以$L(E)$可测.
+            </p>
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 11</h3>
-        <p>Let \( A \) be the subset of \([0, 1]\) which consists of all numbers which do not have the digit 4 appearing in their decimal expansion. Find \( m(A) \).</p>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>Give an example of an open set \( O \) with the following property: the boundary of the closure of \( O \) has positive Lebesgue measure.</p>
+            <h4>Hint:</h4>
+            <p>Consider the set obtained by taking the union of open intervals which are deleted at the odd steps in the construction of a Cantor-like set.</p>
+        </div>
 
         <div class="Proof-box">
-        <h4>Proof:</h4>
-        <p>
-            类似于Cantor集的构造, 小数点后第一位不含4说明要去掉$[0.4,0.5)$, 剩下的集合均分成9个长度为0.1的小区间,形如$[0.x,0.x+0.1]$, 小数点后第二位不含4说明每个小区间必须去掉形如$[0.x4,0.x5)$的长为0.01的区间, 剩下的部分均分成81个长度为0.01的区间, 除去$[0.xy4,0.xy5)$, 继续这个过程, 第n次去掉的小区间的个数为$9^{n-1}$, 长度为$0.1^{n}$, 因此被去掉的区间总长度为$$0.1\sum_{i=1}^{\infty}(0.9)^{n-1}=0.1\frac{1}{0.1}=1$$
-            所以$m(A)\leq m([0,1])-1=0$, 所以$m(A)=0$
-        </p>
-         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 12</h3>
-        <p>Theorem 1.3 states that every open set in \( \mathbb{R} \) is the disjoint union of open intervals. The analogue in \( \mathbb{R}^d \), \( d \geq 2 \), is generally false. Prove the following:</p>
-        <ol type="a">
-            <li>
-                <p>An open disc in \( \mathbb{R}^2 \) is not the disjoint union of open rectangles.</p>
-                <h4>Hint:</h4>
-                <p>What happens to the boundary of any of these rectangles?</p>
-            </li>
-            <li>
-                <p>An open connected set \( \Omega \) is the disjoint union of open rectangles if and only if \( \Omega \) is itself an open rectangle.</p>
-            </li>
-        </ol>
-    </div>
+            <h4>Proof:</h4>
+            <p>
+                考虑Exercise 4中建立的集合, $\widehat{C}^{c}$是可数个开区的并, 是个开集, 且$\widehat{C}$中的点可由$\widetilde{C}^{c}$逼近, 因此$$\partial(\widehat{C}^{c})\supseteq \widehat{C}$$
+                所以$$m(\partial(\widehat{C}^{c}))\geq m(\widehat{C})>0$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>This exercise provides a construction of a decreasing sequence of positive continuous functions on the interval \([0, 1]\), whose pointwise limit is not Riemann integrable.</p>
+            <p>Let \( \hat{C} \) denote a Cantor-like set obtained from the construction detailed in Exercise 4, so that in particular \( m(\hat{C}) > 0 \). Let \( F_1 \) denote a piecewise-linear and continuous function on \([0, 1]\), with \( F_1 = 1 \) in the complement of the first interval removed in the construction of \( \hat{C} \), \( F_1 = 0 \) at the center of this interval, and \( 0 \leq F_1(x) \leq 1 \) for all \( x \). Similarly, construct \( F_2 = 1 \) in the complement of the intervals in stage two of the construction of \( \hat{C} \), with \( F_2 = 0 \) at the center of these intervals, and \( 0 \leq F_2 \leq 1 \). Continuing this way, let \( f_n = F_1 \cdot F_2 \cdots F_n \).</p>
+            <div style="text-align: center;">
+                <img src="figs/C1F5.png" width="40%">
+
+            </div>
+
+            <p>Prove the following:</p>
+            <ol type="a">
+                <li>
+                    <p>For all \( n \geq 1 \) and all \( x \in [0, 1] \), one has \( 0 \leq f_n(x) \leq 1 \) and \( f_n(x) \geq f_{n+1}(x) \). Therefore, \( f_n(x) \) converges to a limit as \( n \to \infty \) which we denote by \( f(x) \).</p>
+                </li>
+                <li>
+                    <p>The function \( f \) is discontinuous at every point of \( \hat{C} \).</p>
+                    <h4>Hint:</h4>
+                    <p>Note that \( f(x) = 1 \) if \( x \in \hat{C} \), and find a sequence of points \( \{x_n\} \) so that \( x_n \to x \) and \( f(x_n) = 0 \).</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="Proof-box">
-        <h4>Proof:(a)</h4>
-        <p>
-            如果$$D=\cup_{i=1}^{\infty}R_{i}$$
-            则对$R_{1}\subseteq D$, 我们知道$\overline{R_{1}}$的4个顶点不能在$\overline{D}$外, 否则(如果某一个顶点在D外)$R_{1}$将存在不含于D的内点.因此$\overline{R}_{1}$除了四个顶点可能不在D中之外, 其他点都在D中. 考虑$\overline{R}_{1}$的四条边的中点$z_{1},z_{2},z_{3},z_{4}$, 则$z_{1}\notin R_{1}$. 又$z_{1}\in D$, 所以存在$R_{j}$使得$z_{1}\in R_{j}$, 又$R_{j}$是开的, 因此存在$z_{j}$的邻域U使得$U\subseteq R_{j}$, 但根据$z_{1}\in\partial R_{1}$可得$U\cap R_{1}\neq\emptyset$, 因此$R_{j}\cap R_{1}\neq\emptyset$, 这和互不相交矛盾
-        </p>
+            <h4>Proof:(a)</h4>
+            <p>
+                根据$0\leq F_{n}\leq 1$可知$0\leq f_{n}\leq 1$, $f_{n+1}\leq f_{n}$
+            </p>
 
-        <h4>(b)</h4>
-        <p>
-            $\Leftarrow$是显然的. 只需证$\Rightarrow$:
-            设$\Omega=\cup_{\alpha}R_{\alpha}$, 又$R_{\alpha}$互不相交, 所以如果存在两个非空的$R_{\alpha}$, 则$\Omega$就是若干互不相交的开集的并, 和连通性矛盾, 因此只能存在一个$\alpha$使得$R_{\alpha}\neq\emptyset$, 因此$$\Omega=R_{\alpha}$$
-        </p>
-        
+            <h4>(b)</h4>
+            <p>
+                Exercise 4中我们证明了对任何$x\in\widehat{C}$, 存在$y_{k}\rightarrow x$, 满足$y_{k}$是被去掉的区间的中点, 因此对任何$y_{k}$, 设$y_{k}$属于第$n_{k}$步被去掉的某个区间, 则$f_{N}(y_{k})=0$对$N>n_{k}$成立, 因此$f(y_{k})=0$. 又$f(x)$在$\widetilde{C}$上恒为1, 所以$\widetilde{C}$必定是f的不连续点.
+            </p>
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 13</h3>
-        <p>The following deals with \( G_{\delta} \) and \( F_{\sigma} \) sets.</p>
-        <ol type="a">
-            <li>
-                <p>Show that a closed set is a \( G_{\delta} \) and an open set an \( F_{\sigma} \).</p>
-                <h4>Hint:</h4>
-                <p>If \( F \) is closed, consider \( O_n = \{x : d(x, F) < 1/n\} \).</p>
-            </li>
-            <li>
-                <p>Give an example of an \( F_{\sigma} \) which is not a \( G_{\delta} \).</p>
-                <h4>Hint:</h4>
-                <p>This is more difficult; let \( F \) be a denumerable set that is dense.</p>
-            </li>
-            <li>
-                <p>Give an example of a Borel set which is not a \( G_{\delta} \) nor an \( F_{\sigma} \).</p>
-            </li>
-        </ol>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Let \( A \) be the subset of \([0, 1]\) which consists of all numbers which do not have the digit 4 appearing in their decimal expansion. Find \( m(A) \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                类似于Cantor集的构造, 小数点后第一位不含4说明要去掉$[0.4,0.5)$, 剩下的集合均分成9个长度为0.1的小区间,形如$[0.x,0.x+0.1]$, 小数点后第二位不含4说明每个小区间必须去掉形如$[0.x4,0.x5)$的长为0.01的区间, 剩下的部分均分成81个长度为0.01的区间, 除去$[0.xy4,0.xy5)$, 继续这个过程, 第n次去掉的小区间的个数为$9^{n-1}$, 长度为$0.1^{n}$, 因此被去掉的区间总长度为$$0.1\sum_{i=1}^{\infty}(0.9)^{n-1}=0.1\frac{1}{0.1}=1$$
+                所以$m(A)\leq m([0,1])-1=0$, 所以$m(A)=0$
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>Theorem 1.3 states that every open set in \( \mathbb{R} \) is the disjoint union of open intervals. The analogue in \( \mathbb{R}^d \), \( d \geq 2 \), is generally false. Prove the following:</p>
+            <ol type="a">
+                <li>
+                    <p>An open disc in \( \mathbb{R}^2 \) is not the disjoint union of open rectangles.</p>
+                    <h4>Hint:</h4>
+                    <p>What happens to the boundary of any of these rectangles?</p>
+                </li>
+                <li>
+                    <p>An open connected set \( \Omega \) is the disjoint union of open rectangles if and only if \( \Omega \) is itself an open rectangle.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                如果$$D=\cup_{i=1}^{\infty}R_{i}$$
+                则对$R_{1}\subseteq D$, 我们知道$\overline{R_{1}}$的4个顶点不能在$\overline{D}$外, 否则(如果某一个顶点在D外)$R_{1}$将存在不含于D的内点.因此$\overline{R}_{1}$除了四个顶点可能不在D中之外, 其他点都在D中. 考虑$\overline{R}_{1}$的四条边的中点$z_{1},z_{2},z_{3},z_{4}$, 则$z_{1}\notin R_{1}$. 又$z_{1}\in D$, 所以存在$R_{j}$使得$z_{1}\in R_{j}$, 又$R_{j}$是开的, 因此存在$z_{j}$的邻域U使得$U\subseteq R_{j}$, 但根据$z_{1}\in\partial R_{1}$可得$U\cap R_{1}\neq\emptyset$, 因此$R_{j}\cap R_{1}\neq\emptyset$, 这和互不相交矛盾
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                $\Leftarrow$是显然的. 只需证$\Rightarrow$:
+                设$\Omega=\cup_{\alpha}R_{\alpha}$, 又$R_{\alpha}$互不相交, 所以如果存在两个非空的$R_{\alpha}$, 则$\Omega$就是若干互不相交的开集的并, 和连通性矛盾, 因此只能存在一个$\alpha$使得$R_{\alpha}\neq\emptyset$, 因此$$\Omega=R_{\alpha}$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>The following deals with \( G_{\delta} \) and \( F_{\sigma} \) sets.</p>
+            <ol type="a">
+                <li>
+                    <p>Show that a closed set is a \( G_{\delta} \) and an open set an \( F_{\sigma} \).</p>
+                    <h4>Hint:</h4>
+                    <p>If \( F \) is closed, consider \( O_n = \{x : d(x, F) < 1/n\} \).</p>
+                </li>
+                <li>
+                    <p>Give an example of an \( F_{\sigma} \) which is not a \( G_{\delta} \).</p>
+                    <h4>Hint:</h4>
+                    <p>This is more difficult; let \( F \) be a denumerable set that is dense.</p>
+                </li>
+                <li>
+                    <p>Give an example of a Borel set which is not a \( G_{\delta} \) nor an \( F_{\sigma} \).</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
@@ -619,26 +625,28 @@
                 是$F_{\sigma}$集, 因此$B^{c}$是$G_{\delta}$集, 因此$V=B^{c}\cap[-1,0]$是$[-1,0]$中的$G_{\delta}$集, 根据类似(b)的讨论可得V是$[-1,0]$的第二纲集, 但V又是$[-1,0]$中有理数的并, 因此是[-1,0]的第一纲集, 矛盾
             </p>
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 14</h3>
-        <p>The purpose of this exercise is to show that covering by a finite number of intervals will not suffice in the definition of the outer measure \( m_* \).</p>
-        <p>The outer Jordan content \( J_*(E) \) of a set \( E \) in \( \mathbb{R} \) is defined by
- 
- 
-        \[
-        J_*(E) = \inf \sum_{j=1}^N |I_j|,
-        \]
-        where the inf is taken over every finite covering \( E \subset \bigcup_{j=1}^N I_j \), by intervals \( I_j \).</p>
-        <ol type="a">
-            <li>
-                <p>Prove that \( J_*(E) = J_*(\overline{E}) \) for every set \( E \) (here \( \overline{E} \) denotes the closure of \( E \)).</p>
-            </li>
-            <li>
-                <p>Exhibit a countable subset \( E \subset [0, 1] \) such that \( J_*(E) = 1 \) while \( m_*(E) = 0 \).</p>
-            </li>
-        </ol>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>The purpose of this exercise is to show that covering by a finite number of intervals will not suffice in the definition of the outer measure \( m_* \).</p>
+            <p>
+                The outer Jordan content \( J_*(E) \) of a set \( E \) in \( \mathbb{R} \) is defined by
+
+
+                \[
+                J_*(E) = \inf \sum_{j=1}^N |I_j|,
+                \]
+                where the inf is taken over every finite covering \( E \subset \bigcup_{j=1}^N I_j \), by intervals \( I_j \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Prove that \( J_*(E) = J_*(\overline{E}) \) for every set \( E \) (here \( \overline{E} \) denotes the closure of \( E \)).</p>
+                </li>
+                <li>
+                    <p>Exhibit a countable subset \( E \subset [0, 1] \) such that \( J_*(E) = 1 \) while \( m_*(E) = 0 \).</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
@@ -658,22 +666,24 @@
             <p>
                 取$E$为$[0,1]$中的有理数, 则$\overline{E}=1$, $m_{\ast}(E)=0$. 我们注意到根据$J_{\ast}$的定义, $J_{\ast}(\overline{E})\geq m_{\ast}(\overline{E})=m([0,1])=1$, 又根据定义$J_{\ast}(\overline{E})\leq \lvert [0,1]\rvert=1$, 因此$$J_{\ast}(\overline{E})=1$$
             </p>
-            
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 15</h3>
-        <p>At the start of the theory, one might define the outer measure by taking coverings by rectangles instead of cubes. More precisely, we define
- 
- 
-        \[
-        m_R^*(E) = \inf \sum_{j=1}^{\infty} |R_j|,
-        \]
-        where the inf is now taken over all countable coverings \( E \subset \bigcup_{j=1}^{\infty} R_j \) by (closed) rectangles.</p>
-        <p>Show that this approach gives rise to the same theory of measure developed in the text, by proving that \( m_*(E) = m_R^*(E) \) for every subset \( E \) of \( \mathbb{R}^d \).</p>
-        <h4>Hint:</h4>
-        <p>Use Lemma 1.1.</p>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>
+                At the start of the theory, one might define the outer measure by taking coverings by rectangles instead of cubes. More precisely, we define
+
+
+                \[
+                m_R^*(E) = \inf \sum_{j=1}^{\infty} |R_j|,
+                \]
+                where the inf is now taken over all countable coverings \( E \subset \bigcup_{j=1}^{\infty} R_j \) by (closed) rectangles.
+            </p>
+            <p>Show that this approach gives rise to the same theory of measure developed in the text, by proving that \( m_*(E) = m_R^*(E) \) for every subset \( E \) of \( \mathbb{R}^d \).</p>
+            <h4>Hint:</h4>
+            <p>Use Lemma 1.1.</p>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:</h4>
@@ -699,35 +709,39 @@
 
             </p>
 
-            
-            
+
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 16</h3>
-        <p>The Borel-Cantelli lemma. Suppose \( \{E_k\}_{k=1}^{\infty} \) is a countable family of measurable subsets of \( \mathbb{R}^d \) and that
- 
- 
-        \[
-        \sum_{k=1}^{\infty} m(E_k) < \infty.
-        \]</p>
-        <p>Let
- 
- 
-        \[
-        E = \{x \in \mathbb{R}^d : x \in E_k, \text{ for infinitely many } k\} = \limsup_{k \to \infty} (E_k).
-        \]</p>
-        <ol type="a">
-            <li>
-                <p>Show that \( E \) is measurable.</p>
-            </li>
-            <li>
-                <p>Prove \( m(E) = 0 \).</p>
-                <h4>Hint:</h4>
-                <p>Write \( E = \bigcap_{n=1}^{\infty} \bigcup_{k \geq n} E_k \).</p>
-            </li>
-        </ol>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>
+                The Borel-Cantelli lemma. Suppose \( \{E_k\}_{k=1}^{\infty} \) is a countable family of measurable subsets of \( \mathbb{R}^d \) and that
+
+
+                \[
+                \sum_{k=1}^{\infty} m(E_k) < \infty.
+                \]
+            </p>
+            <p>
+                Let
+
+
+                \[
+                E = \{x \in \mathbb{R}^d : x \in E_k, \text{ for infinitely many } k\} = \limsup_{k \to \infty} (E_k).
+                \]
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Show that \( E \) is measurable.</p>
+                </li>
+                <li>
+                    <p>Prove \( m(E) = 0 \).</p>
+                    <h4>Hint:</h4>
+                    <p>Write \( E = \bigcap_{n=1}^{\infty} \bigcup_{k \geq n} E_k \).</p>
+                </li>
+            </ol>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
@@ -745,20 +759,22 @@
                 又$\sum_{k=1}^{\infty}m(E_{k})< \infty$, 因此对任何$\epsilon$, 存在N使得$n\geq N$时, $\sum_{k=n}^{\infty}m(E_{k})< \epsilon$, 这给出了$$m(E)\leq \sum_{k=n}^{\infty}m(E_{k})\leq \epsilon\qquad\forall n\geq N$$
                 根据$\epsilon$的任意性, $m(E)=0$
             </p>
-            
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 17</h3>
-        <p>Let \( \{f_n\} \) be a sequence of measurable functions on \([0, 1]\) with \( |f_n(x)| < \infty \) for a.e \( x \). Show that there exists a sequence \( c_n \) of positive real numbers such that
- 
- 
-        \[
-        \frac{f_n(x)}{c_n} \to 0 \quad \text{a.e. } x
-        \]</p>
-        <h4>Hint:</h4>
-        <p>Pick \( c_n \) such that \( m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} \), and apply the Borel-Cantelli lemma.</p>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>
+                Let \( \{f_n\} \) be a sequence of measurable functions on \([0, 1]\) with \( |f_n(x)| < \infty \) for a.e \( x \). Show that there exists a sequence \( c_n \) of positive real numbers such that
+
+
+                \[
+                \frac{f_n(x)}{c_n} \to 0 \quad \text{a.e. } x
+                \]
+            </p>
+            <h4>Hint:</h4>
+            <p>Pick \( c_n \) such that \( m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} \), and apply the Borel-Cantelli lemma.</p>
+        </div>
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
             <p>
@@ -775,14 +791,14 @@
                 又$\sum_{k=1}^{\infty}m(E_{k})< \infty$, 因此对任何$\epsilon$, 存在N使得$n\geq N$时, $\sum_{k=n}^{\infty}m(E_{k})< \epsilon$, 这给出了$$m(E)\leq \sum_{k=n}^{\infty}m(E_{k})\leq \epsilon\qquad\forall n\geq N$$
                 根据$\epsilon$的任意性, $m(E)=0$
             </p>
-            
+
         </div>
 
- 
-    <div class="Exercise-box">
-        <h3>Exercise 18</h3>
-        <p>Prove the following assertion: Every measurable function is the limit a.e. of a sequence of continuous functions.</p>
-    </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Prove the following assertion: Every measurable function is the limit a.e. of a sequence of continuous functions.</p>
+        </div>
 
         <div class="Proof-box">
             <h4>Proof:</h4>
@@ -791,34 +807,34 @@
                 (为什么能取, 注意到$$\{x\big|\lvert f_{n}\rvert=\infty\}=\cap_{i=1}^{\infty}\{x\big|\lvert f(x)\rvert>i\}$$
                 又$\{x\big|\lvert f(x)\rvert>i\}\subseteq [0,1]$, 所以用Lebesgue测度的连续性可得$$0=\lim_{n \to \infty}m(\{x\big|\lvert f(x)\rvert>n\})$$
                 这说明对任何$\epsilon$, 存在N使得$m(\{x\big|\lvert f(x)\rvert>N\})< \epsilon$, 把$\epsilon$改成$\frac{1}{2^{n}}$, $f$改成$nf_{n}(x)$即可
-                                                                                    )
-                                                                                    记$E_{n}=\{x : |f_n(x) /c_n|>
-                    1/n\}$,则 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$, 设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>
-                        K_{x}$$
-                        从而$$f_{n}(x)/c_{n}\leq \frac{1}{n}\qquad\forall n>K_{x}$$
-                        因此对a.e的x, $$\frac{f_{n}(x)}{c_{n}}\rightarrow0$$
+                )
+                记$E_{n}=\{x : |f_n(x) /c_n|>
+                1/n\}$,则 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$, 设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>
+                K_{x}$$
+                从而$$f_{n}(x)/c_{n}\leq \frac{1}{n}\qquad\forall n>K_{x}$$
+                因此对a.e的x, $$\frac{f_{n}(x)}{c_{n}}\rightarrow0$$
             </p>
-            
+
         </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 19</h3>
-        <p>Here are some observations regarding the set operation \( A + B \).</p>
-        <ol type="a">
-            <li>
-                <p>Show that if either \( A \) and \( B \) is open, then \( A + B \) is open.</p>
-            </li>
-            <li>
-                <p>Show that if \( A \) and \( B \) are closed, then \( A + B \) is measurable.</p>
-            </li>
-            <li>
-                <p>Show, however, that \( A + B \) might not be closed even though \( A \) and \( B \) are closed.</p>
-                <h4>Hint:</h4>
-                <p>For (b) show that \( A + B \) is an \( F_{\sigma} \) set.</p>
-            </li>
-        </ol>
-    </div>
-    
+
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>Here are some observations regarding the set operation \( A + B \).</p>
+            <ol type="a">
+                <li>
+                    <p>Show that if either \( A \) and \( B \) is open, then \( A + B \) is open.</p>
+                </li>
+                <li>
+                    <p>Show that if \( A \) and \( B \) are closed, then \( A + B \) is measurable.</p>
+                </li>
+                <li>
+                    <p>Show, however, that \( A + B \) might not be closed even though \( A \) and \( B \) are closed.</p>
+                    <h4>Hint:</h4>
+                    <p>For (b) show that \( A + B \) is an \( F_{\sigma} \) set.</p>
+                </li>
+            </ol>
+        </div>
+
         <div class="Proof-box">
             <h4>Proof:(a)</h4>
             <p>
@@ -849,20 +865,20 @@
             </p>
         </div>
 
-    <div class="Exercise-box">
-        <h3>Exercise 20</h3>
-        <p>Show that there exist closed sets \( A \) and \( B \) with \( m(A) = m(B) = 0 \), but \( m(A + B) > 0 \):</p>
-        <ol type="a">
-            <li>
-                <p>In \( \mathbb{R} \), let \( A = C \) (the Cantor set), \( B = C/2 \). Note that \( A + B \supset [0, 1] \).</p>
-            </li>
-            <li>
-                <p>In \( \mathbb{R}^2 \), observe that if \( A = I \times \{0\} \) and \( B = \{0\} \times I \) (where \( I = [0, 1] \)), then \( A + B = I \times I \).</p>
-            </li>
-        </ol>
-    </div>
- 
-           <div class="Proof-box">
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>Show that there exist closed sets \( A \) and \( B \) with \( m(A) = m(B) = 0 \), but \( m(A + B) > 0 \):</p>
+            <ol type="a">
+                <li>
+                    <p>In \( \mathbb{R} \), let \( A = C \) (the Cantor set), \( B = C/2 \). Note that \( A + B \supset [0, 1] \).</p>
+                </li>
+                <li>
+                    <p>In \( \mathbb{R}^2 \), observe that if \( A = I \times \{0\} \) and \( B = \{0\} \times I \) (where \( I = [0, 1] \)), then \( A + B = I \times I \).</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
             <h4>Proof:(a)</h4>
             <p>
                 注意到$[0,1]$中任何一点都能写成三进小数展开$$x=\sum_{i=1}^{\infty}\frac{a_{i}}{3^{i}}\qquad a_{i}\in\{0,1,2\}$$
@@ -884,205 +900,537 @@
 
             </p>
         </div>
-    <div class="Exercise-box">
-        <h3>Exercise 21</h3>
-        <p>Prove that there is a continuous function that maps a Lebesgue measurable set to a non-measurable set.</p>
-        <h4>Hint:</h4>
-        <p>Consider a non-measurable subset of \([0, 1]\), and its inverse image in \( C \) by the function \( F \) in Exercise 2.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 22</h3>
-        <p>Let \( \chi_{[0,1]} \) be the characteristic function of \([0, 1]\). Show that there is no everywhere continuous function \( f \) on \( \mathbb{R} \) such that
- 
- 
-        \[
-        f(x) = \chi_{[0,1]}(x) \quad \text{almost everywhere}.
-        \]</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 23</h3>
-        <p>Suppose \( f(x, y) \) is a function on \( \mathbb{R}^2 \) that is separately continuous: for each fixed variable, \( f \) is continuous in the other variable. Prove that \( f \) is measurable on \( \mathbb{R}^2 \).</p>
-        <h4>Hint:</h4>
-        <p>Approximate \( f \) in the variable \( x \) by piecewise-linear functions \( f_n \) so that \( f_n \to f \) pointwise.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 24</h3>
-        <p>Does there exist an enumeration \( \{r_n\}_{n=1}^{\infty} \) of the rationals, such that the complement of
- 
- 
-        \[
-        \bigcup_{n=1}^{\infty} \left( r_n - \frac{1}{n}, r_n + \frac{1}{n} \right)
-        \]
-        in \( \mathbb{R} \) is non-empty?</p>
-        <h4>Hint:</h4>
-        <p>Find an enumeration where the only rationals outside of a fixed bounded interval take the form \( r_n \), with \( n = m^2 \) for some integer \( m \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 25</h3>
-        <p>An alternative definition of measurability is as follows: \( E \) is measurable if for every \( \epsilon > 0 \) there is a closed set \( F \) contained in \( E \) with \( m_*(E - F) < \epsilon \). Show that this definition is equivalent with the one given in the text.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 26</h3>
-        <p>Suppose \( A \subset E \subset B \), where \( A \) and \( B \) are measurable sets of finite measure. Prove that if \( m(A) = m(B) \), then \( E \) is measurable.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 27</h3>
-        <p>Suppose \( E_1 \) and \( E_2 \) are a pair of compact sets in \( \mathbb{R}^d \) with \( E_1 \subset E_2 \), and let \( a = m(E_1) \) and \( b = m(E_2) \). Prove that for any \( c \) with \( a < c < b \), there is a compact set \( E \) with \( E_1 \subset E \subset E_2 \) and \( m(E) = c \).</p>
-        <h4>Hint:</h4>
-        <p>As an example, if \( d = 1 \) and \( E \) is a measurable subset of \([0, 1]\), consider \( m(E \cap [0, t]) \) as a function of \( t \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 28</h3>
-        <p>Let \( E \) be a subset of \( \mathbb{R} \) with \( m_*(E) > 0 \). Prove that for each \( 0 < \alpha < 1 \), there exists an open interval \( I \) so that
- 
- 
-        \[
-        m_*(E \cap I) \geq \alpha m_*(I).
-        \]</p>
-        <p>Loosely speaking, this estimate shows that \( E \) contains almost a whole interval.</p>
-        <h4>Hint:</h4>
-        <p>Choose an open set \( O \) that contains \( E \), and such that \( m_*(E) \geq \alpha m_*(O) \). Write \( O \) as the countable union of disjoint open intervals, and show that one of these intervals must satisfy the desired property.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 29</h3>
-        <p>Suppose \( E \) is a measurable subset of \( \mathbb{R} \) with \( m(E) > 0 \). Prove that the difference set of \( E \), which is defined by
- 
- 
-        \[
-        \{z \in \mathbb{R} : z = x - y \text{ for some } x, y \in E\},
-        \]
-        contains an open interval centered at the origin.</p>
-        <p>If \( E \) contains an interval, then the conclusion is straightforward. In general, one may rely on Exercise 28.</p>
-        <h4>Hint:</h4>
-        <p>Indeed, by Exercise 28, there exists an open interval \( I \) so that \( m(E \cap I) \geq (9/10) m(I) \). If we denote \( E \cap I \) by \( E_0 \), and suppose that the difference set of \( E_0 \) does not contain an open interval around the origin, then for arbitrarily small \( a \) the sets \( E_0 \), and \( E_0 + a \) are disjoint. From the fact that \( (E_0 \cup (E_0 + a)) \subset (I \cup (I + a)) \) we get a contradiction, since the left-hand side has measure \( 2m(E_0) \), while the right-hand side has measure only slightly larger than \( m(I) \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 30</h3>
-        <p>If \( E \) and \( F \) are measurable, and \( m(E) > 0 \), \( m(F) > 0 \), prove that
- 
- 
-        \[
-        E + F = \{x + y : x \in E, x \in F\}
-        \]
-        contains an interval.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 31</h3>
-        <p>The result in Exercise 29 provides an alternate proof of the non-measurability of the set \( N \) studied in the text. In fact, we may also prove the non-measurability of a set in \( \mathbb{R} \) that is very closely related to the set \( N \).</p>
-        <p>Given two real numbers \( x \) and \( y \), we shall write as before that \( x \sim y \) whenever the difference \( x - y \) is rational. Let \( N^* \) denote a set that consists of one element in each equivalence class of \( \sim \). Prove that \( N^* \) is non-measurable by using the result in Exercise 29.</p>
-        <h4>Hint:</h4>
-        <p>If \( N^* \) is measurable, then so are its translates \( N^*_n = N^* + r_n \), where \( \{r_n\}_{n=1}^{\infty} \) is an enumeration of \( \mathbb{Q} \). How does this imply that \( m(N^*) > 0 \)? Can the difference set of \( N^* \) contain an open interval centered at the origin?</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 32</h3>
-        <p>Let \( N \) denote the non-measurable subset of \( I = [0, 1] \) constructed at the end of Section 3.</p>
-        <ol type="a">
-            <li>
-                <p>Prove that if \( E \) is a measurable subset of \( N \), then \( m(E) = 0 \).</p>
-            </li>
-            <li>
-                <p>If \( G \) is a subset of \( \mathbb{R} \) with \( m_*(G) > 0 \), prove that a subset of \( G \) is non-measurable.</p>
-                <h4>Hint:</h4>
-                <p>For (a) use the translates of \( E \) by the rationals.</p>
-            </li>
-        </ol>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 33</h3>
-        <p>Let \( N \) denote the non-measurable set constructed in the text. Recall from the exercise above that measurable subsets of \( N \) have measure zero.</p>
-        <p>Show that the set \( N^c = I - N \) satisfies \( m_*(N^c) = 1 \), and conclude that if \( E_1 = N \) and \( E_2 = N^c \), then
- 
- 
-        \[
-        m_*(E_1) + m_*(E_2) = m_*(E_1 \cup E_2),
-        \]
-        although \( E_1 \) and \( E_2 \) are disjoint.</p>
-        <h4>Hint:</h4>
-        <p>To prove that \( m_*(N^c) = 1 \), argue by contradiction and pick a measurable set \( U \) such that \( U \subset I \), \( N^c \subset U \) and \( m_*(U) < 1 - \epsilon \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 34</h3>
-        <p>Let \( C_1 \) and \( C_2 \) be any two Cantor sets (constructed in Exercise 3). Show that there exists a function \( F : [0, 1] \to [0, 1] \) with the following properties:</p>
-        <ol type="i">
-            <li>\( F \) is continuous and bijective,</li>
-            <li>\( F \) is monotonically increasing,</li>
-            <li>\( F \) maps \( C_1 \) surjectively onto \( C_2 \).</li>
-        </ol>
-        <h4>Hint:</h4>
-        <p>Copy the construction of the standard Cantor-Lebesgue function.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 35</h3>
-        <p>Give an example of a measurable function \( f \) and a continuous function \( \Phi \) so that \( f \circ \Phi \) is non-measurable.</p>
-        <h4>Hint:</h4>
-        <p>Let \( \Phi : C_1 \to C_2 \) as in Exercise 34, with \( m(C_1) > 0 \) and \( m(C_2) = 0 \). Let \( N \subset C_1 \) be non-measurable, and take \( f = \chi_{\Phi(N)} \).</p>
-        <p>Use the construction in the hint to show that there exists a Lebesgue measurable set that is not a Borel set.</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 36</h3>
-        <p>This exercise provides an example of a measurable function \( f \) on \([0, 1]\) such that every function \( g \) equivalent to \( f \) (in the sense that \( f \) and \( g \) differ only on a set of measure zero) is discontinuous at every point.</p>
-        <ol type="a">
-            <li>
-                <p>Construct a measurable set \( E \subset [0, 1] \) such that for any non-empty open sub-interval \( I \) in \([0, 1]\), both sets \( E \cap I \) and \( E^c \cap I \) have positive measure.</p>
-            </li>
-            <li>
-                <p>Show that \( f = \chi_E \) has the property that whenever \( g(x) = f(x) \) a.e \( x \), then \( g \) must be discontinuous at every point in \([0, 1]\).</p>
-                <h4>Hint:</h4>
-                <p>For the first part, consider a Cantor-like set of positive measure, and add in each of the intervals that are omitted in the first step of its construction, another Cantor-like set. Continue this procedure indefinitely.</p>
-            </li>
-        </ol>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 37</h3>
-        <p>Suppose \( \Gamma \) is a curve \( y = f(x) \) in \( \mathbb{R}^2 \), where \( f \) is continuous. Show that \( m(\Gamma) = 0 \).</p>
-        <h4>Hint:</h4>
-        <p>Cover \( \Gamma \) by rectangles, using the uniform continuity of \( f \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 38</h3>
-        <p>Prove that \( (a + b)^{\gamma} \geq a^{\gamma} + b^{\gamma} \) whenever \( \gamma \geq 1 \) and \( a, b \geq 0 \). Also, show that the reverse inequality holds when \( 0 \leq \gamma \leq 1 \).</p>
-        <h4>Hint:</h4>
-        <p>Integrate the inequality between \( (a + t)^{\gamma-1} \) and \( t^{\gamma-1} \) from 0 to \( b \).</p>
-    </div>
- 
-    <div class="Exercise-box">
-        <h3>Exercise 39</h3>
-        <p>Establish the inequality
- 
- 
-        \[
-        \frac{x_1 + \cdots + x_d}{d} \geq (x_1 \cdots x_d)^{1/d} \quad \text{for all } x_j \geq 0, j = 1, \ldots, d
-        \]
-        by using backward induction as follows:</p>
-        <ol type="a">
-            <li>
-                <p>The inequality is true whenever \( d \) is a power of 2 (\( d = 2^k \), \( k \geq 1 \)).</p>
-            </li>
-            <li>
-                <p>If (10) holds for some integer \( d \geq 2 \), then it must hold for \( d - 1 \), that is, one has \( (y_1 + \cdots + y_{d-1})/(d-1) \geq (y_1 \cdots y_{d-1})^{1/(d-1)} \) for all \( y_j \geq 0 \), with \( j = 1, \ldots, d-1 \).</p>
-            </li>
-        </ol>
-        <h4>Hint:</h4>
-        <p>For (a), if \( k \geq 2 \), write \( (x_1 + \cdots + x_{2^k})/2^k \) as \( (A + B)/2 \), where \( A = (x_1 + \cdots + x_{2^{k-1}})/2^{k-1} \), and apply the inequality when \( d = 2 \). For (b), apply the inequality to \( x_1 = y_1, \ldots, x_{d-1} = y_{d-1} \) and \( x_d = (y_1 + \cdots + y_{d-1})/(d-1) \).</p>
-    </div>
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>Prove that there is a continuous function that maps a Lebesgue measurable set to a non-measurable set.</p>
+            <h4>Hint:</h4>
+            <p>Consider a non-measurable subset of \([0, 1]\), and its inverse image in \( C \) by the function \( F \) in Exercise 2.</p>
+        </div>
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                Proof: 考虑Exercise 2(d)中的连续函数F, $[0,1]$中的不可测集$\mathcal{N}$, 因为$F:C\rightarrow[0,1]$是满射, 所以对任何$y\in\mathcal{N}$, 都存在$x_{y}\in\mathcal{C}$使得$y=F(x_{y})$, 考虑集合$$X=\cup_{y\in\mathcal{N}}\{x_{y}\}$$
+                则$X\subseteq\mathcal{C}$, 因此是零测集, 所以X可测, 且$$F(X)=\mathcal{N}$$
+            </p>
 
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>
+                Let \( \chi_{[0,1]} \) be the characteristic function of \([0, 1]\). Show that there is no everywhere continuous function \( f \) on \( \mathbb{R} \) such that
+
+
+                \[
+                f(x) = \chi_{[0,1]}(x) \quad \text{almost everywhere}.
+                \]
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                在$x=0$处, $\chi_{[0,1]}(x)=1$, 假设存在连续函数f使得$f=\chi_{[0,1]}$ a.e 成立, 那么对任何$\epsilon>0$, 存在$y\in [0,\epsilon)$使得$f(y)=\chi_{[0,1]}(y)=1$. 否则$[0,\epsilon)$上$f\neq\chi_{[0,1]}$, 和a.e相等矛盾.
+
+                因此取$\epsilon=\frac{1}{n}$, 就能找出一组$x_{n}\rightarrow 0^{+}$, 满足$f(x_{n})=1$
+
+                同理对任何$\epsilon>0$, 存在$y\in (-\epsilon,0]$使得$f(y)=\chi_{[0,1]}(y)=0$. 因此取$\epsilon=\frac{1}{n}$, 就能找出一组$y_{n}\rightarrow 0^{-}$, 满足$f(y_{n})=0$
+
+                而$x_{n},y_{n}\rightarrow0$, 但是$f(x_{n}).f(y_{n})$极限不相等, 与f在0处的连续性矛盾
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>Suppose \( f(x, y) \) is a function on \( \mathbb{R}^2 \) that is separately continuous: for each fixed variable, \( f \) is continuous in the other variable. Prove that \( f \) is measurable on \( \mathbb{R}^2 \).</p>
+            <h4>Hint:</h4>
+            <p>Approximate \( f \) in the variable \( x \) by piecewise-linear functions \( f_n \) so that \( f_n \to f \) pointwise.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                定义$$f_{n}(x,y)=(nx-m)f(\frac{m}{n},y)+(m+1-nx)f(\frac{m+1}{n},y)\qquad x\in[\frac{m}{n},\frac{m+1}{n}],m\in Z$$
+                容易看出$f_{n}$是良定义的.
+                显然, $f_{n}(x,y)$是连续函数, 因为是$f(\frac{m}{n},y),(nx-m),(m+1-nx),f(\frac{m+1}{n},y)$经过加法和乘法运算得到的, 而这些函数都是$R^{2}$上的单变量连续函数.
+
+                取定一点$(x_{0},y_{0})$,对任何$\epsilon>0$,  对任何n, 都存在$m_{n}$使得$x\in[\frac{m_{n}}{n},\frac{m_{n}+1}{n}]$, 根据$f(\cdot,y_{0})$是关于x的连续函数,因此存在$\delta>0$使得$\lvert x-x_{0}\rvert< \delta$时, $$\lvert f(x,y_{0})-f(x_{0},y_{0})\rvert< \epsilon$$
+                因此取N满足$\frac{1}{N}< \frac{1}{2}\delta$, 则对任何$n>N$, 都有$$\lvert f(\frac{m_{n}}{n},y_{0})-f(x_{0},y_{0})\rvert< \epsilon\qquad  \lvert f(\frac{m_{n}+1}{n},y_{0})-f(x_{0},y_{0})\rvert< \epsilon$$
+                因此$$\lvert f_{n}(x_{0},y_{0})-f(x_{0},y_{0})\rvert=\lvert (nx-m_{n})f(\frac{m_{n}}{n},y)+(m_{n}+1-nx)f(\frac{m_{n}+1}{n},y)-[nx-m_{n}+m_{n}+1-nx]f(x_{0},y_{0})\rvert$$
+                $$\leq (nx-m_{n})\lvert f(\frac{m_{n}}{n},y_{0})-f(x_{0},y_{0})\rvert+(m_{n}+1-nx)\lvert f(\frac{m_{n}+1}{n},y_{0})-f(x_{0},y_{0})\rvert$$
+                $$< (nx-m_{n})\epsilon+(m_{n}+1-nx)\epsilon=\epsilon$$
+                因此$f_{n}$逐点收敛于f, 又连续函数可测, 所以$f_{n}$可测, 所以可测函数的极限f可测.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>
+                Does there exist an enumeration \( \{r_n\}_{n=1}^{\infty} \) of the rationals, such that the complement of
+
+
+                \[
+                \bigcup_{n=1}^{\infty} \left( r_n - \frac{1}{n}, r_n + \frac{1}{n} \right)
+                \]
+                in \( \mathbb{R} \) is non-empty?
+            </p>
+            <h4>Hint:</h4>
+            <p>Find an enumeration where the only rationals outside of a fixed bounded interval take the form \( r_n \), with \( n = m^2 \) for some integer \( m \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                把$[0,1]$以外的有理数(可数个)和Z的可数子集$M=\{n^{2}\big|n\in Z\}$(可数集)形成一一对应. 记这些数为$r_{n^{2}},n\in Z$
+
+                然后把$[0,1]$中的有理数和$Z-M$做一一对应, 记为$r_{n},n\in Z-M$, 这就给出了所有有理数得一个排列, 且$$\cup_{n=1}^{\infty}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n})=\cup_{n\in Z-M}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n})\cup \cup_{n\in M}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n})$$
+                第一个部分的$r_{n}$都在$[0,1]$里, 再根据$\lvert \frac{1}{n}\rvert\leq 1$就给出了
+                $$\subseteq [0-1,1+1]\cup_{n\in M}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n})=[-1,2]\cup_{n=1}^{\infty}(r_{n^{2}}-\frac{1}{n^{2}},r_{n^{2}}+\frac{1}{n^{2}})$$
+
+                因此$$m(\cup_{n=1}^{\infty}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n}))\leq m([-1,2])+\sum_{n=1}^{n}m((r_{n^{2}}-\frac{1}{n^{2}},r_{n^{2}}+\frac{1}{n^{2}}))=3+\sum_{n=1}^{\infty}\frac{2}{n^{2}}< \infty$$ 所以$\cup_{n=1}^{\infty}(r_{n}-\frac{1}{n},r_{n}+\frac{1}{n})$在R中的补集必定非空
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>An alternative definition of measurability is as follows: \( E \) is measurable if for every \( \epsilon > 0 \) there is a closed set \( F \) contained in \( E \) with \( m_*(E - F) < \epsilon \). Show that this definition is equivalent with the one given in the text.</p>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                注意到$E-F=F^{c}-E^{c}$,对任何包含E的集合F都成立.  从而如果E在本题意义下可测, 那么对任何$\epsilon>0$, 存在闭集F使得$$m_{\ast}(F^{c}-E^{c})< \epsilon$$ 而$F^{c}$是包含$E^{c}$的开集, 所以$E^{c}$在课本意义下可测, 又课本意义下的可测对补运算也封闭, 因此E在课本意义下可测
+                另一方面, 如果E在课本意义下可测, 则$E^{c}$在课本意义下可测, 因此对任何$\epsilon>
+                0$, 存在开集U使得$$m_{\ast}(U-E^{c})< \epsilon$$ 因此$$m_{\ast}(E-U^{c})=m_{\ast}(U-E^{c})< \epsilon$$
+                而$U^{c}$就是含于E的闭集, 因此E在本题意义下可测, 因此两种概念等价.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 26</h3>
+            <p>Suppose \( A \subset E \subset B \), where \( A \) and \( B \) are measurable sets of finite measure. Prove that if \( m(A) = m(B) \), then \( E \) is measurable.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $$E=A\cup(E-A)$$
+                $m_{\ast}(E-A)\subseteq m_{\ast}(B-A)=m_{\ast}(B\cap A^{c})=m(B-A)=m(B)-m(A)$(必须明确最后一个等号在$A\subset B$且A,B可测时才能放心使用)
+
+                因此$E-A$是零测集, 因此可测, 所以E是两个可测集的并集, 可测
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 27</h3>
+            <p>Suppose \( E_1 \) and \( E_2 \) are a pair of compact sets in \( \mathbb{R}^d \) with \( E_1 \subset E_2 \), and let \( a = m(E_1) \) and \( b = m(E_2) \). Prove that for any \( c \) with \( a < c < b \), there is a compact set \( E \) with \( E_1 \subset E \subset E_2 \) and \( m(E) = c \).</p>
+            <h4>Hint:</h4>
+            <p>As an example, if \( d = 1 \) and \( E \) is a measurable subset of \([0, 1]\), consider \( m(E \cap [0, t]) \) as a function of \( t \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                注意到$E_{1},E_{2}$是紧集, 因此设它们含于$B(0,M)$,  考虑函数$$f(t)=m((E_{2}-E_{1})\cap\{x\big|\|x\|\leq t\})$$
+                则$$f(M)=m((E_{2}-E_{1})\cap B(0,M))= m(E_{2}-E_{1})=b-a$$
+                且$$\lvert f(t_{1})-f(t_{2})\rvert\leq\lvert m(\{x\big|t_{1}< \|x\|\leq t_{2}\})\rvert=\lvert m(\{x\big|\|x\|\leq t_{2}\})-m(\{x\big|\|x\|\leq t_{1}\})\rvert$$
+
+                根据Exercise 7的结果, 可知$$=(t_{2}^{d}-t_{1}^{d})m(\{x\big|\|x\|\leq1\})$$
+                因此f关于t连续, 用连续函数的介值定理可知存在$t_{0}\in[0,M]$满足$$f(t)=c-a$$
+                i.e $K=(E_{2}-E_{1})\cap \{x\big|\|x\|\leq t_{0}\}$的Lebesgue测度是$c-a$, 考虑$$V=E_{1}\cup K$$
+                注意到$E_{1}\cap K=\emptyset$, 所以$m(E)=c-a+a=c$, 且$E_{1}\subseteq V\subseteq E_{2}$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 28</h3>
+            <p>
+                Let \( E \) be a subset of \( \mathbb{R} \) with \( m_*(E) > 0 \). Prove that for each \( 0 < \alpha < 1 \), there exists an open interval \( I \) so that
+
+
+                \[
+                m_*(E \cap I) \geq \alpha m_*(I).
+                \]
+            </p>
+            <p>Loosely speaking, this estimate shows that \( E \) contains almost a whole interval.</p>
+            <h4>Hint:</h4>
+            <p>Choose an open set \( O \) that contains \( E \), and such that \( m_*(E) \geq \alpha m_*(O) \). Write \( O \) as the countable union of disjoint open intervals, and show that one of these intervals must satisfy the desired property.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                取一组覆盖E的闭区间$\cup_{i=1}^{\infty}I_{i}$满足$$m_{\ast}(E)+\epsilon\geq \sum_{i=1}^{\infty}m(I_{i})$$
+                再取$\frac{\epsilon}{2^{i}}$, 把每个$I_{i}=[a_{i},b_{i}]$扩大成开区间$J_{i}=(a_{i}-\frac{\epsilon}{2^{i+1}},b_{i}+\frac{\epsilon}{2^[i+1]})$, 从而$$m_{\ast}(E)+\epsilon\geq\sum_{i=1}^{\infty}m(I_{i})\geq\sum_{i=1}^{\infty}m(J_{i})-\epsilon$$
+                因此$O=\cup_{i=1}^{\infty}J_{i}$是包含E的开集且$$m_{\ast}(O)\leq \sum_{i=1}^{\infty}m(J_{i})\leq m_{\ast}(E)+2\epsilon$$
+                现在取$\epsilon=(\frac{1}{2\alpha}-\frac{1}{2})m_{\ast}(E)$, 这给出了$$\alpha m_{\ast}(O)\leq m_{\ast}(E)$$
+
+                又O是R中的开集, 所以O能写成可数个互不相交的开集的并集, 记为$\cup_{i=1}^{\infty}I_{i}$, 如果对每个$I_{i}$, 都有$$m_{\ast}(E\cap I_{i})< \alpha m_{\ast}(I_{i})$$
+                这将给出$$m_{\ast}(E)\leq \sum_{i=1}^{\infty}m_{\ast}(E\cap I_{i})< \alpha\sum_{i=1}m_{\ast}(I_{i})$$
+                $$=\alpha\sum_{i=1}^{\infty}m(I_{i})=\alpha m(\cup_{i=1}^{\infty}I_{i})=\alpha m(O)=\alpha m_{\ast}(O)$$
+                矛盾
+
+                因此至少存在一个$I_{i}$使得$$m_{\ast}(E\cap I_{i})\geq\alpha m_{\ast}(I_{i})$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 29</h3>
+            <p>
+                Suppose \( E \) is a measurable subset of \( \mathbb{R} \) with \( m(E) > 0 \). Prove that the difference set of \( E \), which is defined by
+
+
+                \[
+                \{z \in \mathbb{R} : z = x - y \text{ for some } x, y \in E\},
+                \]
+                contains an open interval centered at the origin.
+            </p>
+            <p>If \( E \) contains an interval, then the conclusion is straightforward. In general, one may rely on Exercise 28.</p>
+            <h4>Hint:</h4>
+            <p>Indeed, by Exercise 28, there exists an open interval \( I \) so that \( m(E \cap I) \geq (9/10) m(I) \). If we denote \( E \cap I \) by \( E_0 \), and suppose that the difference set of \( E_0 \) does not contain an open interval around the origin, then for arbitrarily small \( a \) the sets \( E_0 \), and \( E_0 + a \) are disjoint. From the fact that \( (E_0 \cup (E_0 + a)) \subset (I \cup (I + a)) \) we get a contradiction, since the left-hand side has measure \( 2m(E_0) \), while the right-hand side has measure only slightly larger than \( m(I) \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                跟随提示的思路, 假设$E_{0}-E_{0}$不含任何0的开区间. 则对任何$\delta$, 存在$a\in(-\delta,\delta)$使得$a\notin E_{0}-E_{0}$, 否则存在$\delta_{0}$使得对任何$a\in(-\delta_{0},\delta_{0})$, $a\in E_{0}-E_{0}$, 和$E_{0}-E_{0}$不含0的开区间矛盾.
+
+                而$a\notin E_{0}-E_{0}$等价于$E_{0}\cap E_{0}+a=\emptyset$, 因此$$2m(E_{0})=m(E_0)+m(E_{0}+a)=m(E_{0}\cup(E_{0}+a))\leq m(I\cup(I+a))$$
+                设$I=(x,y)$, 我们取$\delta=\frac{y-x}{20}$, 则$$\lvert a\rvert\leq \frac{y-x}{20}\qquad 2m(E_{0})\leq\frac{21}{20}(y-x)$$
+                而左边是$2\frac{9}{10}m(I)=\frac{9}{5}(y-x)$, 矛盾
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 30</h3>
+            <p>
+                If \( E \) and \( F \) are measurable, and \( m(E) > 0 \), \( m(F) > 0 \), prove that
+
+
+                \[
+                E + F = \{x + y : x \in E, x \in F\}
+                \]
+                contains an interval.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                通过令$F=-F$(这不改变可测性和Lebesgue测度), 我们只需证$E-F$包含一个开区间
+
+                我们希望做到的是在E和F密度极大的点找到$E-F$的开区间. i.e 我们取$$E_{0}=m(E\cap I)\geq\frac{9}{10}m(I)\qquad F_{0}=m(F\cap  J)\geq\frac{9}{10}m(J)$$
+
+                不妨设$m(J)\leq m(I)$, 记$I=(a,b),J=(c,d)$, 我们对$F_{0}$做一系列平移, 记$$F_{1}=F_{0}+a-c\qquad F_{2}=F_{0}+a-c+(d-c)\qquad\cdots\qquad F_{k}=F_{0}+a-c+(k-1)(d-c)$$
+                其中k是满足$k(d-c)\geq(b-a)$的最小的整数k(至少是1), 假设$E_{0}\cap F_{i}$都是零测集, 则$E_{0}$和$\cup_{i=1}^{k}F_{i}$的交集也是零测集,  那么根据$F_{i},1\leq i\leq k$也互不相交可得 $$m(E_{0})+\sum_{i=1}^{k}m(F_{k})=m(E_{0}\cup_{i=1}^{k}F_{i})\leq m(I\cup_{i=1}^{k}(J+a-c+(k-1)(d-c)))$$
+                又注意到$J+a-c+(k-1)(d-c)=(a+(k-1)(d-c),a+k(d-c))$, 从而$$\cup_{i=1}^{k}(J+a-c+(k-1)(d-c))\subseteq (a,a+k(d-c))$$
+                因此$$m(I\cup_{i=1}^{k}(J+a-c+(k-1)(d-c)))\subseteq (a,a+k(d-c))=km(J)$$
+                又根据k的定义, $(k-1)m(J)\leq m(I)\leq km(J)$, 因此$$m(E_{0})+\sum_{i=1}^{k}m(F_{k})\leq m(I)+m(J)$$
+                从而$$\frac{9}{5}m(I)\leq \frac{9}{10}m(I)+k\frac{9}{10}m(J)\leq m(I)+m(J)\leq \frac{k+1}{k-1}m(I)$$
+                我们发现, 当k足够大的时候就能导出矛盾, 也就是说存在j使得$E_{0}\cap F_{j}$具有正的测度.
+
+                下面的问题在于如何让k变得足够大, 事实上这可以通过切分区间J来完成. 我们把区间J均匀切分为10个小区间, 记为$J_{i}=(a_{i},a_{i+1}),1\leq i\leq 10,a_{11}=d,a_{0}=c$, 那么$$\sum_{i=1}^{10}m(F\cap J_{i})=m(F
+                \cap\cup_{i=1}^{10}J_{i})=m(F\cap J)-\sum_{i=1}^{9}m(F\cap\{a_{i}\})=m(F\cap J)$$
+                如果每个$m(F\cap J_{i})< \frac{9}{10}m(J_{i})$, 则$$m(F\cap J)< \sum_{i=1}^{10}\frac{9}{10}m(J_{i})=\frac{9}{10}m(J)$$
+                矛盾, 所以存在i使得$m(F\cap J_{i})\geq\frac{9}{10}m(J_{i})$, 此时注意到$10m(J_{i})=m(J)< m(I)$, 因此在前面的讨论中考虑令$J=J_{i}, F_{0}=F\cap J$, 则可得出满足$km(J)\geq m(I)$的k至少是9, 但是$$\frac{9}{5}m(I)>\frac{10}{8}m(I)$$
+                因此矛盾, 所以存在j使得$E_{0}\cap F_{j}$具备正的测度. 因此$E_{0}\cap F_{j}-E_{0}\cap F_{j}$有一个包含0的开区间, 又$F_{j}=F_{0}+a-c+(j-1)(d-c)\subseteq F+a-c+(j-1)(d-c)$, $E_{0}\subseteq E$, 因此$$E-(F+a-c+(j-1)(d-c))\supseteq E_{0}\cap F_{j}-E_{0}\cap F_{j} $$ 从而$E-(F+a-c+(j-1)(d-c))$包含一个含0的开区间, 从而$E-F$包含一个含$-(a-c+(j-1)(d-c))$的开区间, 证毕.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 31</h3>
+            <p>The result in Exercise 29 provides an alternate proof of the non-measurability of the set \( N \) studied in the text. In fact, we may also prove the non-measurability of a set in \( \mathbb{R} \) that is very closely related to the set \( N \).</p>
+            <p>Given two real numbers \( x \) and \( y \), we shall write as before that \( x \sim y \) whenever the difference \( x - y \) is rational. Let \( N^* \) denote a set that consists of one element in each equivalence class of \( \sim \). Prove that \( N^* \) is non-measurable by using the result in Exercise 29.</p>
+            <h4>Hint:</h4>
+            <p>If \( N^* \) is measurable, then so are its translates \( N^*_n = N^* + r_n \), where \( \{r_n\}_{n=1}^{\infty} \) is an enumeration of \( \mathbb{Q} \). How does this imply that \( m(N^*) > 0 \)? Can the difference set of \( N^* \) contain an open interval centered at the origin?</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                注意到每个$\mathcal{N}^{\ast}_{n}$之间都是互不相交的. 否则存在$x,y\in\mathcal{N}^{\ast}$满足$x-y$是有理数, 和定义矛盾. 从而根据$$\cup_{i=1}^{\infty}\mathcal{N}_{n}^{\ast}=\infty\qquad \sum_{i=1}^{\infty}m(\mathcal{N}^{\ast})=\sum_{i=1}^{\infty}m(\mathcal{N}_{n}^{\ast})=\infty$$
+                所以$m(\mathcal{N}^{\ast})>0$, 因此$\mathcal{N}^{\ast}-\mathcal{N}^{\ast}$包含含0的开区间, 而一个开区间中必有非0有理数, 因此存在$x,y\in\mathcal{N}^{\ast}$满足$x-y$是非0有理数, 和$\mathcal{N}^{\ast}$的定义矛盾. 因此$\mathcal{N}^{\ast}$不可测
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 32</h3>
+            <p>Let \( N \) denote the non-measurable subset of \( I = [0, 1] \) constructed at the end of Section 3.</p>
+            <ol type="a">
+                <li>
+                    <p>Prove that if \( E \) is a measurable subset of \( N \), then \( m(E) = 0 \).</p>
+                </li>
+                <li>
+                    <p>If \( G \) is a subset of \( \mathbb{R} \) with \( m_*(G) > 0 \), prove that a subset of \( G \) is non-measurable.</p>
+                    <h4>Hint:</h4>
+                    <p>For (a) use the translates of \( E \) by the rationals.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                如果$m(E)>0$, 则$E-E$包含0的一个邻域, 从而$\mathcal{N}-\mathcal{N}$包含0的一个邻域, 但$\mathcal{N}-\mathcal{N}$中不可能有除0以外的有理数, 矛盾, 因此$m(E)=0$
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                注意到$$m_{\ast}(G)\leq\sum_{i=1}^{\infty}m_{\ast}(G\cap\{x\big|\lvert x\rvert\leq i\})$$
+                所以至少存在一个$i$满足$m_{\ast}(G\cap\{x\big|\lvert x\rvert\leq i\})>0$, 且$G\cap\{x\big|\lvert x\rvert\leq i\}$的子集也是G的子集, 只需找$G\cap\{x\big|\lvert x\rvert\leq i\}$的不可测子集, 因此不妨设$G$是个有界集. G中元素的绝对值$\leq M$
+
+
+                继续考虑等价关系: $x\sim y$当且仅当$x-y\in Q$, 那么a对应的等价类可以记为$\mathcal{E}_{a}$, 且G能表示成互不相交的等价类的并:$$G=\cup_{a\in G}\mathcal{E}_{a}$$
+                在每个$\mathcal{E}_{a}$中取一个元素$x$, 收集起来记为$X$, 则对任何$x,y\in X$, $x-y$要么是0要么是无理数.  且考虑全体有理数集$r_{n}$, 则$$\cup_{n=1}^{\infty}X+r_{n}\supseteq G$$
+                如果$X$可测那么$X+r_{n}$可测, 因此$$\sum_{i=1}^{\infty}m(X)=\sum_{i=1}^{\infty}m(X+r_{n})\geq m_{\ast}(G)>0$$
+                因此$m(X)>0$, 另一方面我们取$[-2M,2M]$中的有理数,记为$q_{n}$ 那么根据$G\subseteq [-M,M]$可知$$\cup_{n=1}^{\infty}X+q_{n}\subseteq [-3M,3M]$$
+                因此根据$X+q_{n}$彼此互不相交可得$$\sum_{i=1}^{\infty}m(X)=\sum_{i=1}^{\infty}m(X+q_{n})\leq 6M$$
+                从而$m(X)=0$, 矛盾. 因此X不可测
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 33</h3>
+            <p>Let \( N \) denote the non-measurable set constructed in the text. Recall from the exercise above that measurable subsets of \( N \) have measure zero.</p>
+            <p>
+                Show that the set \( N^c = I - N \) satisfies \( m_*(N^c) = 1 \), and conclude that if \( E_1 = N \) and \( E_2 = N^c \), then
+
+
+                \[
+                m_*(E_1) + m_*(E_2) \neq m_*(E_1 \cup E_2),
+                \]
+                although \( E_1 \) and \( E_2 \) are disjoint.
+            </p>
+            <h4>Hint:</h4>
+            <p>To prove that \( m_*(N^c) = 1 \), argue by contradiction and pick a measurable set \( U \) such that \( U \subset I \), \( N^c \subset U \) and \( m_*(U) < 1 - \epsilon \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                (注意这里的$\mathcal{N}^{c}$是$\mathcal{N}$在[0,1]中的补集, 不要搞错)
+
+                假设$m_{\ast}(\mathcal{N}^{c})< 1$, 那么根据定义存在包含$\mathcal{N}^{c}$的开集U满足$$m_{\ast}(U\cap I-\mathcal{N}^{c})\leq m_{\ast}(U-\mathcal{N}^{c})< \delta$$
+                因此根据$U\cap I$也包含$\mathcal{N}^{c}$和外测度的次可加性可得$$m_{\ast}(U\cap I)\leq m_{\ast}(\mathcal{N}^{c})+m_{\ast}(U\cap I-\mathcal{N}^{c})< m_{\ast}(\mathcal{N}^{c})+\delta$$
+                又$m_{\ast}(\mathcal{N}^{c})< 1$, 所以存在$\epsilon$使得$m_{\ast}(\mathcal{N}^{c})< 1-2\epsilon$, 取$\delta=\epsilon$, 可得$$m_{\ast}(U\cap I)< 1-\epsilon$$
+                因此$I-U\cap I\subseteq \mathcal{N}$, 且测度$\geq 1-(1-\epsilon)=\epsilon$,而$I-U\cap I$可测, 这和Exercise 32(a)矛盾. 因此$m_{\ast}(\mathcal{N}^{c})\geq1$. 又$\mathcal{N}^{c}\subseteq [0,1]$, 所以$m_{\ast}(\mathcal{N}^{c})=1$. 我们又知道$m_{\ast}(\mathcal{N})>0$, 因此$$m_*(\mathcal{N}) + m_*(\mathcal{N}^{c})>  m_*(I)$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 34</h3>
+            <p>Let \( C_1 \) and \( C_2 \) be any two Cantor sets (constructed in Exercise 3). Show that there exists a function \( F : [0, 1] \to [0, 1] \) with the following properties:</p>
+            <ol type="i">
+                <li>\( F \) is continuous and bijective,</li>
+                <li>\( F \) is monotonically increasing,</li>
+                <li>\( F \) maps \( C_1 \) surjectively onto \( C_2 \).</li>
+            </ol>
+            <h4>Hint:</h4>
+            <p>Copy the construction of the standard Cantor-Lebesgue function.</p>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                我们参考Exercise 4的过程. 两个类Cantor集$\mathcal{C}_{1},\mathcal{C}_{2}$, 我们设第k步被去掉的区间为$$I_{k}^{1},..I_{k}^{2^{k-1}}\qquad J_{k}^{1},..J_{k}^{2^{k-1}}$$
+                长度分别是$l_{k}$和$r_{k}$. 然后我们定义$\cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}I_{k}^{j}\rightarrow \cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}J_{k}^{j}$的映射$$F(x)=c_{k}^{j}+(d_{k}^{j}-c_{k}^{j})\frac{x-a_{k}^{j}}{b_{k}^{j}-a_{k}^{j}}\qquad\forall x\in I_{k}^{j}=(a_{k}^{j},b_{k}^{j})$$
+                即F把每个小区间$I_{k}^{j}$线性的映射为$J_{k}^{j}$. 显然F在$\cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}I_{k}^{j}$上是单调的:如果$x,y\in I_{k}^{j}$, 则由F在$I_{k}^{j}$上单调递增可得$x< y$时有$F(x)< F(y)$. 如果$x,y$不在同一个区间中, 设$x\in I_{m}^{i},y\in I_{n}^{j}$, 那么根据这些区间互不相交可知一个在前一个在后. 设$x< y$, 则$I_{m}^{i}\leq I_{n}^{j}$, 因此$J_{m}^{i}\leq J_{n}^{j}$(这里区间的小于意味着前后顺序), 因此根据$F(x)\in J_{m}^{i},F(y)\in J_{n}^{j}$可得$F(x)< F(y)$
+
+                根据Exercise 4我们知道$\mathcal{C}_{1}^{c},\mathcal{C}_{2}^{c}$(这里的补集都是相对[0,1]的补集, 不是相对R的, 不要搞错)都是稠密集, 所以对任何$x\in\mathcal{C}_{1}$, 都存在一组$x_{n}\in\mathcal{C}_{1}^{c}$满足$x_{n}\rightarrow x$, 不妨设$F(x_{n})$收敛(否则抽收敛子列) 因此我们补充定义$$F(x)=\lim_{n \to \infty}F(x_{n})$$
+
+                则根据保号性, $F(x)$是$[0,1]$上的单调函数(现在还不一定严格单调, 但我们马上就会说明严格单调).  且F的值域在[0,1]中稠密(因为包含了$\mathcal{C}_{2}$). 假设	F有间断点, 设为z, 则令$a=\lim_{x\in z^{-}}F(x),b=\lim_{x\in z^{+}}F(x)$, 则$(a,b)\notin F([0,1])$, 这和F的值域在[0,1]稠密矛盾, 因此这样定义的F是连续的, 从而F是$[0,1]\rightarrow[0,1]$的单增函数. 又根据值域的稠密性可知必有$F(0)=0,F(1)=1$. 再由F连续, 所以根据介值定理, F是满射.
+
+                下面说明F是单射. 假如$x\neq y$,不妨设$x< y$, 当$x,y\in\mathcal{C}_{1}$时, 则根据$\mathcal{C}_{1}$的性质, x,y 之间必定存在一个被去掉的区间, 记为$I_{k}^{j}$, 从而$$F(x)\leq F(a_{k}^{j})< F(b_{k}^{j})\leq F(y)$$
+
+                如果$x\in\mathcal{C}_{1}$, $y\notin\mathcal{C}_{1}$时. 设$y\in I_{k}^{j}$, 则根据$x\notin I_{k}^{j}$可得$x\leq a_{k}^{j}< y$, 因此$$F(x)\leq F(a_{k}^{j})< F(y)$$
+
+                如果$x\notin\mathcal{C}_{1}$, $y\in\mathcal{C}_{1}$时. 设$x\in I_{k}^{j}$, 则根据$x\notin I_{k}^{j}$可得$x< b_{k}^{j}\leq y$, 因此$$F(x)< F(b_{k}^{j})\leq F(y)$$
+
+                如果$x,y\notin\mathcal{C}_{1}$, 前面已经说明F在$\cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}I_{k}^{j}$严格单调, 所以$F(x)< F(y)$. 综上, F是单射.
+
+                根据F单射和$F(\mathcal{C}_{1})=F(\cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}I_{k}^{j})=\cup_{k=1}^{\infty}\cup_{j=1}^{2^{k-1}}J_{k}^{j}=\mathcal{C}_{2}^{c}$
+                , 可得$$F(\mathcal{C}_{1})=\mathcal{C}_{2}$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 35</h3>
+            <p>Give an example of a measurable function \( f \) and a continuous function \( \Phi \) so that \( f \circ \Phi \) is non-measurable.</p>
+            <h4>Hint:</h4>
+            <p>Let \( \Phi : C_1 \to C_2 \) as in Exercise 34, with \( m(C_1) > 0 \) and \( m(C_2) = 0 \). Let \( N \subset C_1 \) be non-measurable, and take \( f = \chi_{\Phi(N)} \).</p>
+            <p>Use the construction in the hint to show that there exists a Lebesgue measurable set that is not a Borel set.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                视为$[0,1]$上的连续函数, 根据$\Phi$是[0,1]上的双射可得$$(f\circ\Phi)^{-1}((0.5,\infty))=\Phi^{-1}(\Phi(\mathcal{N}))=\mathcal{N}$$
+                因此$f\circ\Phi$作为$[0,1]\rightarrow R$的函数, 并不是可测的.
+
+
+
+                注意到$\Phi$是连续双射函数, $\Phi(\mathcal{N})$是零测集, 因此是Lebesgue可测的. 假如$\Phi(\mathcal{N})$也是Borel可测的, 我们证明连续双射把Borel集映射回Borel集(即Borel集的原像是Borel集)
+
+                首先我们注意到对开区间$I$, $\Phi^{-1}(I)$一定是R中的开集, 又对任何集合$A_{1},..,A_{n},..$, 根据$\Phi$是双射可得$$\cup_{i=1}^{\infty}\Phi^{-1}(A_{i})=\Phi^{-1}(\cup_{i=1}^{\infty}A_{i})\qquad \cap_{i=1}^{\infty}\Phi^{-1}(A_{i})=\Phi^{-1}(\cap_{i=1}^{\infty}A_{i})\qquad\Phi^{-1}(A^{c})=(\Phi^{-1}(A))^{c}$$
+                因此对一个$\sigma-algebra$ $\mathcal{X}$来说, $$\mathcal{Y}=\{X\in\mathcal{X}\bigg|\Phi^{-1}(X)\text{是Borel集}\}$$
+                也是一个$\sigma-algebra$, 且$\mathcal{Y}$包含了所有开区间, 因此根据Borel $\sigma=algebra$的定义, $\mathcal{Y}$包含了所有Borel可测集. 假设$\Phi(\mathcal{N})$是Borel可测的, 那么$\Phi(\mathcal{N})\in\mathcal{Y}$, 因此$\mathcal{N}=\Phi^{-1}(\Phi(\mathcal{N}))$是Borel集, 而Borel集必定Lebesgue可测, 这和$\mathcal{N}$是不可测集矛盾.
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 36</h3>
+            <p>This exercise provides an example of a measurable function \( f \) on \([0, 1]\) such that every function \( g \) equivalent to \( f \) (in the sense that \( f \) and \( g \) differ only on a set of measure zero) is discontinuous at every point.</p>
+            <ol type="a">
+                <li>
+                    <p>Construct a measurable set \( E \subset [0, 1] \) such that for any non-empty open sub-interval \( I \) in \([0, 1]\), both sets \( E \cap I \) and \( E^c \cap I \) have positive measure.</p>
+                </li>
+                <li>
+                    <p>Show that \( f = \chi_E \) has the property that whenever \( g(x) = f(x) \) a.e \( x \), then \( g \) must be discontinuous at every point in \([0, 1]\).</p>
+                    <h4>Hint:</h4>
+                    <p>For the first part, consider a Cantor-like set of positive measure, and add in each of the intervals that are omitted in the first step of its construction, another Cantor-like set. Continue this procedure indefinitely.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                第一步$[0,1]$上测度$=\frac{1}{3}$的类Cantor集,记为$E_{1}$.
+
+                第二步:上一步给出了可数个开区间, 在这可数个开区间I上继续构造总测度$=\frac{1}{2}m(I)$的类Cantor集, 和$E_{1}$的并记为$E_{2}$
+
+                第k步: 上一步给出了可数个开区间, 在这可数个开区间I上继续构造总测度$=\frac{m(I)}{2^{k}}$的类Cantor集(总共去掉了可数个开区间, 因为可数个可数集的并集还是可数集), 和$E_{k-1}$的并记为$E_{k}$
+                不断继续这个过程, 令$E=\cup_{k=1}^{\infty}E_{k}=\lim_{k \to \infty}E_{k}$
+
+                对任何开区间$I$, 我们知道$E\cap I\supseteq E_{k}\cap I$对任何k成立. 又注意到第k步被去掉的区间的长度最大为$l_{1}^{k}$, 因此$E_{k}^{c}$中不含长度$\geq l_{1}^{k}$的区间. 又$E_{k}^{c}$是可数个长度$<l_{1}^{k}$的开区间的并集, 所以$k$足够大时, $E_{k}^{c}\cap I$至少错过了I中的两个点, 记为x,y. 则$x,y\in E_{k}\cap I$. 那么$(x,y)$中必定有被去掉的开区间J, 这个开区间中会形成一个测度$>
+                    0$的类Cantor集C, 从而$$C\subseteq I\cap E_{k}\subseteq E\cap I$$
+                    这给出了$m(E\cap I)\geq m(C)>0$
+
+                    为了说明$m(E^{c}\cap I)>0$, 我们只需说明$m(E\cap I)< m(I)$, 顺着上文的思路, 这只需说明对于区间$J\subseteq(x,y)$, 在经过E的构造之后去掉的集合是一个测度$>
+                    0$的集合. 假设J在第m步被填充类Cantor集. 则$$m(E\cap J)=\frac{1}{2^{m}}m(J)+\frac{1}{2^{m+1}}(1-\frac{1}{2^{m}}m(J)) +\cdots$$
+                    $$< \frac{1}{2^{m}}m(J)+\frac{1}{2^{m+1}}m(J)+\cdots =\frac{1}{2^{m-1}}m(J)< m(J)$$
+                    因此$m(E\cap J)< m(J)$, 又J是I的子区间, 所以$$m(E\cap I)< m(I)\qquad m(E^{c}\cap I)>0$$
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                任取$x\in[0,1]$, 则根据$g=\mathcal{X}_{E}$ a.e.成立和$m(E\cap I)>0$可得存在一组$x_{n}\in E$且$x_{n}\rightarrow x$, 则$\lim_{n \to \infty}g(x_{n})=1$
+
+                另一方面, 根据$m(E^{c}\cap I)>0$可知存在一组$y_{n}\in E^{c}$且$y_{n}\rightarrow x$, 则$\lim_{n \to \infty}g(y_{n})=0$.
+
+                (当然在处我们取得序列是见降到0, 在1处取的序列是渐升到1)
+
+                因此g在x处不连续, 因此g在[0,1]上处处不连续.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 37</h3>
+            <p>Suppose \( \Gamma \) is a curve \( y = f(x) \) in \( \mathbb{R}^2 \), where \( f \) is continuous. Show that \( m(\Gamma) = 0 \).</p>
+            <h4>Hint:</h4>
+            <p>Cover \( \Gamma \) by rectangles, using the uniform continuity of \( f \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                记$$\Gamma_{i}=\{(x,f(x))\bigg|x\in[i,i+1]\}$$
+                从而只需证$m(\Gamma_{i})$是$R^{2}$中的零测集.
+
+                因为$[i,i+1]$是紧的, 所以f在$[i,i+1]$上一致连续, 对任何$\epsilon>0$, 存在$\delta$使得$\lvert x-y\rvert< \delta$时, $$\lvert f(x)-f(y)\rvert< \epsilon$$
+                因此我们取N使得$\frac{1}{N}< \delta$, 把$[i,i+1]$均分成N个小区间$I_{k}=[i+\frac{k}{N},i+\frac{k+1}{N}]$, 则对任何$y\in I_{k}$, $\lvert f(y)-f(i+\frac{k}{N})\rvert< \epsilon$, 所以$$\{(x,f(x))\bigg|x\in I_{k}\}\subseteq I_{k}\times [f(i+\frac{k}{N})-\epsilon,f(i+\frac{k}{N})+\epsilon]$$
+                因此$$m(\Gamma_{i})\leq\sum_{i=1}^{N}m(I_{k}\times [f(i+\frac{k}{N})-\epsilon,f(i+\frac{k}{N})+\epsilon])=\sum_{i=1}^{N}\frac{2\epsilon}{N}=2\epsilon$$
+                所以根据$\epsilon$的任意性,  $m(\Gamma_{i})=0$, 因此$$m(\Gamma)=m(\cup_{i\in Z}^{\infty}\Gamma_{i})\leq\sum_{i\in Z}m(\Gamma_{i})=0$$
+            </p>
+
+
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 38</h3>
+            <p>Prove that \( (a + b)^{\gamma} \geq a^{\gamma} + b^{\gamma} \) whenever \( \gamma \geq 1 \) and \( a, b \geq 0 \). Also, show that the reverse inequality holds when \( 0 \leq \gamma \leq 1 \).</p>
+            <h4>Hint:</h4>
+            <p>Integrate the inequality between \( (a + t)^{\gamma-1} \) and \( t^{\gamma-1} \) from 0 to \( b \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $$(a+t)^{\gamma-1}\begin{cases}
+                \leq t^{\gamma-1}&0\leq\gamma\leq 1\\
+                \geq t^{\gamma-1}&\gamma\geq 1
+                \end{cases}$$
+                两边在0到b上积分可得$$(a+b)^{\gamma}-a^{\gamma}\begin{cases}
+                \leq b^{\gamma}&0\leq \gamma\leq 1\\
+                \geq b^{\gamma}&\gamma\geq 1
+                \end{cases}$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 39</h3>
+            <p>
+                Establish the inequality
+
+
+                \[
+                \frac{x_1 + \cdots + x_d}{d} \geq (x_1 \cdots x_d)^{1/d} \quad \text{for all } x_j \geq 0, j = 1, \ldots, d
+                \]
+                by using backward induction as follows:
+            </p>
+            <ol type="a">
+                <li>
+                    <p>The inequality is true whenever \( d \) is a power of 2 (\( d = 2^k \), \( k \geq 1 \)).</p>
+                </li>
+                <li>
+                    <p>If (10) holds for some integer \( d \geq 2 \), then it must hold for \( d - 1 \), that is, one has \( (y_1 + \cdots + y_{d-1})/(d-1) \geq (y_1 \cdots y_{d-1})^{1/(d-1)} \) for all \( y_j \geq 0 \), with \( j = 1, \ldots, d-1 \).</p>
+                </li>
+            </ol>
+            <h4>Hint:</h4>
+            <p>For (a), if \( k \geq 2 \), write \( (x_1 + \cdots + x_{2^k})/2^k \) as \( (A + B)/2 \), where \( A = (x_1 + \cdots + x_{2^{k-1}})/2^{k-1} \), and apply the inequality when \( d = 2 \). For (b), apply the inequality to \( x_1 = y_1, \ldots, x_{d-1} = y_{d-1} \) and \( x_d = (y_1 + \cdots + y_{d-1})/(d-1) \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                显然$d=2$时成立, 假设不等式对$d=2,4,...,2^{k-1}$成立, 那么$$\frac{x_{1}+\cdots+x_{2^{k-1}}+x_{2^{k-1}+1}+\cdots+x_{2^{k}}}{2}$$
+                记$A=A = (x_1 + \cdots + x_{2^{k-1}})/2^{k-1}$, 用$d=2$的情形$$\frac{x_{1}+\cdots+x_{2^{k-1}}+x_{2^{k-1}+1}+\cdots+x_{2^{k}}}{2}\geq \sqrt{AB}=(\frac{x_{1}+\cdots+x_{2^{k-1}}}{2^{k-1}})^{\frac{1}{2}}(\frac{x_{2^{k-1}}+\cdots+x_{2^{k}}}{2^{k-1}})^{\frac{1}{2}}$$
+                等号右边用$d=2^{k-1}$的情形可得出$$\geq (x_{1}\cdots x_{2^{k}})^{\frac{1}{2^{k}}}=(x_{1}\cdots x_{d})^{\frac{1}{d}}$$
+                根据归纳原理, 不等式对$d=2^{k}$成立
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                按照提示, 根据d成立的情形可得$$\frac{y_{1}+\cdots+y_{d-1}}{d}=\frac{x_1 + \cdots + x_d}{d} \geq(y_{1}\cdots y_{d-1})^{\frac{1}{d}}(\frac{y_{1}+\cdots+y_{d-1}}{d})^{\frac{1}{d}}$$
+                因此$$(\frac{y_{1}+\cdots+y_{d-1}}{d})^{\frac{d-1}{d}}\geq (y_{1}\cdots y_{d-1})^{\frac{1}{d}}$$
+                两边取d次方就能得出结论.
+            </p>
+
+        </div>
 
     </div>
 
@@ -1096,6 +1444,5 @@
 
 
 </body>
-
 
 </html>
