@@ -1,0 +1,1056 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第二章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第二章
+        </h2>
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>
+                Given a collection of sets \( F_1, F_2, \ldots, F_n \), construct another collection \( F_1^*, F_2^*, \ldots, F_N^* \), with \( N = 2^n - 1 \), so that \( \bigcup_{k=1}^n F_k = \bigcup_{j=1}^N F_j^* \); the collection \( \{F_j^*\} \) is disjoint; also \( F_k = \bigcup_{F_j^* \subset F_k} F_j^* \), for every \( k \).
+
+
+                <h4>Hint:</h4> Consider the \( 2^n \) sets \( F_1^0 \cap F_2^0 \cap \cdots \cap F_n^0 \) where each \( F_k^0 \) is either \( F_k \) or \( F_k^c \).
+
+            </p>
+        </div>
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                因为每个正整数都有唯一的二进制表示, 所以对任何$j\leq N$, 考虑j的n位二进制表示$B_{j}$(不够n位时在前面补0). 把$B_{j}$视为一个长为n的行向量, $B_{j}
+                ^{1}$是最后一个数,...., $B_{j}^{n}$是第一个数,定义$$F_{j}^{\ast}=F_{1}^{B_{j}^{1}}\cap\cdots\cap F_{n}^{B_{j}^{n}}\qquad F_{i}^{B_{j}^{i}}=\begin{cases}
+                F_{i}&B_{j}^{i}=1\\
+                F_{i}^{c}&B_{j}^{i}=0
+                \end{cases}$$
+                如果$F_{i}^{\ast}\cap F_{j}^{\ast}\neq\emptyset$, 那么$B_{j}^{k}=B_{i}^{k},1\leq k\leq n$, 从而$$j=2^{0}B_{j}^{1}+\cdots+2^{n-1}B_{j}^{n}=2^{0}B_{i}^{1}+\cdots+2^{n-1}B_{i}^{n}=i$$
+                因此$F_{j}^{\ast}$互不相交.
+
+                另一方面$F_{j}^{\ast}\subseteq F_{k}$当且仅当$B_{j}^{k}=1$, 因此$$\cup_{F_{j}^{\ast}\subseteq F_{k}}F_{j}^{\ast}=\cup_{B_{j}^{k}=1}F_{j}^{\ast}=F_{k}^{1}=F_{k}$$
+
+                从而$$\cup_{k=1}^{n}F_{k}=\cup_{k=1}^{n}\cup_{B_{j}^{k}=1}F_{j}^{\ast}$$
+                又对每个j, $B_{j}^{i},1\leq i\leq n$至少一个为1(否则j=0,和j为正数矛盾), 因此$$\cup_{k=1}^{n}\cup_{B_{j}^{k}=1}F_{j}^{\ast}=\cup_{j=1}^{2^{n}-1}F_{j}^{\ast}$$从而$$\bigcup_{k=1}^n F_k = \bigcup_{j=1}^N F_j^*$$
+            </p>
+        </div>
+
+
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>
+                In analogy to Proposition 2.5, prove that if \( f \) is integrable on \( \mathbb{R}^d \) and \( \delta > 0 \), then \( f(\delta x) \) converges to \( f(x) \) in the \( L^1 \)-norm as \( \delta \to 1 \).
+
+            </p>
+        </div>
+
+
+        <div class="Proof-box">
+
+            <p>
+                先证明f是紧支集上的连续函数时结论成立. 假设$suppf\subseteq B(0,M)$, 那么$$suppf(\delta x)\subseteq B(0,\frac{M}{\delta})\qquad\lvert \delta x-x\rvert\leq \lvert \delta-1\rvert M$$
+
+                再根据紧集上的连续函数一致连续可得对任何$\epsilon>0$, 存在$\eta$使得当$\lvert x-y\rvert< \eta$时, $$\lvert f(x)-f(y)\rvert< \epsilon/m(B(0,M))$$
+
+                通过缩小$\eta$, 不妨设$\eta< M$,
+                因此对任何$\delta\in(1-\frac{\eta}{M},1+\frac{\eta}{M})$,有$$\lvert f(\delta x)-f(x)\rvert\leq \frac{\epsilon}{B(0,M)}\qquad\lvert \eta\rvert< 2$$
+                这给出了$$\int_{R^{d}}\lvert f(\delta x)-f(x)\rvert\,dx< \frac{\epsilon}{B(0,M)}\int_{suppf(\delta x)\cup suppf}\,dx\leq \frac{\epsilon}{B(0,M)}\int_{B(0,(\delta+1)M)}\,dx=\epsilon(\delta+1)^{d}< 2^{d}\epsilon$$
+                因此$$\lim_{\delta\rightarrow1}\|f(\delta x)-f(x)\|_{L^{1}(R^{d})}=0$$
+                对所有紧支集上的连续函数成立, 然后考虑一般情况: 对$f\in L^{1}(R^{d})$, 取紧支集上的连续函数g满足$$\|g-f\|_{L^{1}(R^{d})}< \epsilon$$
+                从而$$\|f(\delta x)-f(x)\|_{L^{1}(R^{d})}\leq \|f(\delta x)-g(\delta x)\|_{L^{1}(R^{d})}+\|g(\delta x)-g(x)\|_{L^{1}(R^{d})}+\|f-g\|_{L^{1}(R^{d})}$$
+                右边第一个积分用课本第二章的(5), 可知$$\leq \frac{1}{\delta^{d}}\|f-g\|_{L^{1}(R^{d})}+\|g(\delta x)-g(x)\|_{L^{1}(R^{d})}+\|f-g\|_{L^{1}(R^{d})}$$
+                根据紧支集上连续连续函数的情形, 存在$\delta_{0}$(不妨设$< \frac{1}{2}$) 满足对任何$\lvert \delta-1\rvert< \delta_{0}$都有$$\|g(\delta x)-g(x)\|_{L^{1}(R^{d})}< \epsilon$$, 那么$$\|f(\delta x)-f(x)\|_{L^{1}(R^{d})}\leq 2^{d}\epsilon+2\epsilon$$
+                因此$$\lim_{\delta\rightarrow1}\|f(\delta x)-f(x)\|_{L^{1}(R^{d})}=0$$
+            </p>
+
+
+
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>
+
+                Suppose \( f \) is integrable on \( (-\pi, \pi] \) and extended to \( \mathbb{R} \) by making it periodic of period \( 2\pi \). Show that
+
+
+                \[
+                \int_{-\pi}^{\pi} f(x) \, dx = \int_I f(x) \, dx,
+                \]
+                where \( I \) is any interval in \( \mathbb{R} \) of length \( 2\pi \).
+
+                [Hint: \( I \) is contained in two consecutive intervals of the form \( (k\pi, (k + 2)\pi) \).]
+            </p>
+
+        </div>
+
+        <div class="Proof-box">
+
+            <p>
+                设$I=(a,b)$, 设k满足$a\leq 2 k\pi\leq b$(这样的k必定存在, 因为可取$k=\frac{b}{2\pi}$的整数部分), 那么根据Lebesgue积分对积分区域的可加性可得$$\int_{I}f\,dx=\int_{a}^{2k\pi}f(x)\,dx+\int_{2k\pi}^{b}f(x)\,dx$$
+                然后用平移不变性得出$$=\int_{a+2\pi}^{2k\pi+2\pi}f(x-2\pi)\,dx+\int_{2k\pi}^{b}f(x)\,dx$$
+                而$a+2\pi=b$, $f(x-2\pi)=f(x)$, 所以$$\int_{I}f(x)\,dx=\int_{b}^{2k\pi+2\pi}f(x)\,dx+\int_{2k\pi}^{b}f(x)\,dx=\int_{2k\pi}^{2k\pi+2\pi}f(x)\,dx=\int_{0}^{2\pi}f(x+2k\pi)\,dx$$
+                用周期性可以给出$$\int_{I}f(x)\,dx=\int_{0}^{2\pi}f(x)\,dx=\int_{0}^{\pi}f\,dx+\int_{\pi}^{2\pi}f(x)\,dx$$
+                $$=\int_{0}^{\pi}f\,dx+\int_{-\pi}^{0}f(x+2\pi)\,dx=\int_{0}^{\pi}f\,dx+\int_{-\pi}^{0}f(x)\,dx=\int_{-\pi}^{\pi}f(x)\,dx$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>
+                Suppose \( f \) is integrable on \( [0, b] \), and
+
+
+                \[
+                g(x) = \int_x^b \frac{f(t)}{t} \, dt \quad \text{for } 0 < x \leq b.
+                \]
+                Prove that \( g \) is integrable on \( [0, b] \) and
+
+
+                \[
+                \int_0^b g(x) \, dx = \int_0^b f(t) \, dt.
+                \]
+            </p>
+
+        </div>
+
+        <div class="Proof-box">
+
+            <p>
+                首先我们发现g是一个可测函数(因为连续), 非负可测函数可以无条件交换积分次序, 所以$$\int_{0}^{b}\lvert g(x)\rvert\,dx\leq\int_{0}^{b}\int_{x}^{b}\lvert f(t)\rvert\frac{1}{t}\,dt\,dx$$
+                Tonelli定理给出了$$=\int_{0}^{b}\frac{\lvert f(t)\rvert}{t}\int_{0}^{t}\,dx\,dt=\int_{0}^{b}\lvert f(t)\rvert\,dt< \infty$$ 因此$g$是$[0,b]$上是可积函数, 且$\frac{f(t)}{t}\mathcal{X}_{0\leq x\leq t}$是$[0,b]\times [0,b]$上的可积函数, 从而可以用Fubini定理$$\int_{0}^{b}g(x)\,dx=\int_{0}^{b}\int_{x}^{b}\frac{f(t)}{t}\,dt\,dx =\int_{0}^{b}f(t)\frac{1}{t}\int_{0}^{t}\,dx\,dt =\int_{0}^{b}f(t)\,dt$$
+
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>
+                Suppose \( F \) is a closed set in \( \mathbb{R} \), whose complement has finite measure, and let \( \delta(x) \) denote the distance from \( x \) to \( F \), that is,
+
+
+                \[
+                \delta(x) = d(x, F) = \inf\{|x - y| : y \in F\}.
+                \]
+                Consider
+
+
+                \[
+                I(x) = \int_{\mathbb{R}} \frac{\delta(y)}{|x - y|^2} \, dy.
+                \]
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Prove that \( \delta \) is continuous, by showing that it satisfies the Lipschitz condition
+
+
+                        \[
+                        |\delta(x) - \delta(y)| \leq |x - y|.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p> Show that \( I(x) = \infty \) for each \( x \notin F \).</p>
+                </li>
+                <li>
+                    <p>
+                        Show that \( I(x) < \infty \) for a.e. \( x \in F \). This may be surprising in view of the fact that the Lipschitz condition cancels only one power of \( |x - y| \) in the integrand of \( I \).
+                    </p>
+                </li>
+
+            </ol>
+
+            <p>[Hint: For the last part, investigate \( \int_F I(x) \, dx \).]</p>
+
+
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                不妨设$\delta(x)\geq \delta(y)$,  对任何$\epsilon>0$, 取$u,v\in F$使得$$d(x,F)< \lvert x-u\rvert+\epsilon\qquad d(y,F)< \lvert y-v\rvert+\epsilon$$
+                那么$$\lvert \delta(x)-\delta(y)\rvert=\delta(x)-\delta(y)\leq \lvert x-u\rvert+\epsilon-\delta(y)$$
+                又$\delta(y)\leq \lvert y-u\rvert$, 所以$$\lvert \delta(x)-\delta(y)\rvert\leq \lvert x-u\rvert+\epsilon-\lvert y-u\rvert\leq \lvert x-y\rvert+\epsilon$$
+                根据$\epsilon$的任意性可得$$\lvert \delta(x)-\delta(y)\rvert\leq\lvert x-y\rvert$$
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                注意到$F^{c}$是个开集, 所以对任何$x\in F^{c}$, 存在$r_{0}$使得$B(x,r)\in F^{c}$, 对任何$r< r_{0}$成立. 从而$$I(x)\geq \int_{x-r}^{x+r}\frac{\delta(y)}{\lvert x-y\rvert^{2}}\,dy$$
+                我们知道$B(x,\frac{r}{2})$中的点和F的距离至少为$\frac{r}{2}$, 因此$\delta(y)$在$B(x,\frac{r}{2})$中$\geq \frac{r}{2}$, 因此$$I(x)\geq \int_{x-\frac{r}{2}}^{x+\frac{r}{2}}\frac{r}{2}\frac{1}{\lvert x-y\rvert^{2}}\,dy=\int_{-\frac{r}{2}}^{\frac{r}{2}}\frac{r}{2}\frac{1}{\lvert t\rvert^{2}}\,dt=\infty$$
+            </p>
+
+            <h4>(c)</h4>
+            <p>
+                非负可测函数必能交换积分次序, 因此$$\int_{F}I(x)\,dx=\int_{F}\int_{R}\frac{\delta(y)}{\lvert x-y\rvert^{2}}\,dydx=\int_{R}\delta(y)\int_{F}\frac{1}{\lvert x-y\rvert^{2}}\,dxdy$$
+                我们知道当$y\in F$时, $\delta(y)=0$, 所以上述积分$$=\int_{F^{c}}\delta(y)\int_{F}\frac{1}{\lvert x-y\rvert^{2}}\,dxdy$$
+                对任何$y\in F^{c}$, 我们注意到$x\in F$时, 必有$\delta(y)\leq \lvert y-x\rvert$, 所以$$F\subseteq \{x\big|\lvert x-y\rvert\geq \delta(y)\}$$ 因此$$\int_{F}I(x)\,dx\leq \int_{F^{c}}\delta(y)\int_{\lvert x-y\rvert\geq \delta(y)}\frac{1}{\lvert x-y\rvert^{2}}\,dxdy$$
+                用平移不变性给出$$=\int_{F^{c}}\delta(y)\int_{\lvert t\rvert\geq \delta(y)}\frac{1}{\lvert t\rvert^{2}}\,dtdy$$
+                用课本第二章的(7)得出$$\int_{F}I(x)\,dx\leq \int_{F^{c}}\delta(y)\frac{1}{\delta(y)}\int_{\lvert t\rvert\geq 1}\frac{1}{\lvert t\rvert^{2}}\,dtdy=\int_{\lvert t\rvert\geq 1}\frac{1}{\lvert t\rvert^{2}}\,dt m(F^{c})< \infty$$ 因此$I(x)< \infty$ 对a.e.的 $x\in F$成立
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>
+                Integrability of \( f \) on \( \mathbb{R} \) does not necessarily imply the convergence of \( f(x) \) to 0 as \( x \to \infty \).
+
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        There exists a positive continuous function \( f \) on \( \mathbb{R} \) so that \( f \) is integrable on \( \mathbb{R} \), but yet \( \limsup_{x \to \infty} f(x) = \infty \).
+                    </p>
+                </li>
+                <li>
+                    <p>  However, if we assume that \( f \) is uniformly continuous on \( \mathbb{R} \) and integrable, then \( \lim_{|x| \to \infty} f(x) = 0 \).</p>
+                </li>
+
+
+            </ol>
+
+            <p>
+                Hint: For (a), construct a continuous version of the function equal to \( n \) on the segment \( [n, n + 1/n^3) \), \( n \geq 1 \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                令$n\geq 2$, 令f满足f在$[n,n+\frac{1}{n^{3}}]$为n, 在$[n+\frac{2}{n^{3}},n+1-\frac{1}{n^{3}}]$上为0, $[n+\frac{1}{n^{3}},n+\frac{2}{n^{3}}]$上线性, $[n+1-\frac{1}{n^{3}},n+1]$上线性, 在$[0,1]$上线性且在$[1,2]$上为1, 在$(-\infty,0]$上为0. 则此时f连续, 且$$\int_{R}f(x)\,dx\leq \sum_{n=1}^{\infty}\int_{n-\frac{1}{n^{3}}}^{n+\frac{2}{n^{3}}}n\,dx=\sum_{n=1}^{\infty}\frac{3}{n^{2}}< \infty$$ 但是对任何N, 都存在$X_{N}=N$使得$f(X_{N}) =N$, 因此$\limsup_{x\rightarrow\infty}f(x)=\infty$
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                根据三角不等式$$\lvert \lvert f(x)\rvert-\lvert f(y)\rvert\rvert\leq \lvert f(x)-f(y)\rvert$$
+                我们知道$\lvert f(x)\rvert$也是一致连续的, 且可积. 只需证$\lim_{\lvert x\rvert\rightarrow\infty}\lvert f(x)\rvert=0$. 如不然, 则存在c使得对任何$R>0$, 存在$\lvert x_{R}\rvert>R$满足$$\lvert f(x_{R})\rvert>c$$
+                因此我们可以找出一组$x_{n}$满足$\lvert x_{n}\rvert\rightarrow\infty, \lvert x_{n}\rvert>\lvert x_{n-1}\rvert+1$, 且$\lvert f(x_{n})\rvert>c$, 用一致连续性可知存在$\delta$(不妨设$\delta< \frac{1}{2}$)使得当$\lvert x-y\rvert< \delta$时, $\lvert \lvert f(x)\rvert-\lvert f(y)\rvert\rvert< \frac{c}{2}$, 因此$$\lvert f(x)\rvert>\frac{c}{2}\qquad\forall x\in(x_{n}-\delta,x_{n}+\delta)$$
+$ \lvert x_{n}\rvert>\lvert x_{n-1}\rvert+, \delta< \frac{1}{2}$保证了这些$(x_{n}-\delta,x_{n}+\delta)$互不相交. 从而$$\int_{R}\lvert f(x)\rvert\,dx\geq \sum_{i=1}^{\infty}\int_{x_{i}-\delta}^{x_{i}+\delta}\frac{c}{2}\,dx=\infty$$
+矛盾
+            </p>
+
+           
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>
+                Let \( \Gamma \subset \mathbb{R}^d \times \mathbb{R} \), \( \Gamma = \{(x, y) \in \mathbb{R}^d \times \mathbb{R} : y = f(x)\} \), and assume \( f \) is measurable on \( \mathbb{R}^d \). Show that \( \Gamma \) is a measurable subset of \( \mathbb{R}^{d+1} \), and \( m(\Gamma) = 0 \).
+            </p>
+          
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                令$F(x,y)=f(x)-y$, 则F在$R^{2}$上是可测的, 且
+                $$\Gamma=F^{-1}(0)=F^{-1}((-\infty,0])\cap F^{-1}([0,\infty))$$
+                是两个可测集的交集, 也可测.
+
+                $$m(\Gamma)=\int_{R^{2}}\mathcal{X}_{\Gamma}\,dxdy$$
+                用Tonelli定理(或者Corollary 3.3)可知$$m(\Gamma)=\int_{R}\int_{R}\mathcal{X}_{\Gamma^{x}}\,dydx=\int_{R}\int_{R}\mathcal{X}_{y=\{f(x)\}}(y)\,dy\,dx=\int_{R}0\,dx=0$$
+            </p>
+
+
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>If \( f \) is integrable on \( \mathbb{R} \), show that \( F(x) = \int_{-\infty}^x f(t) \, dt \) is uniformly continuous.</p>
+            
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                这是Proposition 1.12的直接推论, 对任何$x,y$, 不妨设$y>x$, 只需令$E=(x,y)$. 则对任何$\epsilon$, 当$m(E)=\lvert x-y\rvert< \delta$时, $$\lvert F(x)-F(y)\rvert=\lvert \int_{E}f(t)\,dt\rvert< \epsilon$$
+            </p>
+
+            
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>
+                Tchebychev inequality. Suppose \( f \geq 0 \), and \( f \) is integrable. If \( \alpha > 0 \) and \( E_\alpha = \{x : f(x) > \alpha\} \), prove that
+
+
+                \[
+                m(E_\alpha) \leq \frac{1}{\alpha} \int f.
+                \]
+            </p>
+            
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                在$E_{\alpha}$上, $f>\alpha$, 用定积分的单调性$$\alpha m(E_{\alpha})=\int_{E_{\alpha}}\alpha\,dx\leq \int_{E_{\alpha}}f(x)\,dx\leq\int_{R^{d}}f(x)\,dx$$
+                两边除以$\alpha$即可.
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>
+                Suppose \( f \geq 0 \), and let \( E_{2^k} = \{x : f(x) > 2^k\} \) and \( F_k = \{x : 2^k < f(x) \leq 2^{k+1}\} \). If \( f \) is finite almost everywhere, then
+
+
+                \[
+                \bigcup_{k=-\infty}^\infty F_k = \{f(x) > 0\},
+                \]
+                and the sets \( F_k \) are disjoint.
+
+                Prove that \( f \) is integrable if and only if
+
+
+                \[
+                \sum_{k=-\infty}^\infty 2^k m(F_k) < \infty,
+                \]
+                if and only if
+
+
+                \[
+                \sum_{k=-\infty}^\infty 2^k m(E_{2^k}) < \infty.
+                \]
+
+                Use this result to verify the following assertions. Let
+
+
+                \[
+                f(x) = \begin{cases}
+                |x|^{-a} & \text{if } |x| \leq 1, \\
+                0 & \text{otherwise},
+                \end{cases}
+                \]
+                and
+
+
+                \[
+                g(x) = \begin{cases}
+                |x|^{-b} & \text{if } |x| > 1, \\
+                0 & \text{otherwise}.
+                \end{cases}
+                \]
+                Then \( f \) is integrable on \( \mathbb{R}^d \) if and only if \( a < d \); also \( g \) is integrable on \( \mathbb{R}^d \) if and only if \( b > d \).
+
+            </p>
+           
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                f可积$\Rightarrow\sum_{k=-\infty}^\infty 2^k m(F_k)< \infty$ 如果f可积, 那么用积分的区域可加性$$\sum_{k=-\infty}^\infty 2^k m(F_k) \sum_{k=-\infty}^{\infty}\int_{F_{k}}2^{k}\,dx\leq \sum_{k=-\infty}^{\infty}\int_{F_{k}}f(x)\,dx =\int_{\{x|f>
+                    0\}}f(x)\,dx\leq \int_{R^{d}}f(x)\,dx< \infty$$ $\sum_{k=-\infty}^\infty 2^k m(F_k)< \infty\Rightarrow \sum_{k=-\infty}^\infty 2^k m(E_{2^k}) < \infty$ : $$\sum_{k=-\infty}^{\infty }2^k m(E_{2^k})=\sum_{k=-\infty}^{\infty }2^k\int_{\cup_{n=k}^{\infty}F_{n}}\,dx=\sum_{k=-\infty}^{\infty }2^k\sum_{n=k}^{\infty}m(F_{n})=\sum_{n=-\infty}^{\infty}m(F_{n})\sum_{k=-\infty}^{n}2^{k}=\sum_{n=-\infty}^{\infty}2^{n}m(F_{n})\sum_{k=-\infty}^{n}2^{k-n}$$
+$$=2\sum_{n=-\infty}^{\infty}2^{n}m(F_{n})< \infty$$
+
+$ \sum_{k=-\infty}^\infty 2^k m(E_{2^k}) < \infty\Rightarrow $f可积:
+
+$$\int_{R^{d}}f(x)\,dx\leq \int_{R^{d}}\sum_{k=-\infty}^{\infty}2^{k+1}\mathcal{X}_{F_{k}}\,dx=\sum_{k=-\infty}^{\infty}2^{k+1}m(F_{k})\leq \sum_{k=-\infty}^{\infty}2^{k+1}m(E_{k})=2\sum_{k=-\infty}^{\infty}2^{k}m(E_{k})< \infty$$
+
+又注意到对f而言,当$k\geq 0$时,  $m(E_{k})=m(\{x\big|\lvert x\rvert< \frac{1}{2^{\frac{k}{a}}}\})=\frac{1}{2^{\frac{kd}{a}}}m(B(0,1))$, 当$k\leq 0$时, $m(F_{k})=m(B(0,1))$,  因此$\sum_{k=-\infty}^{-1}2^{k}m(B(0,1))+\sum_{k=-0}^{\infty}2^{k}m(E_{k})< \infty$当且仅当$\frac{d}{a}>1$, 当且仅当$a< d$
+
+</p><p>
+对g而言, $k\leq -1$时,$m(F_{k})=m(\{x\big|\frac{1}{2^{\frac{(k+1)}{b}}}\leq \lvert x\rvert< \frac{1}{2^{\frac{k}{b}}}\})=m(B(0,1))[\frac{1}{2^{\frac{kd}{b}}}-\frac{1}{2^{\frac{(k+1)d}{b}}}]=m(B(0,1))[\frac{2^{\frac{d}{b}}-1}{2^{\frac{(k+1)d}{b}}}]$, $k\geq-1$时, $m(F_{k})=0$,  而$\sum_{k=-\infty}^{-1}2^{k}\frac{1}{2^{\frac{(k+1)d}{b}}}< \infty$, 当且仅当$b>d$
+            </p>
+
+          
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Prove that if \( f \) is integrable on \( \mathbb{R}^d \), real-valued, and \( \int_E f(x) \, dx \geq 0 \) for every measurable \( E \), then \( f(x) \geq 0 \) a.e. \( x \). As a result, if \( \int_E f(x) \, dx = 0 \) for every measurable \( E \), then \( f(x) = 0 \) a.e.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                记$$F_{k}=\{x\bigg|-\frac{1}{k}>f(x)\}$$
+                那么$$m(F_{k})=\int_{F_{k}}\,dx< -\int_{F_{k}}kf(x)\,dx =-k\int_{F_{k}}f(x)\,dx$$
+                                                                     根据假设, 右边是$\leq 0$的数, 所以$$m(F_{k})=0$$
+                                                                     而$$\{x\bigg| f(x)< 0\}=\cup_{k=1}^{\infty}F_{k}$$
+                因此$m(\{x\bigg| f(x)< 0\})=0$
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>
+                Show that there are \( f \in L^1(\mathbb{R}^d) \) and a sequence \( \{f_n\} \) with \( f_n \in L^1(\mathbb{R}^d) \) such that
+
+
+                \[
+                \|f - f_n\|_{L^1} \to 0,
+                \]
+                but \( f_n(x) \to f(x) \) for no \( x \).
+
+                [Hint: In \( \mathbb{R} \), let \( f_n = \chi_{I_n} \), where \( I_n \) is an appropriately chosen sequence of intervals with \( m(I_n) \to 0 \).]
+
+
+            </p>
+            
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                定义$$I_{i}^{j}=\mathcal{X}_{[\frac{j}{2^{i}},\frac{j+1}{2^{i}}]}\qquad -2^{i+1}\leq j\leq 2^{i+1}-1$$
+                此时可得$$\|\mathcal{X}_{i}^{j}\|_{L^{1}(R)}=\frac{1}{2^{i}}\rightarrow0$$
+                而且对任何$x\in R$, 存在i,j使得$x\in[\frac{j}{2^{i}},\frac{j+1}{2^{i}}]$, 且x至多含于以下区间中的两个:$$[\frac{4*j}{2^{i+2}},\frac{4j+1}{2^{i+2}}]\qquad [\frac{4*j+1}{2^{i+2}},\frac{4j+2}{2^{i+2}}]\qquad[\frac{4*j+2}{2^{i+2}},\frac{4j+3}{2^{i+2}}]\qquad[\frac{4*j+3}{2^{i+2}},\frac{4j+4}{2^{i+2}}]$$
+                因此在$\mathcal{X}_{I_{i+2}^{4j}},\mathcal{X}_{I_{i+2}^{4j+1}},\mathcal{X}_{I_{i+2}^{4j+2}},\mathcal{X}_{I_{i+2}^{4j+3}}$中至少各有一个分别满足在x处为1和0. 这说明$f_{n}(x)$不存在(因为有分别为0或1的子列)
+            </p>
+
+           
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>
+                Give an example of two measurable sets \( A \) and \( B \) such that \( A + B \) is not measurable.
+
+                [Hint: In \( \mathbb{R}^2 \) take \( A = \{0\} \times [0, 1] \) and \( B = \mathcal{N} \times \{0\} \).]
+            </p>
+           
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                注意到A,B都是$R^{2}$中的零测集, 所以都可测.
+
+                假设$A\times B$可测, 那么$\mathcal{X}_{A\times B}$可测, 根据Tonelli定理, 对a.e的 $y\in[0,1]$, $\mathcal{X}_{A\times B}^{y}=\mathcal{X}_{\mathcal{N}}$都是R上的可测函数, 这和$\mathcal{N}$不可测矛盾.
+
+            </p>
+
+            
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>
+                In Exercise 6 of the previous chapter we saw that \( m(B) = v_d r^d \), whenever \( B \) is a ball of radius \( r \) in \( \mathbb{R}^d \) and \( v_d = m(B_1) \), with \( B_1 \) the unit ball. Here we evaluate the constant \( v_d \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        For \( d = 2 \), prove using Corollary 3.8 that
+
+
+                        \[
+                        v_2 = 2 \int_{-1}^1 (1 - x^2)^{1/2} \, dx,
+                        \]
+                        and hence by elementary calculus, that \( v_2 = \pi \).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        By similar methods, show that
+
+
+                        \[
+                        v_d = 2v_{d-1} \int_0^1 (1 - x^2)^{(d-1)/2} \, dx.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        The result is
+
+
+                        \[
+                        v_d = \frac{\pi^{d/2}}{\Gamma(d/2 + 1)}.
+                        \]
+                        Another derivation is in Exercise 5 in Chapter 6 below. Relevant facts about the gamma and beta functions can be found in Chapter 6 of Book II.
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $$v_{2}=\int_{R^{2}}\mathcal{X}_{x^{2}+y^{2}\leq 1}\,dxdy=\int_{-1}^{1}m(\mathcal{X}^{x}_{x^{2}+y^{2}\leq 1})\,dx=2\int_{-1}^{1}\sqrt{1-x^{2}}\,dx=4\int_{0}^{1}\sqrt{1-x^{2}}\,dx$$
+
+                最后一个等号是Lebesgue积分的奇偶性(课本第二章的(5),73页), 注意到被积函数连续所以等于求对应的Riemann积分, 令$x=sint$, 则$$v_{2}=4\int_{0}^{\frac{\pi}{2}}cos^{2}t\,dt=2\int_{0}^{\frac{\pi}{2}}cos2t+1\,dt=2\frac{\pi}{2}=\pi$$
+                (尽管Lebesgue积分的换元积分法也是对的, 但现在还没证明, 所以暂时不能对Lebesgue积分使用)
+
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                $$v_{d}=\int_{R^{d}}\mathcal{X}_{x_{1}^{2}+\cdots+x_{d}^{2}< 1}\,dx_{1}\cdots\,dx_{d}$$ $$=\int_{-1}^{1}\int_{R^{d-1}}\mathcal{X}_{x_{1}^{2}+\cdots+x_{d-1}^{2}< 1-x_{d}^{2}}\,dx_{1}\cdots\,dx_{d-1}\,dx_{d}$$
+根据第一章的结论, $$\int_{R^{d-1}}\mathcal{X}_{x_{1}^{2}+\cdots+x_{d-1}^{2}< 1-x_{d}^{2}}\,dx_{1}\cdots\,dx_{d-1}=m(B^{d-1}(0,\sqrt{1-x_{d}^{2}}))=(1-x_{d}^{2})^{\frac{d-1}{2}}m(B^{d-1}(0,1))=(1-x_{d}^{2})^{\frac{d-1}{2}}v_{d-1}$$
+因此$$v_{d}=v_{d-1}\int_{-1}^{1}(1-x_{d}^{2})^{\frac{d-1}{2}}\,dx_{d}=v_{d-1}\int_{-1}^{1}(1-x^{2})^{\frac{d-1}{2}}\,dx=2v_{d-1}\int_{0}^{1}(1-x^{2})^{\frac{d-1}{2}}\,dx$$
+            </p>
+            <h4>(c)</h4>
+            <p>
+
+                $\int_{0}^{1}(1-x^{2})^{\frac{d-1}{2}}\,dx$的被积函数连续, 所以等于求Riemann积分, 用换元积分法$x=sint$, 则$$\int_{0}^{1}(1-x^{2})^{\frac{d-1}{2}}\,dx=\int_{0}^{\frac{\pi}{2}}(cost)^{d}\,dt=\int_{0}^{\frac{\pi}{2}}(cost)^{d-1}\,dsint=(d-1)\int_{0}^{\frac{\pi}{2}}sin^{2}t(cost)^{d-2}\,dt=(d-1)\int_{0}^{\frac{\pi}{2}}(1-cos^{2}t)(cost)^{d-2}$$
+                这给出了$$\int_{0}^{\frac{\pi}{2}}(cost)^{d}\,dt=\frac{(d-1)}{d}\int_{0}^{\frac{\pi}{2}}(cost)^{d-2}\,dt=\cdots=\begin{cases}
+                \frac{(d-1)!!}{d!!}\int_{0}^{\frac{\pi}{2}}1\,dt=\frac{\pi}{2}\frac{(d-1)!!}{d!!}&d\text{为偶数}\\
+                =\cdots=\frac{(d-1)!!}{d!!}\int_{0}^{\frac{\pi}{2}}cost\,dt=\frac{(d-1)!!}{d!!}&d\text{为奇数}
+                \end{cases}$$
+                从而当d是偶数时$$v_{d}=\pi \frac{(d-1)!!}{d!!}v_{d-1}$$
+                d是奇数时$$v_{d}= 2\frac{(d-1)!!}{d!!}v_{d-1}$$
+                因此d=2k为偶数时$$v_{d}=2^{\frac{d}{2}}\pi^{\frac{d}{2}}\frac{1}{d!!}$$
+                此时$d!!=2^{d}(\frac{d}{2})!=2^{d}\Gamma(\frac{d}{2}+1)$, 从而$$v_{d}=\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2}+1)}$$
+                当d=2k+1为奇数时, $$v_{d}=2^{\frac{d+1}{2}}\pi^{\frac{d-1}{2}}\frac{1}{d!!}$$
+                此时$d!!=2^{\frac{d+1}{2}}(k+\frac{1}{2})!=2^{\frac{d+1}{2}}\frac{\Gamma(k+1+\frac{1}{2})}{\Gamma(\frac{1}{2})}=2^{\frac{d+1}{2}}\frac{\Gamma(\frac{d}{2}+1)}{\Gamma(\frac{1}{2})}$, 而$\Gamma(\frac{1}{2})=\sqrt{\pi}$, 所以$$v_{d}=\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2}+1)}$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>
+                Consider the function defined over \( \mathbb{R} \) by
+
+
+                \[
+                f(x) = \begin{cases}
+                x^{-1/2} & \text{if } 0 < x < 1, \\
+                0 & \text{otherwise}.
+                \end{cases}
+                \]
+                For a fixed enumeration \( \{r_n\}_{n=1}^\infty \) of the rationals \( \mathbb{Q} \), let
+
+
+                \[
+                F(x) = \sum_{n=1}^\infty 2^{-n} f(x - r_n).
+                \]
+                Prove that \( F \) is integrable, hence the series defining \( F \) converges for almost every \( x \in \mathbb{R} \). However, observe that this series is unbounded on every interval, and in fact, any function \( \tilde{F} \) that agrees with \( F \) a.e is unbounded in any interval.
+            </p>
+           
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                根据Corollary 1.10, $$\int_{R}F(x)\,dx=\sum_{n=1}^{\infty}2^{-n}\int_{R}f(x-r_{n})\,dx$$
+                $$=\sum_{n=1}^{\infty}2^{-n}\int_{R}f(x)\,dx=\int_{R}f(x)\,dx$$
+                根据Exercise 10, 最后一个量是有限的, 因此$F(x)$ a.e. $< \infty$ 任取一个开区间I, 则根据有理数的稠密性, 存在$N$使得$r_{N}\in I$, 因此当$x\rightarrow r_{N}^{+}$时, $$2^{-N}f(x-r_{N})\rightarrow\infty$$
+                                                                  因此F在I内无界.
+
+            </p>
+
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>
+                Suppose \( f \) is integrable on \( \mathbb{R}^d \). If \( \delta = (\delta_1, \ldots, \delta_d) \) is a \( d \)-tuple of non-zero real numbers, and
+
+
+                \[
+                f_\delta(x) = f(\delta x) = f(\delta_1 x_1, \ldots, \delta_d x_d),
+                \]
+                show that \( f_\delta \) is integrable with
+
+
+                \[
+                \int_{\mathbb{R}^d} f_\delta(x) \, dx = |\delta_1|^{-1} \cdots |\delta_d|^{-1} \int_{\mathbb{R}^d} f(x) \, dx.
+                \]
+            </p>
+           
+           
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                根据第一章的Exercise 7可知结论对所有特征函数成立, 因此根据Lebesgue积分的线性性, 结论对所有简单函数成立. 下面考虑非负可测函数的情形, 抽一组a.e 收敛于f的可测函数序列$f_{n}$, 满足$0\leq f_{n}\leq f$, 则$(f_{n})_{\delta}\rightarrow f_{\delta}$ a.e.成立, 根据控制收敛定理可得$$\int_{R^{d}}f_{\delta}(x)\,dx=\lim_{n \to \infty}\int_{R^{d}}(f_{n})_{\delta}\,dx=\lvert \delta_{1}\rvert^{-1}\cdots \lvert \delta_{d}\rvert^{-1}\lim_{n \to \infty}\int_{R^{d}}f_{n}(x)\,dx=\lvert \delta_{1}\rvert^{-1}\cdots \lvert \delta_{d}\rvert^{-1}\int_{R^{d}}f(x)\,dx$$
+
+                对一般可积函数的情形, 注意到$(f_{\delta})^{+}=(f^{+})_{\delta},(f_{\delta})^{-}=(f^{-})_{\delta}$, 然后用刚才的情况可知结论成立.
+
+            </p>
+
+            
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>
+                Suppose \( f \) is defined on \( \mathbb{R}^2 \) as follows: \( f(x, y) = a_n \) if \( n \leq x < n + 1 \) and \( n \leq y < n + 1 \), (\( n \geq 0 \)); \( f(x, y) = -a_n \) if \( n \leq x < n + 1 \) and \( n + 1 \leq y < n + 2 \), (\( n \geq 0 \)); while \( f(x, y) = 0 \) elsewhere. Here \( a_n = \sum_{k \leq n} b_k \), with \( \{b_k\} \) a positive sequence such that \( \sum_{k=0}^\infty b_k = s < \infty \).
+            </p>
+
+            <ol type="a">
+                <li>
+                    <p>
+                        Verify that each slice \( f_y \) and \( f_x \) is integrable. Also for all \( x \), \( \int f_x(y) \, dy = 0 \), and hence \( \int \left( \int f(x, y) \, dy \right) dx = 0 \).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        However, \( \int f_y(x) \, dx = a_0 \) if \( 0 \leq y < 1 \), and \( \int f_y(x) \, dx = a_n - a_{n-1} \) if \( n \leq y < n + 1 \) with \( n \geq 1 \). Hence \( y \mapsto \int f_y(x) \, dx \) is integrable on \( (0, \infty) \) and
+
+
+                        \[
+                        \int \left( \int f(x, y) \, dx \right) dy = s.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Note that \( \int_{\mathbb{R} \times \mathbb{R}} |f(x, y)| \, dx dy = \infty \).
+                    </p>
+                </li>
+            </ol>
+
+        </div>
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $f_{x},f_{y}$都是简单函数且积分有限, 因此可积. 又对任何$x$, 存在唯一的n使得$x\in[n,n+1)$, 所以$$\int f_{x}(y)\,dy=\int_{n}^{n+1}a_{n}\,dy-\int_{n+1}^{n+2}a_{n}\,dy=0$$
+
+                从而$$\int(\int  f(x,y)\,dy)\,dx=\int 0\,dx=0$$
+
+            </p>
+
+            <h4>(b)</h4>
+            <p>
+                当$0\leq y< 1$时, $$\int f_{y}(x)\,dx=\int_{0}^{1}a_{0}\,dx =a_{0}$$
+                               当$n\leq y< n+1$时, $$\int f_{y}(x)\,dx=\int_{n}^{n+1}a_{n}\,dx-\int_{n-1}^{n}a_{n-1}\,dx=a_{n}-a_{n-1}\qquad n\geq 1$$
+从而$$\int(\int  f(x,y)\,dx)\,dy=\int_{0}^{1}\int f(x,y)\,dx\,dy+\sum_{n=1}^{\infty}\int_{n}^{n+1}\int f(x,y)\,dx\,dy=a_{0}+\sum_{n=1}^{\infty}a_{n}-a_{n-1}=s$$
+            </p>
+            <h4>(c)</h4>
+            <p>
+
+                因为$a_{n}\rightarrow s>0$, 所以$$\int_{R^{2}}\lvert f(x,y)\rvert\,dxdy\geq \sum_{n=0}^{\infty}\lvert a_{n}\rvert=\infty$$
+            </p>
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Let \( f \) be a measurable finite-valued function on \( [0, 1] \), and suppose that \( |f(x) - f(y)| \) is integrable on \( [0, 1] \times [0, 1] \). Show that \( f(x) \) is integrable on \( [0, 1] \).</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $\lvert f(x)-f(y)\rvert$可积说明对a.e的y, $\lvert f(x)-f(y)\rvert$是[0,1]中的可积函数, 取一个这样的$y_{0}$, 记$c=f(y_{0})$, 则$$\lvert f(x)\rvert\leq \lvert f(x)-c\rvert+\lvert c\rvert$$
+                而$\lvert c\rvert$在[0,1]上可积, 所以$$\int_{0}^{1}\lvert f(x)\rvert\,dx< \infty$$ 从而$f$在[0,1]上可积
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>
+                Suppose \( f \) is integrable on \( \mathbb{R}^d \). For each \( \alpha > 0 \), let \( E_\alpha = \{x : |f(x)| > \alpha\} \). Prove that
+
+
+                \[
+                \int_{\mathbb{R}^d} |f(x)| \, dx = \int_0^\infty m(E_\alpha) \, d\alpha.
+                \]
+            </p>
+           
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $$\int_{0}^{\infty}m(E_{\alpha})\,d\alpha=\int_{0}^{\infty}\int_{R^{d}}\mathcal{X}_{0< \alpha< \lvert f(x)\rvert}\,dx\,d\alpha=\int_{R^{d}\times R}\mathcal{X}_{0< \alpha< \lvert f(x)\rvert}\,dxd\alpha$$
+$$=\int_{R^{d}}\int_{R}\mathcal{X}_{0< \alpha< \lvert f(x)\rvert}\,d\alpha\,x=\int_{R^{d}}m((0,\lvert f(x)\rvert))\,dx=\int_{R^{d}}\lvert f(x)\rvert\,dx$$
+
+
+            </p>
+
+          
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>
+                The problem (highlighted in the discussion preceding Fubini’s theorem) that certain slices of measurable sets can be non-measurable may be avoided by restricting attention to Borel measurable functions and Borel sets. In fact, prove the following:
+
+                Suppose \( E \) is a Borel set in \( \mathbb{R}^2 \). Then for every \( y \), the slice \( E_y \) is a Borel set in \( \mathbb{R} \).
+
+                [Hint: Consider the collection \( \mathcal{C} \) of subsets \( E \) of \( \mathbb{R}^2 \) with the property that each slice \( E_y \) is a Borel set in \( \mathbb{R} \). Verify that \( \mathcal{C} \) is a \( \sigma \)-algebra that contains the open sets.]
+            </p>
+            
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                设$E_{1},..,E_{n},..,\in \mathcal{C}$, 那么$$(\cup_{i=1}^{\infty}E_{i})_{y}=\cup_{i=1}^{\infty}(E_{i})_{y}$$
+                等号右边是可数个Borel集的并, 所以也是Borel集
+                $$(\cap_{i=1}^{\infty}E_{i})_{y}=\cap_{i=1}^{\infty}(E_{i})_{y}$$
+                等号右边是可数个Borel集的交, 所以也是Borel集
+                $$(E_{1}^{c})_{y}=(E_{1})_{y}^{c}$$
+                等号右边是Borel集的补, 所以也是Borel集, 因此$\mathcal{C}$是一个$\sigma-algebra$. 因此只需证$\mathcal{C}$包含了所有开集. 任取一个开集U, 对任何$x\in U_{y}$, 都有$(x,y)\in U$, 因此存在r使得$B((x,y),r)\subseteq U$, 从而$$(x-r,x+r)\subseteq U_{y}$$
+                因此$U_{y}$是开的, 因此肯定是Borel集, 这对任何$y$成立($U_{y}$要么是开集要么是空集), 因此$\mathcal{C}$包含了所有$R^{2}$中的Borel集, 证毕.
+            </p>
+
+            
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>Suppose that \( f \) and \( g \) are measurable functions on \( \mathbb{R}^d \).</p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Prove that \( f(x - y)g(y) \) is measurable on \( \mathbb{R}^{2d} \).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Show that if \( f \) and \( g \) are integrable on \( \mathbb{R}^d \), then \( f(x - y)g(y) \) is integrable on \( \mathbb{R}^{2d} \).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Recall the definition of the convolution of \( f \) and \( g \) given by
+
+
+                        \[
+                        (f * g)(x) = \int_{\mathbb{R}^d} f(x - y)g(y) \, dy.
+                        \]
+                        Show that \( f * g \) is well defined for a.e. \( x \) (that is, \( f(x - y)g(y) \) is integrable on \( \mathbb{R}^d \) for a.e. \( x \)).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Show that \( f * g \) is integrable whenever \( f \) and \( g \) are integrable, and that
+
+
+                        \[
+                        \|f * g\|_{L^1(\mathbb{R}^d)} \leq \|f\|_{L^1(\mathbb{R}^d)} \|g\|_{L^1(\mathbb{R}^d)},
+                        \]
+                        with equality if \( f \) and \( g \) are non-negative.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        The Fourier transform of an integrable function \( f \) is defined by
+
+
+                        \[
+                        \hat{f}(\xi) = \int_{\mathbb{R}^d} f(x) e^{-2\pi i x \cdot \xi} \, dx.
+                        \]
+                        Check that \( \hat{f} \) is bounded and is a continuous function of \( \xi \). Prove that for each \( \xi \) one has
+
+
+                        \[
+                        \widehat{(f * g)}(\xi) = \hat{f}(\xi) \hat{g}(\xi).
+                        \]
+                    </p>
+                </li>
+
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                根据Proposition 3.9, $f(x-y)$可测, 又$g(y)$在$R^{d}$上可测, 所以在$R^{d}\times R^{d}$上也可测, 从而$f(x-y)g(y)$可测
+            </p>
+            <h4>(b)</h4>
+            <p>
+                用Tonelli定理$$\int_{R^{2d}}\lvert f(x-y)g(y)\rvert\,dxdy=\int_{R^{d}}\int_{R^{d}}\lvert f(x-y)g(y)\rvert\,dxdy$$
+                $$=\int_{R^{d}}\lvert g(y)\rvert\int_{R^{d}}\lvert f(x-y)\rvert\,dxdy=\|f\|_{L^{1}(R^{d})}\int_{R^{d}}\lvert g(y)\rvert\,dy=\|f\|_{L^{1}(R^{d})}\|g\|_{L^{1}(R^{d})}$$
+            </p>
+            <h4>(c)</h4>
+            <p>
+                由(b)和Fubini定理立即得
+            </p>
+            <h4>(d)</h4>
+            <p>
+                (c)中已经给出对应的不等式
+            </p>
+            <h4>(e)</h4>
+            <p>
+                $$\lvert \widehat{f}(\xi)\rvert\leq \int_{R^{d}}\lvert f(x)\rvert\,dx=\|f\|_{L^{1}(R^{d})}$$
+                又$$\lvert \widehat{f}(\xi)-\widehat{f}(\eta)\rvert\leq \int_{R^{d}}\lvert f(x)\rvert\lvert e^{-2\pi ix\cdot\xi}- e^{-2\pi ix\cdot\eta}\rvert\,dx$$
+                注意到$\lvert f(x)\rvert\lvert e^{-2\pi ix\cdot\xi}- e^{-2\pi ix\cdot\eta}\rvert\leq 2\lvert f(x)\rvert$且当$\eta\rightarrow\xi$时, $\lvert f(x)\rvert\lvert e^{-2\pi ix\cdot\xi}- e^{-2\pi ix\cdot\eta}\rvert\rightarrow0$, 用DCT可得$\widehat{f}(\eta)\rightarrow\widehat{f}(\xi)$, 所以$\widehat{f}$连续.
+
+                又根据Fubini定理$$\widehat{(f \ast g)}(\xi)=\int_{R^{d}}\int_{R^{d}}f(x-y)g(y)\,dye^{-2\pi ix\cdot\xi}\,dx$$
+                $$=\int_{R^{d}}g(y)e^{-2\pi i y\cdot\xi}\int_{R^{d}}f(x-y)e^{-2\pi i(x-y)\cdot\xi}\,dx\,dy$$
+                根据平移不变性, 里面的积分为$\widehat{f}(\xi)$, 从而$$\widehat{(f \ast g)}(\xi)=\widehat{f}(\xi)\int_{R^{d}}g(y)e^{-2\pi i y\cdot\xi}\,dy=\widehat{f}(\xi)\widehat{g}(\xi)$$
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>
+                Prove that if \( f \in L^1(\mathbb{R}^d) \) and
+
+
+                \[
+                \hat{f}(\xi) = \int_{\mathbb{R}^d} f(x) e^{-2\pi i x \xi} \, dx,
+                \]
+                then \( \hat{f}(\xi) \to 0 \) as \( |\xi| \to \infty \). (This is the Riemann-Lebesgue lemma.)
+
+                [Hint: Write \( \hat{f}(\xi) = \frac{1}{2} \int_{\mathbb{R}^d} [f(x) - f(x - \xi_0)] e^{-2\pi i x \xi} \, dx \), where \( \xi_0 = \frac{1}{2} \frac{\xi}{|\xi|^2} \), and use Proposition 2.5.]
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                根据Lebesgue积分的平移不变性: $$\widehat{f}(\xi)=\int_{R^{d}}f(x)e^{-2\pi ix\cdot \xi}\,dx=\int_{R^{d}}f(t-\xi_{0})e^{-2\pi it\cdot \xi}e^{-2\pi i\xi_{0}\cdot\xi}\,dt$$
+                $$=e^{-\pi i}\int_{R^{d}}f(t-\xi_{0})e^{-2\pi it\cdot \xi}\,dt=-\int_{R^{d}}f(x-\xi_{0})e^{-2\pi ix\cdot\xi}\,dx$$
+
+                因此$$\widehat{f}(\xi)=\frac{1}{2}\int_{R^{d}}(f(x)-f(x-\xi_{0}))e^{-2\pi ix\cdot\xi}\,dx$$
+                $$\lvert \widehat{f}(\xi)\rvert\leq \frac{1}{2}\int_{R^{d}}\lvert f(x) - f(x - \xi_0)\rvert\,dx$$
+                用Proposition 2.5可得上式右边$\rightarrow0$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>
+                As an application of the Fourier transform, show that there does not exist a function \( I \in L^1(\mathbb{R}^d) \) such that
+
+
+                \[
+                f * I = f \quad \text{for all } f \in L^1(\mathbb{R}^d).
+                \]
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                根据Exercise 21的结论, $$\widehat{f}\widehat{I}=\widehat{f}$$
+                令$f$是课本88页给出的函数, 则$\widehat{f}$处处非0, 从而$\widehat{I}=1$恒成立.
+
+                因此Lemma 4.4给出了$$\int_{R^{d}}\widehat{f}(x)I(x)\,dx=\int_{R^{d}}f(x)\,dx$$令$f$是课本88页给出的函数, 那么$$\int_{R^{d}}K_{\delta}(y-x)I(x)\,dx=\int_{R^{d}}e^{-\pi\delta\lvert x\rvert^{2}}e^{2\pi iy\cdot x}\,dx=\delta^{-\frac{d}{2}}e^{-\pi\lvert y\rvert^{2}/\delta}$$
+                又$I\in L^{1}(R^{d})$, 所以参考课本89页的论证, 左边在$\delta\rightarrow0$时在$L^{1}$范数下收敛于$I(y)$, 因此有a.e 收敛于$I(y)$的子列, 记为$\int_{R^{d}}K_{\delta_{n}}(y-x)I(x)\,dx$, 因此$\delta_{n}^{-\frac{d}{2}}e^{-\pi\lvert y\rvert^{2}/\delta_{n}}$ a.e收敛于$I(y)$, 而$\delta_{n}^{-\frac{d}{2}}e^{-\pi\lvert y\rvert^{2}/\delta_{n}}\rightarrow 0$对任何$y\neq 0$成立, 这给出了$I(x)=0$ a.e. 成立, 从而$\widehat{I}=0$恒成立,
+                矛盾.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>
+                Consider the convolution
+
+
+                \[
+                (f * g)(x) = \int_{\mathbb{R}^d} f(x - y)g(y) \, dy.
+                \]
+
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Show that \( f * g \) is uniformly continuous when \( f \) is integrable and \( g \) bounded.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If in addition \( g \) is integrable, prove that \( (f * g)(x) \to 0 \) as \( |x| \to \infty \).
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                $$\lvert f\ast g(z)-f\ast g(x)\rvert\leq \int_{R^{d}}\lvert f(z-y)-f(x-y)\rvert\lvert g(y)\rvert\,dy\leq M\int_{R^{d}}\lvert f(z-y)-f(x-y)\rvert\,dy $$
+                用Lebesgue积分的对称性和平移不变性$$=M\int_{R^{d}}\lvert f(y-z)-f(y-x)\rvert\,dy=M\int_{R^{d}}\lvert f(t+x-z)-f(t)\rvert\,dt$$
+                而根据Proposition 2.5, 对任何$\epsilon>0$, 存在$\delta$满足当$\lvert x-z\rvert< \delta$时, $$\|f_{x-z}-f\|_{L^{1}(R^{d})} \frac{\epsilon}{M}$$
+此时$$\lvert f\ast g(z)-f\ast g(x)\rvert\leq M\frac{\epsilon}{M}=\epsilon$$
+因此$f\ast g$一致连续
+
+            </p>
+            <h4>(b)</h4>
+            <p>
+                此时$f\ast g\in L^{1}(R^{d})$, 用本章Exercise 6的结论即可.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>
+                Show that for each \( \epsilon > 0 \) the function \( F(\xi) = \frac{1}{(1 + |\xi|^2)^\epsilon} \) is the Fourier transform of an \( L^1 \) function.
+
+                [Hint: With \( K_\delta(x) = e^{-\pi |x|^2 / \delta} \delta^{-d/2} \) consider \( f(x) = \int_0^\infty K_\delta(x) e^{-\pi \delta }\delta^{\epsilon - 1} \, d\delta \). Use Fubini’s theorem to prove \( f \in L^1(\mathbb{R}^d) \), and
+
+
+                \[
+                \hat{f}(\xi) = \int_0^\infty e^{-\pi \delta |\xi|^2} e^{-\pi \delta }\delta^{\epsilon - 1} \, d\delta,
+                \]
+                and evaluate the last integral as \(\pi^{-\epsilon} \Gamma(\epsilon) \frac{1}{(1 + |\xi|^2)^\epsilon} \). Here \( \Gamma(s) \) is the gamma function defined by \( \Gamma(s) = \int_0^\infty e^{-t} t^{s-1} \, dt \).]
+            </p>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                用Fubini定理给出$$\int_{R^{d}}f(x)\,dx=\int_{0}^{\infty}e^{-\pi\delta}\delta^{\epsilon-1}\int_{R^{d}}K_{\delta}(x)\,dx\,d\delta=\int_{0}^{\infty}e^{-\pi\delta}\delta^{\epsilon-1}\,d\delta< \infty$$ 又$f$非负所以$f\in L^{1}(R^{d})$, 从而再次使用Fubini定理可得$$\widehat{f}(\xi)=\int_{0}^{\infty}e^{-\pi\delta}\delta^{\epsilon-1}\int_{R^{d}}K_{\delta}(x)e^{-2\pi ix\cdot\xi}\,dx\,d\delta=\int_0^\infty e^{-\pi \delta |\xi|^2} e^{-\pi \delta }\delta^{\epsilon - 1} \, d\delta$$
+                                                                                                                                                                                                                用Exercise 16的结论可得$$\widehat{f}(\xi)=\frac{\pi^{-\epsilon}\Gamma(\epsilon)}{(1+\lvert \xi\rvert^{2})^{\epsilon}}$$
+            </p>
+
+        </div>
+
+      
+
+    </div>
+
+
+    <div class="whole_page">
+
+    </div>
+    <div class="bg_box">
+        <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+    </div>
+
+
+</body>
+
+</html>

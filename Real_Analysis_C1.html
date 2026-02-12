@@ -776,21 +776,22 @@
             <p>Pick \( c_n \) such that \( m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} \), and apply the Borel-Cantelli lemma.</p>
         </div>
         <div class="Proof-box">
-            <h4>Proof:(a)</h4>
+            <h4>Proof:</h4>
             <p>
-                $x\in\text{无穷多个}E_{k}$说明对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 写成集合的语言就是$$E\subseteq \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
-
-                另一方面若$x\in \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$, 则对任何$n$, 存在$k\geq n$使得$x\in E_{k}$, 所以$x\in E$, 所以上式的反向包含也成立, 因此$$E= \cap_{n=1}^{\infty}\cup_{k=n}^{\infty}E_{k}$$
-                从而E是可测集$E_{k}$通过可数交和可数并得到的, 根据$\sigma-algebra$对可数交可数并的封闭性, E可测
+                取$c_{n}$使得$$ m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} $$
+                (为什么能取, 注意到$$\{x\big|\lvert f_{n}\rvert=\infty\}=\cap_{i=1}^{\infty}\{x\big|\lvert f(x)\rvert>i\}$$
+                又$\{x\big|\lvert f(x)\rvert>i\}\subseteq [0,1]$, 所以用Lebesgue测度的连续性可得$$0=\lim_{n \to \infty}m(\{x\big|\lvert f(x)\rvert>n\})$$
+                这说明对任何$\epsilon$, 存在N使得$m(\{x\big|\lvert f(x)\rvert>N\})< \epsilon$, 把$\epsilon$改成$\frac{1}{2^{n}}$, $f$改成$nf_{n}(x)$即可
+                                                                                    )
+                                                                                    记$E_{n}=\{x : |f_n(x) /c_n|>
+                    1/n\}$,则 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$, 设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>
+                        K_{x}$$
+                        从而$$f_{n}(x)/c_{n}\leq \frac{1}{n}\qquad\forall n>K_{x}$$
+                        因此对a.e的x, $$\frac{f_{n}(x)}{c_{n}}\rightarrow0$$
 
             </p>
 
-            <h4>(b)</h4>
-            <p>
-                对任何n, 根据单调性我们有$$m(E)\leq m(\cup_{k=n}^{\infty}E_{k})\leq \sum_{k=n}^{\infty}m(E_{k})$$
-                又$\sum_{k=1}^{\infty}m(E_{k})< \infty$, 因此对任何$\epsilon$, 存在N使得$n\geq N$时, $\sum_{k=n}^{\infty}m(E_{k})< \epsilon$, 这给出了$$m(E)\leq \sum_{k=n}^{\infty}m(E_{k})\leq \epsilon\qquad\forall n\geq N$$
-                根据$\epsilon$的任意性, $m(E)=0$
-            </p>
+           
 
         </div>
 
@@ -803,16 +804,17 @@
         <div class="Proof-box">
             <h4>Proof:</h4>
             <p>
-                取$c_{n}$使得$$ m(\{x : |f_n(x)/c_n| > 1/n\}) < 2^{-n} $$
-                (为什么能取, 注意到$$\{x\big|\lvert f_{n}\rvert=\infty\}=\cap_{i=1}^{\infty}\{x\big|\lvert f(x)\rvert>i\}$$
-                又$\{x\big|\lvert f(x)\rvert>i\}\subseteq [0,1]$, 所以用Lebesgue测度的连续性可得$$0=\lim_{n \to \infty}m(\{x\big|\lvert f(x)\rvert>n\})$$
-                这说明对任何$\epsilon$, 存在N使得$m(\{x\big|\lvert f(x)\rvert>N\})< \epsilon$, 把$\epsilon$改成$\frac{1}{2^{n}}$, $f$改成$nf_{n}(x)$即可
-                )
-                记$E_{n}=\{x : |f_n(x) /c_n|>
-                1/n\}$,则 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$, 设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>
-                K_{x}$$
-                从而$$f_{n}(x)/c_{n}\leq \frac{1}{n}\qquad\forall n>K_{x}$$
-                因此对a.e的x, $$\frac{f_{n}(x)}{c_{n}}\rightarrow0$$
+                考虑集合$A_{n}=\{x\in R^{d}\big|\lvert x\rvert\leq 2^{n}\}$,用Lusin定理可得存在$E_{n}\subseteq A_{n}$满足$m(E_{n})< \frac{1}{2^{n}}$和连续函数$f_{n}$, 使得$f=f_{n}$在$E_{n}^{c}$上成立, 给$f_{n}$在$A_{n}^{c}$上补充定义为0, 此时不连续, 我们想办法在不对$f_{n}$的性态做出重大改变的前提下把$f_{n}$变成连续函数: 考虑$$\varphi_{n}(x)=\begin{cases}
+                                                                                                                                                    1&\lvert x\rvert\leq 2^{n}-2\\
+                                                                                                                                                    0&\lvert x\rvert\geq 2^{n}-1\\
+                                                                                                                                                    (2^{n-1}-1-\lvert x\rvert)&\lvert x\rvert\in(2^{n}-2,2^{n}-1)
+                                                                                                                                                    \end{cases}$$
+                                                                                                                                                    则$\varphi_{n}f_{n}$连续且在$\{x\in R^{d}\big|\lvert x\rvert\leq 2^{n}-2\}$中为$f_{n}$
+                                                                                                                                                    又 $\sum_{n=1}^{\infty}m(E_{n})< \infty$, 根据Borel-Cantelli引理, 对a.e 的x, 都只存在有限个$E_{k}$使得$x\in E_{k}$,
+设这里面最大的k为$K_{x}$, 那么$$x\in E_{n}^{c}\qquad\forall n>K_{x}$$
+从而$$f(x)=f_{n}(x)=\varphi_{n}(x)f_{n}(x)\qquad\forall n>K_{x}, n>\frac{ln(\lvert x\rvert+2)}{ln 2}$$
+取$N=max\left\lbrace K_{x},\frac{ln(\lvert x\rvert+2)}{ln 2}\right\rbrace $, 则有$$f(x)=\varphi_{n}(x)f_{n}(x)\qquad\forall n>N$$
+因此对a.e.的x, $\varphi_{n}(x)f_{n}(x)\rightarrow f(x)$, 这给出了连续函数序列$\varphi_{n}(x)f_{n}(x)$ a.e. 收敛于 $f$
             </p>
 
         </div>
