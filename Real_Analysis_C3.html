@@ -1,0 +1,1372 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第三章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第三章
+        </h2>
+
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>
+                Suppose \( \phi \) is an integrable function on \( \mathbb{R}^d \) with \( \int_{\mathbb{R}^d} \phi(x) \, dx = 1 \). Set \( K_\delta(x) = \delta^{-d} \phi(x/\delta) \), \( \delta > 0 \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Prove that \( \{K_\delta\}_{\delta>0} \) is a family of good kernels.</p>
+                </li>
+                <li>
+                    <p>Assume in addition that \( \phi \) is bounded and supported in a bounded set. Verify that \( \{K_\delta\}_{\delta>0} \) is an approximation to the identity.</p>
+                </li>
+                <li>
+                    <p>Show that Theorem 2.3 (convergence in the \( L^1 \)-norm) holds for good kernels as well.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+
+            <p>
+                根据Lebesgue积分的伸缩不变性, 易证good kernel的(i)成立, 其次根据$\phi$可积可得$\|K_{\delta}\|_{L^{1}(R^{d})}=\|\phi\|_{L^{1}(R^{d})}< \infty$, 所以(ii)成立. 又$$\int_{\lvert x\rvert\geq\eta}\lvert K_{\delta}(x)\rvert\,dx=\int_{\lvert y\rvert\geq \frac{\delta}{\eta}}\lvert \phi(y)\rvert\,dy=\int_{R^{d}}\mathcal{X}_{\lvert y\rvert\geq \frac{\eta}{\delta}}\lvert \phi(y)\rvert\,dy$$
+                被积函数非负且$\leq \lvert \phi(y)\rvert$, 又处处收敛于0, 所以根据DCT, $\lim_{\delta\rightarrow0}\int_{\lvert x\rvert\geq\eta}\lvert K_{\delta}(x)\rvert\,dx=0$
+
+            </p>
+            <h4>(b)</h4>
+            <p>
+                根据$\phi$的有界性可得$\lvert K_{\delta}(x)\rvert\leq \frac{M}{\delta^{d}}$. 不妨设$\phi$的支集在$B(0,R)$中, 那么$K_{\delta}$在$B(0,\delta R)$以外是0. 在$B(0,\delta R)$$\leq \frac{M}{\delta^{d}}$, 所以在$B(0,\delta R)$中有$$\frac{MR^{d+1}\delta}{\lvert x\rvert^{d+1}}\geq \frac{MR^{d+1}\delta}{R^{d+1}\delta^{d+1}}=\frac{M}{\delta^{d}}\geq \lvert K_{\delta}(x)\rvert$$
+                而在$B(0,R\delta)$外, $K_{\delta}=0$, 自然有$\lvert K_{\delta}(x)\rvert\leq \frac{MR^{d+1}\delta}{\lvert x\rvert^{d+1}}$, 所以$$\lvert K_{\delta}(x)\rvert\leq \frac{MR^{d+1}\delta}{\lvert x\rvert^{d+1}}$$
+            </p>
+            <h4>(c)</h4>
+            <p>
+                $$f\ast K_{\delta}(x)-f(x)=\int_{R^{d}}(f(x-y)-f(x))K_{\delta}(y)\,dy$$
+                对任何$\epsilon$, 取$\delta_{0}$满足$\lvert h\rvert< \delta_{0}$时, $\|f(x-y)-f(x)\|_{L^{1}(R^{d})}< \frac{\epsilon}{2\int\lvert \phi\rvert}$, 那么$$\|f\ast K_{\delta}(x)-f(x)\|_{L^{1}(R^{d})}=\int_{R^{d}}\lvert \int_{\lvert y\rvert< h}(f(x-y)-f(x))K_{\delta}(y)\,dy\rvert\,dx+\int_{R^{d}}\lvert \int_{\lvert y\rvert\geq h}(f(x-y)-f(x))K_{\delta}(y)\,dy\rvert\,dx$$
+                $$\leq  \int_{R^{d}}\int_{\lvert y\rvert< h}\lvert f(x-y)-f(x)\rvert \lvert K_{\delta}(y)\rvert\,dy\,dx+\int_{R^{d}}\int_{\lvert y\rvert\geq h} \lvert f(x-y)-f(x)\rvert \lvert K_{\delta}(y)\rvert\,dy\,dx$$
+                $$=\int_{\lvert y\rvert< h}\lvert K_{\delta}(y)\rvert\int_{R^{d}}\lvert f(x-y)-f(x)\rvert\,dx\,dy+\int_{\lvert y\rvert\geq h}\lvert K_{\delta}(y)\rvert\int_{R^{d}}\lvert f(x-y)-f(x)\rvert\,dx\,dy$$
+                $$\leq \frac{\epsilon}{2\int\lvert \phi(x)\rvert\,dx}\int_{\lvert y\rvert< h}\lvert K_{\delta}(y)\rvert\,dy+\int_{\lvert y\rvert\geq h}\lvert K_{\delta}(y)\rvert\int_{R^{d}}\lvert f(x-y)\rvert+\lvert f(x)\rvert\,dx\,dy$$
+                $$\leq \frac{\epsilon}{2\int\lvert \phi(x)\rvert\,dx}\int_{R^{d}}\lvert K_{\delta}(y)\rvert\,dy+2\|f\|_{L^{1}(R^{d})}\int_{\lvert y\rvert\geq h}\lvert K_{\delta}(y)\rvert\,dy$$
+                $$=\frac{\epsilon}{2}+2\|f\|_{L^{1}(R^{d})}\int_{\lvert y\rvert\geq h}\lvert K_{\delta}(y)\rvert\,dy$$
+                然后取$\delta_{1}$满足对任何$\delta< \delta_{1}$, $$\int_{\lvert y\rvert\geq h}\lvert K_{\delta}(y)\rvert\,dy\leq \frac{\epsilon}{2\|f\|_{L^{1}(R^{d})}}$$
+                此时对任何$\delta< min\{\delta_{0},\delta_{1}\}$, 皆有$$\|f\ast K_{\delta}(x)-f(x)\|_{L^{1}(R^{d})}< \epsilon$$
+                因此$$\lim_{\delta\rightarrow0}\|f\ast K_{\delta}(x)-f(x)\|_{L^{1}(R^{d})}=0$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>
+                Suppose \( \{K_\delta\} \) is a family of kernels that satisfies:
+                <ol type="i">
+                    <li>\( |K_\delta(x)| \leq A \delta^{-d} \) for all \( \delta > 0 \).</li>
+                    <li>\( |K_\delta(x)| \leq A \delta / |x|^{d+1} \) for all \( \delta > 0 \).</li>
+                    <li>\( \int_{-\infty}^\infty K_\delta(x) \, dx = 0 \) for all \( \delta > 0 \).</li>
+                </ol>
+                Thus \( K_\delta \) satisfies conditions (i) and (ii) of approximations to the identity, but the average value of \( K_\delta \) is 0 instead of 1. Show that if \( f \) is integrable on \( \mathbb{R}^d \), then \( (f * K_\delta)(x) \to 0 \) for a.e. \( x \), as \( \delta \to 0 \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+
+            <p>
+                只需证x是f的Lebesgue点时, 结论成立. $$\lvert f\ast K_{\delta}(x)-0\rvert=\lvert f\ast K_{\delta}(x)-f(x)\int_{R^{d}}K_{\epsilon}(y)\,dy\rvert$$
+                $$\leq \int_{R^{d}}\lvert f(x-y)-f(x)\rvert\lvert K_{\delta}(y)\rvert\,dy$$
+                $$=\int_{\lvert y\rvert< \delta}+\sum_{k =0}^{\infty}\int_{2^{k}\delta\leq \lvert y\rvert< 2^{k+1}\delta}$$
+
+                而$$\int_{\lvert y\rvert< \delta}\leq \frac{A}{\delta^{d}}\int_{\lvert y\rvert< \delta}\lvert f(x-y)-f(x)\rvert\,dy=A\mathcal{A}(\delta)$$
+                $$\int_{2^{k}\delta\leq \lvert y\rvert< 2^{k+1}\delta}\leq A\delta\int_{2^{k}\delta\leq \lvert y\rvert< 2^{k+1}\delta}\lvert f(x-y)-f(x)\rvert\frac{1}{\lvert y\rvert^{d+1}}\,dy$$
+                $$\leq \frac{A\delta}{2^{k(d+1)}\delta^{d+1}}\int_{2^{k}\delta\leq \lvert y\rvert< 2^{k+1}\delta}\lvert f(x-y)-f(x)\rvert\,dx=\frac{A2^{d-k}}{2^{(k+1)d}\delta^{d}}\int_{2^{k}\delta\leq \lvert y\rvert< 2^{k+1}\delta}\lvert f(x-y)-f(x)\rvert\,dx$$
+                $$\leq \frac{A2^{d-k}}{2^{(k+1)d}\delta^{d}}\int_{ \lvert y\rvert< 2^{k+1}\delta}\lvert f(x-y)-f(x)\rvert\,dx=A2^{d-k}\mathcal{A}(2^{k+1}\delta)$$
+                因此$$\lvert f\ast K_{\delta}(x)\rvert\leq A\mathcal{A}(\delta)+A2^{d}\sum_{k=0}^{\infty}\frac{1}{2^{k}}\mathcal{A}(2^{k+1}\delta)$$
+                根据课本的Lemma 2.2, $\mathcal{A}(r)\leq M$, 所以取N使得$\sum_{k=N+1}^{\infty}\frac{1}{2^{k}}< \frac{\epsilon}{A2^{d}}$, 然后取$\delta_{0}$足够小使得对任何$\delta< \delta_{0}$, 都有$$\mathcal{A}(\delta)\leq \frac{\epsilon}{2NA}\qquad\mathcal{A}(2^{k+1}\delta)\leq \frac{\epsilon}{2^{d+1}NA}\qquad 0\leq k\leq N$$
+                从而$$\lvert f\ast K_{\delta}(x)\rvert\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}\qquad\forall\delta< \delta_{0}$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>
+                Suppose 0 is a point of (Lebesgue) density of the set \( E \subset \mathbb{R} \). Show that for each of the individual conditions below there is an infinite sequence of points \( x_n \in E \), with \( x_n \neq 0 \), and \( x_n \to 0 \) as \( n \to \infty \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>The sequence also satisfies \( -x_n \in E \) for all \( n \).</p>
+                </li>
+                <li>
+                    <p>In addition, \( 2x_n \) belongs to \( E \) for all \( n \).</p>
+                </li>
+            </ol>
+            <p>Generalize.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+
+            <p>
+                题意要证明对任何$\epsilon>0$, 存在非0的$x_{n}\in(-\epsilon,\epsilon)\cap E$且$-x_{n}\in E$, 假设不成立, 那么存在$\delta>0$, 使得对任何$E\cap(-\delta,\delta)$中的元素x, 都有$-x\notin E$, 这说明对任何$\eta< \delta$, $$\{E\cap(-\eta,\eta)\}\cap \{-E\cap(-\eta,\eta)\}=\emptyset$$
+                这给出了$$1=\frac{m(-\eta,\eta)}{m(-\eta,\eta)}\geq \frac{m(E\cap(-\eta,\eta))}{m((-\eta,\eta))}+\frac{m(-E\cap(-\eta,\eta))}{m((-\eta,\eta))}=2\frac{m(E\cap(-\eta,\eta))}{m((-\eta,\eta))}$$
+                令$\eta\rightarrow0$, 根据0是Lebesgue点可得右边是2, 左边是1, 矛盾
+            </p>
+            <h4>(b)</h4>
+            <p>
+                题目要证明对任何$\epsilon>0$, 存在非0的$x_{n}\in(-\epsilon,\epsilon)\cap E$满足$2x_{n}\in E$, 假设不成立, 那么存在$\delta>0$, 使得对任何$E\cap(-\delta,\delta)$中的元素x, 都有$2x\notin E$, 这说明对任何$\eta< \delta$, $$\{2E\cap(-2\eta,2\eta)\}\cap E=\emptyset$$
+                从而$$\{2E\cap(-2\eta,2\eta)\}\cap \{E\cap(-2\eta,2\eta)\}=\emptyset$$
+                因此$$1=\frac{m(-2\eta,2\eta)}{m(-2\eta,2\eta)}\geq\frac{m(2E\cap(-2\eta,2\eta))}{m(-2\eta,2\eta)}+\frac{m(E\cap(-2\eta,2\eta))}{m(-2\eta,2\eta)} =\frac{m(E\cap(-\eta,\eta))}{m(-\eta,\eta)}+\frac{m(E\cap(-2\eta,2\eta) )}{m(-2\eta,2\eta)}$$根据0是Lebesgue点, 两边令$\eta\rightarrow0$, 右边是$2$, 左边是1, 矛盾. 因此$$1=\frac{m(-2\eta,2\eta)}{m(-2\eta,2\eta)}\geq\frac{m(2E\cap(-2\eta,2\eta))}{m(-2\eta,2\eta)}+\frac{m(E)}{m(-2\eta,2\eta)}\geq \frac{m(E\cap(-\eta,\eta))}{m(-\eta,\eta)}+\frac{m(E\cap(-\eta,\eta) )}{m(-2\eta,2\eta)}$$根据0是Lebesgue点, 两边令$\eta\rightarrow0$, 右边是$\frac{3}{2}$, 左边是1, 矛盾.
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>
+                Prove that if \( f \) is integrable on \( \mathbb{R}^d \), and \( f \) is not identically zero, then
+
+
+                \[
+                f^*(x) \geq \frac{c}{|x|^d}, \quad \text{for some } c > 0 \text{ and all } |x| \geq 1.
+                \]
+                Conclude that \( f^* \) is not integrable on \( \mathbb{R}^d \). Then, show that the weak type estimate
+
+
+                \[
+                m(\{x : f^*(x) > \alpha\}) \leq c/\alpha
+                \]
+                for all \( \alpha > 0 \) whenever \( \int |f| = 1 \), is best possible in the following sense: if \( f \) is supported in the unit ball with \( \int |f| = 1 \), then
+
+
+                \[
+                m(\{x : f^*(x) > \alpha\}) \geq c'/\alpha
+                \]
+                for some \( c' > 0 \) and all sufficiently small \( \alpha \).
+            </p>
+            <p>[Hint: For the first part, use the fact that \( \int_B |f| > 0 \) for some ball \( B \).]</p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                设f在$B(0,M)$中不是a.e.为0的(这个M必定存在, 否则f 在$R^{d}$上a.e.为0), 则$\int_{B(0,M)}\lvert f(x)\rvert\,dx>0$,
+                $$f^{\ast}(x)\geq\frac{1}{m(B(0,M\lvert x\rvert))}\int_{B(0,M\lvert x\rvert)}\lvert f(y)\rvert\,dy\geq \frac{1}{M^{d}\lvert x\rvert^{d}m(B(0,1))}\int_{B(0,M)}\lvert f(y)\rvert\,dy\qquad\forall\lvert x\rvert\geq 1$$
+                因此$f^{\ast}$在$R^{d}$上不可积.
+
+                当$\int_{R^{d}}\lvert f(x)\rvert\,dx=1$且f的支集含于$B(0,1)$时, 对$\lvert x\rvert\geq 1$. 必有$$f^{\ast(x)}\geq \frac{1}{m(x,\lvert x\rvert+1)}\int_{B(x,\lvert x\rvert+1)}\lvert f(y)\rvert\,dx\geq\frac{1}{(\lvert x\rvert+1)^{d}m(B(0,1))}\int_{B(0,1)}\lvert f(y)\rvert\,dy\geq \frac{c}{\lvert x\rvert^{d}}\qquad\forall \lvert x\rvert\geq 1$$
+                那么对足够小的$\alpha$, 比如$\alpha< c$, 可得$1\leq \lvert x\rvert< (\frac{c}{\alpha})^{\frac{1}{d}}$时, 必有$f^{\ast}(x)>\alpha$, 这给出了$$m(\{x\big|f^{\ast}(x)>\alpha\})\geq m(\{x\big|1\leq \lvert x\rvert< (\frac{c}{\alpha})^{\frac{1}{d}}\}) =m(B(0,(\frac{c}{\alpha})^{\frac{1}{d}}))-m(B(0,1))=m(B(0,1))[\frac{c}{\alpha}-1]$$
+                $\alpha$足够小时,$\frac{c}{\alpha}-1\geq\frac{2c}{\alpha}$, 因此对足够小的$\alpha$, 存在和$\alpha$无关的c使得$$m(\{x\big|f^{\ast}(x)>\alpha\})\geq \frac{2c}{m(B(0,1))}\frac{1}{\alpha}$$
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>
+                Consider the function on \( \mathbb{R} \) defined by
+
+
+                \[
+                f(x) = \begin{cases}
+                \frac{1}{|x| (\log 1/|x|)^2} & \text{if } |x| \leq 1/2, \\
+                0 & \text{otherwise}.
+                \end{cases}
+                \]
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Verify that \( f \) is integrable.</p>
+                </li>
+                <li>
+                    <p>
+                        Establish the inequality
+
+
+                        \[
+                        f^*(x) \geq \frac{c}{|x| (\log 1/|x|)}
+                        \]
+                        for some \( c > 0 \) and all \( |x| \leq 1/2 \), to conclude that the maximal function \( f^* \) is not locally integrable.
+                    </p>
+                </li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+
+            <h4>Proof:(a)</h4>
+            <p>
+                根据奇偶性, 只需考虑$x>0$的情形, 考虑Riemann积分 $$\int_{\epsilon}^{\frac{1}{2}}\frac{1}{x}\frac{1}{(ln(x))^{2}}\,dx=\int_{ln\epsilon}^{ln\frac{1}{2}}\frac{1}{t^{2}}\,dt\rightarrow\int_{-\infty}^{-ln2}\frac{1}{t^{2}}\,dt< \infty$$ 所以f可积.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                根据奇偶性, $f^{\ast}$是偶函数, 只需考虑$x>0$的情形.
+                $$f^{\ast}(x)\geq \frac{1}{m(B(x,x))}\int_{B(x,x)}\frac{1}{ y(lny)^{2}}\,dy\geq\frac{1}{x}\int_{0}^{x}\frac{1}{y(lny)^{2}}\,dy$$
+                $$\int_{0}^{x}\frac{1}{y(lny)^{2}}\,dy=\int_{-\infty}^{lnx}\frac{1}{t^{2}}\,dt=-\frac{1}{ln(x)}=\frac{1}{ln(\frac{1}{x})}$$
+                因此$$f^{\ast}(x)\geq \frac{c}{xln(\frac{1}{x})}\qquad x>0$$
+                而$$\int_{\epsilon}^{\frac{1}{2}}\frac{1}{xln(\frac{1}{x})}\,dx=\int_{ln\epsilon}^{-ln2}-\frac{1}{t}\,dt\rightarrow\infty$$
+                因此$f^{\ast}$不可积
+            </p>
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>
+                In one dimension there is a version of the basic inequality (1) for the maximal function in the form of an identity. We define the "one-sided" maximal function
+
+
+                \[
+                f_+^*(x) = \sup_{h>0} \frac{1}{h} \int_x^{x+h} |f(y)| \, dy.
+                \]
+                If \( E_\alpha^+ = \{x \in \mathbb{R} : f_+^*(x) > \alpha\} \), then
+
+
+                \[
+                m(E_\alpha^+) = \frac{1}{\alpha} \int_{E_\alpha^+} |f(y)| \, dy.
+                \]
+            </p>
+            <p>[Hint: Apply Lemma 3.5 to \( F(x) = \int_0^x |f(y)| \, dy - \alpha x \). Then \( E_\alpha^+ \) is the union of disjoint intervals \( (a_k, b_k) \) with \( \int_{a_k}^{b_k} |f(y)| \, dy = \alpha (b_k - a_k) \).]</p>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                跟随提示的思路, $$\exists h_{x}>0\;s.t\;F(x+h_{x})>F(x)\Leftrightarrow \exists h_{x}>0\;s.t\;\frac{1}{h_{x}}\int_{x}^{x+h_{x}}\lvert f(y)\rvert\,dy>\alpha\Leftrightarrow f_{+}^{\ast}(x)>\alpha$$
+                用Lemma 3.5可得$E_{\alpha}^{+}$必定是开的, 且$$E_{\alpha}^{+}=\cup_{k=1}^{\infty}(a_{k},b_{k})\qquad F(a_{k})=F(b_{k})$$
+                这给出了$$\alpha(b_{k}-a_{k})=\int_{a_{k}}^{b_{k}}\lvert f(y)\rvert\,dy$$
+                从而$$m(E_{\alpha}^{+})=\frac{1}{\alpha}\int_{E_{\alpha}^{+}}\lvert f(y)\rvert\,dy$$
+            </p>
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>
+                Using Corollary 1.5, prove that if a measurable subset \( E \) of \( [0, 1] \) satisfies \( m(E \cap I) \geq \alpha m(I) \) for some \( \alpha > 0 \) and all intervals \( I \) in \( [0, 1] \), then \( E \) has measure 1. See also Exercise 28 in Chapter 1.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                由条件可得$$\limsup_{m(I)\rightarrow0,x\in I}\frac{1}{m(I)}\int_{I}\mathcal{X}_{E}\,dx\geq\alpha$$
+                又$\limsup_{m(I)\rightarrow0,x\in I}\frac{1}{m(I)}\int_{I}\mathcal{X}_{E}\,dx=\mathcal{X}_{E}$ 对a.e.的$x\in[0,1]$成立, 所以$\mathcal{X}_{E}=\alpha>0$对a.e的$x\in[0,1]$成立
+
+                而$\mathcal{X}_{E}$要么为0要么为1, 所以在$[0,1]$中a.e>0说明$a.e.=1$, 因此$\mathcal{X}_{E}$在[0,1]中a.e为1. 又$E\subseteq [0,1]$, 所以$\mathcal{X}_{E}$在$[0,1]^{c}$上为0, 因此$$m(E)=\int_{0}^{1}\mathcal{X}_{E}\,dx=\int_{0}^{1}\,dx=1$$
+            </p>
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>
+                Suppose \( A \) is a Lebesgue measurable set in \( \mathbb{R} \) with \( m(A) > 0 \). Does there exist a sequence \( \{s_n\}_{n=1}^\infty \) such that the complement of \( \bigcup_{n=1}^\infty (A + s_n) \) in \( \mathbb{R} \) has measure zero?
+            </p>
+            <p>[Hint: For every \( \epsilon > 0 \), find an interval \( I_\epsilon \) of length \( l_\epsilon \) such that \( m(A \cap I_\epsilon) \geq (1 - \epsilon) m(I_\epsilon) \). Consider \( \bigcup_{k=-\infty}^\infty (A + t_k) \), with \( t_k = k l_\epsilon \). Then vary \( \epsilon \).]</p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                注意到A是可测集, 所以根据第一章的Exercise 28, 存在开区间$I_{n}$满足$$m(A\cap I_{n})\geq (1-\frac{1}{2^{n}})m(I_{n})$$
+                令$t_{n,k}=km(I_{n})$, $$(\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c}=\cap_{n=1,k=-\infty}^{\infty}A^{c}+t_{n,k}$$
+                对任何一个区间$[a,a+1]$, 都有$$m((\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c}\cap[a,a+1])\leq m((\cup_{k=-\infty}^{\infty}A+t_{N,k})^{c}\cap [a,a+1])\qquad\forall N\geq1$$
+                注意到$[a,a+1]$至多和$\frac{1}{m(I_{N})}+1$个长度为$m(I_{N})$的互不相交的区间有非空交, 所以我们记$$V=\{k\big| I_{N}+t_{N,k}\cap [a,a+1]\neq\emptyset\}$$
+                根据$I_{N}+t_{N,k}$互不相交可知V中的元素个数$\leq \frac{1}{m(I_{N})}+1$, 因此$$m((\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c}\cap[a,a+1])\leq m(\cup_{k\in V}I_{N}+t_{N,k}\cap (\cup_{k=-\infty}^{\infty}A+t_{N,k})^{c})$$
+                $$\leq \sum_{k\in V}m(I_{N}+t_{N,k}\cap(\cup_{k=-\infty}^{\infty}A+t_{N,k})^{c})=\sum_{k\in V}m(I_{N}+t_{N,k}\cap A^{c}+t_{N,k})=\sum_{k\in V}m(I_{N}\cap A^{c})\leq\sum_{k\in V}\frac{1}{2^{N}}m(I_{N})$$
+                $$\leq \frac{m(I_{N})}{2^{N}}(1+\frac{1}{m(I_{N})})=\frac{m(I_{N})}{2^{N}}+\frac{1}{2^{N}}$$
+                又$\frac{1}{2}m(I_{N})\leq (1-\frac{1}{2^{N}})m(I_{N})\leq m(A\cap I_{N})\leq m(A)$, 因此$$m((\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c}\cap[a,a+1])\leq\frac{m(A)}{2^{N-1}}+\frac{1}{2^{N}}\qquad\forall N\geq 1$$
+                这给出了$$m((\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c}\cap[a,a+1])=0\qquad\forall a\in R$$
+                又$R=\cup_{a\in Z}[a,a+1]$, 所以$m((\cup_{n=1,k=-\infty}^{\infty}A+t_{n,k})^{c})=0$
+            </p>
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>
+                Let \( F \) be a closed subset in \( \mathbb{R} \), and \( \delta(x) \) the distance from \( x \) to \( F \), that is,
+
+
+                \[
+                \delta(x) = d(x, F) = \inf\{|x - y| : y \in F\}.
+                \]
+                Clearly, \( \delta(x + y) \leq |y| \) whenever \( x \in F \). Prove the more refined estimate
+
+
+                \[
+                \delta(x + y) = o(|y|) \quad \text{for a.e. } x \in F,
+                \]
+                that is, \( \delta(x + y)/|y| \to 0 \) for a.e. \( x \in F \).
+            </p>
+            <p>[Hint: Assume that \( x \) is a point of density of \( F \).]</p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                注意到对a.e的$x\in F$, x都是F的Lebesgue点, 所以只需对F的Lebesgue点证明结论.
+
+                注意到对F的Lebesgue点, 都有$$\lim_{h\rightarrow0}\frac{m(F\cap (x-\lvert y\rvert,x+\lvert y\rvert))}{2\lvert y\rvert}\rightarrow1$$
+                任取$\epsilon>0$, 存在$\delta$使得对任何$\lvert y\rvert< \delta$, 都有$$m(F\cap(x-\lvert y\rvert,x+\lvert y\rvert) ) /2\lvert y\rvert\geq\frac{2-\epsilon}{2}\qquad m(F\cap(x-\lvert y\rvert,x+\lvert y\rvert))>
+                \lvert y\rvert(2-\epsilon)$$
+                当$y>0$时, 如果$F\cap [x+(1-\epsilon)y,x+h)=\emptyset$, 那么$$m(F\cap(x-y,x+y))=m(F\cap(x-y,x+(1-\epsilon)y))\leq y(2-\epsilon)$$
+                矛盾. 因此存在$y_{h}\in F\cap [x+(1-\epsilon)y,x+y)$, 从而$$\delta(x+y)\leq \lvert x+y-y_{h}\leq \epsilon y$$
+                从而$$\frac{\delta(x+y)}{\lvert y\rvert}\leq \epsilon\qquad 0< y< \delta$$
+
+                当$y< 0$时,如果$F\cap (x+y,x+y(2-\epsilon)]=\emptyset$, 那么$$m(F\cap(x+y,x-y))=m(F\cap(x+y,x-(1-\epsilon)y))\leq -y(2-\epsilon)=\lvert y\rvert(2-\epsilon)$$
+                矛盾. 因此存在$y_{h}\in F\cap (x+y,x+y(2-\epsilon)]$, 从而$$\delta(x+y)\leq \lvert x+y-y_{h}\leq -\epsilon y=\epsilon\lvert y\rvert$$
+                从而$$\frac{\delta(x+y)}{\lvert y\rvert}\leq \epsilon\qquad -\delta< y< 0$$
+                综上, 对任何$\epsilon>0$, 存在$\delta$使得对任何$\lvert y\rvert< \delta$, $$\frac{\delta(x+y)}{\lvert y\rvert}< \epsilon$$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>
+                Construct an increasing function on \( \mathbb{R} \) whose set of discontinuities is precisely \( \mathbb{Q} \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                记全体有理数为$r_{1},..,r_{n},..,$, 考虑函数$$f(x)=\sum_{x\geq r_{n}}\frac{1}{2^{n}}$$
+                先证明f是增函数. 首先任取$x< y$, 根据有理数的稠密性, 存在$r_{k}$满足$x< r_{k}< y$, 记$Q_{x}$是小于等于x的有理数的全体, 那么$$Q_{y}\supseteq Q_{x}\cup\{r_{k}\}$$
+                这给出了$$f(y)=\sum_{r_{n}\in Q_{y}}\frac{1}{2^{n}}\geq \frac{1}{2^{k}}+\sum_{r_{n}\in Q_{x}}\frac{1}{2^{n}}=\frac{1}{2^{k}}+f(x)$$
+
+                然后证明f在有理点处不连续. 设这个有理点为$r_{k}$, 则$$f(r_{k})=\sum_{r_{n}\in Q_{r_{k}}}\frac{1}{2^{n}}$$
+                对任何$x< r_{k}$, 必有$r_{k}\notin Q_{x}$且$Q_{x}\subseteq Q_{r_{k}}$. 这给出了$$f(r_{k})\geq \frac{1}{2^{k}}+\sum_{r_{n}\in Q_{x}}\frac{1}{2^{n}}=\frac{1}{2^{k}}+f(x)\qquad\forall x< r_{k}$$
+                所以f在$r_{k}$处必定不是左连续
+
+                然后证明f在无理点处连续. 任取一个无理点x, 对任何$\epsilon$.  取N满足$\sum_{n=N}^{\infty}\frac{1}{2^{n}}< \epsilon$, 然后取$\delta$足够小使得$(x-\delta,x+\delta)$不包含$r_{1},..,r_{N}$. 则任取$y\in (x-\delta,x+\delta)$, 则$Q_{x}\triangle Q_{y}$不包含$r_{1},..,r_{N}$(因为$Q_{x}\triangle Q_{y}\subseteq (x-\delta,x+\delta)$), 因此$$\lvert f(x)-f(y)\rvert=\begin{cases}
+                \sum_{Q_{y}-Q_{x}}\frac{1}{2^{n}}&y>x\\
+                \sum_{Q_{x}-Q_{y}}\frac{1}{2^{n}}&y< x
+                \end{cases}$$
+                无论哪种情况都有$$\lvert f(x)-f(y)\rvert\leq\sum_{Q_{y}\triangle Q_{x}}\frac{1}{2^{n}}\leq\sum_{n\geq N+1}\frac{1}{2^{n}}< \epsilon$$
+                因此f在无理点处连续.  从而x是f的不连续点当且仅当x是有理数
+            </p>
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>
+                If \( a, b > 0 \), let
+
+
+                \[
+                f(x) = \begin{cases}
+                x^a \sin(x^{-b}) & \text{for } 0 < x \leq 1, \\
+                0 & \text{if } x = 0.
+                \end{cases}
+                \]
+                Prove that \( f \) is of bounded variation in \( [0, 1] \) if and only if \( a > b \). Then, by taking \( a = b \), construct (for each \( 0 < \alpha < 1 \)) a function that satisfies the Lipschitz condition of exponent \( \alpha \)
+
+
+                \[
+                |f(x) - f(y)| \leq A |x - y|^\alpha
+                \]
+                but which is not of bounded variation.
+            </p>
+            <p>[Hint: Note that if \( h > 0 \), the difference \( |f(x + h) - f(x)| \) can be estimated by \( C (x + h)^a \), or \( C' h / x \) by the mean value theorem. Then, consider two cases, whether \( x^{a+1} \geq h \) or \( x^{a+1} < h \). What is the relationship between \( \alpha \) and \( a \)?]</p>
+        </div>
+
+        <div class="Proof-box">
+
+            <h4>Proof:</h4>
+            <p>
+                $\Rightarrow$ 考虑分点$t_{n}=(\frac{\pi }{2}+\pi n)^{-\frac{1}{b}}$, 那么$$\lvert f(t_{n})-f(t_{n+1})\rvert=\lvert (-1)^{n}(\frac{\pi }{2}+\pi n)^{-\frac{a}{b}}-(-1)^{n+1}(\frac{\pi }{2}+\pi n+\pi)^{-\frac{a}{b}}\rvert=(\frac{\pi }{2}+\pi n)^{-\frac{a}{b}}+(\frac{\pi }{2}+\pi n+\pi)^{-\frac{a}{b}}$$
+                $a\leq b$时, $\sum_{n=1}^{N} (\frac{\pi }{2}+\pi n)^{-\frac{a}{b}}+(\frac{\pi }{2}+\pi n+\pi)^{-\frac{a}{b}}$随着N的增大是发散的, 因此要使f有界变差, 必须要$a>b$
+
+                $\Leftarrow$ 如果$a>b$, 那么$$f'(x)=ax^{a-1}sin(x^{-b})-b\frac{x^{a}}{x^{b+1}}cos(x^{-b})$$这是个$[\epsilon,1]$上的连续函数, 因此可以使用Riemann积分下的微积分基本定理. 对[0,1]的任一一组分点$0=t_{0}< t_{1}< \cdots< t_{N}=1$, 取$\epsilon$足够小满足$t_{0}< \epsilon< t_{1}$, 那么$$\sum_{i=1}^{N}\lvert f(t_{i})-f(t_{i-1})\rvert\leq f(\epsilon)+\sum_{i=2}^{N}\lvert f(q_{i})-f(q_{i-1})$$
+                其中$q{i}=t_{i},i\geq 2$. $q_{1}=\epsilon$, 从而$$\leq f(\epsilon)+\sum_{i=2}^{N}\int_{q_{i-1}}^{q_{i}}\lvert f'(x)\rvert\,dx=\lvert f(\epsilon)\rvert+\int_{\epsilon}^{1}\lvert f'(x)\rvert\,dx$$
+                $$\leq \lvert f(\epsilon)\rvert+C\int_{\epsilon}^{1}x^{a-1}+\frac{1}{x^{b-a+1}}\,dx$$
+                $$=\lvert f(\epsilon)\rvert+C(1-\epsilon^{a})+C(1-\epsilon^{a-b})$$
+                其中C只和a,b有关. 又$f(\epsilon)\rightarrow0$, 因此根据$\epsilon$的任意性可得$$\sum_{i=1}^{N}\lvert f(t_{i})-f(t_{i-1})\rvert\leq C$$
+                所以f是有界变差的.
+
+                从而$a=b$时, f不是有界变差的, 此时根据中值定理, $$f(x+h)-f(x)=h(ay^{a-1}sin(y^{-a})-a\frac{1}{y}cos(y^{-a}))\qquad y\in(x,x+h)$$
+                因此$$\lvert f(x+h)-f(x)\rvert\leq Ch((x+h)^{a-1})+\frac{Ch}{x}$$
+                其中C是只和a有关的定数, 注意到$h\leq 1$恒成立, 所以当$x^{a+1}>h$时, 有$$\lvert f(x+h)-f(x)\rvert\leq Ch+\frac{Ch}{h^{\frac{1}{a+1}}}\leq Ch^{\frac{a}{a+1}}$$
+
+                当$x^{a+1}< h$时, $$\lvert f(x)\rvert\leq h^{\frac{a}{a+1}}\qquad\lvert f(x+h)\rvert\leq (x+h)^{a}\leq (h^{\frac{1}{a+1}}+h)^{a}\leq 2^{a}h^{\frac{a}{a+1}}$$
+                因此$$\lvert f(x+h)-f(x)\rvert\leq (2^{a}+1)h^{\frac{a}{a+1}}=Ch^{\frac{a}{a+1}}$$
+                因此存在常数C使得$$\lbrace f(x+h)-f(x)\rvert\leq Ch^{\frac{a}{a+1}}$$
+                这说明f是$\alpha=\frac{a}{a+1}$阶Holder连续的. 又$\frac{a}{a+1}$在$(0,\infty)$的值域为$(0,1)$. 所以对任何$\alpha\in(0,1)$, 都存在不是有界变差的$\alpha$阶Holder连续函数
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>
+                Consider the function \( F(x) = x^2 \sin(1/x^2) \), \( x \neq 0 \), with \( F(0) = 0 \). Show that \( F'(x) \) exists for every \( x \), but \( F' \) is not integrable on \( [-1, 1] \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $$F'(x)=2xsin(x^{-2})-\frac{2}{x}cos(x^{-2})\qquad x\neq0$$
+                当$x=0$时, $$F'(0)=\lim_{h\rightarrow0}\frac{h^{2}sin(h^{-2})}{h}=0$$
+                因此F处处可微.注意到$2xsin(x^{-2})$在$[-1,1]$上可积. 所以只需证$\frac{2}{x}cos(x^{-2})$在$[-1,1]$上不可积. 只需证$\int_{\epsilon}^{1}\frac{1}{x}cos(x^{-2})\,dx$在$\epsilon\rightarrow0$时发散. 这个积分可用Riemann积分计算, 所以$$\int_{\epsilon}^{1}\frac{1}{x}\lvert cos(x^{-2})\rvert\,dx=\int_{1}^{\frac{1}{\epsilon}}\frac{t}{t^{2}}\lvert cost^{2}\rvert\,dt\rightarrow\int_{1}^{\infty}\frac{1}{t}\lvert cost^{2}\rvert\,dt=\int_{1}^{\infty}\frac{1}{\sqrt{x}}\frac{1}{2\sqrt{x}}\lvert cosx\rvert\,dx$$
+
+                $$\geq\frac{1}{2}\sum_{n=1}^{\infty}\int_{2n\pi}^{2n\pi+\frac{\pi}{3}}\frac{1}{x}\lvert cosx\rvert\,dx$$
+                $$\geq\frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{2n\pi+\frac{\pi}{3}}\int_{2n\pi}^{2n\pi+\frac{\pi}{3}}\frac{1}{2}\,dx\sim\sum_{n=1}^{\infty}\frac{1}{n}=\infty$$
+                因此$F'$不可积
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>
+                Show directly from the definition that the Cantor-Lebesgue function is not absolutely continuous.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                如果绝对连续, 那么$$\int_{0}^{1}f'(x)\,dx=f(1)-f(0)=1$$
+                然而$f'$ a.e 为0, 因此左边为0, 矛盾
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>
+                The following measurability issues arose in the discussion of differentiability of functions.
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Suppose \( F \) is continuous on \( [a, b] \). Show that
+
+
+                        \[
+                        D^+(F)(x) = \limsup_{\substack{h \to 0 \\ h > 0}} \frac{F(x + h) - F(x)}{h}
+                        \]
+                        is measurable.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Suppose \( J(x) = \sum_{n=1}^\infty \alpha_n j_n(x) \) is a jump function as in Section 3.3. Show that
+
+
+                        \[
+                        \limsup_{h \to 0} \frac{J(x + h) - J(x)}{h}
+                        \]
+                        is measurable.
+                    </p>
+                </li>
+            </ol>
+            <p>[Hint: For (a), the continuity of \( F \) allows one to restrict to countably many \( h \) in taking the limsup. For (b), given \( k > m \), let \( F_{k,m,N} = \sup_{1/k \leq |h| \leq 1/m} \left| \frac{J_N(x + h) - J_N(x)}{h} \right| \), where \( J_N(x) = \sum_{n=1}^N \alpha_n j_n(x) \). Note that each \( F_{k,m,N} \) is measurable. Then, successively, let \( N \to \infty \), \( k \to \infty \), and finally \( m \to \infty \).]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                对任何$x$, 任取$\epsilon>0$, 存在$\delta$使得当$t< \delta$时, $$\lvert \underset{0< h< t}{sup}\frac{F(x+h)-F(x)}{h}-D^{+}F(x)\rvert< \epsilon/3$$
+                又根据上确界的定义, 存在$h_{x}$使得$\frac{F(x+h_{x})-F(x)}{h_{x}}+\frac{\epsilon}{3}>\underset{0< h< t}{sup}\frac{F(x+h)-F(x)}{h}$, 再根据F的连续性, 存在有理数$h_{q}$使得$$\lvert \frac{F(x+h_{x})-F(x)}{h_{x}}-\frac{F(x+h_{q})-F(x)}{h_{q}}\rvert< \frac{\epsilon}{3}$$
+                这给出了$$\lvert \underset{0< h< t,h\in Q}{sup}\frac{F(x+h)-F(x)}{h}-D^{+}F(x)\rvert\leq \lvert \underset{0< h< t,h\in Q}{sup}\frac{F(x+h)-F(x)}{h}-\underset{0< h< t}{sup}\frac{F(x+h)-F(x)}{h}\rvert+\lvert \underset{0< h< t}{sup}\frac{F(x+h)-F(x)}{h}-D^{+}F(x)\rvert$$
+                $$\leq \underset{0< h< t}{sup}\frac{F(x+h)-F(x)}{h}-\underset{0< h< t,h\in Q}{sup}\frac{F(x+h)-F(x)}{h}+\frac{\epsilon}{3}$$
+                $$\leq \frac{F(x+h_{x})-F(x)}{h_{x}}+\frac{\epsilon}{3}-\frac{F(x+h_{q})-F(x)}{h_{q}}+\frac{F(x+h_{q})-F(x)}{h_{q}}-\underset{0< h< t,h\in Q}{sup}\frac{F(x+h)-F(x)}{h}+\frac{\epsilon}{3}$$
+                $$\leq \frac{\epsilon}{3}+\frac{\epsilon}{3}+0+\frac{\epsilon}{3}=\epsilon$$
+                从而$$D^{+}F(x)=\limsup_{\substack{h \to 0 \\ h > 0,h\in Q}}\frac{F(x+h)-F(x)}{h}$$
+                而$\frac{F(x+h)-F(x)}{h}$可测, 所以可数个这样的函数的上确界也是可测的.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                跟随提示的思路, $N\rightarrow\infty$可得$$F_{k,m}=\sup_{1/k \leq |h| \leq 1/m}\lvert \frac{J(x+h)-J(x)}{h}\rvert$$
+                可测. 然后令$k\rightarrow\infty$, 可得$F_{m}=\sup_{0< |h| \leq 1/m}\lvert \frac{J(x+h)-J(x)}{h}\rvert$可测, 然后令$m\rightarrow\infty$, $$\lim_{m\rightarrow\infty}F_{m}(x)=\limsup_{h\rightarrow0}\frac{J(x+h)-J(x)}{h}$$
+                可测
+            </p>
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>
+                Suppose \( F \) is of bounded variation and continuous. Prove that \( F = F_1 - F_2 \), where both \( F_1 \) and \( F_2 \) are monotonic and continuous.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                注意到$$F(x)=P_{F}(a,x)+F(a)-N_{F}(a,x)$$
+                因此只需证明当F连续时, 正负变差都是连续的. 事实上对固定的x, 对任何一个$\epsilon>0$, 存在一组满足$F(t_{j-1})\leq F(t_{j})$的分割$a=t_{0}< t_{1}< \cdots< t_{N}=x$满足$$\sum_{(+)_{N}} F(t_{i})-F(t_{i-1})>P_{F}(x,a)-\frac{\epsilon}{2}$$
+                其中$(+)_{N}$是满足$F(t_{i})\geq F(t_{i-1})$的$1\leq i\leq N$的全体
+
+                又根据F在x处的连续性, 存在$\delta$使得$\lvert x-y\rvert< \delta$时, $\lvert F(x)-F(y)\rvert< \frac{\epsilon}{2}$, 取$\delta_{1}=min\{\delta,t_{N}-t_{N-1}\}$, 则对任何$y\in(x-\delta_{1},x)$, 都能知道$a=t_{0}< t_{1}< \cdots< t_{N-1}< y$是$(a,y)$的一组分点, 因此根据正变差的定义
+                $$P_{F}(a,y)\geq \sum_{(+)_{N-1}}F(t_{i})-F(t_{i-1})\geq\sum_{(+)_{N}} F(t_{i})-F(t_{i-1})-\lvert F(t_{N})-F(t_{N-1})\rvert$$
+
+                Case 1: 如果$\lvert F(t_{N})-F(t_{N-1})\rvert\leq \frac{\epsilon}{2}$, 那么$$P_{F}(a,y)\geq \sum_{(+)_{N}} F(t_{i})-F(t_{i-1})-\frac{\epsilon}{2}\geq P_{F}(x,a)-\epsilon$$
+                Case 2:如果$ F(t_{N})-F(t_{N-1})>\frac{\epsilon}{2}$, 根据$F(t_{N})-F(y)=F(x)-F(y)< \frac{\epsilon}{2}$和连续函数的介值性(在区间上满足介值定理), 可知道$F(y)>F(t_{N-1})$, 所以此时$$P_{F}(a,y)\geq \sum_{(+)_{N-1}}F(t_{i})-F(t_{i-1})+F(y)-F(t_{N-1})>\sum_{(+)_{N-1}}F(t_{i})-F(t_{i-1})+F(t_{N})-F(t_{N-1})-\frac{\epsilon}{2}=\sum_{(+)_{N}}F(t_{i})-F(t_{i-1})-\frac{\epsilon}{2}$$
+                $$>P_{F}(x,a)-\epsilon$$
+                Case 3: 如果$ F(t_{N})-F(t_{N-1}) < \frac{\epsilon}{2}$, 这时候$$P_{F}(a,y)\geq \sum_{(+)_{N-1}}F(t_{i})-F(t_{i-1})=\sum_{(+)_{N}} F(t_{i})-F(t_{i-1})>P_{F}(x,a)-\frac{\epsilon}{2}$$
+                因此无论那种情况, 都有当$y\in(x-\delta_{1},x)$时, $$P_{F}(a,y)>P_{F}(a,x)-\epsilon$$
+                又$P_{F}(a,x)$单调, 因此$P_{F}(a,x)$在x处左连续.
+
+                然后证明$P_{F}(A,C)+P_{F}(C,B)=P_{F}(A,B)$. 显然A,C的分点和CB的分点合起来就是AB的分点, 因此对任何一组分点$A< t_{0}< t_{1}< \cdots< t_{N}=C$和$C=q_{0}< q_{1}< \cdots< q_{M}=B$, 记$o_{i}=a_{i},i\leq N, o_{i+N}=q_{i},i\leq M$,  则$$\sum_{(+)_{t_{i}}}F(t_{i})-F(t_{i-1})+\sum_{(+)_{q_{i}}}F(q_{i})-F(q_{i-1})\leq\sum_{(+)_{o_{i}}}F(o_{i})-F(o_{i-1})\leq P_{F}(A,B)$$
+                左边取上确界可得$P_{F}(A,C)+P_{F}(C,B)\leq P_{F}(A,B)$, 另一方面对任何$\epsilon>0$, 存在AB的分点$A=t_{0}< t_{1}< \cdots< t_{N}=B$满足$$P_{F}(A,B)\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                如果没有$t_{j}$满足$t_{j}=C$, 那么可设$t_{k}< C< t_{k+1}$, 把C插进去形成一组新的分点, 下面分类讨论:
+                Case 1: $F(t_{k+1})< F(t_{k})$. 此时$t_{k+1}$不在$(+)_{AB}$中, 因此$$ P_{F}(A,B)\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq \sum_{(+)_{0:k:C}}F(t_{i})-F(t_{i-1})+\sum_{(+)_{C:k+1:N}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}\leq P_{F}(A,C)+P_{F}(C,B)+\frac{\epsilon}{2}$$
+                Case 2:  $F(t_{k+1})\geq F(t_{k})$, 此时如果$F(C)\geq F(t_{k+1})$, 那么可得$$F(C)-F(t_{k})\geq F(t_{k+1})-F(t_{k})$$
+                因此$$P_{F}(A,B)\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+F(t_{k+1})-F(t_{k})+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\{\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+F(C)-F(t_{k})\}+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq P_{F}(A,C)+P_{F}(C,B)+\frac{\epsilon}{2}$$
+                如果$F(t_{k+1})>F(C)\geq F(t_{k})$, 那么此时$F(t_{k+1})-F(C)+F(C)-F(t_{k})=F(t_{k+1})-F(t_{k})$, 从而$$P_{F}(A,B)\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\{\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+F(t_{k+1})-F(C)\}+\{F(C)-F(t_{k})+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})\}+\frac{\epsilon}{2}$$
+                $$\leq P_{F}(A,C)+P_{F}(C,B)+\frac{\epsilon}{2}$$
+
+                如果$F(t_{k+1})\geq F(t_{k})>F(C)$, 那么$F(t_{k+1})-F(t_{k})\leq F(t_{k+1})-F(C)+F(t_{k})-F(C)$, 因此$$P_{F}(A,B)\leq \sum_{(+)_{AB}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+F(t_{k+1})-F(t_{k})+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})-\frac{\epsilon}{2}$$
+                $$\{\sum_{(+)_{0:k}}F(t_{i})-F(t_{i-1})+F(t_{k+1})-F(C)\}+\{F(C)-F(t_{k})+\sum_{(+)_{k+1:N}}F(t_{i})-F(t_{i-1})\}+\frac{\epsilon}{2}$$
+                $$\leq P_{F}(A,C)+P_{F}(C,B)+\frac{\epsilon}{2}$$
+
+                从而无论哪种情况, 都有$P_{F}(A,B)\leq P_{F}(A,C)+P_{F}(C,B)+\frac{\epsilon}{2}$, 根据$\epsilon$的任意性, 可得$$P_{F}(A,B)=P_{F}(A,C)+P_{F}(C,B)$$
+
+                然后证明右连续性,对任何$\epsilon$, 取$\delta$满足$\lvert x-y\rvert< \delta$时, $\lvert F(x)-F(y)\rvert< \epsilon/3$.  对任何$y>x$, 都有$$P_{F}(a,y)-P_{F}(a,x)=P_{F}(x,y)$$
+
+                取定$C>x$, 考虑一组分点$x=t_{0}< t_{1}< \cdots< t_{N}=C$满足$$P_{F}(x,C)< \sum_{(+)}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                取$\delta_{1}$满足$\delta_{1}=\frac{1}{2}min\{\delta,t_{1}-t_{0}\}$, 那么对任何$\lvert y-x\rvert< \delta_{1}$, 都有$$x=t_{0}< y< t_{1}< \cdots< t_{N}=C$$是一组新的分点,
+                又$\lvert x-y\rvert< \delta$, 所以$\lvert  F(t_{0})-F(y)\rvert< \frac{\epsilon}{3}$,下面分类讨论:
+
+                Case 1:$F(t_{1})< F(t_{0})$, 此时$$P_{F}(x,C)< \sum_{(+)}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}\leq \sum_{(+)_{y:t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq P_{F}(y,C)+\epsilon$$
+
+                Case 2:$F(y)\geq F(t_{1})\geq F(t_{0})$. 此时$F(t_{1})-F(t_{0})\leq F(y)-F(t_{0})$ , 所以$$P_{F}(x,C)< \sum_{(+)}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=F(t_{1})-F(t_{0})+\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq F(y)-F(t_{0})+\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}\leq \sum_{(+)_{y:t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq F(y)-F(t_{0})+P_{F}(y,C)+\frac{\epsilon}{2}\leq P_{F}(y,C) +\frac{5\epsilon}{6}< P_{F}(y,C)+\epsilon$$
+
+                Case 3: $ F(t_{1})>F(y)\geq F(t_{0})$. 此时$$P_{F}(x,C)< \sum_{(+)}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=F(t_{1})-F(t_{0})+\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$=F(y)-F(t_{0})+F(t_{1})-F(y)+\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}\leq \sum_{(+)_{y:t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq F(y)-F(t_{0})+P_{F}(y,C)+\frac{\epsilon}{2}\leq P_{F}(y,C) +\frac{5\epsilon}{6}< P_{F}(y,C)+\epsilon$$
+                \textbf{Case 4:}  $ F(t_{1})\geq F(t_{0})\geq F(y)$. 此时$F(t_{1})-F(t_{0})< F(t_{1})-F(y)$,   因此$$P_{F}(x,C)< \sum_{(+)}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}=F(t_{1})-F(t_{0})+\sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}$$
+                $$\leq F(t_{1})-F(y)+ \sum_{(+)_{t_{1}:t_{N}}}F(t_{i})-F(t_{i-1})+\frac{\epsilon}{2}\leq P_{F}(y,C)+\frac{\epsilon}{2}$$
+
+                因此$$P_{F}(x,C)< P_{F}(y,C)+\epsilon\qquad P_{F}(x,y)< \epsilon$$
+                从而当$\lvert x-y\rvert< \delta_{1}$时, $$P_{F}(a,y)-P_{F}(a,x)< \epsilon$$从而右连续, 因此$P_{F}(a,x)R$连续. 根据课本120页的论证, F连续说明$T_{F}(a,x)$连续, 所以$N_{F}(a,x)=T_{F}(a,x)-P_{F}(a,x)$也连续. 因此F是两个连续增函数的差.
+            </p>
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>
+                Show that if \( F \) is of bounded variation in \( [a, b] \), then:
+            </p>
+            <ol type="a">
+                <li>
+                    <p>\( \int_a^b |F'(x)| \, dx \leq T_F(a, b) \).</p>
+                </li>
+                <li>
+                    <p>\( \int_a^b |F'(x)| \, dx = T_F(a, b) \) if and only if \( F \) is absolutely continuous.</p>
+                </li>
+            </ol>
+            <p>As a result of (b), the formula \( L = \int_a^b |z'(t)| \, dt \) for the length of a rectifiable curve parametrized by \( z \) holds if and only if \( z \) is absolutely continuous.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                考虑F的正变差$P_{F}(a,x)$和负变差$N_{F}(a,x)$, 我们知道正负变差都是递增的, 所以a.e.可微. 根据Lemma 3.2, $F(x)-F(a)=P_{F}(a,x)-N_{F}(a,x)$, 从而 $$\int_{a}^{b}\lvert F'(x)\rvert\,dx=\int_{a}^{b}\lvert P_{F}'(a,x)-N_{F}'(a,x)\rvert\,dx$$
+                $$\leq \int_{a}^{b}\lvert P'_{F}(a,x)\rvert\,dx+\int_{a}^{b}\lvert N'_{F}(a,x)\rvert\,dx$$
+                又递增函数的微分$\geq 0$, 对所有的可微点都成立, 因此$$\int_{a}^{b}\lvert F'(x)\rvert\,dx\leq \int_{a}^{b}P'_{F}(a,x)\,dx+\int_{a}^{b} N'_{F}(a,x)\,dx$$
+                再用Corollary 3.7, 注意到$P_{F}(a,a)=N_{F}(a,a)=0$, 可得$$\int_{a}^{b}\lvert F'(x)\rvert\,dx\leq \int_{a}^{b}P'_{F}(a,x)\,dx+\int_{a}^{b} N'_{F}(a,x)\,dx\leq P_{F}(a,b)+N_{F}(a,b)$$
+                再用Lemma 3.2, $T_{F}(a,b)=P_{F}(a,b)+N_{F}(a,b)$, 证毕
+            </p>
+            <h4>(b)</h4>
+            <p>
+                $\Leftarrow$ 是课本的Proposition 4.2, 只需证$\Rightarrow$:
+
+                首先用(a)的结论和$T_{F}(a,b)=\int_{a}^{b}\lvert F'(x)\rvert\,dx$, 可以知道$$T_{F}(a,b)=\int_{a}^{b}\lvert F'(x)\rvert\,dx\leq \int_{a}^{b}P'_{F}(a,x)\,dx+\int_{a}^{b} N'_{F}(a,x)\,dx\leq P_{F}(a,b)+N_{F}(a,b)=T_{F}(a,b)$$
+                因此上述不等号必须全是严格取等. 即$\int_{a}^{b}P'_{F}(a,x)\,dx+\int_{a}^{b} N'_{F}(a,x)\,dx\leq P_{F}(a,b)+N_{F}(a,b)$. 又$\int_{a}^{b}P'_{F}(a,x)\,dx\leq P_{F}(a,b),\int_{a}^{b} N'_{F}(a,x)\,dx\leq N_{F}(a,b)$, 因此也只能取等: $$\int_{a}^{b}P'_{F}(a,x)\,dx= P_{F}(a,b)\qquad\int_{a}^{b} N'_{F}(a,x)\,dx= N_{F}(a,b)$$
+                然后我们证明对任何$y\in(a,b)$, 都有$$\int_{a}^{y}P'_{F}(a,x)\,dx= P_{F}(a,y)\qquad\int_{a}^{y} N'_{F}(a,x)\,dx= N_{F}(a,y)$$
+                事实上, 因为$F$在$(a,y)$上也是有界变差的, 所以把上式的b换成y, 就能得出$$\int_{a}^{y}P'_{F}(a,x)\,dx= P_{F}(a,y)\qquad\int_{a}^{y} N'_{F}(a,x)\,dx= N_{F}(a,y)$$
+                看成y的函数, 注意到两个式子左边都是绝对连续函数(因为定积分具有绝对连续性, 详见第二章Proposition 1.12), 这说明$P_{F}(a,y),N_{F}(a,y)$也是绝对连续的, 又根据Lemma 3.2, $$F(y)-F(a)=P_{F}(a,y)-N_{F}(a,y)$$
+                所以$F$也是绝对连续函数.
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>
+                Prove that if \( \{K_\epsilon\}_{\epsilon>0} \) is a family of approximations to the identity, then
+
+
+                \[
+                \sup_{\epsilon>0} |(f * K_\epsilon)(x)| \leq c f^*(x)
+                \]
+                for some constant \( c > 0 \) and all integrable \( f \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $$\lvert f\ast K_{\epsilon}(x)\rvert\leq \int_{R^{d}}\lvert f(x-y)\rvert \lvert K_{\epsilon}(y)\rvert\,dy=\int_{\lvert y\rvert< \epsilon}+\sum_{k=0}^{\infty}\int_{2^{k}\epsilon\leq \lvert y\rvert< 2^{k+1}\epsilon}$$
+                第一个积分用Approximations to the identity 的(ii') 给出$$\leq\frac{A}{\delta^{d}}\int_{\lvert y\rvert< \epsilon}\lvert f(x-y)\rvert\,dy$$
+                然后用平移不变性
+                $$=\frac{Am(B(0,1))}{m(B(0,\epsilon))}\int_{B(x,\epsilon)}\lvert f(y)\rvert\,dy=\frac{Am(B(0,1))}{m(B(x,\epsilon))}\int_{B(x,\epsilon)}\lvert f(y)\rvert\,dy\leq Am(B(0,1))f^{\ast}(x)$$
+                对每个k, 用(iii')得出$$\int_{2^{k}\epsilon\leq \lvert y\rvert<2^{k+1}\epsilon}\leq A\delta\int_{2^{k}\epsilon\leq \lvert y\rvert< 2^{k+1}\epsilon}\lvert f(x-y)\rvert\frac{1}{\lvert y\rvert^{d+1}}\,dy\leq \frac{A\epsilon}{2^{k(d+1)}\epsilon^{d+1}}\int_{2^{k}\epsilon\leq \lvert y\rvert< 2^{k+1}\epsilon}\lvert f(x-y)\rvert\,dy$$
+$$=\frac{A2^{d-k}}{2^{(k+1)d}\epsilon^{d}}\int_{2^{k}\epsilon\leq \lvert y\rvert< 2^{k+1}\epsilon}\lvert f(x-y)\rvert\,dy\leq \frac{A2^{d-k}}{2^{(k+1)d}\epsilon^{d}}\int_{\lvert y\rvert< 2^{k+1}\epsilon}\lvert f(x-y)\rvert\,dy$$
+$$=\frac{A2^{d-k}m(B(0,1))}{m(B(x,2^{k+1}\epsilon))}\int_{B(x,2^{k+1}\epsilon)}\lvert f(y)\rvert\,dy\leq A2^{d-k}m(B(0,1))f^{\ast}(x)$$
+这给出了$$\lvert f\ast K_{\epsilon}(x)\rvert\leq Am(B(0,1))(1+\sum_{k=0}^{\infty}2^{d-k})f^{\ast}(x)$$
+其中A和f无关, $1+\sum_{k=0}^{\infty}2^{d-k}< \infty$, 因此左边取上确界可得对任何可积函数$f$, 存在一个统一的c使得$$\sup_{\epsilon>0} \lvert (f * K_\epsilon)(x)\rvert \leq c f^{\ast}(x)$$
+            </p>
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>
+                Verify the agreement between the two definitions given for the Cantor-Lebesgue function in Exercise 2, Chapter 1 and in Section 3.1 of this chapter.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                本题中记$\mathcal{C}^{c}$是$\mathcal{C}$在[0,1]中的补集. 设第一章Exercise 2构造的为F, 本章构造的为G. 根据$\mathcal{C}^{c}$在$[0,1]$中的稠密性和$F$的连续性, 只需证二者在$\mathcal{C}^{c}$上相等.
+                首先在第一步被去掉的区间上,F,G都是常数, 所以我们只需证$F(\frac{1}{3})=G(\frac{1}{3})$, 而$G(\frac{1}{3})=\frac{1}{2}$, $\frac{1}{3}=\sum_{k=2}^{\infty}\frac{2}{3^{k}}$, 所以根据F的定义可得$$F(\frac{1}{3})=\sum_{k=2}^{\infty}\frac{1}{2^{k}}=\frac{1}{2}$$
+                这说明F,G在第一步去掉的区间上相等.
+
+                回忆第一章的Exercise 2, 记$C_{k-1}$是k-1步后剩下的区间, 那么$C_{k-1}$是下列区间的全体: $$[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+                则第k次被去掉的区间的全体就是它们中间的$\frac{1}{3}$的开子区间: $$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})\qquad  a_{i}\in\left\lbrace 0,2 \right\rbrace,1\leq i\leq k-1 $$
+
+                我们用归纳法, 假设F,G在前k-1步中去掉的小区间上相等,  那么F,G在$C_{k-1}$的每个小区间$[a,b]=[\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}]$的端点上都相等, 那么根据G的构造, 在区间$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})$上, G是常值函数, 等于$\frac{G(a)+G(b)}{2}$, 又$F(a)=G(a),F(b)=G(b)$, 所以 $$G=\frac{G(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}})+G(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}})}{2}=\frac{F(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}})+F(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}})}{2}$$
+                又F在$(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}},\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{2}{3^{k}})$上为常数, 所以只需证F在这个区间的左端点处的值等于$\frac{F(a)+F(b)}{2}$.
+
+                根据定义这几乎是显然的. 我们把$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k}}$重写为$$\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}}$$
+                那么F在左端点处的值为$$F(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{0}{3^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{3^{i}})=\frac{1}{2}(\sum_{i=1}^{k-1}\frac{a_{i}}{2^{i}}+\frac{0}{2^{k}}+\sum_{i=k+1}^{\infty}\frac{2}{2^{i}})=\frac{1}{2}\sum_{i=1}^{k-1}\frac{a_{i}}{2^{i}}+\frac{1}{2^{k}}$$
+                把$b=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\frac{1}{3^{k-1}}$重写为$b=\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\sum_{i=k}^{\infty}\frac{2}{3^{i}}$
+                而$$F(a)+F(b)=F(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}})+F(\sum_{i=1}^{k-1}\frac{a_{i}}{3^{i}}+\sum_{i=k}^{\infty}\frac{2}{3^{i}})=\frac{1}{2}\sum_{i=1}^{k-1}\frac{a_{i}}{2^{i}}+\frac{1}{2}(\sum_{i=1}^{k-1}\frac{a_{i}}{2^{i}}+\sum_{i=k}^{\infty}\frac{2}{2^{i}})$$
+                $$=\frac{1}{2^{k-1}}+\sum_{i=1}^{k-1}\frac{a_{i}}{2^{i}}$$
+                因此结论成立. 所以对于在第k步被去掉的每个开区间, 都有$F=G$. 根据数学归纳法, 对任何一个$\mathcal{C}^{c}$中的开区间($\mathcal{C}^{c}$是每一步中被去掉的所有开区间的并集), 都有F=G, 所以根据$\mathcal{C}^{c}$在[0,1]中稠密和F,G的连续性可得F=G在$[0,1]$中成立.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>
+                Show that if \( f : \mathbb{R} \to \mathbb{R} \) is absolutely continuous, then:
+            </p>
+            <ol type="a">
+                <li>
+                    <p>\( f \) maps sets of measure zero to sets of measure zero.</p>
+                </li>
+                <li>
+                    <p>\( f \) maps measurable sets to measurable sets.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                任取零测集E, 则对任何$\delta>0$, 存在覆盖E的开集U使得$$m(U-E)< \delta$$ 而R上的开集可以表示成可数个互不相交的开集的并, 因此$$U=\cup_{i =1}^{\infty}I_{i}\qquad I_{i}=(a_{i},b_{i})$$
+                又$m(U)=m(U-E)+m(E)< \epsilon$, 因此$$\sum_{i=1}^{\infty}m(I_{i})< \delta$$
+                又$f$在$[a_{i},b_{i}]$上有界(因为$[a_{i},b_{i}]$是R上的有界闭集, 因此是紧的), 因此取$u_{i},v_{i}\in[a_{i},b_{i}]$满足$$f(u_{i})=\underset{x\in[a_{i},b_{i}]}{max}f(x)\qquad f(v_{i})=\underset{x\in[a_{i},b_{i}]}{min}f(x)$$
+                则$$f(I_{i})\subseteq [f(v_{i}),f(u_{i})]$$
+                这给出了$$m(f(I_{i}))\leq \lvert f(u_{i})-f(v_{i})\rvert$$
+                设$J_{i}=(max\{u_{i},v_{i}\},min\{u_{i},v_{i}\})$, 那么$J_{i}\subseteq I_{i}$, 所以$J_{i}$互不相交. 因此$\sum_{i=1}^{\infty}m(J_{i})< \delta, \cup_{i=1}^{\infty}f(I_{i})\subseteq \cup_{i=1}^{\infty}f(J_{i})$. 根据f的绝对连续性,
+                取$\delta$满足对任何正整数N, 当N个互不相交的开区$(a_{i},b_{i})$满足$\sum_{i=1}^{N}(b_{i}-a_{i})< \delta$时, $\sum_{i=1}^{N}\lvert f(b_{i})-f(a_{i})\rvert< \epsilon$. 那么由此可得对任何N, 都有$$m(\cup_{i=1}^{N}f(J_{i}))\leq\sum_{i=1}^{N}m(f(J_{i}))=\sum_{i=1}^{N}\lvert f(u_{i})-f(v_{i})\rvert< \epsilon$$
+
+                根据Lebesgue测度的连续性(第一章Corollary 3.3), 令$N\rightarrow\infty$可以知道$$m(f(E))\leq m(f(\cup_{i=1}^{\infty}I_{i}))=m(\cup_{i=1}^{\infty}f(I_{i}))\leq m(\cup_{i=1}^{\infty}f(J_{i}))=\lim_{N\rightarrow\infty}m(\cup_{i=1}^{\infty}f(J_{i}))< \epsilon$$
+                根据$\epsilon$的任意性, $m(f(E))=0$
+            </p>
+            <h4>(b)</h4>
+            <p>
+                只需证明f把开区间映射为可测集(原因稍后解释), 对开区间$(a,b)$, 这是个道路连通的集合, 所以$f((a,b))$是R上的连通集, 因此必须是区间, 理由如下:
+
+                注意到R上有大小关系. 设I是R中的连通集. 记$$a=inf\{x\big|x\in I\}\qquad b=sup\{x\big| x\in I\}$$
+                那么对任何$y\in (-\infty,a)\cup(b,\infty)$, 都有$y\notin I$. 下面证明$(a,b)\subseteq I$.
+                假设存在$x\in(a,b)$使得$x\notin I$, 那么对任何$z\in I$,z要么$< x$, 要么$>
+                x$, 因此$$I=[I\cap(a-1,x) ]\cup[ I\cap(x,b+1)]$$
+                因此I被写成了两个I中开集的并(子空间拓扑),且这两个开集互不相交, 从而和I的连通性矛盾, 因此$x\in I$, 从而$(a,b)\subseteq I$
+
+                因此情况总共有四种$$I=\begin{cases}
+                (a,b)&a,b\notin I\\
+                [a,b)&a\in I,b\notin I\\
+                (a,b]&a\notin I,b\in I\\
+                [a,b]&a,b\in I
+                \end{cases}$$
+                无论哪种情况, I都是区间.
+
+                而我们知道闭区间$[a,b]$能写成$(a-\frac{1}{n},b+\frac{1}{n})$的交, $(a,b]=\cap_{n=1}^{\infty}(a,b+\frac{1}{n}),[a,b)=\cap_{n=1}^{\infty}(a-\frac{1}{n},b)$, 因此所有区间都是可测集. 又R上的开集U能写成可数个互不相交的开区间$I_{i}$的并, 所以$$f(U)=\cup_{i=1}^{\infty}f(I_{i})$$
+                因此$f(U)$可测. 又$G_{\delta}$集G都能写作可数个开集$U_{n}$的交, 所以$$f(G)=\cap_{n=1}^{\infty}f(U_{n})$$
+                可测, 因此f把$G_{\delta}$集映射为可测集. 又对任何可测集E,都存在$G_{\delta}$集G和零测集K使得$$E\cup K=G$$
+                因此$$f(E)\cup f(K)=f(G)$$
+                又$f(K)$是零测集,  所以可测, $f(G)$是可测集, 所以$$f(E)=f(G)-(f(K)\cap f(E))=f(G)\cap(f(K)\cap f(E))^{c}$$
+                而$f(K)\cap f(E)$是零测集的子集, 还是可测的, 所以其补集还是可测的, 因此$f(E)$是两个可测集的交集, 因而可测.
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>
+                This exercise deals with functions \( F \) that are absolutely continuous on \( [a, b] \) and are increasing. Let \( A = F(a) \) and \( B = F(b) \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>There exists such an \( F \) that is in addition strictly increasing, but such that \( F'(x) = 0 \) on a set of positive measure.</p>
+                </li>
+                <li>
+                    <p>The \( F \) in (a) can be chosen so that there is a measurable subset \( E \subset [A, B] \), \( m(E) = 0 \), so that \( F^{-1}(E) \) is not measurable.</p>
+                </li>
+                <li>
+                    <p>Prove, however, that for any increasing absolutely continuous \( F \), and \( E \) a measurable subset of \( [A, B] \), the set \( F^{-1}(E) \cap \{F'(x) > 0\} \) is measurable.</p>
+                </li>
+            </ol>
+            <p>[Hint: (a) Let \( F(x) = \int_a^x \chi_K(x) \, dx \), where \( K \) is the complement of a Cantor-like set \( C \) of positive measure. For (b), note that \( F(C) \) is a set of measure zero. Finally, for (c) prove first that \( m(O) = \int_{F^{-1}(O)} F'(x) \, dx \) for any open set \( O \).]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                记C是第一章中构造的测度$>0,< 1$的类Cantor集的补集, $$K=a+C\cdot(b-a)$$
+                则$m(K)>
+                0,m(K^{c})>0$.
+                令$$F(x)=\int_{a}^{x}\mathcal{X}_{K}\,dx$$
+                则F绝对连续. 下面说明F严格单增, 事实上$$F(y)-F(x)=\int_{x}^{y}\mathcal{X}_{K}\,dx\geq 0$$
+                又$(x,y)$之间肯定包含一个被去掉的区间, 所以$(x,y)$中有一个区间$J\subseteq K$, 因此$F(y)-F(x)>0$, 因此F严格递增.
+
+                根据Lebesgue微分定理, $F'(x)=\mathcal{X}_{K}$ 对a.e 的$x\in (a,b)$成立, 而$m(K^{c}\cap (a,b))>0$, 因此$K^{c}$去掉一个零测集之后再和$(a,b)$做交集还是正测度, 因此$F'$在一个正测度集合上为0.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                注意到K是可数个互不相交的开区间$I_{i}=(a_{i},b_{i})$的并集, 且在[a,b]中稠密, 根据F严格单增可得F是单射, 且$\cup_{i=1}^{\infty}F(I_{i})=\cup_{i=1}^{\infty}(F(a_{i}),F(b_{i}))=F(K)$. 从而$$m(F(K))=\sum_{i=1}^{\infty}\int_{I_{i}}F'(x)\,dx=\int_{K}F'(x)\,dx$$
+                又$F'$在$K^{c}$上a.e为0,且$m(F([a,b]))=F(b)-F(a)=\int_{a}^{b}F'(x)\,dx$,  因此$$m(F(K^{c}))=m(F([a,b]))-m(F(K))=\int_{a}^{b}F'(x)\,dx-\int_{K}F'(x)\,dx=\int_{K^{c}}F'(x)\,dx=0$$
+
+                因此$F(K^{c})$是零测集. 又$K^{c}$具备正测度, 所以存在不可测子集, 记为E, 则$F(E)$也是零测集, 但$F^{-1}(F(E))=E$是不可测集
+            </p>
+            <h4>(c)</h4>
+            <p>
+                对R上的开集O, 都存在可数个互不相交的开区间$I_{i}=(a_{i},b_{i})$满足$O=\cup_{i=1}^{\infty}I_{i}$, 那么根据F是严格递增的双射可得$F^{-1}(O)=\cup_{i=1}^{\infty})(F^{-1}(a_{i}),F^{-1}(b_{i}))$, 这是个开集, 可测, 因此$$m(O)=\sum_{i=1}^{\infty}b_{i}-a_{i}=\sum_{i=1}^{\infty}\int_{F^{-1}(a_{i})}^{F^{-1}(b_{i})}F'(x)\,dx=\int_{F^{-1}(O)}F'(x)\,dx$$
+
+                因此对一个$G_{\delta}$集G,G能表示称可数个开集$O_{n}$的交, 从而$F^{-1}(G)=\cap_{n=1}^{\infty}F^{-1}(O_{n})$也是可测集.
+
+                对一般的可测集E, E能写作$E=G\cap K^{c}$, 其中K是零测集, G是$G_{\delta}$集, 所以只需证对零测集E, $F^{-1}(E)\cap \{x\big|F'(x)>0\}$是可测集.  因为E是零测集, 所以存在$G_{\delta}$集$G=\cap_{n=1}^{\infty}O_{n}$, 满足$G\supseteq E,m(G)=0$. 根据前面的论证, 既然$\cap_{n=1}^{N}$是开集, 那么$$m(\cap_{n=1}^{N}O_{n})=\int_{F^{-1}(\cap_{n=1}^{N}O_{n})}F'(x)\,dx$$
+                我们知道$E\subseteq [A,B]$, 而$G\cap(A-1,B+1)\supseteq E$且还是$G_{\delta}$集, 因此通过令$O_{n}=O_{n}\cap(A-1,B+1)$, 不妨设$m(O_{n})< \infty$, 因此可用Lebesgue测度的连续性得出$\lim_{N\rightarrow\infty}m(\cap_{n=1}^{N}O_{n}) =m(G)$. 另一方面, $F'(x)$是非负的可积函数, 因此对$F'(x)\mathcal{X}_{F^{-1}(\cap_{n=1}^{N}O_{n})}$用DCT可得$$m(G) =\lim_{N\rightarrow\infty}m(\cap_{n =1}^{N}O_{n}) =\lim_{N\rightarrow\infty}\int_{F^{-1}(\cap_{n =1}^{N}O_{n})}F'(x)\,dx =\int_{F^{-1}(G)}F'(x)\,dx$$
+                又$$\int_{F^{-1}(G)\cap\{F'(x)>
+                0\}}F'(x)\,dx\leq \int_{F^{-1}(G)}F'(x)\,dx=m(G)=m(E)=0$$
+                因此根据第二章的Exercise 11可得, $m(F^{-1}(G)\cap\{F'(x)>0\})=0$, 否则左边严格$>0$, 矛盾. 因此$F^{-1}(G)\cap\{F'(x)>0\}$是零测集, 所以可测. 因此所有子集都可测, 因此$F^{-1}(G)\cap\{F'(x)>0\}$是零测集, 可测
+            </p>
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>
+                Let \( F \) be absolutely continuous and increasing on \( [a, b] \) with \( F(a) = A \) and \( F(b) = B \). Suppose \( f \) is any measurable function on \( [A, B] \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Show that \( f(F(x)) F'(x) \) is measurable on \( [a, b] \). Note: \( f(F(x)) \) need not be measurable by Exercise 20 (b).</p>
+                </li>
+                <li>
+                    <p>
+                        Prove the change of variable formula: If \( f \) is integrable on \( [A, B] \), then so is \( f(F(x)) F'(x) \), and
+
+
+                        \[
+                        \int_A^B f(y) \, dy = \int_a^b f(F(x)) F'(x) \, dx.
+                        \]
+                    </p>
+                </li>
+            </ol>
+            <p>[Hint: Start with the identity \( m(O) = \int_{F^{-1}(O)} F'(x) \, dx \) used in (c) of Exercise 20 above.]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                先设f是可积的, 我们知道$$G(x)=\int_{A}^{x}f(t)\,dt$$是绝对连续函数, 因此$G(F(x))$是绝对连续函数, 根据复合函数的求导法则, $$\frac{d}{dx}G\circ F=f(F(x))F'(x)$$
+                左边可测, 所以右边可测. 对一般的可测函数f, 存在a.e收敛于f的简单函数渐升列$f_{n}$, 因此$f_{n}$可积, 所以$f_{n}(F(x))F'(x)$可测. 且存在零测集E使得当$x\notin F^{-1}(E)$时, $f_{n}(F(x))F'(x)\rightarrow f(F(x))F'(x)$. 当$x\in F^{-1}(E)$时, 如果$F'(x)=0$, 则$f_{n}(F(x))F'(x)=f(F(x))F'(x)$, 如果$F'(x)>0$, 这时$x\in F^{-1}(E)\cap\{F'(x)>0\}$, Exercise 20已经说明这是个零测集, 因此$f_{n}(F(x))F'(x)$ a.e 收敛于$f(F(x))F'(x)$, 因此对任何可测函数f, $f(F(x))F'(x)$都是可测的.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                在$(-\infty,a)$上定义F=A, $(b,\infty)$上定义$F=B$, 那么F还是绝对连续函数, 因此根据Exercise 20的结论, 对任何$G_{\delta}$集G, 都有$$\int_{A}^{B}\mathcal{X}_{G}\,dx=\int_{R}\mathcal{X}_{G\cap[A,B]}\,dx=\int_{F^{-1}(G)}F'(x)\,dx=\int_{R}\mathcal{X}_{G}(F(x))F'(x)\,dx$$
+                又$F'$在$[a,b]$之外为0, 所以$$\int_{A}^{B}\mathcal{X}_{G}\,dx=\int_{R}\mathcal{X}_{G}(F(x))F'(x)\,dx=\int_{a}^{b}\mathcal{X}_{G}(F(x))F'(x)\,dx$$
+                又对任何零测集E, 均有$$\int_{A}^{B}\mathcal{X}_{E}\,dx=0$$
+                另一方面,
+                根据Exercise 20的结论,  $F^{-1}(E)\cap \{F'(x)\}>0$是零测集, $F'(x)$在$[a,b]$外为0,  因此$$\int_{a}^{b}\mathcal{X}_{E}(F(x))F'(x)\,dx=\int_{R}\mathcal{X}_{E}(F(x))F'(x)\,dx=\int_{R}\mathcal{X}_{E}(F(x))F'(x)\mathcal{X}_{F'(x)>0}\,dx=\int_{F^{-1}(E)\cap\{F'(x)>0\}}F'(x)\,dx=0$$
+                从而$$\int_{A}^{B}\mathcal{X}_{E}\,dx=\int_{R}\mathcal{X}_{E}(F(x))F'(x)\,dx$$
+                对所有零测集成立, 因此$$\int_{A}^{B}\mathcal{X}_{E}\,dx=\int_{a}^{b}\mathcal{X}_{E}(F(x))F'(x)\,dx$$
+                对任何可测集E成立, 根据线性性, 结论对任何简单函数成立. 当f是非负可积函数时, 取a.e收敛于f的非负简单函数渐升列$f_{n}$, 则$$\int_{A}^{B}f_{n}(y)\,dy=\int_{a}^{b}f_{n}(F(x))F'(x)\,dx$$
+                (a)中已经证明了$f_{n}(F(x))F'(x)\rightarrow f(F(x))F'(x)$ a.e 成立, 又f可积, 所以左边用DCT可以给出$$\int_{A}^{B}f(y)\,dy=\lim_{n \to \infty}\int_{a}^{b}f_{n}(F(x))F'(x)\,dx$$
+                而f可积时, 根据(a)的结论, $f(F(x))F'(x)$也可积(因为是绝对连续函数的导数), 因此右边也能用DCT得出$$\int_{A}^{B}f(y)\,dy=\lim_{n \to \infty}\int_{a}^{b}f_{n}(F(x))F'(x)\,dx=\int_{a}^{b}f(F(x))F'(x)\,dx$$
+                对一般的可积函数, 只需对f的正部和负部用刚才的讨论即可.
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>
+                Suppose that \( F \) and \( G \) are absolutely continuous on \( [a, b] \). Show that their product \( F G \) is also absolutely continuous. This has the following consequences.
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Whenever \( F \) and \( G \) are absolutely continuous in \( [a, b] \),
+
+
+                        \[
+                        \int_a^b F'(x) G(x) \, dx = -\int_a^b F(x) G'(x) \, dx + [F(x) G(x)]_a^b.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Let \( F \) be absolutely continuous in \( [-\pi, \pi] \) with \( F(\pi) = F(-\pi) \). Show that if
+
+
+                        \[
+                        a_n = \frac{1}{2\pi} \int_{-\pi}^\pi F(x) e^{-inx} \, dx,
+                        \]
+                        such that \( F(x) \sim \sum a_n e^{inx} \), then
+
+
+                        \[
+                        F'(x) \sim \sum in a_n e^{inx}.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p>What happens if \( F(-\pi) \neq F(\pi) \)? [Hint: Consider \( F(x) = x \).]</p>
+                </li>
+            </ol>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                根据函数的乘积求导法则, $$\frac{d FG}{dx}=F'(x)G(x)+F(x)G'(x)$$
+                用Exercise 21的(b)和定积分的线性性可得结论.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                用(a)和F的周期性立即得
+            </p>
+
+            <h4>(c)</h4>
+            <p>
+                此时$F'(x)$的Fourier系数未必是$ina_{n}$
+            </p>
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>
+                Let \( F \) be continuous on \( [a, b] \). Show the following.
+            </p>
+            <ol type="a">
+                <li>
+                    <p>Suppose \( (D^+F)(x) \geq 0 \) for every \( x \in [a, b] \). Then \( F \) is increasing on \( [a, b] \).</p>
+                </li>
+                <li>
+                    <p>If \( F'(x) \) exists for every \( x \in (a, b) \) and \( |F'(x)| \leq M \), then \( |F(x) - F(y)| \leq M |x - y| \) and \( F \) is absolutely continuous.</p>
+                </li>
+            </ol>
+            <p>[Hint: For (a) it suffices to show that \( F(b) - F(a) \geq 0 \). Assume otherwise. Hence with \( G_\epsilon(x) = F(x) - F(a) + \epsilon (x - a) \), for sufficiently small \( \epsilon > 0 \) we have \( G_\epsilon(a) = 0 \), but \( G_\epsilon(b) < 0 \). Now let \( x_0 \in [a, b) \) be the greatest value of \( x_0 \) such that \( G_\epsilon(x_0) \geq 0 \). However, \( (D^+G_\epsilon)(x_0) > 0 \).]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                只需证$F(b)\geq F(a)$, 因为对任何$[x,y]\subseteq [a,b]$, F还满足$D^{+}F\geq 0$, 因此$F(y)\geq F(x)$.  考虑函数$$G_{\epsilon}(x)=F(x)-F(a)+\epsilon(x-a)$$
+                假设$F(b)< F(a)$, 那么对足够小的$\epsilon$, 都有$G_{\epsilon}(a)=0,G_{\epsilon}(b)< 0$, 固定一个这样的$\epsilon$,  令$$x_{0}=sup\{x\in[a,b]\bigg|G_{\epsilon}\geq 0\}$$
+                从而根据$G_{\epsilon}$的连续性, $x_{0}< b$(如果$x_{0}=b$那么$G_{\epsilon}(b)\geq 0$), 那么
+                根据$D^{+}G_{\epsilon}(x_{0})=D^{+}F(x_{0})>0$可得存在$(b-x_{0})\geq h>0$使得$G_{\epsilon}(x_{0}+h)>G_{\epsilon}(x_{0})$, 和$x_{0}$的取法矛盾.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                用中值定理可得$\lvert F(x)-F(y)\rvert\leq M\lvert x-y\rvert$, 从而$$\sum_{i=1}^{N}\lvert F(b_{i})-F(a_{i})\rvert\leq M\sum_{i=1}^{N}\lvert b_{i}-a_{i}\rvert$$
+                所以F是绝对连续的.
+            </p>
+
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>
+                Suppose \( F \) is an increasing function on \( [a, b] \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        Prove that we can write
+
+
+                        \[
+                        F = F_A + F_C + F_J,
+                        \]
+                        where each of the functions \( F_A, F_C, \) and \( F_J \) is increasing and:
+                        <ol type="i">
+                            <li>\( F_A \) is absolutely continuous.</li>
+                            <li>\( F_C \) is continuous, but \( F_C'(x) = 0 \) for a.e. \( x \).</li>
+                            <li>\( F_J \) is a jump function.</li>
+                        </ol>
+                    </p>
+                </li>
+                <li>
+                    <p>Moreover, each component \( F_A, F_C, F_J \) is uniquely determined up to an additive constant.</p>
+                </li>
+            </ol>
+            <p>The above is the Lebesgue decomposition of \( F \). There is a corresponding decomposition for any \( F \) of bounded variation.</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                F a.e可微, 因此定义$$F_{A}=\int_{a}^{x}F'(t)\,dt$$
+                这是个绝对连续函数, 又F有可数个间断点, 从左到右记为$a_{i}$, 根据Lemma 3.13, 定义$$F_{J}=J_{F}$$
+                则$F_{J}$是跳跃函数且$F_{J}'(x)=0$ a.e成立. 此时$F-F_{J}$是递增连续函数, 因此$F-F_{J}-F_{A}$也是连续函数, 然而$F'-F_{J}'-F_{A}'=F'-F-$ a.e 成立, 所以定义函数$F_{C}=F-F_{J}-F_{A}$, 则$F_{C}$连续但导数a.e 为0, 且$$F=F_{A}+F_{J}+F_{C}$$
+            </p>
+            <h4>(b)</h4>
+            <p>
+                然后证明唯一性, 假设存在$G_{A},G_{C},G_{J}$分别是绝对连续, 连续且导数a.e 为0, 跳跃函数, 且三者之和为F, 那么$$F_{A}+F_{C}-G_{A}-G_{C}+F_{J}=G_{J}$$
+                所以左边和右边的不连续点必须是一样的, 因此$F_{J}$和$G_{J}$的不连续点是一样的, 又$F_{A}+F_{C}-G_{A}-G_{C}$是连续的, 所以$F_{J}$和$G_{J}$在不连续点处的跳跃也是一样的(也就是课本中记载的$\alpha_{n}$), 这说明$F_{J}=G_{J}$, 从而$$F_{A}+F_{C}=G_{A}+G_{C}$$
+                两边微分, $$F_{A}'=G_{A}'\qquad F_{A}(x)=\int_{a}^{x}F_{A}'(t)\,dt=\int_{a}^{x}G_{A}'(t)\,dt=G_{A}(x)$$
+                从而$F_{A}=G_{A}$, 从而$F_{C}=G_{C}$, 所以分解是唯一的.
+            </p>
+
+
+
+        </div>
+
+
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>
+                The following shows the necessity of allowing for general exceptional sets of measure zero in the differentiation Theorems 1.4, 3.4, and 3.11. Let \( E \) be any set of measure zero in \( \mathbb{R}^d \). Show that:
+            </p>
+            <ol type="a">
+                <li>
+                    <p>
+                        There exists a non-negative integrable \( f \) in \( \mathbb{R}^d \), so that
+
+
+                        \[
+                        \liminf_{\substack{m(B) \to 0 \\ x \in B}} \frac{1}{m(B)} \int_B f(y) \, dy = \infty \quad \text{for each } x \in E.
+                        \]
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        When \( d = 1 \) this may be restated as follows. There is an increasing absolutely continuous function \( F \) so that
+
+
+                        \[
+                        D^+(F)(x) = D^-(F)(x) = \infty, \quad \text{for each } x \in E.
+                        \]
+                    </p>
+                </li>
+            </ol>
+            <p>[Hint: Find open sets \( O_n \supset E \), with \( m(O_n) < 2^{-n} \), and let \( f(x) = \sum_{n=1}^\infty \chi_{O_n}(x) \).]</p>
+        </div>
+
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                注意下确界是对所有包含x的球体取, 而不是所有包含x的可测集. 根据外测度的定义, 存在开集$O_{n}\supseteq E$满足$m(O_{n}-E)< \frac{1}{2^{n}}$, 因此$m(O_{n})\leq m(O_{n}-E)+m(E)< \frac{1}{2^{n}}$, 定义$$f(x)=\sum_{n=1}^{\infty}\mathcal{X}_{O_{n}}$$
+                则根据单调收敛定理, f是可积的且$\|f\|_{L^{1}(R^{d})}\leq \sum_{n=1}^{\infty}\frac{1}{2^{n}}$, 任取一组测度趋于0且包含x的球体$B_{n}$, 记半径为$r_{n}$, 那么$B_{n}\subseteq B(x,2r_{n}),r_{n}\rightarrow0$, 又$O_{n}$都是开集, 所以存在$n_{j}$满足$$ B(x,2r_{n})\subseteq O_{j}$$
+                取$N=max\{n_{1},...,n_{K}\}$, 那么当$n>N$时, $B_{n}\subseteq O_{j},1\leq j\leq K$, 这给出了$$\frac{1}{m(B_{n})}\int_{B_{n}}f(y)\,dy\geq\sum_{i=1}^{K}\frac{1}{m(B_{n})}\int_{B_{n}}\,dy=K$$
+                因此根据K的任意性, $$\lim_{n \to \infty}\frac{1}{m(B_{n})}\int_{B_{n}}f(y)\,dy=\infty$$
+            </p>
+            <h4>(b)</h4>
+            <p>
+                考虑d=1时(a)中构造的函数, 那么$$D^{-}F(x)=\liminf_{h\rightarrow0,h< 0}\frac{F(x+h)-F(x)}{h} =\liminf_{h\rightarrow0,h< 0}\frac{1}{h}\int_{h}^{x+h}f(y)\,dy=\liminf_{h\rightarrow0,h< 0}\frac{1}{-h}\int_{x+h}^{x}f(y)\,dy$$
+                对$O_{1},...,O_{k}$, 存在$\delta$使得$-h< \delta$时, $(x+h,x)\subseteq O_{j},1\leq j\leq K$, 因此$$\frac{1}{-h}\int_{x+h}^{x}f(y)\,dy\geq\sum_{i=1}^{K}\frac{1}{-h}\int_{x+h}^{x}\,dy=K$$
+                这给出了$D^{-}F(x)=\infty$.
+
+                同理$$D^{+}F(x)=\liminf_{h\rightarrow0,h>0}\frac{F(x+h)-F(x)}{h}=\liminf_{h\rightarrow0,h< 0}\frac{1}{h}\int_{h}^{x+h}f(y)\,dy=\liminf_{h\rightarrow0,h>0}\frac{1}{h}\int_{x}^{x+h}f(y)\,dy$$
+                对$O_{1},...,O_{k}$, 存在$\delta$使得$h< \delta$时, $(x,x+h)\subseteq O_{j},1\leq j\leq K$, 因此$$\frac{1}{h}\int_{x}^{x+h}f(y)\,dy\geq\sum_{i=1}^{K}\frac{1}{h}\int_{x}^{x+h}\,dy=K$$
+                这给出了$D^{+}F(x)=\infty$.
+            </p>
+
+
+
+        </div>
+        <div class="Exercise-box">
+            <h3>Exercise 26</h3>
+            <p>
+                An alternative way of defining the exterior measure \( m^*(E) \) of an arbitrary set \( E \), as given in Section 2 of Chapter 1, is to replace the coverings of \( E \) by cubes with coverings by balls. That is, suppose we define \( m_B^*(E) \) as \( \inf \sum_{j=1}^\infty m(B_j) \), where the infimum is taken over all coverings \( E \subset \bigcup_{j=1}^\infty B_j \) by open balls. Then \( m^*(E) = m_B^*(E) \). (Observe that this result leads to an alternate proof that the Lebesgue measure is invariant under rotations.)
+            </p>
+            <p>
+                Clearly \( m^*(E) \leq m_B^*(E) \). Prove the reverse inequality by showing the following. For any \( \epsilon > 0 \), there is a collection of balls \( \{B_j\} \) such that \( E \subset \bigcup_j B_j \) while \( \sum_j m(B_j) \leq m^*(E) + \epsilon \). Note also that for any preassigned \( \delta \), we can choose the balls to have diameter \( < \delta \).
+            </p>
+            <p>[Hint: Assume first that \( E \) is measurable, and pick \( O \) open so that \( O \supset E \) and \( m(O - E) < \epsilon' \). Next, using Corollary 3.10, find balls \( B_1, \ldots, B_N \) such that \( \sum_{j=1}^N m(B_j) \leq m(E) + 2\epsilon' \) and \( m(E - \bigcup_{j=1}^N B_j) \leq 3\epsilon' \). Finally, cover \( E - \bigcup_{j=1}^N B_j \) by a union of cubes, the sum of whose measures is \( \leq 4\epsilon' \), and replace these cubes by balls that contain them. For the general \( E \), begin by applying the above when \( E \) is a cube.]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                先证明E可测且测度有限时结论成立. 对$\epsilon'>0$, 取包含E的开集O满足$$m(O-E)< \epsilon'$$ 显然$$\cup_{x\in O,B(x,r)\subseteq O}B(x,r)$$是E的一组Vitali覆盖(因为是O的vitali覆盖, 所以也是E的), 从而用Corollary 3.10可得存在有限个球体$B_{i}\subseteq O$满足$$m(E-\cup_{j=1}^{N}B_{j})\leq 3\epsilon'$$
+                又这些球体是互不相交的(见Lemma 3.9), 因此$$\sum_{j=1}^{N}m(B_{j}) =m(\cup_{j =1}^{N}B_{j})\leq m(O)\leq m(E)+\epsilon'$$
+                然后根据外测度的定义, 存在可数个几乎不交的闭方体$Q_{i}$满足$\cup_{i=1}^{\infty}Q_{i}\supseteq E-\cup_{j=1}^{N}B_{j}$且$$\sum_{i =1}^{\infty}m(Q_{i})\leq m(E-\cup_{j=1}^{N}B_{j})+\epsilon'< 4\epsilon'$$
+                设每个闭方体的变成为$d_{i}$, 中心为$q_{i}$, 那么考虑开球$$T_{i}(q_{i},\sqrt{n}d_{i})\supseteq Q_{i}$$
+                则$$m(T_{i})=n^{\frac{n}{2}}\lvert d_{i}\rvert^{n}m(B(0,1))$$
+                因此$$\sum_{i=1}^{\infty}m(T_{i})=n^{\frac{n}{2}}m(B(0,1))\sum_{i=1}^{\infty}m(Q_{i})\leq 4n^{\frac{n}{2}}m(B(0,1))\epsilon'$$
+                从而$\cup_{i=1}^{\infty}T_{i}$和$B_{1},..,B_{N}$共同覆盖了E, 且满足$$\sum_{i=1}^{N}m(B_{i})+\sum_{i=1}^{\infty}m(T_{i})\leq 4n^{\frac{n}{2}}m(B(0,1))\epsilon'+\epsilon'$$
+                令$\epsilon'=\frac{\epsilon}{4n^{\frac{n}{2}}m(B(0,1))+1}$,就说明E是可测集时, $m^{\ast}(E)=m_{B}^{\ast}(E)$
+
+                当E时测度无限的可测集时, 考虑$V_{k}=E\cap\{x\in R^{n}\big|k\leq \|x\|< k+1\}$, 则$V_{k}$互不相交且$\cup_{k=0}^{\infty} V_{k}=E$, 对$\frac{1}{2^{k}}$, 存在$V_{k}$的可数个球体覆盖$B^{k}_{i}$使得$$\sum_{i=1}^{\infty}m(B_{i}^{k})\leq m(V_{k})+\frac{\epsilon}{2^{k}}$$
+                因此$$\sum_{i=1,k=0}^{\infty}m(B_{i}^{k})\leq \sum_{k=0}^{\infty}m(V_{k})+\frac{\epsilon}{2^{k}}=m(E)+\epsilon$$
+                当E时一般集合时, 根据外测度的定义, 存在可数个几乎不交的闭方体$Q_{i}$满足$\cup_{i=1}^{\infty}Q_{i}\supseteq E$且$$\sum_{i=1}^{\infty}m(Q_{i})\leq m^{\ast}(E)+\frac{\epsilon}{2}$$
+                然后对$\cup_{i=1}^{\infty}Q_{i}$用可测集的情形, 得到$\cup_{i=1}^{\infty}Q_{i}$的一组球体覆盖$\cup_{i=1}^{\infty}B_{i}$,且满足$$\sum_{i=1}^{\infty}m(B_{i})\leq m(\cup_{i=1}^{\infty}Q_{i})+\frac{\epsilon}{2}$$ $\cup B_{j}$自然也是E的开球体覆盖, 且$$\sum_{i=1}^{\infty}m(B_{i})\leq m(\cup_{i=1}^{\infty}Q_{i})+\frac{\epsilon}{2}\leq \sum_{i=1}^{\infty}m(Q_{i})+\frac{\epsilon}{2}\leq m^{\ast}(E)+\epsilon$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 27</h3>
+            <p>
+                A rectifiable curve has a tangent line at almost all points of the curve. Make this statement precise.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                有界变差函数几乎处处可微.
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 28</h3>
+            <p>
+                A curve in \( \mathbb{R}^d \) is a continuous map \( t \mapsto z(t) \) of an interval \( [a, b] \) into \( \mathbb{R}^d \).
+            </p>
+            <ol type="a">
+                <li>
+                    <p>State and prove the analogues of the conditions dealing with the rectifiability of curves and their length that are given in Theorems 3.1, 4.1, and 4.3.</p>
+                </li>
+                <li>
+                    <p>
+                        Define the (one-dimensional) Minkowski content \( M(K) \) of a compact set in \( \mathbb{R}^d \) as the limit (if it exists) of
+
+
+                        \[
+                        \frac{m(K_\delta)}{m_{d-1}(B(\delta))} \quad \text{as } \delta \to 0,
+                        \]
+                        where \( m_{d-1}(B(\delta)) \) is the measure (in \( \mathbb{R}^{d-1} \)) of the ball defined by \( B(\delta) = \{x \in \mathbb{R}^{d-1} : |x| < \delta\} \). State and prove analogues of Propositions 4.5 and 4.7 for curves in \( \mathbb{R}^d \).
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                \textbf{Theorem 3.1}: 一个曲线$F(t)=(x_{1}(t),...,x_{d}(t))$是可求长的当且仅当$x_{i}$都是有界变差的.
+
+                这只需注意到$$\lvert x_{k}(t_{i})-x_{k}(t_{i-1})\rvert\leq \lvert F(t_{i})-F(t_{i-1})\rvert=\sqrt{\sum_{j=1}^{d}\lvert x_{j}(t_{i})-x_{j}(t_{i-1})\rvert^{2}}\leq \sum_{j=1}^{d}\lvert x_{j}(t_{i})-x_{j}(t_{i-1})\rvert$$
+                \textbf{Theorem 4.1}: 如果$x_{i}(t)$都是绝对连续的, 那么曲线可求长度, 且$$L=\int_{a}^{b}\sqrt{\sum_{i=1}^{d}\lvert x_{i}'(t)\rvert^{2}}\,dx$$
+
+                曲线可求长度是因为绝对连续函数是有界变差的.要证明上述公式, 我们需要证明4.2, $$\lvert F(b)-F(a)\rvert=\sqrt{\sum_{i=1}^{d}\lvert \int_{a}^{b}x_{i}'(t)\,dt\rvert^{2}}$$
+                另一方面记$u=F(b)-F(a)=(u_{1},..,u_{d}), u_{i}=\int_{a}^{b}x_{i}(t)\,dt$, 那么根据线性性和单调性可得$$< u,\int_{a}^{b}F'(t)\,dt>
+                =\int_{a}^{b}< u,F'(t)>
+                \,dt\leq \int_{a}^{b}\|u\|\|F'(t)\|\,dt=\|u\|\int_{a}^{b}\sqrt{\sum_{i=1}^{d}\lvert x_{i}'(t)\rvert^{2}}\,dx$$
+                而左边等于$< u,u>
+                =\|u\|^{2}$, 所以$$\lvert F(b)-F(a)\rvert=\|u\|\leq \int_{a}^{b}\sqrt{\sum_{i=1}^{d}\lvert x_{i}'(t)\rvert^{2}}\,dx$$
+                对任何$a,b$成立, 然后同理课本的Theorem 4.1, $T_{F}(a,b)\leq\int_{a}^{b}\sqrt{\sum_{i=1}^{d}\lvert x_{i}'(t)\rvert^{2}}\,dx$
+
+                另一个方向的不等号与课本同理, 取$h_{i}$满足$\int_{a}^{b}\lvert h_{i}\rvert\,dt< \epsilon$, $x_{i}'=g_{i}+h_{i}$, 其中$g_{i}$是阶梯函数, 然后取$[a,b]$的分点满足每个$g_{i}$在每个小区间上都是常数, 那么$$\int_{t_{i-1}}^{t_{i}}\sqrt{\sum_{k=1}^{d}\lvert g_{k}(t)\rvert^{2}}\,dt=\sqrt{\sum_{k =1}^{d}\lvert \int_{t_{i-1}}^{t_{i}}g_{i}(t)\,dt\rvert^{2}}=\lvert G(t_{i})-G(t_{i-1})\rvert$$
+                其他步骤与课本无区别.
+                \textbf{Theorem 4.3:} 步骤与课本Theorem 4.3相同, 这是Theorem 4.1的直接推论. $$L=\int_{0}^{L}\sqrt{\sum_{i =1}^{d}\lvert \tilde{x}_{i}'(s)\rvert^{2}}\,ds$$
+                两边对L微分可得$\lvert \tilde{z}(s)\rvert=1$ a.e. 成立.
+            </p>
+            <h4>(b)</h4>
+            <p>
+                \textbf{Proposition 4.5:} 首先跟随Lemma 4.6的步骤, 用Fubini定理给出$$m(K^{\delta})=\int_{a}^{b}m_{d-1}(K^{\delta}_{x})\,dx\geq m_{d-1}(B(\delta))(b-a)=m_{d-1}(B(\delta))\triangle$$
+                然后按课本Proposition 4.5的后续步骤证明即可
+
+                \textbf{Proposition 4.7: } 把$z$改成$(x_{1}(s),..,x_{d}(s))$, $z'=(x_{1}',..,x_{d}')对$, 于good interval, 可得$\Gamma_{j}$含于$$[a_{j}-s_{0}-\epsilon\rho, b_{j}-s_{0}+\epsilon\rho]\times B_{d-1}(\epsilon\rho)$$
+                对于bad interval, $\Gamma_{j}$依然含于半径为$\rho$的d-1维开球中, 结合这两个结果可给出$\frac{m(K^{\delta})}{m_{d-1}(B(\delta))}$的估计.
+            </p>
+
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 29</h3>
+            <p>
+                Let \( \Gamma = \{z(t) : a \leq t \leq b\} \) be a curve, and suppose it satisfies a Lipschitz condition with exponent \( \alpha \), \( 1/2 \leq \alpha \leq 1 \), that is,
+
+
+                \[
+                |z(t) - z(t')| \leq A |t - t'|^\alpha \quad \text{for all } t, t' \in [a, b].
+                \]
+                Show that \( m(\Gamma_\delta) = O(\delta^{2 - 1/\alpha}) \) for \( 0 < \delta \leq 1 \).
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                从第142页对bad interval的估计开始更改: 此时$$\lvert z(s)-z(s')\rvert\leq \lvert s-s'\rvert^{\alpha}$$
+                因此$\Gamma_{j}$含于某个半径为$\rho^{\alpha}$的圆中, 因此$\Gamma_{j}^{\delta}$含于某个半径为$(\delta+\rho^{\alpha})$的圆中, 从而$$m(\Gamma_{j}^{\delta})=O(\delta^{2}+\rho^{2\alpha})$$
+                然后按照课本的处理方式得到$$m(\Gamma^{\delta})\leq 2\delta L+2\delta\rho+O(\epsilon\delta+\frac{\delta^{2}}{\rho}+\epsilon\rho)+O((\frac{\epsilon}{\rho}+1)(\delta^{2}+\rho^{2\alpha}))$$
+                取$\rho=\delta^{\frac{1}{\alpha}}$, 那么$$m(\Gamma^{\delta})\leq 2\delta L+2\delta\rho+O(\epsilon\delta+\delta^{2-\frac{1}{\alpha}}+\epsilon\rho)+O((\delta^{\frac{1}{\alpha}}+1)(\delta^{2}+\rho^{2\alpha}))$$
+                注意到$\delta$的最小的次数是$2-\frac{1}{\alpha}$, 因此$$m(\Gamma^{\delta})\leq C\delta^{2-\frac{1}{\alpha}}$$
+            </p>
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 30</h3>
+            <p>
+                A bounded function \( F \) is said to be of bounded variation on \( \mathbb{R} \) if \( F \) is of bounded variation on any finite sub-interval \( [a, b] \), and \( \sup_{a,b} T_F(a, b) < \infty \). Prove that such an \( F \) enjoys the following two properties:
+            </p>
+            <ol type="a">
+                <li>
+                    <p>\( \int_{\mathbb{R}} |F(x + h) - F(x)| \, dx \leq A |h| \), for some constant \( A \) and all \( h \in \mathbb{R} \).</p>
+                </li>
+                <li>
+                    <p>\( \left| \int_{\mathbb{R}} F(x) \phi'(x) \, dx \right| \leq A \), where \( \phi \) ranges over all \( C^1 \) functions of bounded support with \( \sup_{x \in \mathbb{R}} |\phi(x)| \leq 1 \).</p>
+                </li>
+            </ol>
+            <p>For the converse, and analogues in \( \mathbb{R}^d \), see Problem 6* below.</p>
+            <p>[Hint: For (a), write \( F = F_1 - F_2 \), where \( F_j \) are monotonic and bounded. For (b), deduce this from (a).]</p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:(a)</h4>
+            <p>
+                不妨设$h>0$. 对任何的x, 我们知道$$\sum_{i=-N+1}^{N}\lvert F(x+ih)-F(x+(i-1)h)\rvert\leq T_{F}(-N,N) \leq sup_{a,b}T_{F}(a,b)< \infty$$ 记$A=sup_{a,b}T_{F}(a,b)$, 左边令$N\rightarrow\infty$可得$$\sum_{i=-\infty}^{\infty}\lvert F(x+ih)-F(x+(i-1)h)\rvert\leq A$$
+                两边对x在$(0,h)$上积分, 可得$$\sum_{-\infty}^{\infty}\int_{0}^{h}\lvert F(x+ih)-F(x+(i-1)h)\rvert\leq Ah$$
+                利用平移不变性$$\sum_{i=-\infty}^{\infty}\int_{(i-1)h}^{ih}\lvert F(x+h)-F(x)\rvert\,dx\leq Ah$$
+                $$\int_{R}\lvert F(x+h)-F(x)\rvert\,dx\leq Ah$$
+            </p>
+            <h4>(b)</h4>
+            <p>
+                $\phi$有紧支集, 那么$\phi'$有紧支集, 且$F(x)\phi(x+h),F(x)\phi(x)$都是有紧支集的有界函数, 从而可积. 用Fatou引理可知$$\lvert \int_{R}F(x)\phi'(x)\,dx\rvert\leq\liminf_{h\rightarrow0}\lvert \int_{R}F(x)\frac{\phi(x+h)}{h}-\frac{\phi(x)}{h}\,dx\rvert$$
+                用平移不变性和$\lvert \phi\rvert\leq 1$, 可得$$=\liminf_{h\rightarrow0}\lvert \int_{R}\phi(x)\frac{F(x-h)-F(x)}{h}\,dx\rvert\leq \liminf_{h\rightarrow0} \int_{R}\lvert \frac{F(x-h)-F(x)}{h}\rvert\,dx$$
+                $$=\liminf_{h\rightarrow0} \int_{R}\lvert \frac{F(x)-F(x+h)}{h}\rvert\,dx\leq A$$
+            </p>
+
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 31</h3>
+            <p>
+                Let \( F \) be the Cantor-Lebesgue function described in Section 3.1. Consider the curve that is the graph of \( F \), that is, the curve given by \( x(t) = t \) and \( y(t) = F(t) \) with \( 0 \leq t \leq 1 \). Prove that the length \( L(x) \) of the segment \( 0 \leq t \leq x \) of the curve is given by \( L(x) = x + F(x) \). Hence the total length of the curve is 2.
+            </p>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                如果$f_{n}$一致收敛于f, 那么根据$$T_{f}(a,b)-\epsilon< \sum_{i =1}^{N}\lvert f(t_{i})-f(t_{i-1})\rvert\leq \sum_{i=1}^{N}\lvert f_{k}(t_{i})-f_{k}(t_{i-1})\rvert+\frac{\epsilon}{N}\qquad\forall k\geq K$$
+                $$\leq T_{f_{k}}(a,b)+\epsilon\qquad\forall k\geq K$$
+                这说明f也是有界变差的, 把f换成$(x(t),F_{n}(t))$, 则这个函数一致收敛于$(x(t),F(t))$, 因此$L(\overline{x})\leq \liminf_{n\rightarrow\infty}L_{n}(\overline{x})$
+                另一方面, 假设$a,b\in\mathcal{C}^{c}$, 任取$[a,b]$的一组在$F_{k}$的被去掉的区间的端点处的分点$t_{i}$(也就是$F_{k}$拐弯的点和$[a,b]$的交), 那么根据定义必有$F(t_{i})=F_{K}(t_{i})$, 且根据$F_{k}$的绝对连续性和分段线性性, $$L_{K}(a,b)=\int_{a}^{b}(1+\lvert F'_{k}(x)\rvert^{2})^{\frac{1}{2}}\,dx=\sum_{i =1}^{N}\int_{t_{i-1}}^{t_{i}}(1+\lvert F'_{k}(x)\rvert^{2})^{\frac{1}{2}}\,dx=\sum_{i =1}^{N}\sqrt{(t_{i}-t_{i-1})^{2}+\lvert F_{K}(t_{i})-F_{K}(t_{i-1})\rvert^{2}}$$
+                $$=\sum_{i =1}^{N}\sqrt{(t_{i}-t_{i-1})^{2}+\lvert F(t_{i})-F(t_{i-1})\rvert^{2}}\leq L(a,b) $$
+                然后根据连续函数的全变差连续和$\mathcal{C}^{c}$在[0,1]中的稠密性, 可以知道对任何$a,b\in[0,1]$都有$$L_{K}(a,b)\leq L(a,b) $$
+                把a换成0, b换成$\overline{x}$, 那么$$L(\overline{x})\geq \limsup_{n\rightarrow\infty}L_{n}(\overline{x})$$
+                这给出了$$L(\overline{x})=\lim_{n\rightarrow\infty}L_{n}(\overline{x})$$
+                我们知道$F_{n}$不为常数的区域是$2^{n}$个长度为$\frac{1}{3^{n}}$的小区间$I_{i}$, 从左到右排列起来, 根据连续函数全变差的连续性, 只需证$\overline{x}\in\mathcal{C}^{c}$的情形, 此时x必定落在这些小区间外, 因此设$K_{n}$是最大的满足$I_{K_{n}}=(a_{K_{n}},b_{K_{n}})$的$b_{K_{n}}< \overline{x}$的区间. 那么在$[b_{k_{n}},\overline{x}]$上, $F_{n}$是常数. 因此$$L_{n}(\overline{x})=L_{n}(0,b_{k_{n}})+\overline{x}-b_{k_{n}}$$
+                $(0,b_{K_{n}})$上有总长度$b_{k_{n}}-K_{n}\frac{1}{3^{n}}$的区间段上$F_{n}$是常数, 另外$K_{n}$个区间段上$F_{n}$是线性, 可以直接求出每个这样的区间段上的长度为$$\frac{1}{2^{n}}\leq \sqrt{\frac{1}{3^{2n}}+\frac{1}{2^{2n}}}\leq \frac{1}{3^{n}}+\frac{1}{2^{n}}$$
+                因此总的长度为$$L_{n}(\overline{x})=\overline{x}-b_{k_{n}}+b_{k_{n}}-K_{n}\frac{1}{3^{n}}+K_{n}\sqrt{\frac{1}{3^{2n}}+\frac{1}{2^{2n}}}$$
+                注意到$K_{n}\leq 2^{n}$, 所以$$\overline{x}-\frac{2^{n}}{3^{n}}+K_{n}\frac{1}{2^{n}}\leq L_{n}(\overline{x})\leq \overline{x}+K_{n}\frac{1}{2^{n}}$$
+                另外$K_{n}\frac{1}{2^{n}}=F_{K}(b_{k_{n}})$且$[b_{k_{n}},\overline{x}]$上$F_{n}$为常数, 所以$\frac{K_{n}}{2^{n}}=F_{n}(\overline{x})$,  因此$$\overline{x}-\frac{2^{n}}{3^{n}}+F_{n}(\overline{x})\leq L_{n}(\overline{x})\leq \overline{x}+F_{n}(\overline{x})$$
+                两边取极限, 根据$F_{n}(\overline{x}) F(\overline{x})$, 因此$$L(\overline{x})=\overline{x}+F(\overline{x})$$
+            </p>
+
+
+
+
+        </div>
+
+        <div class="Exercise-box">
+            <h3>Exercise 32</h3>
+            <p>
+                Let \( f : \mathbb{R} \to \mathbb{R} \). Prove that \( f \) satisfies the Lipschitz condition
+
+
+                \[
+                |f(x) - f(y)| \leq M |x - y|
+                \]
+                for some \( M \) and all \( x, y \in \mathbb{R} \), if and only if \( f \) satisfies the following two properties:
+            </p>
+            <ol type="i">
+                <li>
+                    <p>\( f \) is absolutely continuous.</p>
+                </li>
+                <li>
+                    <p>\( |f'(x)| \leq M \) for a.e. \( x \).</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="Proof-box">
+            <h4>Proof:</h4>
+            <p>
+                $\Rightarrow$ 不妨设$x>y$, $$\lvert f(x)-f(y)\rvert\leq\int_{y}^{x}\lvert f'(t)\rvert\,dt\leq M\lvert x-y\rvert$$
+
+                $\Leftarrow$ $$\sum_{i=1}^{N}\lvert f(b_{i})-f(a_{i})\rvert\leq M\sum_{i=1}^{N}\lvert b_{i}-a_{i}\rvert$$说明f绝对连续, 又$$\frac{\lvert f(x)-f(y)\rvert}{\lvert x-y\rvert}\leq M$$
+                所以在f的可微点处, 根据极限的保号性, $\lvert f'(x)\rvert\leq M$. 又f a.e可微, 所以$\lvert f'(x)\rvert\leq M$ a.e.成立.
+            </p>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+        <div class="whole_page">
+
+        </div>
+        <div class="bg_box">
+            <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+        </div>
+
+
+</body>
+
+</html>
