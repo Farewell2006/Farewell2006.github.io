@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第七章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第七章
+        </h2>
+
+        <!-- Exercise 1 -->
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>Show that the measure $m_\alpha$ is not $\sigma$-finite on $\mathbb{R}^d$ if $\alpha < d$.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 设$m_{\alpha}$是$\sigma-$有限的,注意到$m_{\alpha}$可测集都是Borel集(这是Hausdorff测度的定义), 则存在可数个Borel集$X_{i}$满足$$\cup_{i=1}^{\infty}X_{i}=R^{d}\qquad m_{\alpha}(X_{i})< \infty$$ 这说明对$\delta< 1$, 都有$$\mathcal{H}_{\alpha}^{\delta}(X_{i})< M$$
+又对任何一组$X_{i}$的覆盖$F_{k}$, 且$diamF_{k}< \delta$, 根据Proposition $7'$都有$$m(X_{i})\simeq m_{d}(X_{i})$$
+而$$\mathcal{H}_{d}^{\delta}(X_{i})\leq \sum_{i=1}^{\infty}(diamF_{k})^{d}\leq \delta^{d-\alpha} \sum_{i=1}^{\infty}(diamF_{k})^{\alpha}$$
+右边对所有这样的覆盖取下确界可得$$\mathcal{H}_{d}^{\delta}(X_{i})\leq\delta^{d-\alpha}\mathcal{H}_{\alpha}^{\delta}(X_{i})$$
+然后令$\delta\rightarrow0$可得右边为0, 左边为$m_{d}(X_{i})$, 这说明$$m(X_{i})=0$$
+然而$m(R^{d})=\infty$, 而可数个零测集的并集还是零测集, 矛盾.
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>
+                Suppose $E_1$ and $E_2$ are two compact subsets of $\mathbb{R}^d$ such that $E_1 \cap E_2$ contains at most one point. Show directly from the definition of the exterior measure that if $0 < \alpha \leq d$, and $E = E_1 \cup E_2$, then
+                \[
+                m^*_\alpha(E) = m^*_\alpha(E_1) + m^*_\alpha(E_2).
+                \]
+                [Hint: Suppose $E_1 \cap E_2 = \{x\}$, let $B_\epsilon$ denote the open ball centered at $x$ and of diameter $\epsilon$, and let $E^\epsilon = E \cap B_\epsilon^c$. Show that
+                $m^*_\alpha(E^\epsilon) \geq H^\epsilon_\alpha(E) \geq m^*_\alpha(E) - \mu(\epsilon) - \epsilon^\alpha$
+                where $\mu(\epsilon) \to 0$. Hence $m^*_\alpha(E^\epsilon) \to m^*_\alpha(E)$.]
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof:$\leq $的方向是显然的, 只需证$\geq$的方向, 按照提示给出的思路, 注意到$m_{\alpha}^{\ast}(E)=\lim_{\epsilon\rightarrow0}\mathcal{H}_{\alpha}^{\epsilon}(E)$, 所以$$ m_{\alpha}^{\ast}(E)-\mu(\epsilon)\leq \mathcal{H}_{\alpha}^{\epsilon}(E)\qquad \mu(\epsilon)\rightarrow0$$
+对任何一组覆盖$E^{\epsilon}$且$diamF_{k}\leq\epsilon$的$F_{k}$, 给x处补上一个$B_{\epsilon}$就覆盖了E, 所以$$\mathcal{H}_{\alpha}^{\epsilon}(E)\leq \sum_{k=1}^{\infty}(diamF_{k})^{\alpha}+\epsilon^{\alpha}$$
+右边取下确界可得$$\mathcal{H}_{\alpha}^{\epsilon}(E)-\epsilon^{\alpha}\leq \mathcal{H}_{\alpha}^{\epsilon}(E^{\epsilon})$$
+从而$$\mathcal{H}_{\alpha}^{\epsilon}(E^{\epsilon})\geq m_{\alpha}^{\ast}(E)-\mu(\epsilon)-\epsilon^{\alpha}$$
+另一方面根据$\mathcal{H}_{\alpha}^{\delta}(A)$关于$\delta$递增可得$$m^{\ast}_{\alpha}(E^{\epsilon})\geq \mathcal{H}_{\alpha}^{\epsilon}(E^{\epsilon})\geq m_{\alpha}^{\ast}(E)-\mu(\epsilon)-\epsilon^{\alpha}$$
+从而$$\liminf_{\epsilon\rightarrow0}m_{\alpha}^{\ast}(E^{\epsilon})\geq m_{\alpha}^{\ast}(E)$$
+<p></p>
+另一方面根据单调性$m_{\alpha}^{\ast}(E^{\epsilon})\leq m_{\alpha}^{\ast}(E)$, 从而$$\lim_{\epsilon\rightarrow0}m_{\alpha}^{\ast}(E^{\epsilon})=m_{\alpha}^{\ast}(E)$$
+
+记$E_{1}^{\epsilon}=E_{1}\cap B_{\epsilon}^{c},E_{2}^{\epsilon}=E_{2}\cap B_{\epsilon}^{c}$, 这是俩紧集($R^{d}$中紧集和闭集的交集还是紧的),而且互不相交, 所以$d(E_{1}^{\epsilon},E_{2}^{\epsilon})>0$, 因此根据Property 3, $$m_{\alpha}^{\ast}(E^{\epsilon})=m^{\ast}_{\alpha}(E_{1}^{\epsilon})+ m^{\ast}_{\alpha}(E_{2}^{\epsilon})  $$
+
+又$E_{i}^{\epsilon}$都是Borel集, 所以可测, 且可测集的外测度就是测度,  所以用测度单调性可得右边趋于$m_{\alpha}(E_{1})+m_{\alpha}(E_{2})=m_{\alpha}^{\ast}(E_{1})+m_{\alpha}^{\ast}(E_{2})$,而左边趋于$m_{\alpha}^{\ast}(E)$, 证毕.
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>Prove that if $f : [0, 1] \to \mathbb{R}$ satisfies a Lipschitz condition of exponent $\gamma > 1$, then $f$ is a constant.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 此时f是绝对连续函数, 几乎处处可微且可用牛顿莱布尼茨公式. 而$$\lvert \frac{f(x)-f(y)}{x-y}\rvert\leq M\lvert x-y\rvert^{\gamma-1}\rightarrow0\qquad x\rightarrow y$$
+            所以$f'=0$ a.e.成立, 所以牛顿莱布尼茨公式给出了f a.e是常数
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>
+                Suppose $f : [0, 1] \to [0, 1] \times [0, 1]$ is surjective and satisfies a Lipschitz condition
+                \[
+                |f(x) - f(y)| \leq C|x - y|^\gamma.
+                \]
+                Prove that $\gamma \leq 1/2$ directly, without using Theorem 2.2.
+            </p>
+            <p>[Hint: Divide $[0, 1]$ into $N$ intervals of equal length. The image of each sub-interval is contained in a ball of volume $O(N^{-2\gamma})$, and the union of all these balls must cover the square.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 根据提示的思路, 把$[0,1]$均分成N段, 每个区间为$I_{i}=[\frac{i-1}{N},\frac{i}{N}]$, 那么根据Lipschitz条件, $$f(I_{i})\subseteq B(f(\frac{2i-1}{2N}), C\lvert\frac{1}{2N}\rvert^{\gamma} )$$
+            再根据f是满射可得这些球体必须覆盖$[0,1]\times [0,1]$, 所以$$\sum_{i=1}^{N}m(B(f(\frac{2i-1}{2N}), C\lvert\frac{1}{2N}\rvert^{\gamma} ))\geq m(\cup_{i=1}^{N}B(f(\frac{2i-1}{2N}), C\lvert\frac{1}{2N}\rvert^{\gamma} ))\geq m([0,1]\times [0,1])=1$$
+            这给出了$$NC\pi \frac{1}{N^{2\gamma}}\geq 1\qquad 2\gamma\leq1\qquad\gamma\leq \frac{1}{2}$$
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>Let $f(x) = x^k$ be defined on $\mathbb{R}$, where $k$ is a positive integer and let $E$ be a Borel subset of $\mathbb{R}$.</p>
+            <ol type="a">
+                <li>Show that if $m_\alpha(E) = 0$ for some $\alpha$, then $m_\alpha(f(E)) = 0$.</li>
+                <li>Prove that $\dim(E) = \dim f(E)$.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            先证明$E\subseteq[-R,R]$的情况.
+
+            回忆$\mathcal{H}_{\alpha}^{\delta}(E)$单增到$m_{\alpha}(E)$, 所以对任何$\delta>0$, $\mathcal{H}_{\alpha}^{\delta}(E)=0$, 因为Hausdorff测度是$\delta\rightarrow0$的情形, 所以本题我们把$\delta$限制为$\delta\leq 1$.
+            考虑$E$的任意一组满足$diamF_{k}\leq\delta\leq 1$的覆盖, 则$$\mathcal{H}_{\alpha}^{\delta}f(E)\leq\sum_{i=1}^{\infty}(diam(f(F_{i})))^{\alpha}$$
+            然后我们估计$f(F_{i})$的直径. 用中值定理,注意此时$F_{i}\subseteq [-R-1,R+1]$, 所以
+            $$\lvert y^{k}-x^{k}\rvert\leq k(R+1)^{k-1}\lvert x-y\rvert\qquad \forall y,x\in F_{k}$$
+            把$k(R+1)^{k-1}$视为C, 那么$$\mathcal{H}_{\alpha}^{\delta}f(E)\leq C^{\alpha}\sum_{i=1}(diamF_{k})^{\alpha}$$
+            右边取下确界可得$H_{\alpha}^{\delta}(f(E))=0$对所有$\delta\leq 1$成立, 所以$m_{\alpha}(f(E))=0$. 对一般的E, 我们考虑测度的连续性: $$m_{\alpha}(f(E))=m_{\alpha}(\cup_{R=1}^{\infty}f(E)\cap [0,R^{k}])=\lim_{R\rightarrow\infty}m_{\alpha}(f(E)\cap [0,R^{k}])=\lim_{R\rightarrow\infty}m_{\alpha}(f(E\cap [-R,R]))$$
+            因为$m_{\alpha}(E)=0$, 所以$m_{\alpha}(E\cap [-R,R])=0$, 所以根据刚才的结果, $m_{\alpha}(f(E\cap [-R,R]))=0$, 从而$m_{\alpha}(f(E))=0$
+            <h4>(b)</h4>
+            (a)中的结果给出了$dim(f(E))\leq dim(E)$. 然后我们可以反过来考虑, 证明$m_{\alpha}(f(E))=0$可推出$m_{\alpha}(E)=0$.  注意到去掉一个单点集$f(0)=0$不影响$m_{\alpha}f(E)$的取值, 所以不妨设$E$不包含0. 根据中值定理我们知道$$g=x^{\frac{1}{k}}$$在$[\frac{1}{n^{k}},\infty)\cup(-\infty,-\frac{1}{n^{k}}]$上是1阶Lipschitz连续的, 且$$E\cap([\frac{1}{n},\infty)\cup(-\infty,-\frac{1}{n}])\subseteq g(f(E)\cap ([\frac{1}{n^{k}},\infty)\cup(-\infty,-\frac{1}{n^{k}}]))\cup -g(f(E)\cap ([\frac{1}{n^{k}},\infty)\cup(-\infty,-\frac{1}{n^{k}}]))$$
+            要并上一个-g是因为考虑到k可能是偶数的情况. 此时根据Lemma 2.2可得$$m_{\alpha}(E\cap([\frac{1}{n},\infty)\cup(-\infty,-\frac{1}{n}]))=0$$
+            因此根据测度的连续性, 我们得出$m_{\alpha}(E)=0$.
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>
+                Let $\{E_k\}$ be a sequence of Borel sets in $\mathbb{R}^d$. Show that if $\dim E_k \leq \alpha$ for some $\alpha$ and all $k$, then
+                \[
+                \dim\left(\bigcup_k E_k\right) \leq \alpha.
+                \]
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof: 如果$dimE_{k}\leq\alpha$, 这说明对任何$\beta>\alpha$, 均有$$m_{\beta}(E_{k})=0$$
+            根据测度的次可加性, $$m_{\beta}(\cup_{k}E_{k})=0$$
+            从而$$dim(\cup_{k}E_{k})\leq\beta\qquad\forall\beta>\alpha$$
+            从而$dim(\cup_{k}E_{k})\leq\alpha$
+        </div>
+
+        <!-- Exercise 7 -->
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>Prove that the $(\log 2 / \log 3)$-Hausdorff measure of the Cantor set is precisely equal to $1$.</p>
+            <p>[Hint: Suppose we have a covering of $C$ by finitely many closed intervals $\{I_j\}$. Then there exists another covering of $C$ by intervals $\{I'_l\}$ each of length $3^{-k}$ for some $k$, such that $\sum_j |I_j|^\alpha \geq \sum_l |I'_l|^\alpha \geq 1$, where $\alpha = \log 2/ \log 3$.]</p>
+        </div>
+        <div class="Proof-box">
+            请参考Falconer编著的《The geometry of fractal sets》的Theorem 1.14
+        </div>
+
+        <!-- Exercise 8 -->
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>Show that the Cantor set of constant dissection, $C_\xi$, in Exercise 3 of Chapter 1 has strict Hausdorff dimension $\log 2/ \log(2/(1 - \xi))$.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 记$\alpha=\frac{log2}{log(\frac{2}{1-\xi})}$, 根据这个集合的构造过程, 第k步去除完对应的集合之后剩余$2^{k}$个闭区间, 长度为$\delta=\frac{(1-\xi)^{k}}{2^{k}}$, 因此$\mathcal{C}_{\xi}$会被这些区间覆盖, 因此$$\mathcal{H}_{\alpha}^{\delta}(\mathcal{C}_{\xi})\leq 2^{k}(\frac{(1-\xi)^{\alpha k}}{2^{\alpha k}})=\frac{2^{k}}{2^{k}}=1$$
+            因此$dim(C_{\xi})\leq \log 2/ \log(2/(1 - \xi))$. 只需证$m_{\alpha}(\mathcal{C}_{\xi}>0$. 我们考虑Cantor-Lebesgue函数的变体, 即令$F_{1}$在中间被去掉的长度为$\xi$的区间上为$\frac{1}{2}$, $F_{1}(0)=0,F_{1}(1)=1$, 其他地方线性, 继续这个过程, 得到函数序列$F_{n}(x)$, $F_{n}$在线性部分的斜率为$(\frac{1}{1-\xi})^{n}$,它一致收敛到极限函数F, 且满足$\lvert F-F_{n}\rvert\leq \frac{1}{2^{n}}$, 从而根据三角不等式$$\lvert F(x)-F(y)\rvert\leq \lvert F_{n}(x)-F_{n}(y)\rvert+\lvert F(x)-F_{n}(x)\rvert+\lvert F_{n}(y)-F(y)\rvert$$
+            $$\leq \frac{1}{2^{n}}(\frac{2}{1-\xi})^{n}\lvert x-y\rvert+\frac{2}{2^{n}}$$
+            对固定的x,y 取n使得$1\leq (\frac{2}{1-\xi})^{n}\lvert x-y\rvert\leq 2$, 那么$$\lvert F(x)-F(y)\rvert\leq \frac{4}{2^{n}}=4(\frac{1-\xi}{2})^{n\alpha}\leq 4\lvert x-y\rvert^{\alpha}$$
+            又F在所有被去掉的区间上为常数,而被去掉的区间是可数个, 且值域为[0,1], 所以  $F(\mathcal{C}_{\xi})$至少包含$[0,1]$去掉一个零测集, 所以测度为1, 因此根据Lemma 2.2, $$4m_{\alpha}(\mathcal{C}_{\xi})\geq m_{1}(F(\mathcal{C}_{\xi}))$$
+            而对Borel集来说, Lebesgue测度和Hausdorff测度只差一个常数的, 所以右边严格大于0, 从而$dim(C_{\xi})=\log 2/ \log(2/(1 - \xi))$
+        </div>
+
+        <!-- Exercise 9 -->
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>Consider the set $C_{\xi_1} \times C_{\xi_2}$ in $\mathbb{R}^2$, with $C_\xi$ as in the previous exercise. Show that $C_{\xi_1} \times C_{\xi_2}$ has strict Hausdorff dimension $\dim(C_{\xi_1}) + \dim(C_{\xi_2})$.</p>
+        </div>
+        <div class="Proof-box">
+            <!-- 解答粘贴处 -->
+        </div>
+
+        <!-- Exercise 10 -->
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>Construct a Cantor-like set (as in Exercise 4, Chapter 1) that has Lebesgue measure zero, yet Hausdorff dimension $1$.</p>
+            <p>[Hint: Choose $\ell_1, \ell_2, \dots, \ell_k, \dots$ so that $1 - \sum_{j=1}^k 2^{j-1} \ell_j$ tends to zero sufficiently slowly as $k \to \infty$.]</p>
+        </div>
+        <div class="Proof-box">
+            <!-- 解答粘贴处 -->
+        </div>
+
+        <!-- Exercise 11 -->
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Let $D = D_\mu$ be the Cantor dust in $\mathbb{R}^2$ given as the product $C_\xi \times C_\xi$, with $\mu = (1 - \xi)/2$.</p>
+            <ol type="a">
+                <li>Show that for any real number $\lambda$, the set $C_\xi + \lambda C_\xi$ is similar to the projection of $D$ on the line in $\mathbb{R}^2$ with slope $\lambda = \tan \theta$.</li>
+                <li>Note that among the Cantor sets $C_\xi$, the value $\xi = 1/2$ is critical in the construction of the Besicovitch set in Section 4.4. In fact, prove that with $\xi > 1/2$, then $C_\xi + \lambda C_\xi$ has Lebesgue measure zero for every $\lambda$. See also Problem 10 below.</li>
+            </ol>
+            <p>[Hint: $m_\alpha(C_\xi + \lambda C_\xi) < \infty$ for $\alpha = \dim D_\mu$.]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            <!-- 解答粘贴处 -->
+            <h4>(b)</h4>
+            <!-- 解答粘贴处 -->
+        </div>
+
+        <!-- Exercise 12 -->
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>
+                Define a primitive one-dimensional "measure" $\tilde{m}_1$ as
+                \[
+                \tilde{m}_1 = \inf \sum_{k=1}^\infty \operatorname{diam} F_k, \quad E \subset \bigcup_{k=1}^\infty F_k.
+                \]
+                This is akin to the one-dimensional exterior measure $m^*_\alpha$, $\alpha = 1$, except that no restriction is placed on the size of the diameters $F_k$.
+            </p>
+            <p>
+                Suppose $I_1$ and $I_2$ are two disjoint unit segments in $\mathbb{R}^d$, $d \geq 2$, with $I_1 = I_2 + h$, and $|h| < \epsilon$. Then observe that $\tilde{m}_1(I_1) = \tilde{m}_1(I_2) = 1$, while $\tilde{m}_1(I_1 \cup I_2) \leq 1 + \epsilon$. Thus
+                \[
+                \tilde{m}_1(I_1 \cup I_2) < \tilde{m}_1(I_1) + \tilde{m}_1(I_2) \quad \text{when } \epsilon < 1;
+                \]
+                hence $\tilde{m}_1$ fails to be additive.
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof: 显然$\tilde{m}_{1}(I_{1})\leq 1$. 如果$\tilde{m}_{1}(I_{1})< 1$, 那么存在一组覆盖$I_{1}$的集合使得$\sum_{k=1}^{\infty}diamF_{k}< 1$, 设$I_{1}$中的点为$z(t),t\in[0,1]$, 则根据三角不等式可得$diam(\cup_{k=1}^{\infty}F_{k})\leq \sum_{k=1}^{\infty}diamF_{k}< 1$, 从而$$1=diamI_{1}\leq diam(\cup_{k=1}^{\infty}F_{k})< 1$$
+矛盾.同理$\tilde{m}_{1}(I_{2})=1$.
+
+另一方面, $I_{1}\cup I_{2}$含于轴为$I_{1}/2+I_{2}/2$, 半径为$\frac{\epsilon}{2}$的闭圆柱, 这个圆柱的直径为$ \sqrt{\epsilon^{2}+1}\leq 1+\epsilon$, 因此$$\tilde{m}_{1}(I_{1}\cup I_{2})\leq 1+\epsilon$$
+        </div>
+
+        <!-- Exercise 13 -->
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>Consider the von Koch curve $\mathcal{K}_\ell$, $1/4 < \ell < 1/2$, as defined in Section 2.1. Prove for it the analogue of Theorem 2.7: the function $t \mapsto \mathcal{K}_\ell(t)$ satisfies a Lipschitz condition of exponent $\gamma = \log(1/\ell)/ \log 4$. Moreover, show that the set $\mathcal{K}_\ell$ has strict Hausdorff dimension $\alpha = 1/\gamma$.</p>
+            <p>[Hint: Show that if $O$ is the shaded open triangle indicated in Figure 14, then $\mathcal{O} \supset S_0(\mathcal{O}) \cup S_1(\mathcal{O}) \cup S_2(\mathcal{O}) \cup S_3(\mathcal{O})$, where $S_0(x) = \ell x$, $S_1(x) = \rho_\theta(\ell x) + a$, $S_2(x) = \rho^{-1}_\theta(\ell x) + c$, and $S_3(x) = \ell x + b$, with $\rho_\theta$ the rotation of angle $\theta$. Note that the sets $S_j(\mathcal{O})$ are disjoint.]</p>
+            <div style="text-align: center;">
+                <img src="figs/C7F14.png" width="40%">
+
+            </div>
+        </div>
+        <div class="Proof-box">
+            Proof: 每次把每条线段中间的部分变成折线, 使得这个线段变成四个长度为原来的$l$倍的部分. 这个构造揭示了$$\lvert K_{j+1}-K_{j}\rvert\leq l^{j}$$
+            又$K_{j}(t)$在$\frac{1}{4^{j}}$的时间里面走过了$l^{j}$的路程, 所以$$\lvert K_{j}'(t)\rvert\leq (4l)^{j}$$
+            因此根据Lemma 2.8, 极限$\mathcal{K}_{\ell}$存在且是Holder连续函数, 满足$$\lvert \mathcal{K}_{\ell}(x)-\mathcal{K}_{\ell}(y)\rvert\leq M\lvert x-y\rvert^{\frac{log(\frac{1}{l})}{4}}$$
+
+            为了给出$\mathcal{K}_{\ell}$的Hausdorff维数, 我们考虑Theorem 2.12, 根据提示给出的构造, 我们知道$m=4.r=l$, 从而$$dim(\mathcal{K}_{\ell})=\frac{logm}{log\frac{1}{r}}=\frac{log4}{log\frac{1}{l}}$$
+
+        </div>
+
+        <!-- Exercise 14 -->
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>Show that if $\ell < 1/2$, the von Koch curve $t \mapsto \mathcal{K}_\ell(t)$ in Exercise 13 is a simple curve.</p>
+            <p>
+                [Hint: Observe that if $t = \sum_{j=1}^\infty a_j / 4^j$, with $a_j = 0, 1, 2,$ or $3$, then
+                \[
+                \{\mathcal{K}(t)\} = \bigcap_{j=1}^\infty S_{a_j} \left( \cdots S_{a_2} \left( S_{a_1}(\overline{\mathcal{O}}) \right) \cdots \right).
+                \]
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof:我们知道$[0,1]$中的t都能被展开为$\sum_{j=1}^{\infty}\frac{a_{j}}{4^{j}}$, 按照提示注意到$$	\{\mathcal{K}(t)\} = \bigcap_{j=1}^\infty S_{a_j} \left( \cdots S_{a_2} \left( S_{a_1}(\overline{\mathcal{O}}) \right) \cdots \right)$$
+            因为$S_{a1}(\overline{\mathcal{O}})$实际上决定了$\mathcal{K}(t)$落在$K_{1}$的第几段, 然后这一段上出来一个新的分型, $\mathcal{K}(t)$一定落在这个新分型的某一段, 而这就是$S_{a_2} \left( S_{a_1}(\overline{\mathcal{O}}) \right)$, 继续这个过程即可. 因为每个$\mathcal{K}(t)$肯定具有唯一的分段, 所以这样就能得出$\mathcal{K}(t)$和$a_{i}$是一一对应. 从而$\mathcal{K}(t)$是单射.
+
+            中间需要排除边界情况, 当t具有有限四进展开时, 设$a_{N}$是最后一个不为0的位, 则根据$$\frac{1}{4^{N}}=\frac{0}{4^{N}}+\sum_{j=N+1}^{\infty}\frac{3}{4^{j}}$$
+            $$\frac{2}{4^{N}}=\frac{1}{4^{N}}+\sum_{j=N+1}^{\infty}\frac{3}{4^{j}}$$
+            $$\frac{3}{4^{N}}=\frac{2}{4^{N}}+\sum_{j=N+1}^{\infty}\frac{3}{4^{j}}$$
+            按第一个为例子, 第N步落在第1个分支的开头然后后面全不动, 等价于第N步落在第0个分支然后后面全都落在最后一个分支, 也就是逐步靠近第N步时第0个分支的末尾, 也就是第一个分支的开头, 因此一样. 其他情况也是同样的道理.
+        </div>
+
+        <!-- Exercise 15 -->
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>Note that if we take $\ell = 1/2$ in the definition of the von Koch curve in Exercise 13 we get a "space-filling" curve, one that fills the right triangle whose vertices are $(0, 0)$, $(1, 0)$, and $(1/2, 1/2)$. The first three steps of the construction are as in Figure 15, with the intervals traced out in the indicated order.</p>
+            <div style="text-align: center;">
+                <img src="figs/C7F15.png" width="40%">
+
+            </div>
+        </div>
+        <div class="Proof-box">
+            Proof: 这样的填充做下去将填满每一个坐标形如$(\frac{i}{2^{k}},\frac{j}{2^{k}})$的边长为$\frac{1}{2^{k}}$的方体. 而对任何x和k, 存在i使得$\frac{i}{2^{k}}\leq x\leq \frac{i+1}{2^{k}}$, 所以对任何x, 存在长为$\frac{1}{2^{k}}$的二进方体序列$S^{k}\subseteq S^{k-1}$满足$$x\in \cap_{k=1}^{\infty}S^{k}$$
+            (这是因为当$x\in S^{k}$时, $S^{k}$切成四个小方块之后x必定含于其中某一个, 因此存在边长为$\frac{1}{2^{k+1}}$的二进方体$S^{k+1}$包含x), 而且如果$x\in(\frac{i}{2^{k}},\frac{i+1}{2^{k}})$(因为图像关于$x=\frac{1}{2}$对称, 不妨设$i\geq 2^{k-1}$), 那么这个区间的范围, y的值为$\frac{1}{2^{k}}*(2^{k}-i-1)< 1-x$, 但是$\geq 1-x+\frac{1}{2^{k}}$, 所以将逐渐填满$(x,0)$到$(x,1-x)$的线段. 同理根据$x=\frac{1}{2}$的对称性, 当$0\leq x\leq \frac{1}{2}$时, 将填满$(x,0)$到$(x,x)$的线段, 这样整个曲线就填满了顶点为$(0,0),(1,0),(\frac{1}{2},\frac{1}{2})$的三角形.
+
+        </div>
+
+        <!-- Exercise 16 -->
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>Prove that the von Koch curve $t \mapsto \mathcal{K}_\ell(t)$, $1/4 < \ell \leq 1/2$ is continuous but nowhere differentiable.</p>
+            <p>
+                [Hint: If $\mathcal{K}'(t)$ exists for some $t$, then
+                \[
+                \lim_{n \to \infty} \frac{\mathcal{K}(u_n) - \mathcal{K}(v_n)}{u_n - v_n}
+                \]
+                must exist, where $u_n \leq t \leq v_n$, and $u_n - v_n \to 0$. Choose $u_n = k / 4^n$ and $v_n = (k + 1) / 4^n$.]
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof: 对任何t, 任何n, 存在k使得$\frac{k}{4^{n}}\leq t\leq \frac{k+1}{4^{n}}$, 由假设可得$$\lim_{n \to \infty} \frac{\mathcal{K}(u_n) - \mathcal{K}(v_n)}{u_n - v_n}$$存在, 但是$$\lim_{n \to \infty} \frac{\mathcal{K}(u_n) - \mathcal{K}(v_n)}{u_n - v_n}=\lim_{n \to \infty}4^{n}l^{n}>1$$
+        </div>
+
+        <!-- Exercise 17 -->
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>For a compact set $E$ in $\mathbb{R}^d$, define $\#(\epsilon)$ to be the least number of balls of radius $\epsilon$ that cover $E$. Note that we always have $\#(\epsilon) = O(\epsilon^{-d})$ as $\epsilon \to 0$, and $\#(\epsilon) = O(1)$ if $E$ is finite.</p>
+            <p>One defines the covering dimension of $E$, denoted by $\dim_C(E)$, as $\inf \beta$ such that $\#(\epsilon) = O(\epsilon^{-\beta})$, as $\epsilon \to 0$. Show that $\dim_C(E) = \dim_M(E)$, where $\dim_M$ is the Minkowski dimension discussed in Section 2.1, by proving the following inequalities for all $\delta > 0$:</p>
+            <ol type="a">
+                <li>$m(E^\delta) \leq c \#(\delta) \delta^d$.</li>
+                <li>$\#(\delta) \leq c' m(E^\delta) \delta^{-d}$.</li>
+            </ol>
+            <p>[Hint: To prove (ii), use Lemma 1.2 in Chapter 3 to find a collection of disjoint balls $B_1, B_2, \dots, B_N$ of radius $\delta/3$, each centered at $E$, such that their "triples" $\tilde{B}_1, \tilde{B}_2, \dots, \tilde{B}_N$ (of radius $\delta$) cover $E$. Then $\#(\delta) \leq N$, while $N m(B_j) = c N \delta^d \leq m(E^\delta)$, since the balls $B_j$ are disjoint and are contained in $E^\delta$.]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            取$\#(\delta)$个能覆盖E的半径为$\delta$的球体, 记为$B_{i}$, 扩大一倍之后能覆盖$E^{\delta}$, 所以$$m(E^{\delta})\leq m(B(0,1))2^{d}\delta^{d}\#(\delta)=c\#(\delta)\delta^{d}$$
+            <h4>(b)</h4>
+            设有N个半径为$\delta$, 球心位于E中的球体$\tilde{B}_{i}$覆盖了E, 用第三章的Lemma 1.2可以给出其中k个互不相交的球体$B_{ij},1\leq j\leq k$, 满足$$m(\cup_{i=1}^{N}B_{i})\leq 3^{d}\sum_{j=1}^{k}m(B_{ij})$$
+            记$\tilde{B}_{ij}$是$B_{ij}$半径缩小为原来的$1/3$得到的球体(依然互不相交), 则$$m(E^{\delta})\geq m(\cup_{j=1}^{k}\tilde{B}_{ij})=3^{-d}\sum_{j=1}^{k}m(B_{ij})\geq 6^{-d}m(\cup_{i=1}^{N}B_{i})=6^{-d}m(B(0,1))N\delta^{d}=cN\delta^{d}$$
+            又$\#(\delta)\leq N$, 所以$$\#(\delta)\leq c'\delta^{-d}m(E^{\delta})$$
+            这给出了, 对任何$\beta>dim_{M}(E)$, 均有$$\#(\delta)\leq c'\delta^{-d}O(\delta^{d-\beta})=O(\delta^{-\beta})\qquad dim_{C}(E)\leq \beta$$
+            对$\beta$取下确界可得$ dim_{C}(E)\leq dim_{M}E$.
+            <p></p>
+            另一方面, 对任何$\beta\geq dim_{C}(E)$, $$m(E^{\delta})\leq cO(\delta^{-\beta})\delta^{d}=O(\delta^{d-\beta})$$
+            所以$dim_{M}(E)\leq \beta$, 从而对$\beta$取下确界可得$dim_{M}(E)\leq dim_{C}(E)$. 从而二者相等.
+        </div>
+
+        <!-- Exercise 18 -->
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Let $E$ be a compact set in $\mathbb{R}^d$.</p>
+            <ol type="a">
+                <li>Prove that $\dim(E) \leq \dim_M(E)$, where $\dim$ and $\dim_M$ are the Hausdorff and Minkowski dimensions, respectively.</li>
+                <li>However, prove that if $E = \{0, 1/\log 2, 1/\log 3, \dots, 1/\log n, \dots\}$, then $\dim_M E = 1$, yet $\dim E = 0$.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            对任何$\beta>dim_{M}(E)$, 根据稠密性取$\gamma$满足$\beta>\gamma>dim_{M}(E)$, 则Exercise 17的结论可得存在$\leq C_{\gamma}\delta^{-\gamma}$个半径为$\delta$的球体$B_{i}$覆盖E, 从而$$\mathcal{H}_{\beta}^{\delta}\leq C\delta^{-\gamma} \delta^{\beta}\leq C_{\gamma}\delta^{\beta-\gamma}$$
+            从而$\delta\rightarrow0$时, $$m^{\ast}_{\beta}(E)=0\qquad dimE\leq dim_{M}(E)$$
+            <h4>(b)</h4>
+            $dimE=0$是因为当$\alpha>0$时, $m_{\alpha}$在可数集上都取0. 另一方面$$m(E^{\delta})\geq m((-\delta/2,\delta/2))=\delta$$
+            所以$\beta$不可能$< 1$, 因此$dim_{M}(E)\geq 1$. 又当$\beta=1$时, $$m(E^{\delta})\leq m((-\delta,1+\delta))=1+2\delta =O(\delta1-\beta)$$
+                              所以$dim_{M}(E)\leq 1$, 所以$dim_{M}(E)=1$.
+        </div>
+
+        <!-- Exercise 19 -->
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>
+                Show that there is a constant $c_d$, dependent only on the dimension $d$, such that whenever $E$ is a compact set,
+                \[
+                m(E^{2\delta}) \leq c_d m(E^\delta).
+                \]
+                [Hint: Consider the maximal function $f^*$, with $f = \chi_{E^\delta}$, and take $c_d = 6^d$.]
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof: 任取$\epsilon< \frac{1}{2^{d}}$. 根据极大函数的弱$L^{1}$估计, 回忆第三章Theorem 1.1中的A可取为$3^{d}$, 可得$$m(\{x\in R^{d}\big| f^{\ast}(x)>
+                \frac{1}{2^{d}}-\epsilon\})\leq\frac{6^{d}}{1-2^{d}\epsilon}\|f\|_{L^{1}(R^{d})}$$
+                又对任何$x\in E^{2\delta}$, 存在$y\in E$使得$\lvert y-x\rvert< 2\delta$, 所以$ x\in B(y,2\delta)$. 又$B(y,\delta)\subseteq E^{\delta}$, 所以$$f^{\ast}(x)\geq\frac{1}{B(y,2\delta)}\int_{B(y,2\delta)}\mathcal{X}_{E^{\delta}}\,dx\geq\frac{1}{B(y,2\delta)}\int_{B(y,\delta)}\mathcal{X}_{E^{\delta}}\,dx=\frac{1}{2^{d}}>
+                    \frac{1}{2^{d}}-\epsilon$$
+                    因此$E^{2\delta}\subseteq \{x\in R^{d}\big| f^{\ast}(x)>\frac{1}{2^{d}}-\epsilon\}$, 因此$$m(E^{2\delta})\leq \frac{6^{d}}{1-2^{d}\epsilon}m(E^{\delta})$$
+                    然后根据$\epsilon$的任意性, $$m(E^{2\delta})\leq 6^{d}m(E^{\delta})$$
+        </div>
+
+        <!-- Exercise 20 -->
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>Show that if $F$ is the self-similar set considered in Theorem 2.12, then it has the same Minkowski dimension as Hausdorff dimension.</p>
+            <p>[Hint: Each $F_k$ is the union of $m^k$ balls of radius $c r^k$. In the converse direction one sees by Lemma 2.13 that if $\epsilon = r^k$, then each ball of radius $\epsilon$ can contain at most $c'$ vertices of the $k$-th generation. So it takes at least $m^k / c'$ such balls to cover $F$.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 根据Exercise 18, 紧集的Hausdorff维数小于等于Minkowski维数, 只需证另一个方向. 对任何$\delta>0$, 我们取k满足$$r^{k}\leq\delta\leq r^{k-1}$$
+记$F_{k-1}$中的球体为$B(x_{i},cr^{k-1})$, 不妨设$c< 1$,
+则$$F^{\delta}\subseteq \cup_{i=1}^{m^{k-1}}B(x_{i},2r^{k-1})$$
+$$m(F^{\delta})\leq cm^{k-1}r^{(k-1)d}$$
+另一方面当$\beta=dimF=\frac{logm}{log\frac{1}{r}}$时, 我们发现$$cm^{k-1}r^{(k-1)d}=c(r^{k-1})^{d-\beta}\leq \frac{c}{r^{d-\beta}}r^{k(d-\beta)}\leq \frac{c}{r^{d-\beta}}\delta^{d-\beta}=O(\delta^{d-\beta})$$
+所以$$dim_{M}F\leq \beta=dimF$$
+        </div>
+
+        <!-- Exercise 21 -->
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>
+                From the unit interval, remove the second and fourth quarters (open intervals). Repeat this process in the remaining two closed intervals, and so on. Let $F$ be the limiting set, so that
+                \[
+                F = \left\{ x : x = \sum_{k=1}^\infty a_k / 4^k \quad a_k = 0 \text{ or } 2 \right\}.
+                \]
+                Prove that $0 < m_{1/2}(F) < \infty$.
+            </p>
+        </div>
+        <div class="Proof-box">
+            Proof: 设每次去掉区间之后剩下的集合为$F_{k}$, 那么$$F=\cap_{k=1}^{\infty}F_{k}$$
+            且$F_{k}$可以视为$2^{k}$个长度为$\frac{1}{4^{k}}$的闭区间的并集, 因此$$\mathcal{H}_{\frac{1}{2}}^{\frac{1}{4^{k}}}(F)\leq 2^{k}(\frac{1}{4^{k}})^{\frac{1}{2}}=1< \infty$$ 从而$m_{\frac{1}{2}}(F)< \infty$. 又F满足Theorem 2.12的全部条件($S_{1}(x)=\frac{x}{4},S_{2}(x)=\frac{x}{4}+\frac{1}{2},\mathcal{O}=(0,1)$), 而Theorem 2.12的末尾给出了$m_{\alpha}(F)>0$, 所以本题也有$m_{\frac{1}{2}}(F)>0$.
+        </div>
+
+        <!-- Exercise 22 -->
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>Suppose $F$ is the self-similar set arising in Theorem 2.9.</p>
+            <ol type="a">
+                <li>Show that if $m \leq 1/r^d$, then $m_d(F_i \cap F_j) = 0$ if $i \neq j$.</li>
+                <li>However, if $m \geq 1/r^d$, prove that $F_i \cap F_j$ is not empty for some $i \neq j$.</li>
+                <li>
+                    Prove that under the hypothesis of Theorem 2.12
+                    \[
+                    m_\alpha(F_i \cap F_j) = 0, \quad \text{with } \alpha = \log m / \log(1/r), \text{ whenever } i \neq j.
+                    \]
+                </li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            题目中的$F_{i}$应该是$S_{i}(F)$.
+            <h4>(a)</h4>
+            $$m_{d}(F)=m_{d}(\cup_{i=1}^{m}F_{i})\leq \sum_{i=1}^{m}m_{d}(S_{i}F)$$
+            根据Hausdorff测度的平移和旋转不变性和齐次性, $$m_{d}(F)=m_{d}(\cup_{i=1}^{m}F_{i})\leq mr^{d}m_{d}(F)\leq m_{d}(F)$$
+            所以上式不等号全是等号, 因此$$m_{d}(\cup_{i=1}^{m}F_{i})=\sum_{i=1}^{m}m_{d}(F_{i})$$
+            假设存在$i,j$使得$m_{d}(F_{i}\cap F_{j})>0$, 则$$m_{d}(F_{i}\cup F_{j})=m_{d}(F_{i})+m_{d}(F_{j})-m_{d}(F_{i}\cap F_{j})\qquad \sum_{i=1}^{m}m_{d}(F_{i})>\sum_{k\neq i,j}^{m}m_{d}(F_{k})+m_{d}(F_{i}\cup F_{j})\geq m_{d}(\cup_{k=1}^{m}F_{k})$$
+            矛盾
+            <h4>(b)</h4>
+            不会
+            <h4>(c)</h4>
+            $$m_{\alpha}(F)=m_{\alpha}(\cup_{i=1}^{m}F_{i})\leq \sum_{i=1}^{m}m_{\alpha}(F_{i})=mr^{\alpha}m_{\alpha}(F)=m_{\alpha}(F)$$
+            所以上述不等号都是等号,假设存在$i,j$使得$m_{\alpha}(F_{i}\cap F_{j})>0$, 则$$m_{\alpha}(F_{i}\cup F_{j})=m_{\alpha}(F_{i})+m_{\alpha}(F_{j})-m_{\alpha}(F_{i}\cap F_{j})\qquad \sum_{i=1}^{m}m_{\alpha}(F_{i})>\sum_{k\neq i,j}^{m}m_{\alpha}(F_{k})+m_{\alpha}(F_{i}\cup F_{j})\geq m_{\alpha}(\cup_{k=1}^{m}F_{k})$$
+            矛盾
+        </div>
+
+        <!-- Exercise 23 -->
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>
+                Suppose $S_1, \dots, S_m$ are similarities with ratio $r$, $0 < r < 1$. For each set $E$, let
+                \[
+                \widetilde{S}(E) = S_1(E) \cup \cdots \cup S_m(E),
+                \]
+                and suppose $F$ denotes the unique non-empty compact set with $\tilde{S}(F) = F$.
+            </p>
+            <ol type="a">
+                <li>If $\overline{x} \in F$, show that the set of points $\{\widetilde{S}^n(\overline{x})\}_{n=1}^\infty$ is dense in $F$.</li>
+                <li>Show that $F$ is homogeneous in the following sense: if $x_0 \in F$ and $B$ is any open ball centered at $x_0$, then $F \cap B$ contains a set similar to $F$.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            对任何N, 都有$$F=\widetilde{S}^{N}(F)=\cup_{n_{1},..,n_{N}}S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F)$$
+            其中根据$S_{i}$是旋转平移伸缩的复合可知$$diam(S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F))=r^{N}diamF$$
+            因此对任何$\epsilon>0$, 取N满足$r^{N}diamF< \epsilon$. 对任何$y\in F$, 存在$n_{1},..,n_{N}$使得$$y\in S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F)$$
+            因此$$\lvert S_{n_{N}}\circ\cdots\circ S_{n_{1}}(\overline{x})-y\rvert\leq diam(S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F))< \epsilon$$
+            而$S_{n_{N}}\circ\cdots\circ S_{n_{1}}(\overline{x})\in \{\widetilde{S}^{n}(\overline{x})\}_{n=1}^{\infty}$, 所以这个集合稠密.
+            <h4>(b)</h4>
+            在(a)中, 令$y=x_{0},\epsilon=\frac{diamB}{2}$, 任取一个$\overline{x}\in F$, 则根据$ S_{n_{N}}\circ\cdots\circ S_{n_{1}}(\overline{x})\subseteq S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F)$可得$$S_{n_{N}}\circ\cdots\circ S_{n_{1}}(F)\subseteq B(y=x_{0},2\epsilon)=B$$
+            这就是要找的和F相似的集合.
+        </div>
+
+        <!-- Exercise 24 -->
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>Suppose $E$ is a Borel subset of $\mathbb{R}^d$ with $\dim E < 1$. Prove that $E$ is totally disconnected, that is, any two distinct points in $E$ belong to different connected components.</p>
+            <p>[Hint: Fix $x, y \in E$, and show that $f(t) = |t - x|$ is Lipschitz of order 1, and hence $\dim f(E) < 1$. Conclude that $f(E)$ has a dense complement in $\mathbb{R}$. Pick $r$ in the complement of $f(E)$ so that $0 < r < f(y)$, and use the fact that $E = \{t \in E : |t - x| < r\} \cup \{t \in E : |t - x| > r\}$.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:不妨设$f(t_{2})\geq f(t_{1})$,
+            $$f\lvert (t_{1})-f(t_{2})\rvert=\begin{cases}
+            \lvert t_{1}-t_{2}\rvert&(t_{1}-x)(t_{2}-x)\geq 0\\
+            \lvert t_{2}-t_{1}\rvert&else
+            \end{cases}$$
+            根据Lemma 2.2可得$dimf(E)< 1$, 所以对R上的Lebesgue测度m来说, $m(f(E))\sim m_{1}(f(E))=0$, 从而$f(E)^{c}$在R中稠密(否则$f(E)$含义个开区间, 不是零测集). 按提示中的思路, 可得$$x\in \{t\in E\big|\lvert t-x\rvert<r\}\qquad y\in \{t\in E\big| \lvert t-x\rvert>r\}$$
+而以上是两个互不相交的开集, 所以x,y各自含于不同的连通分支(否则x,y所在的连通分支将能够表示为两个互不相交的开集的并, 和连通性矛盾)
+        </div>
+
+        <!-- Exercise 25 -->
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>Let $F(t)$ be an arbitrary non-negative measurable function on $\mathbb{R}$, and $\gamma \in S^{d-1}$. Then there exists a measurable set $E$ in $\mathbb{R}^d$, such that $F(t) = m_{d-1}(E \cap \mathcal{P}_{t,\gamma})$.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 根据Lebesgue测度的旋转不变性, 不妨设$\gamma=(0,..,0,1)$. 对一般情况只需要把这时构造的可测集用一个旋转转过去. 设Q是单位方体, $aQ$是Q以原点为基准放大到Lebesgue测度为a的方体(注意到$aQ\supset bQ$在$a>b$成立). 当F是特征函数$\mathcal{X}_{T}$时, 我们发现$$F(t)=\mathcal{X}_{T}(t)=\int_{R^{d-1}}\mathcal{X}_{Q}(x_{1},..,x_{d-1})\mathcal{X}_{T}(t)\,dx_{1}\cdots dx_{d-1}$$
+当F是特征函数的倍数$a\mathcal{X}_{T}$时, 我们发现$$=a\mathcal{X}_{T}(t)=\int_{R^{d-1}}\mathcal{X}_{aQ}(x_{1},..,x_{d-1})\mathcal{X}_{T}(t)\,dx_{1}\cdots dx_{d-1}$$
+因此当F是简单函数时, 我们知道F能写作对应集合不相交的特征函数的线性组合$\sum_{i=1}^{N}a_{i}\mathcal{X}_{T_{i}},T_{i}\cap T_{j}=\emptyset$, 此时$$F(t)=\int_{R^{d-1}}\sum_{i=1}^{N}\mathcal{X}_{a_{i}Q}\mathcal{X}_{T_{i}}(t)\,dx_{1}\cdots\,dx_{d-1}$$
+因为$T_{i}$互不相交, 所以$\sum_{i=1}^{N}\mathcal{X}_{a_{i}Q}\mathcal{X}_{T_{i}}(t)$要么取0要么取1(因为至多一个$\mathcal{X}_{T_{i}}\neq0$), 因此也是个特征函数, 这也是个简单函数, 所以可测, 从而可以记为可测集$E_{N}$的特征函数, $$\mathcal{X}_{E_{N}}=\sum_{i=1}^{N}\mathcal{X}_{a_{i}Q}\mathcal{X}_{T_{i}}(t)$$
+
+对一般的非负可测函数, 我们知道存在简单函数渐升列$f_{N}$(不妨设每个$f_{N}$对应特征函数的可测集还是互不相交的), 记$f_{N}=\sum_{i=1}^{K_{N}}a_{i}^{K_{N}}\mathcal{X}_{T_{i}^{K_{N}}}$, 设$t\in T_{i}^{K_{N}}$ 那么根据$f_{N}$渐升可得必定存在$j$使得$t\in T_{j}^{K_{N+1}}$(否则$f_{N+1}(t)=0< f_{N}(t)$), 这给出了$$a_{j}^{K_{N+1}}\geq a_{i}^{K_{N}}$$
+从而$$\mathcal{X}_{E_{N}}(x_{1},..,x_{d-1},t)=\mathcal{X}_{a_{i}^{K_{N}}Q}\leq \mathcal{X}_{a_{j}^{K_{N+1}}Q}=\mathcal{X}_{N+1}(x_{1},..,x_{d-1},t)$$
+所以$$E_{N}\subseteq E_{N+1}$$
+所以$E=\cup_{i=1}^{\infty}E_{i}$就是要找的集合. 这是因为我们可用单调收敛定理得出$$F(t)=\lim_{N\rightarrow\infty}f_{N}(t)=\lim_{N\rightarrow\infty}\int_{R^{d-1}\times x_{n}=t}\mathcal{X}_{E_{N}}\,dx_{1}\cdots dx_{d-1}=\int_{R^{d-1}\times x_{n}=t}\mathcal{X}_{E}\,dx_{1}\cdots dx_{d-1}$$
+        </div>
+
+        <!-- Exercise 26 -->
+        <div class="Exercise-box">
+            <h3>Exercise 26</h3>
+            <p>Theorem 4.1 can be refined for $d \geq 4$ as follows.</p>
+            <p>Define $C^{k,\alpha}$ to be the class of functions $F(t)$ on $\mathbb{R}$ that are $C^k$ and for which $F^{(k)}(t)$ satisfies a Lipschitz condition of exponent $\alpha$.</p>
+            <p>If $E$ has finite measure, then for a.e. $\gamma \in S^{d-1}$ the function $m(E \cap \mathcal{P}_{t,\gamma})$ is in $C^{k,\alpha}$ for $k = (d - 3)/2$, $\alpha < 1/2$, if $d$ is odd, $d \geq 3$; and for $k = (d - 4)/2$, $\alpha < 1$, if $d$ is even, $d \geq 4$.</p>
+        </div>
+        <div class="Proof-box">
+            Proof:观察Lemma 4.8, 注意到$$\|\widetilde{\mathcal{R}}(f)(\lambda,\gamma)\lambda^{k}\|_{L^{2}(R^{d})}^{2}\leq\int_{-1}^{1} \lvert \widetilde{\mathcal{R}}(f)(\lambda,\gamma)\rvert^{2}\lvert \lambda\rvert^{2k}\,dx+\int_{\lvert \lambda\rvert\geq1 }\lvert \widetilde{\mathcal{R}}(f)(\lambda,\gamma)\rvert^{2}\lvert \lambda\rvert^{2k}\,d\lambda$$
+$$\leq M+\int_{-\infty}^{\infty}\lvert \widetilde{\mathcal{R}}(f)(\lambda,\gamma)\rvert^{2}\lvert \lambda\rvert^{d-1}\,d\lambda\qquad k\leq \frac{d-1}{2}$$
+最后一个积分在$S^{d-1}$上的积分有限, 所以对$a.e$的$\gamma\in S^{d-1}$, $\widetilde{\mathcal{R}}(f)(\lambda,\gamma)\lambda^{k}\in L^{2}(R^{d})$, 第五章Exercise 15给出了$\mathcal{R}(f)(t,\gamma)$有弱导数, 再根据第五章Exercise 14可知导数是强意义下的. 因此$\mathcal{R}(f)(t,\gamma)\in C^{k}$, 其中当$d$为奇数时, $k\leq \frac{d-3}{2}$, d为偶数时, $k\leq \frac{d-4}{2}$(依据上文, 只需$\leq \frac{d-1}{2}$即可. 这里不强制扩大到$\frac{d-1}{2}$是为了“降低”对可微次数的要求来提升正则性). 
+            <p></p>
+剩余的工作是证明在对应的k的情况下, $\mathcal{R}(f)(t,\gamma)$的前k阶导数都是$\alpha$阶Holder连续的.只需修改Lemma 4.9的证明, 此时设F是k阶可微的, 那么$$F^{(m)}(t)=\int_{R}\widehat{F}(\lambda)(2\pi i\lambda)^{m}e^{2\pi i\lambda t}\,d\lambda$$
+事实上与课本同理可得$$\lvert F^{(m)}(t_{1})+F^{(m)}(t_{2})\rvert \leq C\lvert t_{1}-t_{2}\rvert^{\alpha}\int_{\lvert \lambda\rvert< 1}\lvert \widehat{F}(\lambda)\rvert\lvert \lambda\rvert^{\alpha+m}\,d\lambda+C\lvert t_{1}-t_{2}\rvert^{\alpha}\int_{\lvert \lambda\rvert\geq 1}\lvert \widehat{F}(\lambda)\rvert\lvert \lambda\rvert^{\alpha+m}\,d\lambda$$
+$$\leq A\lvert t_{1}-t_{2}\rvert^{\alpha}+C\lvert t_{1}-t_{2}\rvert^{\alpha}(\int_{\lvert \lambda\rvert\geq 1}\lvert \widehat{F}(\lambda)\rvert^{2}\lvert \lambda\rvert^{d-1}\,d\lambda)^{\frac{1}{2}}(\int_{\lvert \lambda\rvert\geq 1}\frac{\lvert \lambda\rvert^{1+2\alpha+2m}}{\lvert \lambda\rvert^{d}}\,d\lambda)^{\frac{1}{2}}$$
+$$\leq A\lvert t_{1}-t_{2}\rvert^{\alpha}+c_{\alpha}\lvert t_{1}-t_{2}\rvert^{\alpha}B(\int_{\lvert \lambda\rvert\geq 1}\frac{\lvert \lambda\rvert^{1+2\alpha+2m}}{\lvert \lambda\rvert^{d}}\,d\lambda)^{\frac{1}{2}}\qquad\forall m\leq k$$
+$$\leq A\lvert t_{1}-t_{2}\rvert^{\alpha}+c_{\alpha}\lvert t_{1}-t_{2}\rvert^{\alpha}B(\int_{\lvert \lambda\rvert\geq 1}\frac{\lvert \lambda\rvert^{1+2\alpha+2k}}{\lvert \lambda\rvert^{d}}\,d\lambda)^{\frac{1}{2}}$$
+$$\leq  A\lvert t_{1}-t_{2}\rvert^{\alpha}+c_{\alpha}\lvert t_{1}-t_{2}\rvert^{\alpha}B\begin{cases}
+	(\int_{\lvert \lambda\rvert\geq 1}\frac{1}{\lvert \lambda\rvert^{2-2\alpha}}\,d\lambda)^{\frac{1}{2}}&d\%2=1\\
+		(\int_{\lvert \lambda\rvert\geq 1}\frac{1}{\lvert \lambda\rvert^{3-2\alpha}}\,d\lambda)^{\frac{1}{2}}&d\%2=0
+\end{cases}$$
+所以d是奇数时, $\alpha$的范围是$2-2\alpha>1$, $\alpha< \frac{1}{2}$. d是偶数时, $3-2\alpha>1,\alpha< 1$. 
+
+然后我们对$F=\mathcal{R}(f)(\lambda,\gamma)$用上述证明给出$\mathcal{R}(f)(\lambda,\gamma)\in C^{k,\alpha}$, 令$f=\mathcal{X}_{E}$就得到$$m_{d-1}(E\cap\mathcal{P}_{t,\gamma})\in C^{k,\alpha}\qquad a.e.\gamma\in S^{d-1}$$
+        </div>
+
+        <!-- Exercise 27 -->
+        <div class="Exercise-box">
+            <h3>Exercise 27</h3>
+            <p>Show that the modification of the inequality (2) of Theorem 4.5 fails if we drop $\|f\|_{L^2(\mathbb{R}^d)}$ from the right-hand side.</p>
+            <p>[Hint: Consider $\mathcal{R}^*(f_\epsilon)$, with $f_\epsilon$ defined by $f_\epsilon(x) = (|x| + \epsilon)^{-d+\delta}$, for $|x| \leq 1$, with $\delta$ fixed, $0 < \delta < 1$, and $\epsilon \to 0$.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 根据$\mathcal{R}^{\ast}$的定义, 我们知道$$\mathcal{R}^{\ast}(f_{\epsilon})(\gamma)\geq \int_{\mathcal{P}_{0,\gamma}}\frac{1}{(\lvert x\rvert+\epsilon)^{d-\delta}}\,dm_{d-1}$$
+            根据$f_{\epsilon}$是径向函数和Lebesgue测度的旋转不变性,把平面转到$\{x\big|x_{n}=0\}\cong R^{d-1}$, 我们有 $$\mathcal{R}^{\ast}(f_{\epsilon})(\gamma)\geq \int_{R^{d-1}}f_{\epsilon}(x)\,dx=\int_{0}^{1}\frac{1}{(\lvert x\rvert+\epsilon)^{d-\delta}}\,dx=\sigma(S^{d-2})\int_{0}^{1}\frac{r^{d-2}}{(r+\epsilon)^{d-\delta}}\,dr$$
+            $$\geq  \sigma(S^{d-2})\int_{0}^{\epsilon}\frac{r^{d-2}}{(r+\epsilon)^{d-\delta}}\,dr\geq  \sigma(S^{d-2})\frac{1}{(2\epsilon)^{d-\delta}}\int_{0}^{\epsilon}r^{d-2}\,dr=C\frac{\epsilon^{d-1}}{\epsilon^{d-\delta}}=\frac{C}{\epsilon^{1-\delta}}$$
+            另一方面$$\int_{R^{d}}\lvert f_{\epsilon}\rvert\,dx=\sigma(S^{d-1})\int_{0}^{1}\frac{r^{d-1}}{(r+\epsilon)^{d-\delta}}\,dr$$
+            $$\leq \sigma(S^{d-1})\int_{0}^{\epsilon}\frac{r^{d-1}}{(r+\epsilon)^{d-\delta}}\,dr+ \sigma(S^{d-1})\int_{\epsilon}^{1}\frac{r^{d-1}}{(r+\epsilon)^{d-\delta}}\,dr$$
+            $$\leq \sigma(S^{d-1})\frac{1}{(\epsilon)^{d-\delta}}\int_{0}^{\epsilon}r^{d-1}\,dr+ \sigma(S^{d-1})\int_{\epsilon}^{1}r^{\delta-1}\,dr$$
+            $$\leq C\epsilon^{\delta}+C(1-\epsilon^{\delta})$$
+            从而$\|f_{\epsilon}\|_{L^{1}(R^{d})}$是个有界量, 但是$$\int_{S^{d-1}}\mathcal{R}^{\ast}(f_{\epsilon})(\gamma)\,d\sigma(\gamma)\geq \int_{S^{d-1}}\frac{C}{\epsilon^{1-\delta}}\,d\sigma(\gamma)=\frac{C}{\epsilon^{1-\delta}}\rightarrow\infty$$
+        </div>
+
+        <!-- Exercise 28 -->
+        <div class="Exercise-box">
+            <h3>Exercise 28</h3>
+            <p>Construct a compact set $E \subset \mathbb{R}^d$, $d \geq 3$, such that $m_d(E) = 0$, yet $E$ contains translates of any segment of unit length in $\mathbb{R}^d$. (While particular examples of such sets can be easily obtained from the case $d = 2$, the determination of the least Hausdorff dimension among all such sets is an open problem.)</p>
+        </div>
+        <div class="Proof-box">
+            Proof:
+            $d=3$的情形其实非常容易构造. 对任何1一个三维单位向量$\gamma$, 设起点在原点, 则$\gamma$在$YoZ$平面唯一投影了一个过原点的线段$p$(长度$\leq 1$), 同样在$XoY$平面唯一投影了一个过原点的线段$q$(长度$\leq 1$). 我们在$XoY$平面上放置一个Besicovitch集A(构造方法就是在x轴考虑一个cantor集, y=1考虑一个cantor集, 再把这个两个cantor集中的点两两配对相接). 则根据$\lvert q\rvert\leq 1$可知存在A中存在$\frac{q}{\|q\|}$的一个平移, 设这个平移为$l_{1}=\frac{q}{\|q\|}+(a,0,0)$.
+
+            同理在$YoZ$平面放置一个Besicovitch集B(构造方法就是在z轴考虑一个cantor集, y=1考虑一个cantor集, 再把这个两个cantor集中的点两两配对相接),则根据$\lvert p\rvert\leq 1$可知存在B中存在$\frac{p}{\|p\|}$的一个平移, 设这个平移为$l_{2}=\frac{p}{\|p\|}+(0,0,b)$(因为平移仅限于关于z轴的).
+
+            选择过$l_{1}\times [0,1]$和$[0,1]\times l_{2}$, 这两个平面的交线在$XoY$上的投影斜率和q一样, 在$YoZ$上的投影斜率和p一样, 所以这个交线的斜率和$\gamma$一样, 且根据$\|l_{1}\|=\|l_{2}\|=1$可得这个交线长度$\geq 1$, 所以包含了$\gamma$的一个平移(把$\gamma$从原点移动到$(a,0,b)$即可).
+
+            注意到这个交线$\subseteq( l_{1}\times [0,1])\cup([0,1]\times l_{2})$, 所以$$\gamma\subseteq( l_{1}\times [0,1])\cup([0,1]\times l_{2})\subseteq A\times [0,1]\cup [0,1]\times B$$
+            从而$A\times [0,1]\cup [0,1]\times B$就包含了每个单位线段的某个平移. 且根据$m_{3}(A\times[0,1])=m_{3}([0,1]\times B)=0$可得这个集合是零测集,且两个紧集的直积还是紧的, 两个紧集的并集还是紧的, 所以这就是d=3时要找的集合,且含于单位方体.
+
+            假设$R^{d-1}$中有这样的集合A, 且含于单位方体, 那么对于$R^{d}$, 我们在$R^{d-1}$这个超平面上(视为$x_{n}=0$)的单位方体上放置这样的A. 然后考虑在超平面$x_{1}=0$上放置这样的一个集合B, 则同样每个线段唯一投影到A中某个斜率的线段的平移, 也唯一投影到B中某个斜率线段的平移, $(A\times [0,1])\cup ([0,1]\times B)$, 就包含了每个单位线段的某个平移, 而且根据$m_{d-1}(A)=m_{d-1}(B)=0$可得它是零测紧集.
+        </div>
+
+
+    </div>
+
+
+        <div class="whole_page">
+
+        </div>
+        <div class="bg_box">
+            <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+        </div>
+
+
+</body>
+
+</html>

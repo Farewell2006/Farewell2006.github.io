@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第五章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第五章
+        </h2>
+
+        <!-- Exercise 1 -->
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>Suppose \( f \in L^2(\mathbb{R}^d) \) and \( k \in L^1(\mathbb{R}^d) \).</p>
+            <ol type="a">
+                <li>Show that \( (f * k)(x) = \int_{\mathbb{R}^d} f(x - y)k(y) \, dy \) converges for a.e. \( x \).</li>
+                <li>Prove that \( \|f * k\|_{L^2(\mathbb{R}^d)} \leq \|f\|_{L^2(\mathbb{R}^d)} \|k\|_{L^1(\mathbb{R}^d)} \).</li>
+                <li>Establish \( \widehat{(f * k)}(\xi) = \hat{k}(\xi)\hat{f}(\xi) \) for a.e. \( \xi \).</li>
+                <li>The operator \( Tf = f * k \) is a Fourier multiplier operator with multiplier \( m(\xi) = \hat{k}(\xi) \).</li>
+            </ol>
+            <p>[Hint: See Exercise 21 in Chapter 2.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: (a)只要证明了(b)就说明(a)是成立的.
+
+            <h4>(b)</h4>$$\int_{R^{d}}\lvert \int_{R^{d}}f(x-y)k(y)\,dy\rvert^{2}\,dx\leq \int_{R^{d}}(\int_{R^{d}}\lvert f(x-y)k(y)\rvert\,dy)^{2}\,dx$$
+            又$$\int_{R^{d}}(\int_{R^{d}}\lvert f(x-y)k(y)\rvert\,dy)^{2}\,dx\leq \|k\|_{L^{1}(R^{d})}\int_{R^{d}}\int_{R^{d}}\lvert f(x-y)\rvert^{2}\lvert k(y)\rvert\,dy\,dx$$
+            $$=\|k\|_{L^{1}(R^{d})}\int_{R^{d}}\int_{R^{d}}\lvert f(x-y)\rvert^{2}\,dx\lvert k(y)\rvert\,dy=\|k\|_{L^{1}(R^{d})}^{2}\|f\|_{L^{2}(R^{d})}^{2}$$
+            两边开根号可得结论,
+
+            <h4>(c)</h4>结论显然对$f\in\mathcal{S}$成立, 对任何$f\in L^{2}(R^{d})$, 取$f_{n}\in\mathcal{S}$满足$\|f_{n}-f\|_{L^{2}(R^{d})}\rightarrow0$, 那么$$\|\widehat{f\ast k}-\widehat{(f_{n} \ast k)}\|_{L^{2}(R^{d})}=\|(f-f_{n})\ast k\|_{L^{2}(R^{d})}\leq \|k\|_{L^{1}(R^{d})}\|f_{n}-f\|_{L^{2}(R^{d})}\rightarrow0$$
+            因此不妨设$\widehat{f_{n}\ast k}\rightarrow\widehat{(f \ast k)}$ a.e.成立, 否则抽子列.
+
+            同时不妨设$\widehat{f}_{n}\rightarrow\widehat{f}$ a.e.成立(否则根据$\|\widehat{f}_{n}-\widehat{f}\|=\|f_{n}-f\|$, 抽子列). 对$$\widehat{(f_{n} \ast k)}=\widehat{k}\widehat{f}_{n}$$
+            两边取极限可得结论成立
+
+            <h4>(d)</h4>这是显然的.
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>Consider the Mellin transform defined initially for continuous functions \( f \) of compact support in \( \mathbb{R}_+ = \{ t \in \mathbb{R} : t > 0 \} \) and \( x \in \mathbb{R} \) by \( \mathcal{M}f(x) = \int_0^\infty f(t)t^{ix-1} \, dt \). Prove that \( (2\pi)^{-1/2}\mathcal{M} \) extends to a unitary operator from \( L^2(\mathbb{R}_+, dt/t) \) to \( L^2(\mathbb{R}) \).</p>
+            <p>(The Mellin transform serves on \( \mathbb{R}_+ \), with its multiplicative structure, the same purpose as the Fourier transform on \( \mathbb{R} \), with its additive structure.)</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 做换元$t=e^{-2\pi r}$, 则 $$\mathcal{M}f(x)=\int_{-\infty}^{\infty}f(e^{-2\pi r})e^{-2\pi ixr}2\pi \,dr$$
+            所以用Plancherel等式可以得出$$\|\frac{1}{\sqrt{2\pi}}\mathcal{M}f\|_{L^{2}(R)}=\|f(e^{-2\pi r})\|_{L^{2}(R)}$$
+            而$$\|\sqrt{2\pi}f(e^{-2\pi r})\|_{L^{2}(R)}^{2}=\int_{-\infty}^{\infty}2\pi\lvert f(e^{-2\pi r})\rvert^{2}\,dr=\int_{0}^{\infty}\lvert f(t)\rvert^{2}\frac{1}{t}\,dt$$
+
+            又$\mathcal{M}$在$L^{2}(R_{+},\frac{dt}{t})$的稠密子集上有定义, 所以$\frac{1}{\sqrt{2\pi}}\mathcal{M}$可以延拓为$L^{2}(R_{+},\frac{dt}{t})$上的等距, 只需证M是满射. 事实上, 对任何$g\in L^{2}(R)$, 只需找到f使得$$\sqrt{2\pi}\widehat{f(e^{-2\pi r})}=g$$
+            这说明$$f(e^{-2\pi r})=\frac{\check{g}}{\sqrt{2\pi}}$$
+            后者在$L^{2}(R)$中, 所以$f(e^{-2\pi r})\in L^{2}(R)$, 通过换元可得$f(t)\in L^{2}(R_{+},\frac{dt}{t})$, 所以是满射
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>Let \( F(z) \) be a bounded holomorphic function in the half-plane. Show in two ways that \( \lim_{y \to 0} F(x + iy) \) exists for a.e. \( x \).</p>
+            <ol type="a">
+                <li>By using the fact that \( F(z)/(z + i) \) is in \( H^2(\mathbb{R}^2_+) \).</li>
+                <li>By noting that \( G(z) = F\left( i\frac{1 - z}{1 + z} \right) \) is a bounded holomorphic function in the unit disc, and using Exercise 17 in the previous chapter.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:(a)$$\int_{-\infty}^{\infty}\lvert F(z)\rvert^{2}\frac{1}{(\lvert z+i)\rvert^{2}}\,dx=\int_{-\infty}^{\infty}\lvert F(z)\rvert^{2}\frac{1}{x^{2}+(y+1)^{2}}\,dx\leq \int_{-\infty}^{\infty}\frac{\lvert F(x+iy)\rvert^{2}}{x^{2}+1}\,dx\leq \|F\|_{H^{2}(R^{2}_{+})}$$
+            所以$\frac{F(z)}{z+i}$在$y\rightarrow0$时, a.e.有极限. 又$z+i\rightarrow x+i$, 所以$F(x+iy)$在$y\rightarrow0$时a.e.有极限
+
+            <h4>(b)</h4>用第四章的Exercise 17, $G(z)$在单位圆周上a.e.有非切向极限, 所以F在$y\rightarrow0$时a.e.有极限.
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>Consider \( F(z) = e^{i/z}/(z + i) \) in the upper half-plane. Note that \( F(x + iy) \in L^2(\mathbb{R}) \), for each \( y > 0 \) and \( y = 0 \). Observe also that \( F(z) \to 0 \) as \( |z| \to 0 \). However, \( F \notin H^2(\mathbb{R}^2_+) \). Why?</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $$\int_{-\infty}^{\infty}\lvert F(z)\rvert^{2}\,dx=\int_{R}\frac{\lvert e^{\frac{ix+y}{x^{2}+y^{2}}}\rvert^{2}}{x^{2}+(y+1)^{2}}\,dx$$
+            $$=\int_{R}\frac{e^{\frac{y}{x^{2}+y^{2}}}}{x^{2}+(y+1)^{2}}\,dx$$
+            显然对$y>0$, 以上积分都$< \infty$, 当$y=0$时, 单独计算可得$\lvert F(z)\rvert=\frac{1}{x^{2}+1}$, 也是可积的.
+                                      但是$$\int_{R}\frac{e^{\frac{y}{x^{2}+y^{2}}}}{x^{2}+(y+1)^{2}}\,dx\geq\int_{\lvert x\rightarrow< y} \frac{e^{\frac{y}{x^{2}+y^{2}}}}{x^{2}+(y+1)^{2}}\,dx\geq \int_{-y}^{y}\frac{e^{\frac{1}{2y}}}{2y^{2}+2y+1}\,dx=\frac{2ye^{\frac{1}{2y}}}{2y^{2}+2y+1}\rightarrow\infty$$
+因此$\underset{y>0}{sup}\|F(x+iy)\|_{L^{2}(R)}=\infty$, 不在$H^{2}(R^{2}_{+})$中.
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>For \( a < b \), let \( S_{a,b} \) denote the strip \( \{ z = x + iy, a < y < b \} \). Define \( H^2(S_{a,b}) \) to consist of the holomorphic functions \( F \) in \( S_{a,b} \) so that \( \|F\|_{H^2(S_{a,b})}^2 = \sup_{a < y < b} \int_{\mathbb{R}} |F(x + iy)|^2 \, dx < \infty \). Define \( H^2(S_{a,\infty}) \) and \( H^2(S_{-\infty,b}) \) to be the obvious variants of the Hardy spaces for the half-planes \( \{ z = x + iy, y > a \} \) and \( \{ z = x + iy, y < b \} \), respectively.</p>
+            <ol type="a">
+                <li>Show that \( F \in H^2(S_{a,b}) \) if and only if \( F \) can be written as \( F(z) = \int_{\mathbb{R}} f(\xi)e^{-2\pi iz\xi} \, d\xi \), with \( \int_{\mathbb{R}} |f(\xi)|^2 (e^{4\pi a\xi} + e^{4\pi b\xi}) \, d\xi < \infty \).</li>
+                <li>Prove that every \( F \in H^2(S_{a,b}) \) can be decomposed as \( F = G_1 + G_2 \), where \( G_1 \in H^2(S_{a,\infty}) \) and \( G_2 \in H^2(S_{-\infty,b}) \).</li>
+                <li>Show that \( \lim_{\substack{a < y < b \\ y \to a}} F(x + iy) = F_a(x) \) exists in the \( L^2 \)-norm and also almost everywhere, with a similar result for \( \lim_{\substack{a < y < b \\ y \to b}} F(x + iy) \).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:$\Rightarrow$ 用本章的(9)和Cauchy-Schwarz不等式, 就像课本215页做的那样, 得出$$\lvert F(\zeta)\rvert^{2}\leq \frac{1}{\pi\delta^{2}}\int_{\lvert z\rvert< \delta}\lvert F(\zeta+z)\rvert^{2}\,dxdy\qquad a< Im(\zeta)< b$$
+$$\leq \frac{1}{\pi\delta^{2}}\int_{\lvert y\rvert< \delta}\int_{R}\lvert F(Re(\zeta)+iIm(\zeta)+x+iy)\rvert^{2}\,dxdy=\frac{1}{\pi\delta^{2}}\int_{\lvert y\rvert< \delta}\int_{R}\lvert F(t+iIm(\zeta)+iy)\rvert^{2}\,dtdy\leq \frac{2}{\pi\delta}\|F\|_{H^{2}(S_{a,b})}^{2}$$
+这说明对任何$\delta>0$, $F$在带状区域$$\{z\big|a+\delta< Imz< b-\delta\}$$中有界. 考虑$$F^{\epsilon}(z)=\frac{F(z)}{(1-i\epsilon(z-ai))^{2}}\qquad G(z)=F^{\epsilon}(z)e^{2\pi iz\xi}$$
+则$$\lvert F^{\epsilon}(z)\rvert\leq \frac{\lvert F(z)\rvert}{(1+\epsilon^{2}(Rez)^{2})}=O(\frac{1}{1+\lvert Rez\rvert^{2}})\qquad z\in\{z\big|a+\delta< Imz< b-\delta\} $$
+
+然后选择矩形路径,四个顶点为$-R+iy_{1},R+iy_{1},R+iy_{2},-R+iy_{2}$, 其中$y_{1},y_{2}>a+\delta$, 根据$\lvert F^{\epsilon}(z)\rvert=O(\frac{1}{1+\lvert Rez\rvert^{2}})$可知两条垂直于实轴的路径上, 随着$R\rightarrow\infty$, 路径积分将衰减到0, 因此根据Cauchy积分定理, $$\int_{-\infty}^{\infty}F^{\epsilon}(x+iy_{1})e^{2\pi ix\xi}e^{-2\pi y_{1}\xi}\,dx= \int_{-\infty}^{\infty}F^{\epsilon}(x+iy_{2})e^{2\pi ix\xi}e^{-2\pi y_{2} \xi}\,dx$$
+如果我们记$\check{F^{\epsilon}}_{y}$是关$F^{\epsilon}(x+iy)$关于x变量的Fourier逆变换, 那么$$\check{F^{\epsilon}}_{y_{1}}(\xi)e^{-2\pi y_{1} \xi}=\check{F^{\epsilon}}_{y_{2}}(\xi)e^{-2\pi y_{2}\xi}$$
+根据$\delta$的任意性, 我们知道上式对所有$y_{1},y_{2}\in(a,b)$成立. 又根据DCT,令$\epsilon\rightarrow0$可得$$\check{F}_{y_{1}}(\xi)e^{-2\pi y_{1}\xi}=\check{F}_{y_{2}}(\xi)e^{-2\pi y_{2}\xi}$$
+所以在带状区域内$\check{F}_{y}(\xi)e^{-2\pi y\xi}$和y的选择无关, 因此$$\check{F}_{a}e^{-2\pi a\xi}=\check{F}_{b}(\xi)e^{-2\pi b\xi}=f(\xi)=\check{F}_{y}(\xi)e^{-2\pi y\xi}$$
+又$$F(x+iy)=\int_{R}\check{F}_{y}e^{-2\pi ix\xi}\,dx=\int_{R}f(\xi)e^{-2\pi iiy\xi}e^{-2\pi ix\xi}\,d\xi$$
+$$=\int_{R}f(\xi)e^{-2\pi iz\xi}\,d\xi$$
+另一方面根据Plancherel等式, $$\|F(x+iy)\|_{L^{2}(R)}^{2}=\int_{R}\lvert \check{F}_{y}\rvert^{2}\,\xi=\int_{R}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi$$
+从而$$\int_{R}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi\leq \|F\|_{H^{2}(S_{a,b})}^{2}\qquad\forall y\in(a,b)$$
+令$y\rightarrow a,b$, 根据Fatou引理可得$$\int_{R}\lvert f(\xi)\rvert^{2}e^{4\pi a\xi}\,d\xi\leq \|F\|_{H^{2}(S_{a,b})}^{2}\qquad \int_{R}\lvert f(\xi)\rvert^{2}e^{4\pi b\xi}\,d\xi\leq \|F\|_{H^{2}(S_{a,b})}^{2}$$
+
+$\Leftarrow$ $F(x+iy)$可以视为$f(\xi)e^{2\pi y\xi}$关于$\xi$的Fourier变换, 为了说明F在带状区域中是良定义的, 只需证明$f(\xi)e^{2\pi y\xi}\in L^{2}(R)$对任何$y\in(a,b)$成立.
+注意到根据Plancherel等式:
+$$\int_{R}\lvert F(x+iy)\rvert^{2}\,dx=\int_{-\infty}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi$$
+只需证右边关于$y\in(a,b)$是一致有界的, 事实上根据$a< y< b$可得在$\xi>0$时, $y\xi< b\xi$, $\xi< 0$时, $y\xi< a\xi$, 这给出了$$\int_{-\infty}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi\leq \int_{-\infty}^{0}\lvert f(\xi)\rvert^{2}e^{4\pi a\xi}\,d\xi+\int_{0}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi b\xi}\,d\xi\leq \int_{R}\lvert f(\xi)\rvert^{2}e^{4\pi a\xi+4\pi b\xi}\,d\xi$$
+
+            <h4>(b)</h4> 我们考虑函数$$G_{2}(z)=\int_{0}^{\infty}f(\xi)e^{-2\pi iz\xi}\,d\xi\qquad G_{1}(z)=\int_{-\infty}^{0}f(\xi)e^{-2\pi iz\xi}\,d\xi$$
+显然$F=G_{1}+G_{2}$, 且$G_{2}$是$\mathcal{X}_{\xi\geq 0}f(\xi)e^{2\pi y\xi}$的Fourier变换, $G_{1}$是$\mathcal{X}_{\xi\leq  0}f(\xi)e^{2\pi y\xi}$的Fourier变换. 根据Plancherel等式, 下面只需证$$\sup_{y< b}\int_{0}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi< \infty\qquad \sup_{y>a}\int_{-\infty}^{0}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi< \infty$$
+注意到$$\int_{0}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi\leq \int_{0}^{\infty}\lvert f(\xi)\rvert^{2}e^{4\pi b\xi}\,d\xi\qquad\forall y< b$$
+$$\int_{-\infty}^{0}\lvert f(\xi)\rvert^{2}e^{4\pi y\xi}\,d\xi\leq \int_{-\infty}^{0}\lvert f(\xi)\rvert^{2}e^{4\pi a\xi}\,d\xi\qquad\forall y>a$$
+因此结论成立.
+
+            <h4>(c)</h4>$y\rightarrow b$的情形是同理的, 我们只考虑$y\rightarrow a$的情况. 此时$f(\xi)e^{2\pi a\xi}\in L^{2}(R)$, 所以找一个函数g使得g的Fourier变换是$f(\xi)e^{2\pi a\xi}\in L^{2}(R)$, 如此根据Plancherel等式$$\|F(x+iy)-g(x)\|_{L^{2}(R)}^{2}=\int_{R}\lvert f(\xi)\rvert^{2}\lvert e^{-2\pi iz\xi}-e^{2\pi a\xi}e^{-2\pi ix\xi}\rvert^{2}\,d\xi=\int_{R}\lvert f(\xi)\rvert^{2}\lvert e^{2\pi y\xi}-e^{2\pi a\xi}\rvert^{2}\,d\xi$$
+当$a< y< b$时, 必有$\lvert e^{2\pi y\xi}-e^{2\pi a\xi}\rvert^{2}\leq 2e^{4\pi b\xi}+2e^{2\pi a\xi}$, 所以根据DCT可得$$\lim_{y\rightarrow a}\|F(x+iy)-g(x)\|_{L^{2}(R)}^{2}=0$$
+
+关于逐点收敛的结论, 只需证$G_{1},G_{2}$极限分别存在即可. 首先注意到$G_{2}$在$y\rightarrow a$时a.e.有极限. 对$G_{1}$,我们考虑课本218页的步骤, 令g是Fourier变换为$\mathcal{X}_{\xi\geq 0}f(-\xi)e^{-2\pi a\xi}$的函数, 从而$$G_{1}(z)=\int_{-\infty}^{0}f(\xi)e^{-2\pi \lvert \xi\rvert y}e^{-2\pi ix\xi}\,d\xi=\int_{0}^{\infty}f(-\xi)e^{-2\pi \lvert \xi\rvert y}e^{2\pi ix\xi}\,d\xi$$
+(观察一下积分区域, 上式第一个等号确实成立)
+$$=\int_{0}^{\infty}f(-\xi)e^{-2\pi a\xi}e^{-2\pi \lvert \xi\rvert (y-a)}e^{2\pi ix\xi}\,d\xi=\int_{R}g(x-t)\mathcal{P}_{y-a}(t)\,dt\qquad y>a$$
+得到$$F(x+iy)=\int_{R}g(x-t)\mathcal{P}_{y-a}(t)\,dt$$
+剩余步骤照抄课本219页的证明即可
+
+对于$y\rightarrow b$的情形, 此时$G_{1}$自然有a.e的逐点极限, 对$G_{2}$, 令g是Fourier变换为$\mathcal{X}_{\xi\leq 0}f(-\xi)e^{-2\pi b\xi}$的函数, 从而$$G_{2}(z)=\int_{0}^{\infty}f(\xi)e^{2\pi \lvert \xi\rvert y}e^{-2\pi ix\xi}\,d\xi=\int_{-\infty}^{0}f(-\xi)e^{2\pi \lvert \xi\rvert y}e^{2\pi ix\xi}\,d\xi$$
+(观察一下积分区域, 上式第一个等号确实成立)
+$$=\int_{R}\mathcal{X}_{\xi\leq 0}f(-\xi)e^{-2\pi\xi b}e^{-2\pi\lvert \xi\rvert(b-y)}e^{2\pi ix\xi}\,d\xi=\int_{R}g(x-t)\mathcal{P}_{b-y}(t)\,dt\qquad y< b$$
+剩余步骤照抄课本219页的证明即可
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>Suppose \( \Omega \) is an open set in \( \mathbb{C} = \mathbb{R}^2 \), and let \( \mathcal{H} \) be the subspace of \( L^2(\Omega) \) consisting of holomorphic functions on \( \Omega \). Show that \( \mathcal{H} \) is a closed subspace of \( L^2(\Omega) \), and hence is a Hilbert space with inner product \( (f, g) = \int_\Omega f(z)\overline{g(z)} \, dx dy \), where \( z = x + iy \).</p>
+            <p>[Hint: Prove that for \( f \in \mathcal{H} \), we have \( |f(z)| \leq \frac{c}{d(z,\Omega^c)} \|f\| \) for \( z \in \Omega \), where \( c = \pi^{-1/2} \), using the mean-value property (9). Thus if \( \{f_n\} \) is a Cauchy sequence in \( \mathcal{H} \), it converges uniformly on compact subsets of \( \Omega \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 用本章的(9)和Cauchy-Schwarz不等式, 就像课本215页做的那样, 得出$$\lvert F(\zeta)\rvert^{2}\leq \frac{1}{\pi\delta^{2}}\int_{\lvert z\rvert< \delta}\lvert F(\zeta+z)\rvert^{2}\,dxdy\qquad d(\zeta,\Omega^{c})\geq \delta$$
+$$=\frac{1}{\pi\delta^{2}}\int_{B(\zeta,\delta)}\lvert F(z)\rvert^{2}\,dxdy\leq \frac{1}{\pi\delta^{2}}\int_{\Omega}\lvert F(z)\rvert^{2}\,dxdy$$
+$$\leq \frac{1}{\pi d(\zeta,\Omega^{c})^{2} }\|F\|^{2}$$
+两边开平方即可得$$\lvert f(z)\rvert\leq \frac{1}{\pi^{\frac{1}{2}}}\frac{1}{d(z,\Omega^{c})}\|f\|$$
+
+假设$f_{n}\in  \mathcal{H}$是一个Cauchy列, 则对任何$\Omega$的紧子集V, 我们有$$d(z,\Omega^{c})\geq d(V,\Omega^{c})>0\qquad\forall z\in V$$
+因此
+$$\lvert f_{n}(z)-f_{m}(z)\rvert\leq \frac{1}{\sqrt{\pi}}\frac{1}{d(V,\Omega^{c})}\|f_{n}-f_{m}\|$$
+从而$f_{n}$在$\Omega$的每个紧子集上一致收敛, 因此收敛的极限f是$\Omega$中的全纯函数, 又根据Fatou引理自然可得$$\|f\|\leq \liminf_{n\rightarrow\infty}\|f_{n}\|$$
+        </div>
+
+        <!-- Exercise 7 -->
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>Following up on the previous exercise, prove:</p>
+            <ol type="a">
+                <li>If \( \{\phi_n\}_{n=0}^\infty \) is an orthonormal basis of \( \mathcal{H} \), then \( \sum_{n=0}^\infty |\phi_n(z)|^2 \leq \frac{c^2}{d(z, \Omega^c)^2} \) for \( z \in \Omega \).</li>
+                <li>The sum \( B(z, w) = \sum_{n=0}^\infty \phi_n(z)\overline{\phi_n(w)} \) converges absolutely for \( (z, w) \in \Omega \times \Omega \), and is independent of the choice of the orthonormal basis \( \{\phi_n\} \) of \( \mathcal{H} \).</li>
+                <li>To prove (b) it is useful to characterize the function \( B(z, w) \), called the Bergman kernel, by the following property. Let \( T \) be the linear transformation on \( L^2(\Omega) \) defined by \( T f(z) = \int_\Omega B(z, w)f(w) \, du dv, \; w = u + iv \). Then \( T \) is the orthogonal projection of \( L^2(\Omega) \) to \( \mathcal{H} \).</li>
+                <li>Suppose that \( \Omega \) is the unit disc. Then \( f \in \mathcal{H} \) exactly when \( f(z) = \sum_{n=0}^\infty a_n z^n \), with \( \sum_{n=0}^\infty |a_n|^2 (n + 1)^{-1} < \infty \). Also, the sequence \( \left\{ \sqrt{\frac{n+1}{\pi}} z^n \right\}_{n=0}^\infty \) is an orthonormal basis of \( \mathcal{H} \). Moreover, in this case \( B(z, w) = \frac{1}{\pi(1 - z\overline{w})^2} \).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof: (a) 对任何固定的w, 都有$$\lvert (\sum_{n=0}^{\infty}< f,\phi_{n}(z)>\phi_{n}(w))\rvert^{2}=\lvert f(w)\rvert
+^{2}\leq \frac{c^{2}}{d(w,\Omega^{c})^{2}}\|f\|^{2}$$
+对任何N, 取$f(z)=\sum_{n=0}^{N}\frac{\phi_{n}(w)}{\sqrt{\sum_{n=0}^{N}\lvert \phi_{n}(w)\rvert^{2}}}\phi_{n}(z)$, 则有$\|f\|=1$, 从而$$\sum_{n=0}^{N}\lvert \phi_{n}(w)\rvert^{2}\leq \frac{c^{2}}{d(w,\Omega^{c})^{2}}$$
+对任何正整数N成立, 令$N\rightarrow\infty$可得结论.
+
+            <h4>(b)</h4>由(a)和Cauchy不等式可知B在每一点都是绝对收敛的. 为了证明不依赖于标准正交基的选取, 只需证明(c), 现在假设(c)正确, 且有两组标准正交基$\phi_{n},\psi_{n}$, 满足$$B(z,w)=\sum_{n=0}^{\infty}\phi_{n}(z)\overline{\phi_{n}}(w)\qquad V(z,w)=\sum_{n=0}^{\infty}\psi_{n}(z)\overline{\psi_{n}}(w)$$
+则由(c)的结论, $$\int_{\Omega}B(z,w)f(w)\,dudv\qquad \int_{\Omega}V(z,w)f(w)\,dudv$$
+都是到$\mathcal{H}$的正交投影, 因此二者相等, 从而$$B(z,w)=V(z,w)$$
+            <h4>(c)</h4>任取一组$\mathcal{H}$的标准正交基$\phi_{n}$, 如果$f\in\mathcal{H}$, 则可设$$f=\sum_{k=0}^{\infty}< f,\phi_{k}>\phi_{k}(z)$$
+$$Tf(z)=\int_{\Omega}\sum_{n=0}^{\infty}\phi_{n}(z)\overline{\phi_{n}}(w)\sum_{k=0}^{\infty}< f,\phi_{k}>\phi_{k}(w)\,dudv=\sum_{n=0}^{\infty}< f,\phi_{n}>\phi_{n}(z)=f$$
+又当$f\in\mathcal{H}^{\perp}$时, $f\perp\phi_{n}$, 因此$f\perp B(z,w)$. 从而$Tf=0$, 所以T是到$\mathcal{H}$的正交投影.
+
+            <h4>(d)</h4>单位圆盘中的全纯函数都能写成$f=\sum_{n=0}^{\infty}a_{n}z^{n}$, 且如果$< f,\sqrt{\frac{n+1}{\pi}}z_{n}>=0$, 则有$a_{n}=0$. 这说明$\sqrt{\frac{n+1}{\pi}}z^{n}$是$\mathcal{H}$的标准正交基. 另一方面, $f\in\mathcal{H}$当且仅当$\|f\|< \infty$, 即$$\sum_{n=0}^{\infty}\frac{\lvert a_{n}\rvert^{2}}{n+1}< \infty$$
+
+此时因为Bergman Kernel不依赖于标准正交基的选取, 所以可用刚才提到的标准正交基计算$$B(z,w)=\sum_{n=0}^{\infty}\frac{n+1}{\pi }z^{n}\overline{w}^{n}$$
+另一方面$$\sum_{n=0}^{\infty}z^{n+1}=\frac{z}{1-z}$$
+求导一次可得$\frac{1}{1-z}+\frac{z}{(1-z)^{2}}=\frac{1}{(1-z)^{2}}$, 因此$$B(z,w)=\frac{1}{\pi }\frac{d}{dt}\bigg|_{z\overline{w}}\frac{t}{1-t}=\frac{1}{\pi}\frac{1}{(1-z\overline{w})^{2}}$$
+        </div>
+
+        <!-- Exercise 8 -->
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>Continuing with Exercise 6, suppose \( \Omega \) is the upper half-plane \( \mathbb{R}^2_+ \). Then every \( f \in \mathcal{H} \) has a representation \( f(z) = \sqrt{4\pi} \int_0^\infty \hat{f}_0(\xi)e^{2\pi i\xi z} \, d\xi, \quad z \in \mathbb{R}^2_+ \), where \( \int_0^\infty |\hat{f}_0(\xi)|^2 \frac{d\xi}{\xi} < \infty \). Moreover, the mapping \( \hat{f}_0 \to f \) given by this representation is a unitary mapping from \( L^2((0, \infty), \frac{d\xi}{\xi}) \) to \( \mathcal{H} \).</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $$\|f\|^{2}_{\mathcal{H}}=\int_{R^{2}_{+}}\lvert f(x+iy)\rvert^{2}\,dxdy$$
+            根据Plancherel等式, $$=\int_{0}^{\infty}\int_{R}4\pi \lvert \widehat{f}_{0}(\xi)\rvert^{2}e^{-4\pi y\xi}\,d\xi\,dy=\int_{R}\int_{0}^{\infty}4\pi e^{-4\pi y\xi}\,dy\lvert \widehat{f}_{0}(\xi)\rvert^{2}\,d\xi=\int_{0}^{\infty}\frac{\lvert \widehat{f_{0}}(\xi)\rvert^{2}}{\xi}\,d\xi$$
+        </div>
+
+        <!-- Exercise 9 -->
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>Let \( H \) be the Hilbert transform. Verify that</p>
+            <ol type="a">
+                <li>\( H^* = -H \), \( H^2 = -I \), and \( H \) is unitary.</li>
+                <li>If \( \tau_h \) denotes the translation operator, \( \tau_h(f)(x) = f(x - h) \), then \( \tau_h H = H \tau_h \).</li>
+                <li>If \( \delta_a \) denotes the dilation operator, \( \delta_a(f)(x) = f(ax) \) with \( a > 0 \), then \( \delta_a H = H \delta_a \).</li>
+            </ol>
+            <p>(A converse is given in Problem 5 below.)</p>
+        </div>
+        <div class="Proof-box">
+            Proof:(a)根据Hilbert变换的定义, $$\widehat{Hf}(\xi)=\frac{sgn(\xi)}{i}\widehat{f}(\xi)$$
+对$f+g$用Plancherel等式, 结合$\|f\|=\|\widehat{f}\|,\|g\|=\|\widehat{g}\|$可得$$< f,g>=< \widehat{f},\widehat{g}>$$
+
+所以$$< Hf,g>=< \widehat{Hf},\widehat{g}>=< \frac{sgn(\xi)}{i}\widehat{f},\widehat{g}>=< \widehat{f},-\frac{sgn(\xi)}{i}\widehat{g}>$$
+$$=< \widehat{f},-\widehat{Hg}>=< f,-Hg>$$
+因此$H^{\ast}=-H$. 又$$\widehat{H^{2}f}=\frac{1}{i^{2}}\widehat{f}=\widehat{f}\qquad H^{2}=-I$$
+
+            <h4>(b)</h4>首先注意到$$\widehat{\tau_{h}f}(\xi)=e^{-2\pi ih\xi}\widehat{f}(\xi)$$
+因此$$\widehat{\tau_{h}Hf}=e^{-2\pi ih\xi}\widehat{Hf}=e^{-2\pi ih\xi}\frac{sgn(\xi)}{i}\widehat{f}(\xi)=\frac{sgn(\xi)}{i}\widehat{\tau_{h}f}(\xi)=\widehat{H\tau_{h}f}$$
+
+            <h4>(c)</h4>首先注意到$$\widehat{\delta_{a}f}(\xi)=\widehat{f}(\frac{\xi}{a})$$
+因此$$\widehat{\delta_{a}Hf}=\widehat{Hf}(\frac{\xi}{a})=\frac{sgn(\xi/a)}{i}\widehat{f}(\xi/a)=\frac{sgn(\xi)}{i}\widehat{f}(\xi/a)=\frac{sgn(\xi)}{i}\widehat{\delta_{a}f}(\xi)=\widehat{H\delta_{a}f}$$
+        </div>
+
+        <!-- Exercise 10 -->
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>Let \( f \in L^2(\mathbb{R}) \) and let \( u(x, y) \) be the Poisson integral of \( f \), that is \( u = (f * P_y)(x) \), as given in (10) above. Let \( v(x, y) = (Hf * P_y)(x) \), the Poisson integral of the Hilbert transform of \( f \). Prove that:</p>
+            <ol type="a">
+                <li>\( F(x + iy) = u(x, y) + iv(x, y) \) is analytic in the half-plane \( \mathbb{R}^2_+ \), so that \( u \) and \( v \) are conjugate harmonic functions. We also have \( f = \lim_{y \to 0} u(x, y) \) and \( Hf = \lim_{y \to 0} v(x, y) \).</li>
+                <li>\( F(z) = \frac{1}{\pi i} \int_\mathbb{R} \frac{f(t)}{t - z} dt \).</li>
+                <li>\( v(x, y) = f * Q_y \), where \( Q_y(x) = \frac{1}{\pi} \frac{x}{x^2+y^2} \) is the conjugate Poisson kernel.</li>
+            </ol>
+            <p>[Hint: Note that \( \frac{1}{\pi(z - i)} = P_y(x) + iQ_y(x) \), \( z = x + iy \).]</p>
+        </div>
+        <div class="Proof-box">
+           Proof:(a) 根据课本(12)可得$\widehat{\mathcal{P}}_{y}(\xi)=e^{-2\pi\lvert \xi\rvert y}$, 又$\mathcal{P}_{y}(x)\sim \frac{1}{x^{2}+1}$, 所以分部积分可得$$\widehat{\mathcal{P}'_{y}}(\xi)=\int_{R}e^{-2\pi ix\xi}\mathcal{P}'_{y}(x)\,dx=\int_{R}2\pi i\xi\mathcal{P}_{y}(x)e^{-2\pi ix\xi}\,dx=2\pi i\xi\widehat{\mathcal{P}_{y}}(\xi)$$
+
+因此$$\frac{\partial u}{\partial x}=f\ast\mathcal{P}'_{y}(x)\qquad \widehat{\frac{\partial u}{\partial x}}=\widehat{f}(\xi)2\pi i\xi\widehat{\mathcal{P}_{y}}(\xi)$$
+另一方面, 根据中值定理, $$\frac{\mathcal{P}_{y+h}(x)-\mathcal{P}_{y}}{h}=\frac{1}{\pi}\frac{x^{2}-t^{2}}{(t^{2}+x^{2})^{2}}\leq \frac{1}{\pi}\frac{x^{2}}{(x^{2}+y^{2})^{2}}\leq \frac{1}{\pi }\frac{1}{x^{2}+y^{2}}\in L^{1}(R)\qquad y< t< y+h$$
+所以可用DCT把求导从积分里面拿出来, 即
+$$\widehat{\frac{\partial}{\partial y}\mathcal{P}}_{y}(\xi)= \int_{R}e^{-2\pi ix\xi}\frac{\partial}{\partial y}\frac{1}{\pi}\frac{y}{y^{2}+x^{2}}=\frac{\partial}{\partial y} \int_{R}e^{-2\pi ix\xi}\frac{1}{\pi}\frac{y}{y^{2}+x^{2}}=-2\pi\lvert \xi\rvert e^{-2\pi \lvert \xi\rvert y}$$
+这给出了$$\widehat{\frac{\partial v}{\partial y}}=-2\pi\lvert \xi\rvert e^{-2\pi \lvert \xi\rvert y}\frac{sgn(\xi)}{i}\widetilde{f}(\xi)$$
+因此$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$. 另一方面$$\widehat{\frac{\partial v}{\partial x}}=\frac{sgn(\xi)}{i}\widetilde{f}(\xi)2\pi i\xi \widehat{\mathcal{P}}_{y}(\xi)\qquad \widehat{\frac{\partial u}{\partial y}}=\widehat{f}(\xi)-2\pi\lvert \xi\rvert e^{-2\pi \lvert \xi\rvert y}$$
+所以$\frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}$, 因此u,v 满足Cauchy-Riemann方程, 因此F是上半平面中的解析函数. 另一方面, Poisson核是Approximation to the identity, 所以$y\rightarrow0$时u,v的极限存在.
+
+            <h4>(b)</h4>$$\widehat{v}(\xi,y)=\widehat{f}(\xi)\frac{sgn(\xi)}{i}e^{-2\pi\lvert \xi\rvert y}$$
+我们需要看看 $\frac{sgn(\xi)}{i}e^{-2\pi\lvert \xi\rvert y}$的Fourier逆变换(注意这个函数指数衰减所以是$L^{2}$的, 必有Fourier逆变换), 即$$\int_{R}\frac{sgn(\xi)}{i}e^{-2\pi\lvert \xi\rvert y}e^{2\pi ix\xi}\,d\xi=\frac{1}{i}[\int_{0}^{\infty}+\int_{-\infty}^{0}]=\frac{1}{i}\frac{i}{2\pi}[\frac{1}{x+iy}-\frac{1}{-x+iy}]=\frac{1}{2\pi}\frac{2x}{x^{2}+y^{2}}=\frac{1}{\pi}\frac{x}{x^{2}+y^{2}}=\mathcal{Q}_{y}(x)$$
+从而$$\widehat{v}=\widehat{f}(\xi)\widehat{\mathcal{Q}}_{y}(\xi)\qquad v=f\ast \mathcal{Q}_{y}(x)$$
+这说明$$F(z)=f\ast(\mathcal{P}_{y}+i\mathcal{Q}_{y})(x)$$
+又$$\mathcal{P}_{y}+i\mathcal{Q}_{y}=\frac{1}{\pi}(\frac{y+ix}{x^{2}+y^{2}})=\frac{1}{\pi}\frac{y+ix}{(y+ix)(y-ix)}=\frac{1}{\pi}\frac{1}{y-ix}=\frac{1}{\pi i}\frac{1}{-(x+iy)}$$
+
+从而$$F(z)=\frac{1}{\pi i}\int_{R}f(t)\frac{1}{-(x-t+iy)}\,dt=\frac{1}{\pi i}\frac{1}{t-(x+iy)}\,dt=\frac{1}{\pi i}\int_{R}f(t)\frac{1}{-(x-t+iy)}\,dt=\frac{1}{\pi i}\int_{R}\frac{f(t)}{t-z}\,dt$$
+
+            <h4>(c)</h4>在(b)的一开头我们已经证明了(c).
+        </div>
+
+        <!-- Exercise 11 -->
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Show that \( \left\{ \frac{1}{\sqrt{\pi}(i + z)} \left( \frac{i - z}{i + z} \right)^n \right\}_{n=0}^\infty \) is an orthonormal basis of \( H^2(\mathbb{R}^2_+) \).</p>
+            <p>Note that \( \left\{ \frac{1}{\sqrt{\pi}(i+x)} \left( \frac{i-x}{i+x} \right)^n \right\}_{n=0}^\infty \) is an orthonormal basis of \( L^2(\mathbb{R}) \); see Exercise 9 in the previous chapter.</p>
+            <p>[Hint: It suffices to show that if \( F \in H^2(\mathbb{R}^2_+) \) and \( \int_{-\infty}^\infty F(x) \frac{(i-x)^n}{(x + i)^{n+1}} dx = 0 \) for \( n = 0, 1, 2, \dots \), then \( F = 0 \). Use the Cauchy integral formula to prove that \( \left( \frac{d}{dz} \right)^n \left( F(z)(z + i)^n \right) \big|_{z=i} = 0 \), and thus \( F^{(n)}(i) = 0 \) for \( n = 0, 1, 2, \dots \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:首先明确$H^{2}(R^{2}_{+})$的范数, 注意到$$\|F\|_{H^{2}(R^{2}_{+})}^{2}=\underset{y>0}{sup}\int_{R}\lvert \widehat{F}_{0}(\xi)\rvert^{2}e^{-4\pi\xi y}\,d\xi=\lim_{y\rightarrow0}\int_{R}\lvert \widehat{F}_{0}(\xi)\rvert^{2}e^{-4\pi\xi y}\,d\xi=\lim_{y \rightarrow 0}\int_{R}\lvert F(x+iy)\rvert^{2}\,dx=\int_{0}^{\infty}\lvert f(\xi)\rvert^{2}\,dx$$
+            (最后一个等号有意义是因为在$L^{2}$意义下这个极限存在, 详见本章Theorem 2.3的(a))
+
+            然后根据极化恒等式可得$$< F,G>
+                =\frac{\|F+G\|^{2}-\|F-G\|^{2}-\frac{1}{i}\|F+iG\|^{2}+\frac{1}{i}\|F-iG\|^{2}}{4}=\lim_{y\rightarrow0}\int_{R}F(x+iy)\overline{G}(x+iy)\,dx$$
+                根据Theorem 2.3, 记f是$F(x+iy)$的$L^{2}$极限, $g$是$G(x+iy)$的$L^{2}$极限, 那么$$< F,G>
+                    =\int_{R}f(x)\overline{g}(x)\,dx$$
+                    又$\frac{(i-z)^{n}}{(i+z)^{n+1}}$的$L^{2}$极限肯定是$\frac{(i-x)^{n}}{(i+x)^{n+1}}$,所以结合第四章的Exercise 9可得$\frac{(i-z)^{n}}{(i+z)^{n+1}}$是标准正交的,
+
+                    所以只需证当$$\int_{R}f(x)\frac{(i-x)^{n}}{(i+x)^{n+1}}\,dx=0$$
+                    能推出$f=0$即可. 根据第四章的Exercise 9, f=0. 证毕
+        </div>
+
+        <!-- Exercise 12 -->
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>We consider whether the inequality \( \|u\|_{L^2(\Omega)} \leq c\|L(u)\|_{L^2(\Omega)} \) can hold for open sets \( \Omega \) that are unbounded.</p>
+            <ol type="a">
+                <li>Assume \( d \geq 2 \). Show that for each constant coefficient partial differential operator \( L \), there are unbounded connected open sets \( \Omega \) for which the above holds for all \( u \in C_0^\infty(\Omega) \).</li>
+                <li>Show that \( \|u\|_{L^2(\mathbb{R}^d)} \leq c\|L(u)\|_{L^2(\mathbb{R}^d)} \) for all \( u \in C_0^\infty(\mathbb{R}^d) \) if and only if \( |P(\xi)| \geq c > 0 \) for all \( \xi \), where \( P \) is the characteristic polynomial of \( L \).</li>
+            </ol>
+            <p>[Hint: For (a) consider first \( L = (\partial/\partial x_1)^n \) and a strip \( \{ x : -1 < x_1 < 1 \} \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:(a) 不会. 或许要用旋转变换把算子变成较为标准的形式. 步骤待完善.
+
+            <h4>(b)</h4>$\Rightarrow$ 用Plancherel等式, 对任何紧支集上的光滑函数u, 都有$$\|\widehat{u}\|_{L^{2}(R^{d})}\leq c\|P(\xi)\widehat{u}\|_{L^{2}(R^{d})}$$
+然后我们证明上式对所有$\mathcal{S}$中的函数成立. 事实上任取$f\in\mathcal{S}$, 考虑课本209页对应的函数$K_{\delta}$, 和$$g_{n}=\mathcal{X}_{B(0,n+1)}\ast K_{\frac{1}{2}}=\int_{B(0,n+1)}2^{d}\varphi(2(x-y))\,dy\leq 1$$
+另一方面$suppg_{n}\subseteq B(0,n+\frac{3}{2})$, 因此是紧支集上的光滑函数, 且在$B(0,n)$上恒为1, 所以$fg_{n}$在$B(0,n)$上为f. 且$$\lvert \partial ^{\alpha}g_{n}\rvert\leq \int_{B(0,n+1)}2^{d}2^{\lvert \alpha\rvert}\partial^{\alpha}\varphi(2(x-y))\rvert\,dy$$
+又$supp\partial^{\alpha}\varphi\subseteq B(0,1)$, 所以$$\lvert \partial ^{\alpha}g_{n}\rvert\leq 2^{\lvert \alpha\rvert}\int_{B(0,1)}\lvert \partial^{\alpha}\varphi(y)\rvert\,dy\leq 2^{\lvert \alpha\rvert}m(B(0,1))\underset{x\in B(0,1)}{max}\lvert\partial^{\alpha}\varphi\rvert< \infty$$
+从而$f(x)g_{n}(x)\in C_{0}^{\infty}(R^{d})$, 而且根据莱布尼茨求导法可得对任何$\alpha$, $$\lvert \partial^{\alpha}(f(x)g_{n}(x))\rvert\leq C_{\lvert \alpha\rvert}\sum_{n=0}^{\lvert \alpha\rvert}\lvert \partial^{\beta}f(x)\rvert\lvert \partial^{\alpha}g_{n}(x)\rvert\leq C_{\lvert\alpha\rvert}\sum_{n=0}^{\lvert \alpha\rvert}\lvert \partial^{\beta}f(x)\rvert$$
+最后的两个$C_{\lvert \alpha\rvert}$不是一个常数, 但是都和n无关, 只和$\varphi,\lvert\alpha\rvert$有关. 现在设L是n阶偏微分算子, 那么阶数$\leq n$的多重指标只有有限个, 结合$f\in \mathcal{S}$可得$$\lvert Lf-L(fg_{n})\rvert\leq C_{n}\sum_{\lvert \alpha\rvert\leq n}\lvert \partial ^{\alpha}f-\partial^{\alpha}(fg_{n})\rvert\leq C_{n}\sum_{\lvert \alpha\rvert\leq n}\lvert\partial^{\alpha} f(x)\rvert+C_{n}\sum_{\lvert \alpha\rvert\leq n}\lvert \partial^{\alpha}(fg_{n})\rvert$$
+$$\leq C\sum_{\lvert \alpha\rvert\leq n}\lvert \partial^{\alpha}f(x)\rvert\leq \frac{C}{(x+1)^{2d}}$$
+
+又$L(fg_{n})\rightarrow Lf$ a.e.成立, 所以根据DCT可得$$\|Lf\|_{L^{2}(R^{d})}=\lim_{n\rightarrow\infty}\|L(fg_{n})\|_{L^{2}(R^{d})}\geq c\lim_{n \to \infty}\|fg_{n}\|_{L^{2}(R^{d})}=c\|f\|_{L^{2}(R^{d})}$$
+
+两边做Fourier变换可得$$\|\widehat{u}\|_{L^{2}(R^{d})}\leq c\|P(\xi)\widehat{u}\|_{L^{2}(R^{d})}\qquad\forall u\in \mathcal{S}$$
+
+
+假设存在某一点$\eta$使得$P(\zeta)< 1/c$, 那么根据多项式的连续性,存在半径r使得$P(\xi)$在$B(\zeta,r)$中$< 1/c$恒成立. 考虑$v$是紧支集在$B(\zeta,r)$中的光滑函数, 比如$v(x)=\varphi(\frac{x-\zeta}{r})$, 其中$\varphi$是课本209页给出的函数, 那么此时$v\in\mathcal{S}$, 令u是$\widehat{u}=v$的函数, 则$$\|P(\xi)\widehat{u}\|_{L^{2}(R^{d})}=\|P(\xi)v\|_{L^{2}(R^{d})}=\|P(\xi)v\|_{L^{2}(B(\zeta,r))}< \frac{1}{c}\|v\|_{L^{2}(B(\zeta,r))}=\frac{1}{c}\|v\|_{L^{2}(R^{d})}=\frac{1}{c}\|\widehat{u}\|_{L^{2}(R^{d})}$$
+这是一个矛盾
+          <p></p>  
+$\Leftarrow$ 这是显然的, 毕竟$$\|Lu\|_{L^{2}(R^{d})}=\|P(\xi)\widehat{u}\|_{L^{2}(R^{d})}\geq c\|\widehat{u}\|_{L^{2}(R^{d})}=c\|u\|_{L^{2}(R^{d})}$$
+        </div>
+
+        <!-- Exercise 13 -->
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>Suppose \( L \) is a linear partial differential operator with constant coefficients. Show that when \( d \geq 2 \), the linear space of solutions \( u \) of \( L(u) = 0 \) with \( u \in C^\infty(\mathbb{R}^d) \) is not finite-dimensional.</p>
+            <p>[Hint: Consider the zeroes \( \zeta \) of \( P(\zeta) \), \( \zeta \in \mathbb{C}^d \), where \( P \) is the characteristic polynomial of \( L \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 对P的每个零点$\zeta$, 令$$u_{\zeta}=e^{\zeta\cdot x}$$
+            那么$$L(u_{\zeta})=P(\zeta)u_{\zeta}=0$$
+            又这些$u_{\zeta}$是线性无关的, 且多元多项式有无穷多零点, 所以解集不是有限维空间.
+        </div>
+
+        <!-- Exercise 14 -->
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>Suppose \( F \) and \( G \) are two integrable functions on a bounded interval \([a, b]\). Show that \( G \) is the weak derivative of \( F \) if and only if \( F \) can be corrected on a set of measure 0, such that \( F \) is absolutely continuous and \( F'(x) = G(x) \) for almost every \( x \).</p>
+            <p>[Hint: If \( G \) is the weak derivative of \( F \), use an approximation to show that \( \int_a^b G(x)\phi(x)dx = - \int_a^b F(x)\phi'(x)dx \) holds for the function \( \phi \) illustrated in Figure 9.]</p>
+            <div style="text-align: center;">
+                <img src="figs/C5F9.png" width="20%">
+
+            </div>
+        </div>
+        <div class="Proof-box">
+            Proof: $\Rightarrow$ 如果G是F的弱导数, 考虑函数$$\phi=\begin{cases}
+            1&x\in[\alpha+\frac{h}{2},\beta-\frac{h}{2}]\\
+            0&x\in[\alpha-\frac{h}{2},\alpha+\frac{h}{2}]\cup[\beta-\frac{h}{2},\beta+\frac{h}{2}]\\
+            linear&else
+            \end{cases}$$
+            其中$(\alpha,\beta)$是[a,b]的子区间. 且$0< h< min\{\alpha-a,b-\beta\}$.
+然后考虑$K_{\delta}$, 则当$\delta< \frac{h}{2}$时, $supp\phi\ast K_{\delta}\in [a,b]$,且是光滑函数. 所以$$\int_{a}^{b}G(x)\phi\ast K_{\delta}\,dx=-\int_{a}^{b}F(x)[\phi\ast K_{\delta}]'\,dx$$
+又$\phi$是Lipschitz函数, 所以$$\int_{a}^{b}G(x)\phi\ast K_{\delta}\,dx=-\int_{a}^{b}F(x)[\phi'\ast K_{\delta}]\,dx$$
+令$\delta\rightarrow0$, 则$$\int_{a}^{b}G(x)\phi(x)\,dx=-\int_{a}^{b}F(x)\phi'(x)\,dx$$
+
+从而$$\int_{\alpha+\frac{h}{2}}^{\beta-\frac{h}{2}}G(x)\,dx+\int_{\alpha-\frac{h}{2}}^{\alpha+\frac{h}{2}}G(x)\phi(x)\,dx+\int_{\beta-\frac{h}{2}}^{\beta+\frac{h}{2}}G(x)\phi(x)\,dx=-\frac{1}{h}\int_{\alpha-\frac{h}{2}}^{\alpha+\frac{h}{2}}F(x)\,dx+\frac{1}{h}\int_{\beta-\frac{h}{2}}^{\beta+\frac{h}{2}}F(x)\,dx$$
+左边用DCT, 右边又Lebesgue微分定理, 就能得出$$\int_{\alpha}^{\beta}G(x)\,dx=F(\beta)-F(\alpha)$$
+对a.e.的$\alpha,\beta$成立, 这说明通过修改F在一个零测集上的取值, 就能得出$$F(x)=F(a)+\int_{a}^{x}G(t)\,dt$$
+即F是绝对连续函数, 且$F'(x)=G(x)$
+
+$\Leftarrow$ 此时对任何紧支集在$[a,b]$中的光滑函数$\varphi$, 都能用分部积分公式得到$$\int_{a}^{b}G(x)\phi(x)\,dx=F(b)\phi(b)-F(a)\phi(a)-\int_{a}^{b}F(x)\phi'(x)\,dx= -\int_{a}^{b}F(x)\phi'(x)\,dx$$
+最后一个等号是因为$\phi(a)=\phi(b)=0$
+        </div>
+
+        <!-- Exercise 15 -->
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>Suppose \( f \in L^2(\mathbb{R}^d) \). Prove that there exists \( g \in L^2(\mathbb{R}^d) \) such that \( \left( \frac{\partial}{\partial x} \right)^\alpha f(x) = g(x) \) in the weak sense, if and only if \( (2\pi i\xi)^\alpha \hat{f}(\xi) = \hat{g}(\xi) \in L^2(\mathbb{R}^d) \).</p>
+        </div>
+        <div class="Proof-box">
+            Proof:$\Rightarrow$ 记$< ,>$是$L^{2}(R^{d})$的标准内积, 对任何紧支集上的光滑函数$\varphi$, 都有$$\int_{R^{d}}f(x)\partial^{\alpha}\varphi(x)\,dx=\int_{R^{d}}g(x)\varphi(x)\,dx$$
+又$< f,g>=< \widehat{f},\widehat{g}>$, 所以$$\int_{R^{d}}\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\widehat{\varphi}(\xi)\,d\xi=\int_{R^{d}}\widehat{g}(\xi)\widehat{\varphi}(\xi)\,d\xi$$
+对任何$L^{2}$中的函数h, 取一组$h_{n}\in C_{0}^{\infty}(R^{d})$在$L^{2}$意义下收敛于$\check{h}$, 不妨设同时$\widehat{h}_{n}\rightarrow h$逐点收敛(否则抽子列), 我们知道$$\int_{R^{d}}\lvert \widehat{g}(\xi)\rvert\lvert h-\widehat{h}_{n}\rvert\,dx\leq \|\widehat{g}\|_{L^{2}(R^{d})}\|h-\widehat{h}_{n}\|_{L^{2}(R^{d})}\rightarrow0$$
+从而$$\int_{R^{d}}\widehat{g}(\xi)h(\xi)\,d\xi=\lim_{n \rightarrow\infty}\int_{R^{d}}\widehat{g}(\xi)\widehat{h}_{n}(\xi)\,d\xi=\lim_{n \rightarrow\infty}\int_{R^{d}}\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\widehat{h}_{n}(\xi)\,d\xi$$
+对任何N, 令$h_{N}=\frac{\mathcal{X}_{\lvert\xi\rvert\leq N}\overline{\widehat{f}}(\xi)(-2\pi i\xi)^{\alpha}}{\|\mathcal{X}_{\lvert\xi\rvert\leq N}\widehat{f}(\xi)(-2\pi i\xi)^{\alpha}\|_{L^{2}(R^{d})}}$, 则$\widehat{h_{n}}\rightarrow h_{N}$, 然后根据Fatou引理可得$$\|\mathcal{X}_{\lvert\xi\rvert\leq N}\widehat{f}(\xi)(-2\pi i\xi)^{\alpha}\|_{L^{2}(R^{d})}\leq \liminf_{n\rightarrow\infty}Re\int_{R^{d}}\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\widehat{h}_{n}(\xi)\,d\xi=\liminf_{n\rightarrow\infty}Re\int_{R^{d}}\widehat{g}(\xi)\widehat{h}_{n}(\xi)\,d\xi=Re\int_{R^{d}}\widehat{g}(\xi)h_{N}(\xi)\,d\xi$$
+
+$$\leq \|h_{N}\|_{L^{2}(R^{d})}\|g\|_{L^{2}(R^{d})}=\|g\|_{L^{2}(R^{d})}$$
+因此根据单调收敛定理, 令$N\rightarrow\infty$就得到$\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\in L^{2}(R^{d})$, 因此对任何$h\in L^{2}(R^{d})$, $$\int_{R^{d}}\lvert \widehat{f}(\xi)(2\pi i\xi)^{\alpha}\rvert\lvert h-\widehat{h}_{n}\rvert\,dx\leq \|\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\|_{L^{2}(R^{d})}\|h-\widehat{h}_{n}\|_{L^{2}(R^{d})}\rightarrow0$$
+这给出了$$\int_{R^{d}}\widehat{f}(\xi)(2\pi i\xi)^{\alpha}h(\xi)\,d\xi=\int_{R^{d}}\widehat{g}(\xi)h(\xi)\,d\xi\qquad\forall h\in L^{2}(R^{d})$$
+又$L^{2}(R^{d})$是可分的Hilbert空间(第四章已经说过了), 因此取$h$分别为$L^{2}(R^{d})$的各个(共可数个)基底$e_{i}$, 则有$$\widehat{f}(\xi)(2\pi i\xi)^{\alpha}=\widehat{g}(\xi)\qquad a.e.\xi\in R^{d}$$
+
+$\Leftarrow$ 对任何$\phi\in C_{0}^{\infty}(R^{d})$, 都有$\widehat{\varphi}\in \mathcal{S}$, 从而$$\int_{R^{d}}\widehat{f}(\xi)(2\pi i\xi)^{\alpha}\widehat{\varphi}(\xi)\,d\xi=\int_{R^{d}}\widehat{g}(\xi)\widehat{\varphi}(\xi)\,d\xi$$
+又$< f,g>=< \widehat{f},\widehat{g}>$,
+从而$$\int_{R^{d}}f(x)\partial^{\alpha}\varphi(x)\,dx=\int_{R^{d}}g(x)\varphi(x)\,dx$$
+所以f是g的弱$\alpha$阶导数
+        </div>
+
+        <!-- Exercise 16 -->
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>Sobolev embedding theorem. Suppose \( n \) is the smallest integer \( > d/2 \). If \( f \in L^2(\mathbb{R}^d) \) and \( \left( \frac{\partial}{\partial x} \right)^\alpha f \in L^2(\mathbb{R}^d) \) in the weak sense, for all \( 1 \leq |\alpha| \leq n \), then \( f \) can be modified on a set of measure zero so that \( f \) is continuous and bounded.</p>
+            <p>[Hint: Express \( f \) in terms of \( \hat{f} \), and show that \( \hat{f} \in L^1(\mathbb{R}^d) \) by the Cauchy-Schwarz inequality.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:取若干特殊的$\alpha_{i}$, 满足第i个指标为n, 其他指标为0, 则$\lvert \alpha_{i}\rvert\leq n$.
+
+记$g_{j}$是弱意义下的$(\frac{\partial}{\partial x})^{\alpha_{j}}f$, 则根据Exercise 15可得$$(2\pi i\xi)^{\alpha_{j}}\widehat{f}(\xi)=\widehat{g}_{j}(\xi)\in L^{2}(R^{d})$$
+又$$f(x)=\int_{R^{d}}\widehat{f}(\xi)e^{2\pi ix\xi}\,d\xi$$
+根据第二章的结论, 只需证$\widehat{f}\in L^{1}(R^{d})$, 事实上$$\int_{R^{d}}\lvert \widehat{f}(\xi)\rvert\,d\xi=\int_{\lvert \xi\rvert< 1}\lvert \widehat{f}(\xi)\rvert\,d\xi+\int_{\lvert \xi\rvert\geq 1}\lvert \widehat{f}(\xi)\rvert\,d\xi$$
+$$\leq m(B(0,1))^{\frac{1}{2}}\|\widehat{f}\|_{L^{2}(R^{d})}+(\int_{\lvert \xi\rvert\geq 1}4\pi^{2}\lvert \xi\rvert^{2n}\lvert \widehat{f}(\xi)\rvert^{2}\,d\xi)^{\frac{1}{2}}(\frac{1}{4\pi^{2}}\int_{\lvert \xi\rvert\geq 1}\frac{1}{\lvert \xi\rvert^{2n}}\,d\xi)^{\frac{1}{2}}$$
+又$(x_{1}+\cdots +x_{d})^{2n}\leq C_{n}\sum_{i=1}^{d}x_{i}^{2n}$对$x_{i}\in R$成立, 所以$$\int_{\lvert \xi\rvert\geq 1}4\pi^{2}\lvert \xi\rvert^{2n}\lvert \widehat{f}(\xi)\rvert^{2}\,d\xi\leq C\sum_{i=1}^{d}4\pi^{2}\int_{\lvert \xi\rvert\geq 1}\lvert \xi_{i}\rvert^{2n}\lvert \widehat{f}(\xi)\rvert^{2}\,d\xi\leq C\sum_{i=1}^{d}\|\widehat{g}_{i}\|_{L^{2}(R^{d})}^{2}$$
+又根据$2n>d$可得
+$$\int_{\lvert \xi\rvert\geq 1}\frac{1}{\lvert \xi\rvert^{2n}}\,d\xi< \infty$$
+因此$\widehat{f}\in L^{1}(R^{d})$
+
+        </div>
+
+        <!-- Exercise 17 -->
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>The conclusion of the Sobolev embedding theorem fails when \( n = d/2 \). Consider the case \( d = 2 \), and let \( f(x) = (\log 1/|x|)^\alpha \eta(x) \), where \( \eta \) is a smooth cutoff function with \( \eta = 1 \) for \( x \) near the origin, but \( \eta(x) = 0 \) if \( |x| \geq 1/2 \). Let \( 0 < \alpha < 1/2 \).</p>
+            <ol type="a">
+                <li>Verify that \( \partial f /\partial x_1 \) and \( \partial f /\partial x_2 \) are in \( L^2 \) in the weak sense.</li>
+                <li>Show that \( f \) cannot be corrected on a set of measure zero such that the resulting function is continuous at the origin.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+           Proof:(a)$$f(x)=(-\frac{1}{2}log(x_{1}^{2}+x_{2}^{2}))^{\alpha}\eta(x)$$
+去掉$B(0,\epsilon)$, 我们发现对任何紧支集上的光滑函数$\phi$,  用散度定理可得$$\int_{B(0,\epsilon)^{c}}f(x)\frac{\partial}{\partial x_{1}}\phi(x)=\int_{\partial B(0,\epsilon)}\nu_{1}\frac{\partial f}{\partial x_{1}}\phi(x)\,dS-\int_{B(0,\epsilon)^{c}}\frac{\partial}{\partial x_{1}}f(x)\phi(x)\,dx$$
+
+注意到$\lvert f(x)\rvert\leq \frac{C}{\lvert x\rvert^{\alpha}}$在$B(0,1)$上可积, 所以$\int_{B(0,\epsilon)}f(x)\frac{\partial}{\partial x_{1}}\phi(x)\,dx\rightarrow0$
+
+另一方面在$\partial B(0,\epsilon)$上, $\epsilon$足够小时有(此时$\eta$是常数, 偏导数为0)$$\frac{\partial f}{\partial x_{1}}=(-log\epsilon)^{\alpha}\frac{\partial\eta}{\partial x_{1}}-\frac{x_{1}}{\epsilon^{2}}\alpha(log1/\epsilon)^{\alpha-1}\eta(x)=-\frac{x_{1}}{\epsilon^{2}}\alpha(log1/\epsilon)^{\alpha-1}\eta(x)$$
+结合$\lvert \nu_{1}\rvert\leq\epsilon,\lvert x_{1}\rvert\leq \epsilon$可得$$\lvert \int_{\partial B(0,\epsilon)}\nu_{1}\frac{\partial f}{\partial x_{1}}\phi(x)\,dS\rvert\leq C\int_{\partial B(0,\epsilon)}\alpha(log\frac{1}{\epsilon})^{\alpha-1}\,dS\rightarrow0$$
+(注意到$\alpha-1< 0$, 所以$log\frac{1}{\epsilon^{2}}\rightarrow0$)
+
+且在$B(0,\epsilon)$上, $$\lvert \frac{\partial f}{\partial x_{1}}\rvert\leq C_{2}\frac{\lvert x_{1}\rvert}{\lvert x\rvert^{2}}\alpha (log\frac{1}{\lvert x\rvert})^{\alpha-1}$$
+则可以发现$$\int_{B(0,\epsilon)}\lvert \frac{\partial}{\partial x_{1}}f\rvert^{2}+\lvert \frac{\partial}{\partial x_{2}}f\rvert^{2}\,dx\leq C\int_{B(0,\epsilon)}\frac{1}{\lvert x\rvert^{2}}(log\frac{1}{\lvert x\rvert})^{2\alpha-2}\,dx$$
+$$=C2\pi \int_{0}^{\epsilon}\frac{1}{r}(log\frac{1}{r})^{2\alpha-2}\,dr=C\int_{log\frac{1}{\epsilon}}^{\infty}e^{t}t^{2\alpha-2}e^{-t}\,dt\rightarrow0$$
+所以$\frac{\partial f}{\partial x_{1}},\frac{\partial f}{\partial x_{2}}\in L^{2}(R^{2})$(因为f具有紧支集且在原点之外连续)
+
+从而$$\lvert \int_{B(0,\epsilon)}\frac{\partial}{\partial x_{1}}f(x)\phi(x)\,dx\rvert\leq m(B(0,\epsilon))^{\frac{1}{2}}C(\int_{B(0,\epsilon)}\lvert \frac{\partial f}{\partial x_{1}}\rvert^{2}+\frac{\partial f}{\partial x_{2}}\rvert^{2}\,dx)^{\frac{1}{2}}\rightarrow0$$
+
+这说明$$\int_{R^{d}}f(x)\frac{\partial}{\partial x_{1}}\phi(x)\,dx=-\int_{R^{d}}\frac{\partial}{\partial x_{1}}f(x)\phi(x)\,dx$$
+从而$\frac{\partial}{\partial x_{1}}f(x)$在弱意义下等于其偏导函数(但是在0处不存在). 且在$L^{2}$中
+
+(b)假设f a.e等于一个连续函数, 那么f在0附近a.e.有界, 设$\lvert f\rvert\leq M$, 设$\eta$在$B(0,\delta)$中为1, 但是当$\lvert x\rvert< min\{\frac{1}{e^{M^{\frac{1}{\alpha}}}},\delta\}$时,必有$$\lvert f(x)\rvert> M$$
+因此$\lvert f\rvert\leq M$在0附近不是a.e.成立的, 矛盾.
+        </div>
+
+        <!-- Exercise 18 -->
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Consider the linear partial differential operator \( L = \sum_{|\alpha| \leq n} a_\alpha \left( \frac{\partial}{\partial x} \right)^\alpha \). Then \( P(\xi) = \sum_{|\alpha| \leq n} a_\alpha (2\pi i\xi)^\alpha \) is called the characteristic polynomial of \( L \). The differential operator \( L \) is said to be elliptic if \( |P(\xi)| \geq c|\xi|^n \) for some \( c > 0 \) and all \( \xi \) sufficiently large.</p>
+            <ol type="a">
+                <li>Check that \( L \) is elliptic if and only if \( \sum_{|\alpha| = n} a_\alpha (2\pi \xi)^\alpha \) vanishes only when \( \xi = 0 \).</li>
+                <li>If \( L \) is elliptic, prove that for some \( c > 0 \) the inequality \( \left\| \left( \frac{\partial}{\partial x} \right)^\alpha \phi \right\|_{L^2(\mathbb{R}^d)} \leq c \left( \|L\phi\|_{L^2(\mathbb{R}^d)} + \|\phi\|_{L^2(\mathbb{R}^d)} \right) \) holds for all \( \phi \in C_0^\infty(\Omega) \) and \( |\alpha| \leq n \).</li>
+                <li>Conversely, if (b) holds then \( L \) is elliptic.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:(a)$\Rightarrow$ 假设一个不为0的$\zeta$满足$\sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi\zeta)^{\alpha}=0$, 则对任何常数y, 均有$$\sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi y\zeta)^{\alpha}=y^{n}\sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi\zeta)^{\alpha}=0$$
+因此这个函数在直线$t\zeta$上全都是0. 又根据多项式的增长特性, 存在R使得$\lvert \xi\rvert>R$时, $$\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi\xi)^{\alpha}\rvert\geq\lvert \sum_{\lvert\alpha\rvert< n}a_{\alpha}(2\pi\xi)^{\alpha}\rvert$$
+这意味这t足够大时, $$0=\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi t\zeta)^{\alpha}\rvert\geq\lvert \sum_{\lvert\alpha\rvert< n}a_{\alpha}(2\pi t\zeta)^{\alpha}\rvert$$
+因此$P(t\zeta)=0$, 和椭圆性质矛盾.
+<p></p>
+$\Leftarrow$ 反证法, 假设对任何$N$, 对$c=\frac{1}{N}$, 存在$\lvert \xi_{N}\rvert>N$使得$$\lvert P(\xi_{N})\rvert< \frac{1}{N}\lvert \xi_{N}\rvert^{n}$$
+
+又$$\liminf_{N\rightarrow\infty}\frac{\lvert P(\xi_{N})\rvert}{\lvert \xi_{N}\rvert^{n}}\geq \liminf_{N\rightarrow\infty}(\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}-\frac{\lvert \sum_{\lvert\alpha\rvert< n}a_{\alpha}(2\pi\xi)^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}})$$
+$$=\liminf_{N\rightarrow\infty}\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}-\limsup_{N\rightarrow\infty}\frac{\lvert \sum_{\lvert\alpha\rvert< n}a_{\alpha}(2\pi\xi)^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}})=\liminf_{N\rightarrow\infty}\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}$$
+这给出了$$\liminf_{N\rightarrow\infty}\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}=0$$
+因此不妨设$\lim_{N\rightarrow\infty}\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}=0$, 否则抽子列.
+
+记$x_{N}=\frac{\xi_{N}}{\lvert \xi_{N}\rvert}$, 则$$\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi x_{N})^{\alpha}\rvert=\frac{\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi \xi_{N})^{\alpha}\rvert}{\lvert \xi_{N}\rvert^{n}}\rightarrow0$$
+又$x_{N}$是范数为1的序列, 不妨设$x_{N}$收敛, 否则抽子列. 设收敛于x, 那么$\lvert x\rvert=1$, 且$$\lvert \sum_{\lvert \alpha\rvert=n}a_{\alpha}(2\pi x)^{\alpha}\rvert=0\qquad x\neq 0$$
+这和条件矛盾.
+
+            <h4>(b)</h4> 设在$\lvert \xi\rvert\geq R$时, $\lvert P(\xi)\rvert\geq c\lvert \xi\rvert^{n}$, 那么用Plancherel等式得到$$\|\frac{\partial^{\alpha}}{\partial x^{\alpha}}\phi\|_{L^{2}(R^{d})}^{2}=\int_{R^{d}}(2\pi)^{2\lvert \alpha\rvert}\lvert \xi^{\alpha}\rvert^{2}\rvert\widehat{\phi}(\xi)\rvert^{2}\,d\xi$$
+$$\leq C\int_{\lvert \xi\rvert< R}\lvert \widehat{\phi}\rvert^{2}\,d\xi+C\int_{\lvert \xi\rvert\geq R}\lvert \xi\rvert^{2n}\lvert \widehat{\phi}\rvert^{2}\,d\xi$$
+$$\leq CR^{2n}\int_{R^{d}}\lvert \widehat{\phi}\rvert^{2}\,d\xi+C\int_{\lvert \xi\rvert\geq R}\lvert P(\xi)\rvert^{2}\lvert \widehat{\phi}\rvert^{2}\,d\xi\leq C\|\widehat{\phi}\|_{L^{2}(R^{d})}^{2}+C\|P(\xi)\widehat{\phi}\|_{L^{2}(R^{d})}$$
+$$=C\|\phi\|_{L^{2}(R^{d})}^{2}+C\|L\phi\|_{L^{2}(R^{d})}$$
+其中C是和$\phi$无关的常数
+
+            <h4>(c)</h4>先把不等式的成立范围扩展到Schwarz函数空间:我们用和Exercise 12 同样的方法能够得出$$\left\| \left( \frac{\partial}{\partial x} \right)^\alpha u \right\|_{L^2(\mathbb{R}^d)} \leq c \left( \|Lu\|_{L^2(\mathbb{R}^d)} + \|u\|_{L^2(\mathbb{R}^d)} \right)\qquad\forall u\in\mathcal{S}$$
+从而$$\|(2\pi i\xi)^{\alpha}\widehat{u}\|_{L^{2}(R^{d})}\leq c\|P(\xi)\widehat{u}\|_{L^{2}(R^{d})}+c\|\widehat{u}\|_{L^{2}(R^{d})}$$
+我们取特殊的$\alpha_{i}$分别为第i个分量为n, 其他分量为0的指标, 那么根据$\lvert \xi\rvert^{n}\leq C\sum_{j=1}^{d}\lvert \xi_{j}\rvert^{d}$可以得到 $$\|(2\pi i\lvert \xi\rvert)^{n}\widehat{u}\|_{L^{2}(R^{d})}^{2}\leq C\sum_{j=1}^{d}\|(2\pi i \xi)^{\alpha_{j}}\widehat{u}\|_{L^{2}(R^{d})}^{2}\leq C\left( \|Lu\|_{L^2(\mathbb{R}^d)}^{2} + \|u\|_{L^2(\mathbb{R}^d)}^{2} \right)\qquad\forall u\in\mathcal{S}$$
+
+我们证明当$\lvert \xi\rvert\geq 2(\frac{2C}{(2\pi)^{n}})^{\frac{1}{2n}}$时, $\lvert P(\xi)\rvert\geq \frac{(2\pi)^{2n}}{\sqrt{2C}}\lvert\xi\rvert^{n}$, 如不然, 那么存在$\zeta\in B(0,2(\frac{2C}{(2\pi)^{2n}})^{\frac{1}{2n}})^{c}$满足$$\lvert P(\zeta)\rvert< \frac{(2\pi)^{n}}{\sqrt{2C}}\lvert \zeta\rvert^{n}$$
+根据连续性, 存在半径r使得$$\lvert P(\xi)\rvert< \frac{(2\pi)^{n}}{\sqrt{2C}}\lvert \xi\rvert^{n}\qquad\forall\xi\in B(\zeta,r)$$
+取r足够小使得$B(\zeta,r)\subseteq B(0,(\frac{2C}{(2\pi)^{2n}})^{\frac{1}{2n}})^{c}$, 
+然后我们取一个支集在$B(\zeta,r)$中的$L^{2}(R^{d})$函数, 记为$\widehat{v}$, 其Fourier逆变换记为$v$, 则$$\|(2\pi i\lvert \xi\rvert)^{n}\widehat{v}\|_{L^{2}(R^{d})}^{2}=\frac{1}{2}\int_{B(\zeta,r)}(2\pi)^{2n}\lvert \xi\rvert^{2n}\lvert \widehat{v}\rvert^{2}\,d\xi+\frac{1}{2}\int_{B(\zeta,r)}(2\pi)^{2n}\lvert \xi\rvert^{2n}\lvert \widehat{v}\rvert^{2}\,d\xi$$
+$$\geq \frac{1}{2}\int_{B(\zeta,r)}(2\pi)^{2n}\lvert \xi\rvert^{2n}\lvert \widehat{v}\rvert^{2}\,d\xi+C\int_{B(\zeta,r)}\lvert \widehat{v}\rvert^{2}\,d\xi>C\int_{B(\zeta,r)}\lvert P(\xi)\rvert^{2}\lvert \widehat{v}\rvert^{2}\,d\xi+C\|\widehat{v}\|_{L^{2}(R^{d})}$$
+$$=C(\|Lv\|_{L^{2}(R^{d})}^{2}+\|v\|_{L^{2}(R^{d})}^{2})$$
+这和刚才建立的不等式矛盾.
+
+        </div>
+
+        <!-- Exercise 19 -->
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>Suppose \( u \) is harmonic in the punctured unit disc \( \mathbb{D}^{\ast} = \{ z \in \mathbb{C} : 0 < |z| < 1 \} \).</p>
+            <ol type="a">
+                <li>Show that if \( u \) is also continuous at the origin, then \( u \) is harmonic throughout the unit disc. [Hint: Show that \( u \) is weakly harmonic.]</li>
+                <li>Prove that the Dirichlet problem for the punctured unit disc is in general not solvable.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+           Proof:(a)任取一个紧支集在单位圆盘中的函数$\psi$, 对足够小的$\delta$, 考虑$u_{\delta}=u\ast K_{\delta}$, 那么$\triangle u_{\delta}=\triangle u\ast K_{\delta}(x)$在$x\neq 0$处成立, 再根据$u_{\delta}$的光滑性可得$u_{\delta}$是调和函数, 因此根据散度定理可得
+$$< u_{\delta},\triangle\psi>=< \triangle u_{\delta},\psi>=0$$
+令$\delta\rightarrow0$可得$$< u,\triangle \psi>=0$$
+根据$\psi$的任意性, u是弱调和函数. 根据Theorem 4.3, u和某个单位圆盘上的调和函数v是a.e.相等的, 又u连续, 所以$u=v$, 因此u调和.
+
+            <h4>(b)</h4>一般来说, 设u是punctured unit disc中Dirichlet问题
+$$\begin{cases}
+	\triangle u=0&x\in \mathbb{D}^{\ast}\\
+	u(0)=c\\
+	u\bigg|_{\partial \mathbb{D}}=f
+\end{cases}$$
+的解, 根据(a),u首先是弱调和的. 从而根据Theorem 4.3, 存在调和函数$v$满足$v=u$ a.e.成立, 因此只有当$c=v(0)$时, 方程才有解
+        </div>
+
+        <!-- Exercise 20 -->
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>Let \( F \) be a continuous function on the closure \( \overline{\mathbb{D}} \) of the unit disc. Assume that \( F \) is in \( C^1 \) on the (open) disc \( \mathbb{D} \), and \( \int_D |\nabla F|^2 < \infty \).</p>
+            <p>Let \( f(e^{i\theta}) \) denote the restriction of \( F \) to the unit circle, and write \( f(e^{i\theta}) \sim \sum_{n=-\infty}^\infty a_n e^{in\theta} \). Prove that \( \sum_{n=-\infty}^\infty |n| |a_n|^2 < \infty \).</p>
+            <p>[Hint: Write \( F(re^{i\theta}) \sim \sum_{n=-\infty}^\infty F_n(r)e^{in\theta} \), with \( F_n(1) = a_n \). Express \( \int_D |\nabla F|^2 \) in polar coordinates, and use the fact that \( \frac{1}{2} |F(1)|^2 \leq L^{-1} \int_{1/2}^1 |F'(r)|^2 dr + L \int_{1/2}^1 |F(r)|^2 dr \), for \( L \geq 2 \); apply this to \( F = F_n \), \( L = |n| \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 对于每个固定的r, F在半径为r的圆上都是周期函数, 设此时的Fourier系数为$F_{n}(r)$, 则$$F(re^{i\theta})\sim\sum_{n=-\infty}^{\infty}F_{n}(r)e^{in\theta}\qquad F_{n}(1)=a_{n}$$
+            则$$F_{n}(r)=\frac{1}{2\pi}\int_{0}^{2\pi}F(re^{i\theta})e^{-in\theta}\,d\theta$$
+            又F是$C^{1}$的, 所以$F_{n}(r)$关于r是$C^{1}$的. 且是径向函数(取值和$\theta$无关)
+
+            又在极坐标下, $x=rcos\theta, y=rsin\theta$, 所以$$\frac{\partial F}{\partial r}=\frac{\partial F}{\partial x}cos\theta+\frac{\partial F}{\partial y}sin\theta\qquad\frac{\partial F}{\partial \theta}=\frac{\partial F}{\partial x}(-rsin\theta)+\frac{\partial F}{\partial y}rcos\theta$$
+            从而$$\lvert \triangledown F\rvert^{2}=\lvert \frac{\partial F}{\partial r}\rvert^{2}+\frac{1}{r^{2}}\lvert \frac{\partial F}{\partial\theta}\rvert^{2}$$
+            又$$\frac{\partial F}{\partial r}=\sum_{n=-\infty}^{\infty}F_{n}(r)'e^{in\theta}, \frac{\partial F}{\partial\theta}=\sum_{n=-\infty}^{\infty}F_{n}(r)ine^{in\theta}$$
+            所以根据极坐标变换$$\int_{D}\lvert \triangledown F\rvert^{2}\,dxdy=\int_{0}^{1}\int_{0}^{2\pi}r\lvert \frac{\partial F}{\partial r}\rvert^{2}+\frac{1}{r}\lvert \frac{\partial F}{\partial\theta}\rvert^{2}\,d\theta\,dr$$
+            $$=2\pi\sum_{n=-\infty}^{\infty}\int_{0}^{1}r\lvert F_{n}'(r)\rvert^{2}\,dr+2\pi\sum_{n=-\infty}^{\infty}n^{2}\int_{0}^{1}\frac{1}{r}\lvert F_{n}(r)\rvert^{2}\,dr$$
+
+            另一方面$$\frac{1}{2}\lvert f(1)\rvert^{2}=\lvert \int_{\frac{1}{2}}^{1}\frac{d}{dr}[(r-\frac{1}{2})f^{2}(r)]\,dr\rvert=\lvert \int_{\frac{1}{2}}^{1}f^{2}(r)\,dr+\int_{\frac{1}{2}}^{1}(r-\frac{1}{2})f'(r)f(r)\,dr\rvert$$
+            $$\leq  \int_{\frac{1}{2}}^{1}\lvert f(r)\rvert^{2}\,dr+\frac{1}{2}\int_{\frac{1}{2}}^{1}\lvert f'(r)\rvert\lvert f(r)\rvert\,dr$$
+            对任何$L\geq 2$, 用算数-几何平均值不等式可得$\frac{1}{2}ab\leq\frac{1}{4}(\frac{a^{2}}{L}+Lb^{2})$, 因此
+            $$ \frac{1}{2}\lvert f(1)\rvert^{2}\leq \int_{\frac{1}{2}}^{1}\lvert f(r)\rvert^{2}\,dr+\frac{1}{4L^{-1}}\int_{\frac{1}{2}}^{1}\lvert f'(r)\rvert^{2}\,dr+\frac{L}{4}\int_{\frac{1}{2}}^{1}\lvert f(r)\rvert^{2}\,dr$$
+            又$\frac{L}{4}+1\leq L$, 因此$$ \frac{1}{2}\lvert f(1)\rvert^{2}\leq \frac{1}{L}\int_{\frac{1}{2}}^{1}\lvert f'(r)\rvert^{2}\,dr+L\int_{\frac{1}{2}}^{1}\lvert f(r)\rvert^{2}\,dr$$
+            令$f=F_{n},L=\lvert n\rvert$, 这给出了$$\frac{1}{2}\sum_{n=-\infty}^{\infty}\lvert n\rvert\lvert a_{n}\rvert^{2}\leq \sum_{n=-\infty}^{\infty}\int_{\frac{1}{2}}^{1}\lvert F_{n}'(r)\rvert^{2}\,dr+\sum_{n=-\infty}^{\infty}\lvert n\rvert^{2}\int_{\frac{1}{2}}^{1}\lvert F_{n}(r)\rvert^{2}\,dr$$
+            从而$$\frac{1}{2}\sum_{n=-\infty}^{\infty}\lvert n\rvert\lvert a_{n}\rvert^{2}\leq \sum_{n=-\infty}^{\infty}\int_{\frac{1}{2}}^{1}2r\lvert F_{n}'(r)\rvert^{2}\,dr+\sum_{n=-\infty}^{\infty}\lvert n\rvert^{2}\int_{\frac{1}{2}}^{1}\frac{1}{r}\lvert F_{n}(r)\rvert^{2}\,dr< C\int_{D}\lvert \triangledown F\rvert^{2}\,dxdy< \infty$$
+        </div>
+
+
+
+
+    </div>
+
+
+        <div class="whole_page">
+
+        </div>
+        <div class="bg_box">
+            <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+        </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,981 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第六章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第六章
+        </h2>
+
+        <!-- Exercise 1 -->
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>Let \( X \) be a set and \( \mathcal{M} \) a non-empty collection of subsets of \( X \). Prove that if \( \mathcal{M} \) is closed under complements and countable unions of disjoint sets, then \( \mathcal{M} \) is a \( \sigma \)-algebra.</p>
+            <p>[Hint: Any countable union of sets can be written as a countable union of disjoint sets.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:增加一个条件, $\mathcal{M}$对有限交运算封闭.这样的话结合对补运算封闭就能得出对差集封闭.
+
+            先证明$\mathcal{M}$对有限并运算封闭. 这只需证$A\cup B\in\mathcal{M}$对任何$A,B\in\mathcal{M}$成立.
+            事实上, $$A\cup B=(A\cap B^{c})\cup (B\cap A^{c})\cup (A\cap B)$$
+            这个三个集合互不相交, 又对补和有限交封闭可得$A\cup B\in\mathcal{M}$.
+
+            只需证$\mathcal{M}$对可数并运算封闭. 任取$E_{i}\in\mathcal{M}$, 则$F_{1}=E_{1},F_{i}=E_{i}-\cup_{n=1}^{i-1}E_{n},i\geq2$满足$$\cup_{i=1}^{\infty}F_{i}=\cup_{i=1}^{\infty}E_{i}$$
+            又$F_{i}\cap F_{j}=\emptyset$, 且根据$\mathcal{M}$对有限并, 有限交和补封闭可得$F_{i}\in\mathcal{M}$,
+            所以$$\cup_{i=1}^{\infty}F_{i}\in\mathcal{M}$$
+            因此$\cup_{i=1}^{\infty}E_{i}\in\mathcal{M}$
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>Let \( (X, \mathcal{M}, \mu) \) be a measure space. One can define the completion of this space as follows. Let \( \overline{\mathcal{M}} \) be the collection of sets of the form \( E \cup Z \), where \( E \in \mathcal{M} \), and \( Z \subset F \) with \( F \in \mathcal{M} \) and \( \mu(F) = 0 \). Also, define \( \overline{\mu}(E \cup Z) = \mu(E) \). Then:</p>
+            <ol type="a">
+                <li>\( \overline{\mathcal{M}} \) is the smallest \( \sigma \)-algebra containing \( \mathcal{M} \) and all subsets of elements of \( \mathcal{M} \) of measure zero.</li>
+                <li>The function \( \overline{\mu} \) is a measure on \( \overline{\mathcal{M}} \), and this measure is complete.</li>
+            </ol>
+            <p>[Hint: To prove \( \overline{\mathcal{M}} \) is a \( \sigma \)-algebra it suffices to see that if \( E_1 \subset \overline{\mathcal{M}} \), then \( E_1^c \subset \overline{\mathcal{M}} \). Write \( E_1 = E \cup Z \) with \( Z \subset F \), \( E \) and \( F \) in \( \mathcal{M} \). Then \( E_1^c = (E \cup F)^c \cup (F - Z) \).]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            $\overline{\mathcal{M}}$显然对可数并封闭(因为零测集的可数并还是零测集, 且$\mu$有单调性, 所以零测集的子集的可数并还是某个零测集的子集). 事实上对任何$E_{i}\in\overline{\mathcal{M}}$, 存在$\mu-$零测集$F_{i}$(可能是空的)和$\mu-$可测集$V_{i}$满足$$E_{i}=V_{i}\cup Z_{i}\qquad Z_{i}\subseteq F_{i}$$
+            从而$$\cup E_{i}=(\cup_{i=1}^{\infty}V_{i})\cup (\cup_{i=1}Z_{i})\qquad \cup_{i=1}^{\infty}V_{i}\subseteq \mathcal{M}$$
+            又$\cup Z_{i}\subseteq \cup_{i=1}F_{i}$, 而$\mu(\cup F_{i})\leq\sum \mu(F_{i})=0$, 所以$\overline{\mathcal{M}}$对可数并封闭.
+
+            设$E_{1}=E\cup Z,Z\subseteq F,\mu(F)=0$, 那么$$E_{1}^{c}=E^{c}\cap Z^{c}=[E^{c}\cap F^{c}]\cup [E^{c}\cap (Z^{c}-F^{c})]$$
+            而$E^{c}\cap F^{c}\in\mathcal{M}$, 所以
+            只需证$Z^{c}-F^{c}$是某个零测集的子集, 而$Z^{c}-F^{c}=Z^{c}\cap F$, 所以是零测集F的子集. 从而$\overline{\mathcal{M}}$对补运算也封闭, 所以是$\sigma-algebra$.
+
+            对任何一个包含$\mathcal{M}$且包含$\mathcal{M}$中零测集子集的$\sigma-algebra$ $\mathcal{N}$, 任取$E\in\mathcal{M}$, $Z\subseteq F,\mu(F)=0$, 则必有$$E\cup Z\subseteq \mathcal{N}$$
+            所以$\mathcal{N}\supseteq\overline{\mathcal{M}}$, 所以$\overline{\mathcal{M}}$是最小的.
+            <h4>(b)</h4>
+            首先证明$\overline{\mu}$是良定义的. 设$E=V\cup Z=F\cup W$, 其中Z,W分别是零测集P,Q的子集, 那么只需证$\mu(V)=\mu(F)$,$$\mu(V)\leq\mu_{\ast}(E)\leq\mu_{\ast}(F)+\mu_{\ast}(W)\leq \mu(F)+\mu_{\ast}(Q)=\mu(F)$$
+            $$\mu(F)\leq\mu_{\ast}(E)\leq\mu_{\ast}(V)+\mu_{\ast}(Z)\leq \mu(V)+\mu_{\ast}(P)=\mu(V)$$
+            这给出了$\mu(F)=\mu(V)$, 所以$\overline{\mu}$是良定义的.
+
+            假设$E_{i}=V_{i}\cup Z_{i},Z_{i}\subseteq F_{i},\mu(F_{i})=0,V_{i}\subseteq \mathcal{M}$, 且$E_{i}$互不相交, 则$V_{i},Z_{i}$都是各自互不相交的, 从而$$\overline{\mu}(\cup_{i=1}^{\infty}E_{i})=\overline{\mu}(\cup_{i=1}V_{i}\cup \cup_{i=1}Z_{i})$$
+            又$\mu(\cup F_{i})=0$, 所以$\cup_{i=1}Z_{i}$是某个$\mu-$零测集的子集, 所以根据$\overline{\mu}$的定义, $$\overline{\mu}(\cup_{i=1}E_{i})=\mu(\cup_{i=1}^{\infty}V_{i})=\sum_{i=1}^{\infty}\mu(V_{i})=\sum_{i=1}^{\infty}\overline{\mu}(V_{i}\cup Z_{i})=\sum_{i=1}^{\infty}\overline{\mu}(E_{i})$$
+            所以$\overline{\mu}$是个测度.
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>Consider the exterior Lebesgue measure \( m^* \) introduced in Chapter 1. Prove that a set \( E \) in \( \mathbb{R}^d \) is Carathéodory measurable if and only if \( E \) is Lebesgue measurable in the sense of Chapter 1.</p>
+            <p>[Hint: If \( E \) is Lebesgue measurable and \( A \) is any set, choose a \( G_\delta \) set \( G \) such that \( A \subset G \) and \( m^*(A) = m(G) \). Conversely, if \( E \) is Carathéodory measurable and \( m^*(E) < \infty \), choose a \( G_\delta \) set \( G \) with \( E \subset G \) and \( m^*(E) = m^*(G) \). Then \( G - E \) has exterior measure 0.]</p>
+        </div>
+        <div class="Proof-box">
+           Proof: $\Leftarrow$ 如果E是Lebesgue可测集, A是任意集合, 那么根据外测度的定义, 存在一组闭方体$Q_{j}^{k}$满足$$A\subseteq \cup_{j=1}^{\infty}Q_{j}^{k}\qquad m^{\ast}(A)>\sum_{i=1}^{\infty}\lvert Q_{i}^{k}\rvert-\frac{1}{2^{k}}$$
+给$Q_{i}^{k}$涨大一点变成开方体$R_{j}^{k}$, 满足$$\lvert R_{j}^{k}\rvert\leq \lvert Q_{j}^{k}\rvert+\frac{1}{2^{k+j}}$$
+则$A\subseteq \sum_{j=1}^{\infty}R_{j}^{k}$, $$m^{\ast}(A)\geq \sum_{j=1}^{\infty}\lvert Q_{j}^{k}\rvert-\frac{1}{2^{k}}\geq  \sum_{j=1}^{\infty}\lvert R_{j}^{k}\rvert-\frac{1}{2^{k}}-\frac{1}{2^{k}}=\sum_{j=1}^{\infty}\lvert R_{j}^{k}\rvert-\frac{1}{2^{k-1}}$$
+记$$G=\cap_{k=1}^{\infty}[\cup_{j=1}^{\infty}R_{j}^{k}]$$
+G是可数个开集的交, 是一个$G_{\delta}$集且包含A, 所以$m^{\ast}(A)\leq m^{\ast}(G)=m(G)$, 此外$$m(G)\leq \sum_{j=1}^{\infty}\lvert R_{j}^{k}\rvert\leq m^{\ast}(A)+\frac{1}{2^{k-1}}\forall k\geq 1$$
+所以$m(G)=m^{\ast}(A)$. 又$$m^{\ast}(A)=m^{\ast}(G)=m(G)=m(G\cap E)+m(G\cap E^{c})=m^{\ast}(G\cap E)+m^{\ast}(G\cap E^{c})$$
+又根据单调性$$\geq m^{\ast}(A\cap E)+m^{\ast}(A\cap E^{c})$$
+反向的不等号根据次可加性是显然的, 所以E是Carathéodory可测的.
+<p></p>
+$\Rightarrow$ 如果E是Carathéodory可测的.且$m^{\ast}(E)< \infty$, 把上文中的A换成E, 可得存在$G_{\delta}$集G使得$$m^{\ast}(E)=m(G)=m^{\ast}(G)$$
+则根据Carathéodory可测的定义, $$m^{\ast}(G)=m^{\ast}(G\cap E)+m^{\ast}(G\cap E^{c})=m^{\ast}(E)+m^{\ast}(G-E)$$
+所以$$m^{\ast}(G-E)=0$$
+这给出了$E$和一个Lebesgue可测集G相差一个零测集, 所以E也是Lebesgue可测的. 
+
+当$m^{\ast}(E)=\infty$时, 我们知道$m^{\ast}(E\cap B(0,n))< \infty$, 又$B(0,1)$是Lebesgue可测的, 所以根据前面的讨论可得也是Carathéodory可测的, 所以$E\cap B(0,n)$也是Carathéodory可测的, 又外测度有限, 所以是Lebesgue可测的,又$E=\cup_{n=1}^{\infty}E\cap B(0,n)$, 所以E可测
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>Let \( r \) be a rotation of \( \mathbb{R}^d \). Using the fact that the mapping \( x \mapsto r(x) \) preserves Lebesgue measure (see Problem 4 in Chapter 2 and Exercise 26 in Chapter 3), show that it induces a measure-preserving map of the sphere \( S^{d-1} \) with its measure \( d\sigma \).</p>
+            <p>(A converse is stated in Problem 4.)</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 课本3.2给出了$\sigma$的定义:$$\sigma(E)=dm(\widetilde{E})\qquad\widetilde{E}=\{x\in R^{d}\big|\frac{x}{\lvert x\rvert}\in E, 0< \lvert x\rvert< 1\}$$
+并且规定E可测当且仅当$\widetilde{E}$可测. 又根据$\tau$是旋转, 所以$\tau^{-1}$也是旋转, 从而$\tau^{-1}(\tilde{E})$是可测集, 且$$\sigma(\tau^{-1}(E))=dm(\widetilde{\tau^{-1}(E)})\qquad\widetilde{\tau^{-1}(E)}=\{x\in R^{d}\big|\frac{x}{\lvert x \rvert}\in \tau^{-1}(E), 0< \lvert x\rvert< 1\}$$
+又$\lvert \tau(x)\rvert=x$, 且旋转是个双射,所以 $$\{x\in R^{d}\big|\frac{x}{\lvert x \rvert}\in \tau^{-1}(E), 0< \lvert x\rvert< 1\}=\{x\in R^{d}\big|\tau(\frac{x}{\lvert x\rvert})\in E, 0< \lvert x\rvert< 1\}$$
+$$=\tau^{-1}(\{x\in R^{d}\big|\frac{x}{\lvert x\rvert}\in E, 0< \lvert x\rvert< 1\})\tau^{-1}(\widetilde{E})$$
+又根据旋转变换保持Lebesgue测度不变可得$$\sigma(\tau^{-1}(E))=dm(\widetilde{\tau^{-1}(E)})=dm(\tau^{-1}(\widetilde{E}))=\sigma(E)$$
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>Use the polar coordinate formula to prove the following:</p>
+            <ol type="a">
+                <li>\( \int_{\mathbb{R}^d} e^{-\pi|x|^2} dx = 1 \), when \( d = 2 \). Deduce from this that the same identity holds for all \( d \).</li>
+                <li>\( \left( \int_0^\infty e^{-\pi r^2} r^{d-1} dr \right) \sigma(S^{d-1}) = 1 \), and as a result, \( \sigma(S^{d-1}) = 2\pi^{d/2}/\Gamma(d/2) \).</li>
+                <li>If \( B \) is the unit ball, \( v_d = m(B) = \pi^{d/2}/\Gamma(d/2 + 1) \), since this quantity equals \( \left( \int_0^1 r^{d-1} dr \right) \sigma(S^{d-1}) \). (See Exercise 14 in Chapter 2.)</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            注意到根据$S^{1}$上的测度$\sigma$的定义, 我们知道$$\tilde{S^{1}}=\{x\big| \frac{x}{\|x\|}\in S^{1},0< \lvert x\rvert< 1\}$$
+            而$$m(\{x\big| \frac{x}{\|x\|}\in S^{1},0< \lvert x\rvert< 1\})=m(B(0,1))-m(\{(0,0)\})=m(B(0,1))=\pi$$
+            其中最后一个等号来自第二章Exercise 14.
+            从而$\sigma(S^{1})=dm(\tilde{S^{1}})=2\pi$, 然后根据极坐标可得$$\int_{R^{2}}e^{-\pi\lvert x\rvert^{2}}\,dx=2\pi\int_{0}^{\infty}re^{-\pi r^{2}}\,dr=-\int_{0}^{\infty}\,d(e^{-2\pi r^{2}})=1$$
+            倒数第二个等号来自Lebesgue积分的变量代换公式.
+
+            根据对称性, $$\int_{R^{2}}e^{-\pi \lvert x\rvert^{2}}\,dx=4\int_{[0,\infty)\times[0,\infty)}e^{-\pi  (x_{1}^{2}+x_{2}^{2})}\,dx_{1}dx_{2}=4\int_{0}^{\infty}e^{-\pi x^{2}}\,dx\int_{0}^{\infty}e^{-\pi y^{2}}\,dy=4(\int_{0}^{\infty}e^{-\pi x^{2}}\,dx)^{2}$$
+            因此$$\int_{0}^{\infty}e^{-\pi x^{2}}\,dx=\frac{1}{2}\qquad \int_{R^{2}}e^{-\pi\lvert x\rvert^{2}}=1$$
+            又$$\int_{R^{d}}e^{-\pi \lvert x\rvert^{2}}\,dx=\int_{R^{d}}e^{-\pi \sum_{i=1}^{d}x_{i}^{2}}\,dx_{1}\cdots \,dx_{d}=\prod_{i=1}^{d}\int_{R}e^{-\pi x_{i}^{2}}\,dx_{i}=1$$
+            <h4>(b)</h4>
+            极坐标可得$$1=\int_{R^{d}}e^{-\pi \lvert x\rvert^{2}}\,dx=\sigma(S^{d-1})\int_{0}^{\infty}r^{d-1}e^{-\pi r^{2}}\,dr=\sigma(S^{d-1})\int_{0}^{\infty}e^{-t}t^{\frac{d-1}{2}}\frac{1}{\sqrt{\pi^{d-1}}}\frac{1}{2\sqrt{\pi t}}\,dt=
+            \sigma(S^{d-1})\frac{\Gamma(\frac{d}{2})}{2\pi^{\frac{d}{2}}}$$
+            <h4>(c)</h4>
+            $$m(B)=\int_{R^{d}}\mathcal{X}_{B(0,1)}\,dx=\int_{S^{d-1}}\int_{0}^{1}r^{d-1}\,dr\,d\sigma=\frac{\sigma(S^{d-1})}{d}=\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2})\frac{d}{2}}=\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2}+1)}$$
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>
+                A version of Green's formula for the unit ball \( B \) in \( \mathbb{R}^d \) can be stated as follows. Suppose \( u \) and \( v \) are a pair of functions that are in \( C^2(\overline{B}) \). Then one has
+                \[
+                \int_B (v\Delta u - u\Delta v) dx = \int_{S^{d-1}} \left( v \frac{\partial u}{\partial n} - u \frac{\partial v}{\partial n} \right) d\sigma.
+                \]
+                Here \( S^{d-1} \) is the unit sphere with \( d\sigma \) the measure defined in Section 3.2, and \( \partial u/\partial n \), \( \partial v/\partial n \) denote the directional derivatives of \( u \) and \( v \) (respectively) along the inner normals to \( S^{d-1} \).
+            </p>
+            <p>Show that the above can be derived from Lemma 4.5 of the previous chapter by taking \( \eta = \eta_\epsilon^+ \) and letting \( \epsilon \to 0 \).</p>
+        </div>
+        <div class="Proof-box">
+            Proof:单位外法向量和内法向量差一个负号, 所以我们证明$\frac{\partial u}{\partial n},\frac{\partial v}{\partial n}$是外法向导数的情形, 此时只需证
+$$\int_{B}v\triangle u-u\triangle v\,dx=-\int_{S^{d-1}}u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\,d\sigma$$
+根据第五章的Lemma 4.5, $$\int_{B}(v\triangle u-u\triangle v)\eta\,dx=\int_{B}u(\triangledown v\cdot\triangledown\eta)-v(\triangledown u\cdot\triangledown\eta)\,dx$$
+考虑第五章给出的$$\eta_{\epsilon}^{+}=\mathcal{X}(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})=\begin{cases}
+	1&\lvert x\rvert< 1-\epsilon\\
+	0&\lvert x\rvert\geq 1\\
+	
+\end{cases}\qquad\eta_{\epsilon}^{+}\in C^{\infty}(R^{d}),\lvert \triangledown\eta_{\epsilon}^{+}(x)\rvert\leq \frac{c}{\epsilon}$$
+注意到$$\frac{\partial\eta_{\epsilon}^{+}}{\partial x_{i}}=\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\frac{x_{i}}{\lvert x\rvert}$$
+
+那么$$\int_{B}u(\triangledown v\cdot\triangledown\eta_{\epsilon}^{+})-v(\triangledown u\cdot\triangledown\eta_{\epsilon}^{+})\,dx=\int_{1-\epsilon\leq \lvert x\rvert< 1}u(x)\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\sum_{i=1}^{d}\frac{\partial v}{\partial x_{i}}\frac{x_{i}}{\lvert x\rvert}-v(x)\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\sum_{i=1}^{d}\frac{\partial u}{\partial x_{i}}\frac{x_{i}}{\lvert x\rvert}\,dx$$
+用极坐标变换$$=\int_{S^{d-1}}\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{r^{d-1}}{\epsilon}(u(r\gamma ) \triangledown v(r\gamma)\cdot \gamma-v(r\gamma )\triangledown u(r\gamma)\cdot\gamma)\,drd\sigma$$
+根据$u,v\in C^{2}(\overline{B})$, 所以$u,v$及其前二阶偏导数都是在$\overline{B}$上一致连续的, 又$\lvert r\gamma-\gamma\rvert=1-r$,  从而可得对任何$\delta>0$, 存在$\epsilon_{0}$使得当$\epsilon< \epsilon_{0}$时, $$\lvert r^{d-1}(u(r\gamma ) \triangledown v(r\gamma)\cdot \gamma-v(r\gamma )\triangledown u(r\gamma)\cdot\gamma)- (u(\gamma ) \triangledown v(\gamma)\cdot \gamma-v(\gamma )\triangledown u(\gamma)\cdot\gamma)\rvert< \delta\qquad\forall\gamma\in S^{d-1}$$
+这给出了$$\lvert \int_{1-\epsilon}^{1}\mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\frac{r^{d-1}}{\epsilon}(u(r\gamma ) \triangledown v(r\gamma)\cdot \gamma-v(r\gamma )\triangledown u(r\gamma)\cdot\gamma)\,dr-\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\frac{1}{\epsilon}(u(\gamma ) \triangledown v(\gamma)\cdot \gamma-v(\gamma )\triangledown u(\gamma)\cdot\gamma)\,dr\rvert$$
+$$\leq \delta\int_{1-\epsilon}^{1}\lvert \mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\rvert\frac{1}{\epsilon}\,dr=\delta \|\mathcal{X}\|_{C^{2}([0,1])}\int_{1-\epsilon}^{1}\frac{1}{\epsilon}\,dr=\delta \|\mathcal{X}\|_{C^{2}([0,1])}$$
+又根据法向导数的定义, 我们知道在$S^{d-1}$的每一点$\gamma$处, 此处的单位外法向量正是$\gamma$, 所以$\triangledown v\cdot\gamma=\frac{\partial v}{\partial n},\triangledown u\cdot\gamma=\frac{\partial u}{\partial n}$, 所以当$\epsilon< \epsilon_{0}$时, 有$$\lvert\int_{S^{d-1}}\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{r^{d-1}}{\epsilon}(u(r\gamma ) \triangledown v(r\gamma)\cdot \gamma-v(r\gamma )\triangledown u(r\gamma)\cdot\gamma)\,drd\sigma-$$
+$$\int_{S^{-1}}\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\frac{1}{\epsilon}(u(\gamma ) \frac{\partial v}{\partial n}-v(\gamma )\frac{\partial u}{\partial n})\,dr\,d\sigma\rvert$$
+$$\leq \|\mathcal{X}\|_{C^{2}([0,1])}\delta\int_{S^{d-1}}\,d\sigma=C\delta$$
+又$$\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\frac{1}{\epsilon}(u(\gamma ) \frac{\partial v}{\partial n}-v(\gamma )\frac{\partial u}{\partial n})\,dr=(u(\gamma ) \frac{\partial v}{\partial n}-v(\gamma )\frac{\partial u}{\partial n})\int_{1-\epsilon}^{1}\mathcal{X}'(\frac{r-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\,dr$$
+根据Lebesgue积分的变量代换公式
+$$=(u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n})\int_{0}^{1}\mathcal{X}'(t)\,dt=-(u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n})$$
+从而$$\lim_{\epsilon \rightarrow0}\int_{1-\epsilon\leq \lvert x\rvert< 1}u(x)\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\sum_{i=1}^{d}\frac{\partial v}{\partial x_{i}}\frac{x_{i}}{\lvert x\rvert}-v(x)\mathcal{X}'(\frac{\lvert x\rvert-1+\epsilon}{\epsilon})\frac{1}{\epsilon}\sum_{i=1}^{d}\frac{\partial u}{\partial x_{i}}\frac{x_{i}}{\lvert x\rvert}\,dx=-\int_{S^{d-1}}u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\,d\sigma$$
+另一方面根据DCT可立即得到$$\int_{B}(v\triangle u-u\triangle v)\eta_{\epsilon}^{+}\,dx\rightarrow\int_{B}v\triangle u-u\triangle v\,dx$$
+所以$$\int_{B}v\triangle u-u\triangle v\,dx=-\int_{S^{d-1}}u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\,d\sigma$$
+        </div>
+
+        <!-- Exercise 7 -->
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>
+                There is an alternate version of the mean-value property given in (21) of Chapter 5. It can be stated as follows. Suppose \( u \) is harmonic in \( \Omega \), and \( B \) is any ball of center \( x_0 \) and radius \( r \) whose closure is contained in \( \Omega \). Then
+                \[
+                u(x_0) = c \int_{S^{d-1}} u(x_0 + ry) d\sigma(y), \quad \text{with } c^{-1} = \sigma(S^{d-1}).
+                \]
+                Conversely, a continuous function satisfying this mean-value property is harmonic.
+            </p>
+            <p>[Hint: This can be proved as a direct consequence of the corresponding result for averages over balls (Theorem 4.27 in Chapter 5), or can be deduced from Exercise 6.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 因为$\overline{B}\subseteq\Omega$, 所以$\lvert Du(x_{0}+ry)\rvert$关于$r< 1,y\in S^{d-1}$是一致有界的, 又$$\lvert u(x_{0}+ry)-u(x_{0}+ty)\rvert=\lvert y\cdot \triangledown u(x_{0}+\xi y)\rvert\lvert r-t\rvert\qquad \xi\in(t,r)$$
+即对任何$t$, $$\frac{u(x_{0}+ry)-u(x_{0}+ty)}{r-t}$$都是一致有界的,
+因此根据DCT, $$\frac{d}{dr}\int_{S^{d-1}}u(x_{0}+ry)\,d\sigma(y)=\int_{S^{d-1}}y\cdot\triangledown u(x_{0}+r y)\,d\sigma(y)=\int_{S^{d-1}}\frac{\partial u(x_{0}+ry)}{\partial n}\,d\sigma(y)$$
+令$v=1$, $u=u(x_{0}+r x)$, 然后用Exercise 6(本题记$\frac{\partial }{\partial n}$是对单位外法向量的方向导数), 可得$$\frac{d}{dr}\int_{S^{d-1}}u(x_{0}+ry)\,d\sigma(y)=0$$
+因此这个积分和r是无关的,又关于r可微, 所以关于r连续,  因此令$r\rightarrow0$, 可得$$u(x_{0})=\frac{1}{\sigma(S^{d-1})}\int_{S^{d-1}}u(x_{0})\,d\sigma(y)$$
+所以$$u(x_{0})=\frac{1}{\sigma(S^{d-1})}\int_{S^{d-1}}u(x_{0}+ry)\,d\sigma(y)$$
+        </div>
+
+        <!-- Exercise 8 -->
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>The fact that the Lebesgue measure is uniquely characterized by its translation invariance can be made precise by the following assertion: If \( \mu \) is a Borel measure on \( \mathbb{R}^d \) that is translation-invariant, and is finite on compact sets, then \( \mu \) is a multiple of Lebesgue measure \( m \). Prove this theorem by proceeding as follows.</p>
+            <ol type="a">
+                <li>Suppose \( Q_a \) denotes a translate of the cube \( \{x : 0 < x_j \leq a, j = 1, 2, \dots, d\} \) of side length \( a \). If we let \( \mu(Q_1) = c \), then \( \mu(Q_{1/n}) = c n^{-d} \) for each integer \( n \).</li>
+                <li>As a result \( \mu \) is absolutely continuous with respect to \( m \), and there is a locally integrable function \( f \) such that \( \mu(E) = \int_E f dx \).</li>
+                <li>By the differentiation theorem (Corollary 1.7 in Chapter 3) it follows that \( f(x) = c \) a.e., and hence \( \mu = c m \).</li>
+            </ol>
+            <p>[Hint: \( Q_1 \) can be written as a disjoint union of \( n^d \) translates of \( Q_{1/n} \).]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            设$$Q_{1}=\prod_{i=1}^{d}(a_{i},a_{i}+1]$$
+            设$$Q_{i_{1}\cdots i_{d}}=\prod^{d}(a_{i}+\frac{i_{1}-1}{n},a_{i}+\frac{i_{1}}{n}]\qquad 1\leq i_{j}\leq n$$
+            那么不同的$Q_{i_{1}\cdots i_{d}}$互不相交, 且并集是$Q_{1}$, 根据测度的平移不变性和可数可加性$$c=n^{d}\mu(Q_{i_{1}\cdots i_{d}})=n^{d}\mu(Q_{\frac{1}{n}})\qquad\mu(Q_{\frac{1}{n}})=cn^{-d}$$
+            <h4>(b)</h4>
+            根据(a)的结论, 我们知道一个$Q_{\frac{m}{n}}$能表示成$m^{d}$个互不相交的$Q_{\frac{1}{n}}$的并集, 事实上设$Q_{\frac{m}{n}}=\prod_{i=1}^{d}(a_{i},a_{i}+\frac{m}{n}]$, 则下列互不相交的方通$$Q_{i_{1}\cdots i_{d}}=\prod_{j=1}^{d}(a_{j}+\frac{i_{j}-1}{n},a_{i}+\frac{i_{j}}{n}]\qquad 1\leq i_{j}\leq m$$
+            满足$$Q_{\frac{m}{n}}=\cup_{i_{1}\cdots i_{d}}Q_{i_{1}\cdots i_{d}}$$
+            因此, $$\mu(Q_{\frac{m}{n}})=c(\frac{m}{n})^{d}$$
+            所以$$\mu(Q_{a})=ca^{d}=cm(Q_{a})$$
+            对所有有理数成立.
+
+            对任何Lebesgue零测集E, 任取$\epsilon>0$, 都存在一组覆盖E的闭方体$Q_{i}=\prod_{j=1}^{d}[a_{j},b_{j}]$满足$$\sum_{i=1}^{\infty}\lvert Q_{i}\rvert< \epsilon$$
+            把这组方体按中心点涨大成形如(a)中的左开右闭的方体:$$R_{i}=\prod_{j=1}^{d}(a_{j}-\delta_{i},b_{j}+\delta_{i}]$$
+            我们知道$m(R_{i})$是关于$\delta_{i}$的多项式, 所以关于$\delta_{i}$连续, 取足够小的$\delta_{i}$满足$$m(R_{i})< m(Q_{i})+\frac{\epsilon}{2^{i}}$$
+            且$R_{i}$的边长是有理数(根据连续函数的介值性这可以做到),
+            那么$$\sum_{i=1}^{\infty}\lvert R_{i}\rvert< 2\epsilon$$
+
+            因此$$\mu(E)\leq\sum_{i=1}^{\infty}\mu(R_{i})=c\sum_{i=1}^{\infty}m(R_{i})=c2\epsilon$$
+            根据$\epsilon$的任意性, $\mu(E)=0$, 所以$\mu<< m$.
+
+            使用Radon-Nikodym定理可得存在局部可积的函数f满足$$\mu(E)=\int_{E}f\,dx$$
+            <h4>(c)</h4>
+            对a.e.的x, 我们考虑以x为中心且边长为$\frac{1}{2^{k}}$的方体$V_{k}$, 这是一组shrink regularly的集合, 因此根据第三章Corollary 1.7, 对a.e.的x(a.e.的x都是f的Lebesgue点), 都有$$c=\lim_{k \to \infty}c\frac{1}{2^{kd}}\frac{1}{m(V_{k})}=\lim_{k \to \infty}\frac{1}{m(V_{k})}\int_{V_{k}}f\,dx\rightarrow f(x)$$
+        </div>
+
+        <!-- Exercise 9 -->
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>Let \( C([a, b]) \) denote the vector space of continuous functions on the closed and bounded interval \( [a, b] \). Suppose we are given a Borel measure \( \mu \) on this interval, with \( \mu([a, b]) < \infty \). Then \( f \mapsto \ell(f) = \int_a^b f(x) d\mu(x) \) is a linear functional on \( C([a, b]) \), with \( \ell \) positive in the sense that \( \ell(f) \geq 0 \) if \( f \geq 0 \).</p>
+            <p>Prove that, conversely, for any linear functional \( \ell \) on \( C([a, b]) \) that is positive in the above sense, there is a unique finite Borel measure \( \mu \) so that \( \ell(f) = \int_a^b f d\mu \) for \( f \in C([a, b]) \).</p>
+            <p>
+                [Hint: Suppose \( a = 0 \) and \( u \geq 0 \). Define \( F(u) = \lim_{\epsilon \to 0} \ell(f_\epsilon) \), where
+                \[
+                f_\epsilon(x) =
+                \begin{cases}
+                1 & \text{for } 0 \leq x \leq u, \\
+                0 & \text{for } u + \epsilon \leq x \leq b,
+                \end{cases}
+                \]
+                and \( f_\epsilon \) is linear between \( u \) and \( u + \epsilon \). (See Figure 3.) Then \( F \) is increasing and right-continuous, and \( \ell(f) \) can be written as \( \int_a^b f(x) dF(x) \) via Theorem 3.5.]
+            </p>
+            <p>The result also holds if \( [a, b] \) is replaced by a closed infinite interval; we then assume that \( \ell \) is defined on the continuous functions of bounded support, and obtain that the resulting \( \mu \) is finite on all bounded intervals. A generalization is given in Problem 5.</p>
+            <div style="text-align: center;">
+                <img src="figs/C6F3.png" width="20%">
+
+            </div>        
+        </div>
+        <div class="Proof-box">
+            Proof: 首先这个极限存在, 因为$\ell(f_{\epsilon})$是递减序列.
+固定$u_{1}< u_{2}< b-a$, 则$$F(u_{2})-F(u_{1})=\lim_{\epsilon \rightarrow0}\ell(g_{\epsilon})$$
+而当$\epsilon< u_{2}-u_{1},\epsilon< b-u_{2}$时, 有
+$$g_{\epsilon}=\begin{cases}
+	1&x\in[u_{1}+\epsilon,u_{2}]\\
+	linear&else
+\end{cases}$$
+因此根据$\ell$的非负性可得$$F(u_{2})-F(u_{1})=\lim_{\epsilon \rightarrow0}\ell(g_{\epsilon})\geq 0$$
+从而F单增. 另一方面固定$u_{1}< b-a$, 那么对任何$\delta>0$, 存在$\epsilon_{1}$满足对任何$\epsilon\leq \epsilon_{1}$, 都有$$F(u_{1})\geq \ell(f_{\epsilon})-\delta$$
+
+因此$$F(u_{2})-F(u_{1})\leq \lim_{\epsilon \rightarrow0}\ell(g_{\epsilon}-f_{\epsilon_{1}})+\delta$$
+然后我们任取$u_{2}$满足$0< u_{2}-u_{1}< \epsilon_{1}\delta$, 按如下方式确定$\epsilon_{2}$: $$0< u_{1}+\epsilon_{1}-u_{2}-\epsilon_{2}=u_{2}-u_{1}\qquad\epsilon_{2}=\epsilon_{1}-2\delta\epsilon_{1}< \epsilon_{1}-\epsilon_{1}\delta$$
+显然在$\delta$足够小时是可行的, 此时根据$\lim_{\delta\rightarrow0}\ell(g_{\epsilon})$是递减序列可得$$0\leq F(u_{2})-F(u_{1})\leq \ell(g_{\epsilon_{2}}-f_{\epsilon_{1}})+\delta$$
+此时$g_{\epsilon_{2}}-f_{\epsilon_{1}}$是一个在$[u_{1},u_{2}]$上从0开始递减, 在$[u_{2},u_{1}+\epsilon_{1}]$上递增, 在$[u_{1}+\epsilon_{1},u_{2}+\epsilon_{2}]$上递减到0, 其他地方为0的函数. 其极值点只可能在两个弯折处取到, 即$$max\{\frac{\lvert u_{2}-u_{1}\rvert}{\epsilon_{1}},\frac{\lvert u_{1}+\epsilon_{1}-u_{2}-\epsilon_{2}\rvert}{\epsilon_{1}} \}=max\{\frac{\lvert u_{2}-u_{1}\rvert}{\epsilon_{1}},\frac{\lvert u_{2}-u_{1}\rvert}{\epsilon_{1}} \}\leq \delta$$
+这给出了$$\|g_{\epsilon_{2}}-f_{\epsilon_{1}}\|_{C([0,b-a])}=\delta$$
+然后我们证明$\ell$是连续线性泛函. 事实上根据连续函数的正部和负部还连续, 且$\lvert f^{\pm}\rvert\leq\lvert f\rvert$可以知道$$\lvert \ell(f)\rvert=\lvert \ell(f^{+})-\ell(f^{-})\rvert\leq \lvert \ell(f^{+})\rvert+\lvert \ell(f^{-})\rvert$$
+$$=\|f\|\ell(\frac{f^{+}}{\|f\|})+\|f\|\ell(\frac{f^{-}}{\|f\|})$$
+而$\lvert \frac{f^{\pm}}{\|f\|}\rvert\leq 1$, 所以根据$\ell$的非负性可得$\ell(1-\frac{f^{\pm}}{\|f\|})\geq 0$, 从而$$\lvert \ell(f)\rvert\leq 2\ell(1)\|f\|_{C([0,b-a])}$$
+这给出了对任何$\delta>0$, 存在只和$\delta$有关的$\epsilon_{1}$, 从而存在只和$\delta$有关的$\eta=\epsilon_{1}\delta$, 满足当$0< u_{2}-u_{1}< \eta$时, $$F(u_{2})-F(u_{1})\leq 2\ell(1)\delta+\delta$$
+从而F右连续.
+
+因此根据Theorem 3.5, 存在R上的唯一的Borel测度$\mu$, 满足$$\mu((x,y])=F(y)-F(x)$$
+又$\mu((a,b))=F(b)-F(a)=F(b)=\ell(1)$, 所以$\mu$是有限的Borel测度. 另一方面, 对任何$x< y,x,y\in[a,b]$, 都有$$\int_{a}^{b}\mathcal{X}_{(x,y]}\,d\mu=\mu((x,y])=\lim_{\epsilon \rightarrow0}\ell(f_{\epsilon}-g_{\epsilon})=\lim_{\epsilon \rightarrow0}\ell(h_{\epsilon})$$
+其中$h_{\epsilon}$是一个梯形函数, 当$x>a,y< b$时, 在$[x,x+\epsilon,y]$上递增, 在$[x+\epsilon,y]$上为1, 在$[y,y+\epsilon]$上递减到0. 当$x=a,y< b$时, 在$[x,y]$上为1, 在$[y,y+\epsilon]$上递减到0.
+当$x>a,y=b$时, 在$[x,x+\epsilon,y]$上递增, 在$[x+\epsilon,y]$上为1.当$x=a,y=b$时, 恒为1.
+
+再根据有界闭区间上的连续函数必定一致连续, 任给一个$\delta$, 存在$\eta$使得$$\lvert f(x)-f(y)\rvert< \delta\qquad\lvert x-y\rvert< \eta$$
+取N满足$\frac{b-a}{N}< \frac{\eta}{2}$, 把$[a,b]$切分成$N$份, 任取$v_{i}\in (a+\frac{i(b-a)}{N},a+\frac{(i+1)(b-a)}{N}]=(x_{i},y_{i}],0\leq i\leq N-1$, 则$$\int_{a}^{b}\sum_{i=0}^{N-1}f(v_{i})\mathcal{X}_{(x_{i},y_{i}]}\,d\mu=\sum_{i=0}^{N-1}f(v_{i})\lim_{\epsilon \rightarrow0}\ell(h^{i}_{\epsilon})=\lim_{\epsilon \rightarrow0}\ell(\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon})$$
+其中$h_{\epsilon}^{i}$是前文提到的梯形函数. 那么根据一致连续性, $$\lvert \int_{a}^{b}\sum_{i=0}^{N-1}f(v_{i})\mathcal{X}_{(x_{i},y_{i}]}\,d\mu-\int_{a}^{b}f(x)\,d\mu\rvert< \int_{a}^{b}\delta\,d\mu=\ell(1)\delta$$
+当$i\geq 1$时, 
+而$\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}$在$[x_{j}+\epsilon,y_{j}]$上取值为$f(v_{j})$, 所以和$f(x)$的差的绝对值不超过$\delta$.
+
+当$i=0$时, $\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}$在$[0,y_{0}]$上取值为$f(v_{0})$, 和$f(x)$的差的绝对值不超过$\delta$. 因此$\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}$在$[0,y_{1}]\cup\cup_{i=1}^{N-1}[x_{i}+\epsilon,y_{i}]$上与$f$的差的绝对值不超过$\delta$(因为$h_{\epsilon}^{0}$遵循前文提到的区间左端点为a的情况, 这时左边没有线性的片段.).
+
+然后只需看其他部分. 也就是形如$[y_{j},y_{j}+\epsilon]$的部分.此时
+$\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}$在$[y_{j},y_{j}+\epsilon]=[y_{j},x_{j+1}+\epsilon]$上满足$$\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}(x)=(1-\frac{x-y_{j}}{\epsilon})f(v_{j})+\frac{x-x_{j+1}}{\epsilon}f(v_{j+1})\qquad x_{j+1}=y_{j}$$
+又$\frac{b-a}{N}< \frac{\eta}{2}$, 所以$\lvert f(v_{j+1})-f(x)\rvert< \delta,\lvert f(v_{j})-f(x)\rvert< \delta$对任何$x\in [y_{j},y_{j}+\epsilon]$成立.  这给出了$$\lvert \sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}(x)-f(x)\rvert\leq (1-\frac{x-y_{j}}{\epsilon})\delta+\frac{x-x_{j+1}}{\epsilon}\delta=\delta$$
+
+从而在$[a,b]$上, $$\lvert \sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}(x)-f(x)\rvert\leq \delta\qquad\forall x\in[a,b]$$
+因此$$\lvert \ell(\sum_{i=0}^{N-1}f(v_{i})h^{i}_{\epsilon}-f)\rvert< 2\ell(1)\delta$$
+从而两边取极限可得$$\int_{a}^{b}f(x)\,d\mu=\ell(f)\qquad\forall f\in C([a,b])$$
+        </div>
+
+        <!-- Exercise 10 -->
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>Suppose \( \nu, \nu_1, \nu_2 \) are signed measures on \( (X, \mathcal{M}) \) and \( \mu \) a (positive) measure on \( \mathcal{M} \). Using the symbols \( \perp \) and \( \ll \) defined in Section 4.2, prove:</p>
+            <ol type="a">
+                <li>If \( \nu_1 \perp \mu \) and \( \nu_2 \perp \mu \), then \( \nu_1 + \nu_2 \perp \mu \).</li>
+                <li>If \( \nu_1 \ll \mu \) and \( \nu_2 \ll \mu \), then \( \nu_1 + \nu_2 \ll \mu \).</li>
+                <li>\( \nu_1 \perp \nu_2 \) implies \( |\nu_1| \perp |\nu_2| \).</li>
+                <li>\( \nu \ll |\nu| \).</li>
+                <li>If \( \nu \perp \mu \) and \( \nu \ll \mu \), then \( \nu = 0 \).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            设$\nu_{1},\mu$满足$$\nu_{1}(E\cap A)=\nu_{1}(E)\qquad \mu(E\cap B)=\mu(E)\qquad A\cap B=\emptyset$$
+            $$\nu_{1}(E\cap C)=\nu_{1}(E)\qquad \mu(E\cap D)=\mu(E)\qquad C\cap D=\emptyset$$
+            那么$A,C$都是$\mu$的零测集, 且$\mu(D)=\mu(B)=\mu(X)$, 由此我们可以看出
+            $$\nu_{1}(E)+\nu_{2}(E)=\nu_{1}(E\cap A)+\nu_{2}(E\cap C)=\nu_{1}(E\cap( A\cup C)\cap A)+\nu_{2}(E\cap (A\cup C)\cap C)=\nu_{1}(E\cap( A\cup C))+\nu_{2}(E\cap (A\cup C))$$
+            $$\mu(E)=\mu(E\cap B\cap D)\qquad (B\cap D)\cap(A\cup C)=\emptyset$$
+            因此$\nu_{1}+\nu_{2}\perp \mu$
+            <h4>(b)</h4>
+            用Radon-Nikodym定理, 根据唯一性可得存在$f,g\in L^{1}(X,\mu)$满足$$\nu_{1}(E)=\int_{E}f\,d\mu\qquad \nu_{2}(E)=\int_{E}g\,d\mu$$
+            因此$$\nu_{1}(E)+\nu_{2}(E)=\int_{E}f+g\,d\mu$$
+            所以$\mu(E)=0$时必有$\nu_{1}(E)+\nu_{2}(E)=0$, 从而$\nu_{1}+\nu_{2}<< \mu$
+            <h4>(c)</h4>
+            这道题从Jordan分解的角度入手会容易一些. 我们先证明课本的$\lvert \nu\rvert$和通过Jordan分解给出的$\lvert \nu\rvert$是一样的, 为了不引起混淆, 我们把Jordan分解给出的$\nu^{\pm},\lvert \nu\rvert$记为$\mu^{\pm},\lvert \mu\rvert$. 根据Hahn分解定理, 存在$P,E$使得$X=P\cup N,P\cap N=\emptyset$, 满足对任何可测子集$F\subseteq P, K\subseteq N$, 都有$$\mu(F)\geq0\qquad \mu(K)\leq 0$$
+            然后定义$\mu^{+}(E)=\nu(E\cap P),\mu^{-}(E)=\nu(E\cap N)$, 显然$\nu=\mu^{+}-\mu^{-}$. 则依据课本的定义, 我们知道$$\lvert \nu\rvert(E)=sup\sum_{i=1}\lvert \nu(E_{i})\rvert$$
+            其中上确界取遍满足$E=\cup_{j=1}^{\infty}E_{j},E_{j}\cap E_{i}=\emptyset,E_{i}\in\mathcal{M}$的所有覆盖, 而对任意一组这样的覆盖, 我们都有$$\sum_{i=1}\lvert \nu(E_{i})\rvert=\sum_{i=1}\lvert \nu(E_{i}\cap P)+\nu(E_{i}\cap N)\rvert\leq \sum_{i=1} \lvert \nu(E_{i}\cap P)\rvert+\lvert \nu(E_{i}\cap N)\rvert=\sum_{i=1} \nu(E_{i}\cap P)-\nu(E_{i}\cap N)$$
+            $$=\sum_{i=1}^{\infty}\mu^{+}(E_{i})-\mu^{-}(E_{i})=\sum_{i=1}^{\infty}\lvert \mu\rvert(E_{i})=\lvert \mu\rvert(E)$$
+            所以$\lvert \nu\rvert\leq\lvert \mu\rvert$. 另一方面, 显然$$\lvert \nu\rvert(E)\geq \lvert \nu(E\cap P)\rvert+\lvert \nu(E\cap N)\rvert=\mu^{+}(E)+\mu^{-}(E)=\lvert \mu\rvert(E)$$
+            所以$$\lvert \mu\rvert=\lvert \nu\rvert$$
+            又$\nu=\mu^{+}-\mu^{-}$, 所以也可得到$\mu^{\pm}=\frac{1}{2}(\lvert \nu\rvert\pm\nu)$, 所以无论是$\nu^{\pm}$还是$\lvert \nu\rvert$, 两种定义都是统一的.
+
+            设$\nu_{1}$的支集为A, 我们证明$\nu_{1}^{\pm}\perp\nu_{2}$, 事实上$$\nu_{1}^{+}(E)=\nu_{1}(E\cap P)=\nu_{1}(E\cap P\cap A)=\nu_{1}^{+}(E\cap A)$$
+            $$\nu_{1}^{-}(E)=\nu_{1}(E\cap N)=\nu_{1}(E\cap N\cap A)=\nu_{1}^{-}(E\cap A)$$
+            这意味着$\nu_{1}^{\pm}$的支集也是A. 所以$$\nu_{1}^{\pm}\perp\nu_{2}$$
+            从而根据(a)可得$\lvert \nu_{1}\rvert\perp\nu_{2}$.
+
+            从而$\nu_{2}\perp\lvert \nu_{1}\rvert$, 然后把前文的$\nu_{2}$改成$\lvert\nu_{1}\rvert$, $\nu_{1}$改成$\lvert \nu_{2}\rvert$, 可得$$\lvert \nu_{2}\rvert\perp\lvert \nu_{1}\rvert$$
+
+
+            <h4>(d)</h4>
+            当$\lvert \nu\rvert(E)=0$时, 根据$\lvert \nu(E)\rvert\leq \lvert \nu\rvert(E)$可知$\nu(E)=0$, 所以$\nu<< \lvert \nu\rvert$
+
+            <h4>(e)</h4>
+            根据Radon-Nikodym定理,存在$f\in L^{1}(X,\mu)$满足$$\nu(E)=\int_{E}f\,d\mu$$
+            根据$\nu\perp\mu$可得存在$\mu-$零测集A满足$\nu$支撑在A上, 所以$A^{c}$的可测子集对$\nu$来说都是零测集, 但是对A的任意可测子集B, 必有$$\nu(B)=\int_{B}f\,d\mu=0$$
+            所以A,$A^{c}$的可测子集都是$\nu-$零测集, 所以
+            所以$$\nu(E)=\nu(E\cap A)+\nu(E\cap A^{c})=0+0=0\qquad\forall E\in\mathcal{M}$$
+        </div>
+
+        <!-- Exercise 11 -->
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Suppose that \( F \) is an increasing normalized function on \( \mathbb{R} \), and let \( F = F_A + F_C + F_J \) be the decomposition of \( F \) in Exercise 24 in Chapter 3; here \( F_A \) is absolutely continuous, \( F_C \) is continuous with \( F_C' = 0 \) a.e, and \( F_J \) is a pure jump function. Let \( \mu = \mu_A + \mu_C + \mu_J \) with \( \mu, \mu_A, \mu_C \), and \( \mu_J \) the Borel measures associated to \( F, F_A, F_C \), and \( F_J \), respectively. Verify that:</p>
+            <ol type="i">
+                <li>\( \mu_A \) is absolutely continuous with respect to Lebesgue measure and \( \mu_A(E) = \int_E F'(x) dx \) for every Lebesgue measurable set \( E \).</li>
+                <li>As a result, if \( F \) is absolutely continuous, then \( \int f d\mu = \int f dF = \int f(x)F'(x) dx \) whenever \( f \) and \( fF' \) are integrable.</li>
+                <li>\( \mu_C + \mu_J \) and Lebesgue measure are mutually singular.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(i)</h4>
+            回忆对任何a, $F_{A}(x)=F(a)+\int_{a}^{x}F'(t)\,dt$, 因此$$\mu_{A}((a,b])=F_{A}(b)-F_{A}(a)=\int_{a}^{b}F'(t)\,dt=\int_{R}\mathcal{X}_{(a,b]}F'(x)\,dx$$且根据$F_{A}$的绝对连续性, 可得$$\mu_{A}([a,b])=\lim_{n \rightarrow\infty}\mu_{A}((a-\frac{1}{n},b])=F_{A}(b)-\lim_{n \rightarrow\infty}F_{A}(a-\frac{1}{n})=\int_{R}\mathcal{X}_{[a,b]}F'(x)\,dx$$
+            对左开右闭和左闭右开是同理的, 因为$F_{A}$是绝对连续函数. 从而$$\mu_{A}(E)=\int_{E}F'(x)\,dx$$
+            对所有类型的区间都成立. 而有限个互不相交的区间的并集的全体构成一个algebra, 记为$\mathcal{A}$. 又如果$E_{i}=\cup_{j=1}^{N_{i}}I_{j}^{i}\in\mathcal{A}$(注意根据$\mathcal{A}$的定义$I_{j}^{i}$互不相交), 且$E_{i}\cap E_{j}=\emptyset, E=\cup_{i=1}^{\infty}E_{i}\in\mathcal{A}$, 那么$$E=\cup_{i,j}I_{j}^{i}\qquad I_{j}^{i}\cap I_{p}^{q}\;if\; (i-q)(j-p)\neq 0$$
+            所以根据测度的可数可加性$$\mu_{A}(E)=\sum_{i=1}^{\infty}\sum_{j=1}^{N_{i}}\mu_{A}(I_{j}^{i})=\sum_{i=1}^{\infty}\sum_{j=1}^{N_{i}}\int_{I_{j}^{i}}F'(x)\,dx=\int_{E}F'(x)\,dx$$
+            注意到$\nu(E)=\int_{E}F'(x)\,dx$也是个测度, $\nu,\mu_{A}$在$\mathcal{A}$上相等, 且$\mu_{A},\nu$二者都是$\sigma$有限的, 所以Theorem 1.5给出了$\mu=\nu$, 从而$$\mu_{A}(E)=\int_{E}F'(x)\,dx$$
+            从而显然$\mu_{A}<< m$
+            <h4>(ii)</h4>
+            如果F是绝对连续的, 那么存在常数C满足$F_{A}=F+C$, 这是因为$F_{C}+F_{J}=F-F_{A}$是绝对连续的, 而左边的微分a.e为0, 所以$F-F_{A}$ a.e.为0, 所以$F-F_{A}$ a.e是个常数, 且$F'=F_{A}'$, 所以$\mu=\mu_{A}$,
+            从而$$\mu(E)=\int_{E}F'(x)\,dx$$
+            从而$$\int f\,dF=\int f\,d\mu=\int fF'(x)\,dx$$
+            对所有简单函数f成立(每个简单函数都能写成对应集合互不相交的特征函数的线性组合)
+            (注意到第一个等号是课本的定义, 见第284页), 从而当f是非负可积函数时, 用简单函数渐升列$f_{n}$, 结合$\lvert fF'-f_{n}F'\rvert\leq 2\lvert fF'\rvert$和DCT就能得出结论. 对一般的可积函数, 只需把f拆成正负部. 证毕.
+
+            <h4>(iii)</h4>
+            对$\mu_{C}+\mu_{J}$用Radon-Nikodym定理, 存在$\nu_{a}<< m,\nu_{s}\perp m, f\in L^{1}(R)$,  
+$$\mu_{C}+\mu_{J}(E)=\nu_{a}(E)+\nu_{s}(E)$$
+又$\nu_{s}\perp m$, 所以存在Lebesgue零测集A使得$\nu_{s}(E)=\nu_{s}(A\cap E)$, 从而
+$$\mu_{C}+\mu_{J}(E\cap A)=\nu_{a}(E\cap A)+\nu_{s}(E\cap A)=\nu_{a}(E\cap A)+\nu_{s}(E)$$
+又$\nu_{a}<< m$, 所以$\nu_{a}(E\cap A)=0$, 所以$$\mu_{C}+\mu_{J}(E)=\nu_{a}(E)+\mu_{C}+\mu_{J}(E\cap A)$$
+$$\mu_{C}+\mu_{J}(E\cap A^{c})=\nu_{a}(E)=\int_{E}f\,dx$$
+又$\mu_{C}+\mu_{J}\geq 0$, 所以$f\geq 0$ a.e.成立, 且$\nu_{a}$是正测度. 再次有$$\nu_{s}(E)=\mu_{C}+\mu_{J}(E\cap A)\geq 0$$
+所以$\nu_{s}$是正测度. 从而我们考虑$$\nu_{s}((x,y])=\mu_{C}+\mu_{J}((x,y])-\nu_{a}((x,y])=F_{C}(y)+F_{J}(y)-F_{C}(x)-F_{J}(y)-\int_{x}^{y}f\,dx$$
+右边关于y是$a.e.$可微的, 所以左边的微分a.e存在. 又$\nu_{s}$是正测度, 所以$\nu_{s}((x,y])$关于y单调递增, 因此微分a.e$\geq 0$. 从而$$0-f(y)=\frac{d}{dy}\nu_{s}((x,y])\geq 0\qquad a.e. y>x$$
+再根据x的任意性, 这给出了$f\leq 0$在R上a.e.成立, 同时根据$f\geq 0$, 得到$f=0$. 从而$\nu_{a}=0$, 进一步有$$\mu_{C}+\mu_{J}=\nu_{s}\perp m$$
+        </div>
+
+        <!-- Exercise 12 -->
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>Suppose \( \mathbb{R}^d - \{0\} \) is represented as \( \mathbb{R}_+ \times S^{d-1} \), with \( \mathbb{R}_+ = \{0 < r < \infty\} \). Then every open set in \( \mathbb{R}^d - \{0\} \) can be written as a countable union of open rectangles of this product.</p>
+            <p>[Hint: Consider the countable collection of rectangles of the form \( \{r_j < r < r_k'\} \times \{\gamma \in S^{d-1} : |\gamma - \gamma_\ell| < 1/n\} \). Here \( r_j \) and \( r_k' \) range over all positive rationals, and \( \{\gamma_\ell\} \) is a countable dense set of \( S^{d-1} \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 首先构造$S^{d-1}$上的可数稠密集. 对每个k,取若干半径为$\frac{1}{2^{k}}$的球体, 根据$S^{d-1}$的紧性(欧式空间的有界闭集), 抽有限个就能覆盖$S^{d-1}$, 在这有限个球体里面随便抽一个在$S^{d-1}$中的点, 记为$\{\gamma_{j}^{k}\},1\leq j\leq N_{k}$, 则$S^{d-1}$上任何一点, 都存在一个$\gamma_{j}^{k}$满足二者距离$\leq \frac{1}{2^{k}}$.
+然后注意到可数个有限集的并集是个可数集, 因此这就是可数稠密子集.
+
+对$R^{d}-\{0\}$中的任意开集U, 对任何$x\in U$, 存在一个x的邻域$V\subseteq U$. 根据子空间拓扑的定义, 必定存在一个开球$B(y,r)$满足$V=U\cap B(y,r)$. 通过考虑球心在x, 半径为$min\{\frac{\lvert x\rvert}{3},r-\lvert y-x\rvert\}$(这个球体含于$B(y,r)$而且不包含0), 我们不妨设$y=x,B(y,r)$是不含0的球体. 这样的话, 我们只需证明对任何一个这样的球体$B(x,r)$, 都存在一个提示中给出的集合, 使得x落在这个集合里.
+
+考虑$\eta=\frac{x}{\lvert x\rvert}\in S^{d-1}$, 根据$\{\gamma_{\ell}\}$的稠密性, 取一个$\gamma_{1}\in\{\gamma_{\ell}\}$,和足够大的整数N, 满足$$\lvert \gamma_{1}-\eta\rvert< \frac{1}{N}< \frac{r}{8\lvert x\rvert+8r}$$
+
+然后再取两个有理数$r_{j},r_{k}'$满足$$\lvert x\rvert-\frac{r}{4}< r_{j}< \lvert x\rvert< r_{k}'< \lvert x\rvert+\frac{r}{4}$$
+则$$x\in\{r\big|r_{j}< r< r_{k}'\}\times \{\gamma\big|\lvert \gamma-\gamma_{1}\rvert< \frac{1}{N}\}\subseteq \{z\in R^{d}-\{0\}\big|\lvert x\rvert- \frac{r}{4}< \lvert z\rvert< \lvert x\rvert+\frac{r}{4},d(z,L_{\gamma})< \frac{\lvert x\rvert+\frac{r}{2}}{N}\}$$
+其中$L_{\gamma_{1}}$是以$\gamma_{1}$为方向且过原点的直线, 从而最右边的集合是一个开圆柱T. 只需证明这个开圆柱T含于$B(x,r)$. 事实上T的直径为小于等于底面圆(球)的直径加上高度, 即$$diamT\leq \frac{r}{2}+\frac{2(\lvert x\rvert+r)}{N}< \frac{r}{2}+\frac{r}{4}=\frac{3r}{4}$$
+又$x\in T$, 所以对任何$y\in T$, $\lvert x-y\rvert\leq diamT\leq \frac{3r}{4}< r$, 从而$T\subseteq B(x,r)$. 从而$$V_{x}=\{r\big|r_{j}< r< r_{k}'\}\times \{\gamma\big|\lvert \gamma-\gamma_{1}\rvert< \frac{1}{N}\}\subseteq U$$
+且是x的邻域. 所以U能写成$$U=\cup_{x}V_{x}$$
+又这样的集合$V_{x}$至多有可数个(因为可数集的有限次直积还是可数的), 所以U能写成可数个开长方体的并集.
+        </div>
+
+        <!-- Exercise 13 -->
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>Let \( m_j \) be the Lebesgue measure for the space \( \mathbb{R}^{d_j} \), \( j = 1, 2 \). Consider the product \( \mathbb{R}^d = \mathbb{R}^{d_1} \times \mathbb{R}^{d_2} \) (\( d = d_1 + d_2 \)), with \( m \) the Lebesgue measure on \( \mathbb{R}^d \). Show that \( m \) is the completion (in the sense of Exercise 2) of the product measure \( m_1 \times m_2 \).</p>
+        </div>
+        <div class="Proof-box">
+            proof:对$R^{d_{j}}$中的可测集$A_{j}$, 根据第二章Lebesgue积分的Fubini定理可得$$m(A_{1}\times A_{2})=\int_{R^{d}}\mathcal{X}_{A_{1}}(x_{1},..,x_{d_{1}})\mathcal{X}_{A_{2}}(x_{d_{1}+1},..,x_{d})\,dx=m_{1}(A_{1})m_{2}(A_{2})$$
+            所以$m$和$m_{1}\times m_{2}$在可测长方体上相等, 所以它们在有限个互不相交的可测长方体的并集上也相等. 课本3.1已经给出了这是一个algebra, 记为$\mathcal{A}$, 所以m和$m_{1}\times m_{2}$在$\mathcal{A}$上相等, 又$m_{1}\times m_{2}$和m都是$\sigma-$有限的, 所以在$\mathcal{A}$生成的$\sigma-algebra$ $\mathcal{M}$上相等.
+
+            又$R^{d}$上的可测长方体包含了所有来自$R^{d_{1}},R^{d_{2}}$中正方体的直积, 所以$R^{d}$上的可测长方体包含了所有正方体, 因此根据$R^{d}$中开集可以写成可数个方体的并, 因此我们知道$\mathcal{A}$生成的$\sigma-algebra$包含了所有开集, 所以包含了所有Borel集. 又$R^{d}$上的Lebesgue可测集A都有一个Borel集E(事实上, $F_{\delta}$集)使得前者比后者多一个Lebesgue零测集Z, 又对一个Lebesgue零测集Z, 都存在一个包含Z的$G_{\delta}$集F(是Borel集)使得二者测度相等, 从而$$A=E\cup Z\qquad Z\subseteq F,m_{1}\times m_{2}(F)=m(F)=0,E\subseteq\mathcal{M}$$
+            所以$\overline{\mathcal{M}}$包含了所有Lebesgue可测集. 又$\overline{\mathcal{M}}$中的元素都是Lebesgue可测的, 所以$\overline{\mathcal{M}}$就是Lebesgue可测集的全体.
+
+            同时$m(A)=m(E)=m_{1}\times m_{2}(E)$. 又如果Z是$m_{1}\times m_{2}$下的零测集, 那么$m(Z)=0$, 从而对和Z测度相等的$G_{\delta}$集F(是Borel集), 均有$m(F)=0$, 所以$m$是$m_{1}\times m_{2}$的完备化.
+        </div>
+
+        <!-- Exercise 14 -->
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>Suppose \( (X_j, \mathcal{M}_j, \mu_j) \), \( 1 \leq j \leq k \), is a finite collection of measure spaces. Show that parallel with the case \( k = 2 \) considered in Section 3 one can construct a product measure \( \mu_1 \times \mu_2 \times \dots \times \mu_k \) on \( X = X_1 \times X_2 \times \dots \times X_k \). In fact, for any set \( E \subset X \) such that \( E = E_1 \times E_2 \times \dots \times E_k \), with \( E_j \in \mathcal{M}_j \) for all \( j \), define \( \mu_0(E) = \prod_{j=1}^k \mu_j(E_j) \). Verify that \( \mu_0 \) extends to a premeasure on the algebra \( \mathcal{A} \) of finite disjoint unions of such sets, and then apply Theorem 1.5.</p>
+        </div>
+        <div class="Proof-box">
+            Proof:对$\mathcal{A}$中的可数个互不相交的元素$Y_{1},..,Y_{n},...$,  $$Y_{i}=\cup_{j=1}^{N_{i}}P_{i}^{j}$$
+            其中$P_{i}^{j}=E_{ij}^{1}\times\cdots\times E_{ij}^{k}\in\mathcal{M}_{k}$. 根据$Y_{i}$之间互不相交可得$P_{i}^{j}$之间也是互不相交的, 因此$$\cup_{i=1}^{\infty}Y_{i}=\cup_{i,1\leq j\leq N_{i}}P_{i}^{j}$$
+            而可数个有限集还是可数集, 所以这些$P_{i}^{j}$就是可数个互不相交的集合, 且都在可测方体$\{E_{1}\times\cdots\times E_{k}\big|E_{i}\in\mathcal{M}_{i}\}$中.
+            因此我们可以把命题限制为$P_{i}\in\{E_{1}\times\cdots\times E_{k}\big|E_{i}\in\mathcal{M}_{i}\}$, 且$\cup_{i}P_{i}$能写成有限个不交方体的并时(这条限制对应着课本中的$\cup_{k}E_{k}\in\mathcal{A}$), $\mu_{0}$满足可数可加性. 设$P_{j}=E_{1}^{j}\times\cdots\times E_{k}^{j}$是可数个互不相交的集合, 那么$$\mathcal{X}_{\cup_{j=1}^{\infty}P_{j}}(x)=\sum_{j=1}^{N}\mathcal{X}_{\cup_{j=1}^{\infty}P_{j}}(x)=\sum_{j=1}^{\infty}\prod_{i=1}^{k}\mathcal{X}_{E_{i}^{j}}(x_{i})$$
+            然后我们证明$\mathcal{A}$中的元素能写成有限个不交方体的并. 根据课本第三节, k=2时命题成立, 假设k=d-1时成立, 那么当k=d时, 把$E_{1}\times\cdots\times E_{d}$视为$$(E_{1}\times\cdots\times E_{d-1})\times E_{d}$$
+            左边括号里的看成一个大集合, 这样就能套用k=2的情形和k=d-1时的归纳假设给出结论. 对交集和补集是类似的, 这里不再赘述.
+
+            这样的话, 既然$\cup_{j=1}^{\infty}P_{j}$能写成有限个不交方体的并, 不妨设$\cup_{j=1}^{\infty}P_{j}=\cup_{t=1}^{N}F_{1}^{t}\times\cdots \times F_{k}^{t}, F_{i}\in\mathcal{M}_{i}$, 因此有$$\sum_{t=1}^{N}\prod_{i=1}^{k}\mathcal{X}_{F_{i}^{t}}(x_{i})=\mathcal{X}_{\cup_{j=1}^{\infty}P_{j}}(x)=\sum_{j=1}^{\infty}\prod_{i=1}^{k}\mathcal{X}_{E_{i}^{j}}(x_{i})$$
+            两边对$x_{1},..,x_{k}$逐次应用单调收敛定理可得$$\mu_{0}(\cup_{j=1}^{\infty}P_{j})=\mu_{0}(\cup_{t=1}^{N}F_{1}^{t}\times\cdots \times F_{k}^{t})=\sum_{t=1}^{N}\prod_{i=1}^{k}\mu_{i}(F_{i}^{t})=\sum_{j=1}^{\infty}\prod_{i=1}^{k}\mu_{i}(E_{i}^{j})=\sum_{j=1}^{\infty}\mu_{0}(P_{j})$$
+
+        </div>
+
+        <!-- Exercise 15 -->
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>The product theory extends to infinitely many factors, under the requisite assumptions. We consider measure spaces \( (X_j, \mathcal{M}_j, \mu_j) \) with \( \mu_j(X_j) = 1 \) for all but finitely many \( j \). Define a cylinder set \( E \) as \( \{x = (x_j), x_j \in E_j, E_j \in \mathcal{M}_j, \text{ but } E_j = X_j \text{ for all but finitely many } j\} \). For such a set define \( \mu_0(E) = \prod_{j=1}^\infty \mu_j(E_j) \). If \( \mathcal{A} \) is the algebra generated by the cylinder sets, \( \mu_0 \) extends to a premeasure on \( \mathcal{A} \), and we can apply Theorem 1.5 again.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 显然不同圆柱集的有限并的全体就是圆柱集生成的algebra. 然后我们证明$\mathcal{A}$中元素能写成有限个互不相交的圆柱集的并. 这只需证两个圆柱集的并集能这样拆分. 设两个集合为$A=E_{1}\times\cdots, B=F_{1}\times\cdots$, 根据圆柱集的定义, 设指标K后面所有的$E_{i},F_{i}$都是$X_{i}$, 那么$$A\cup B=[E_{1}\times\cdots E_{K}\cup F_{1}\times\cdots F_{K}]\times X_{K+1}\cdots $$
+            根据上一题的讨论, 括号里的两个集合能写成有限个互不相交的方体的并集, 记为$\cup_{t=1}^{N}(M_{1}^{t}\times\cdots\times M_{K}^{t})$, 从而$$A\cup B=\cup_{t=1}^{N}(M_{1}^{t}\times\cdots\times M_{K}^{t}\times X_{K+1}\cdots)$$
+            因此结论成立. 又$$A\cap B=[E_{1}\cap F_{1}\times\cdots E_{K}\cap F_{1}\times\cdots F_{K}]\times X_{K+1}\cdots $$
+            也是方体, $$A^{c}=(E_{1}\times\cdots\times E_{K}\times X_{K+1}\cdots)^{c}=(E_{1}\times\cdots\times E_{K})^{c}\times X_{K+1}\cdots$$
+            根据上一题的结论, 括号里的集合能写成有限个互不相交的方体的并集, 拆开之后就是有限个互不相交的圆柱集的并. 综上, 我们可以设$P_{i}=E_{1}^{i}\times\cdots$是互不相交的圆柱集, 且满足$$\cup_{i=1}^{\infty}P_{i}=\cup_{t=1}^{N}M_{1}^{t}\times\cdots\times M_{K}^{t}\times X_{K+1}\cdots$$
+            后续的证明同Exercise 14,无需担忧$\prod_{k=1}^{\infty}\mathcal{X}_{E_{k}^{i}}(x_{k})$, 因为只有有限个不是1.
+        </div>
+
+        <!-- Exercise 16 -->
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>Consider the \( d \)-dimensional torus \( \mathbb{T}^d = \mathbb{R}^d / \mathbb{Z}^d \). Identify \( \mathbb{T}^d \) as \( \mathbb{T}^1 \times \dots \times \mathbb{T}^1 \) (\( d \) factors) and let \( \mu \) be the product measure on \( \mathbb{T}^d \) given by \( \mu = \mu_1 \times \mu_2 \times \dots \times \mu_d \), where \( \mu_j \) is Lebesgue measure on \( X_j \) identified with the circle \( \mathbb{T} \). That is, if we represent each point in \( X_j \) uniquely as \( x_j \) with \( 0 < x_j \leq 1 \), then the measure \( \mu_j \) is the induced Lebesgue measure on \( \mathbb{R}^1 \) restricted to \( (0, 1] \).</p>
+            <ol type="a">
+                <li>Check that the completion \( \mu \) is Lebesgue measure induced on the cube \( Q = \{x : 0 < x_j \leq 1, j = 1, \dots, d\} \).</li>
+                <li>For each function \( f \) on \( Q \) let \( \tilde{f} \) be its extension to \( \mathbb{R}^d \) which is periodic, that is, \( \tilde{f}(x + z) = \tilde{f}(x) \) for every \( z \in \mathbb{Z}^d \). Then \( f \) is measurable on \( \mathbb{T}^d \) if and only if \( \tilde{f} \) is measurable on \( \mathbb{R}^d \), and \( f \) is continuous on \( \mathbb{T}^d \) if and only if \( \tilde{f} \) is continuous on \( \mathbb{R}^d \).</li>
+                <li>Suppose \( f \) and \( g \) are integrable on \( \mathbb{T}^d \). Show that the integral defining \( (f * g)(x) = \int_{\mathbb{T}^d} f(x - y)g(y) dy \) is finite for a.e. \( x \), that \( f * g \) is integrable over \( \mathbb{T}^d \), and that \( f * g = g * f \).</li>
+                <li>For any integrable function \( f \) on \( \mathbb{T}^d \), write \( f \sim \sum_{n \in \mathbb{Z}^d} a_n e^{2\pi i n \cdot x} \) to mean that \( a_n = \int_{\mathbb{T}^d} f(x) e^{-2\pi i n \cdot x} dx \). Prove that if \( g \) is also integrable, and \( g \sim \sum_{n \in \mathbb{Z}^d} b_n e^{2\pi i n \cdot x} \), then \( f * g \sim \sum_{n \in \mathbb{Z}^d} a_n b_n e^{2\pi i n \cdot x} \).</li>
+                <li>Verify that \( \{e^{2\pi i n \cdot x}\}_{n \in \mathbb{Z}^d} \) is an orthonormal basis for \( L^2(\mathbb{T}^d) \). As a result \( \|f\|_{L^2(\mathbb{T}^d)} = \sum_{n \in \mathbb{Z}^d} |a_n|^2 \).</li>
+                <li>Let \( f \) be any continuous periodic function on \( \mathbb{T}^d \). Then \( f \) can be uniformly approximated by finite linear combinations of the exponentials \( \{e^{2\pi i n \cdot x}\}_{n \in \mathbb{Z}^d} \).</li>
+            </ol>
+            <p>[Hint: For (e), reduce to the case \( d = 1 \) by Fubini's theorem. To prove (f) let \( g(x) = g_\epsilon(x) = \epsilon^{-d} \), if \( 0 < x_j \leq \epsilon \), \( j = 1, \dots, d \), and \( g_\epsilon(x) = 0 \) elsewhere in \( Q \). Then \( (f * g_\epsilon)(x) \to f(x) \) uniformly as \( \epsilon \to 0 \). However \( (f * g_\epsilon)(x) = \sum a_n b_n e^{2\pi i n x} \) with \( b_n = \int_{\mathbb{T}^d} g_\epsilon(x) e^{-2\pi i n \cdot x} dx \), and \( \sum |a_n b_n| < \infty \).]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            容易验证对任何方体P, $P\cap Q$还是个方体, 所以$$\mu(P\cap Q)=m_{d}(P\cap Q)$$
+            又方体的全体是一个$algebra$,
+            因此$\mu$与Lebesgue测度在Q上的限制在这个algebra上是相等的. 因此二者在可测集上相等.
+            <h4>(b)</h4>
+            $$\{x\in R^{d}|\tilde{f}(x)>c\}=\cup_{z\in Z^{d}}\{x\in T^{d}+z\big|\tilde{f}(x)>c \}=\cup_{z\in Z^{d}}\{x\in T^{d}+z\big|\tilde{f}(x)>c \}$$
+            然后用周期性得到$$=\cup_{z\in Z^{d}}\{x+z\big|f(x)>c,x\in T^{d} \}=\cup_{z\in Z^{d}}z+\{x\in T^{d}\big|f(x)>c\}$$
+            如果$\tilde{f}$可测, 那么$\tilde{f}\mathcal{X}_{(0,1]^{d}}=f(x)$是可测的. 反之如果f可测, 则$\{x\in T^{d}\big|f(x)>c\}$可测, 又Lebesgue可测集有平移不变性而且$Z^{d}$是可数集, 所以$\{x\in R^{d}|\tilde{f}(x)>c\}$是可测集, 从而f可测.
+
+            又$f(x)=\tilde{f}|_{(0,1]^{d}}$, 所以$\tilde{f}$自然有f连续. 反之如果f连续, 那么$\tilde{f}$唯一可能的间断点在$z\in Z^{d}$处, 任取这样的$z=(z_{1},..,z_{d})$, 则$$\tilde{f}(x)-\tilde{f}(z)
+            =\tilde{f}(x)-f((1,...,1))$$
+            当$x\rightarrow z$时, 必有x的每个分量$x_{i}\rightarrow z_{i}$, i.e $x_{i}-z_{i}\rightarrow 0$, 所以$$\tilde{f}(x)-\tilde{f}(z)=\tilde{f}(x-z)-f((1,...,1))$$
+            然而在$T^{d}$上, 0和1被视为等同, 所以无论$x_{i}-z_{i}$是< 0还是>0, 我们记$\overline{x_{i}-z_{i}}$是$x_{i}-z_{i}$在$T^{1}$中的对应(i.e 大于的0的话不变, 小于0的话给它+1), 则有$$\|\overline{x_{i}-z_{i}}-\overline{1}\|=\begin{cases}
+            \lvert x_{i}-z_{i}-0\rvert& x_{i}-z_{i}>0\\
+            \lvert 1+x_{i}-z_{i}-1\rvert& x_{i}-z_{i}< 0
+            \end{cases}=\lvert x_{i}-z_{i}\rvert$$
+            (左边指$T^{1}$中$\overline{x_{i}-z_{i}}$和1的距离, 注意$\overline{0}=\overline{1}$. 右边就是实数的绝对值) 这给出了$\overline{x-z}\rightarrow(1,...,1)$, 根据f的连续性可得$$=\tilde{f}(x-z)-f((1,...,1))\rightarrow0$$
+            因此$\tilde{f}$也连续
+            <h4>(c)</h4>
+            先设f,g非负然后Tonelli定理交换积分次序得到$\int_{T^{d}}f\ast g(x)\,d\mu< \infty$,然后再对正负部用非负的情况. 然后用Fubini定理交换积分次序得到$f\ast g=g\ast f$.
+            <h4>(d)</h4>
+            $$\int_{T^{d}}f\ast g(x)e^{-2\pi in\cdot x}\,dx=\int_{T^{d}}\int_{T^{d}}f(x-y)e^{-2\pi in\cdot(x-y)} g(y)e^{-2\pi n\cdot y}\,d\mu\,d\mu $$
+            然后Fubini定理给出结论.
+            <h4>(e)</h4>
+            标准正交性是显然的, 假设$$\int_{T^{d}}f(x)e^{-2\pi inx}\,d\mu=0\qquad\forall n\in Z^{d}$$
+            则我们考虑$$f_{d}(x_{d})=\int_{T^{d-1}}f(x_{1},..,x_{d-1},x_{d})e^{-2\pi i \sum_{j=1}^{d-1}n_{j}x_{j}}\,d\mu_{1}\times\cdots \times d\mu_{d-1}$$
+            则$$\int_{T}f_{d}(x_{d})e^{-2\pi i n_{d}x_{d}}\,d\mu_{d}=0\qquad\forall n_{d}\in Z$$
+            这转化到了$d=1$的情形, 因此$f_{d}=0$对a.e.的$x_{d}$成立. i.e $$\int_{T^{d-1}}f(x_{1},..,x_{d-1},x_{d})e^{-2\pi i \sum_{j=1}^{d-1}n_{j}x_{j}}\,d\mu_{1}\times\cdots \times d\mu_{d-1}=0\qquad\forall (n_{1},..,n_{d-1})\in Z^{d-1}$$
+            只需证对a.e.的 $x_{d}\in(0,1]$, 均有$f(x_{1},..,x_{d-1},x_{d})=0$, 遵循上文的方法递降一层, 我们知道对a.e.的$x_{d},x_{d-1}\in(0,1]$, 均有$$\int_{T^{d-1}}f(x_{1},..,x_{d-1},x_{d})e^{-2\pi i \sum_{j=1}^{d-2}n_{j}x_{j}}\,d\mu_{1}\times\cdots \times d\mu_{d-1}=0\qquad\forall (n_{1},..,n_{d-2})\in Z^{d-2}$$
+            一直递降可得对a.e.的$x_{i}\in (0,1]$, $$f(x_{1},..,x_{d})=0$$
+            d个零测集的直积在$\mu$下还是零测集, 所以$f=0$ a.e.成立. 所以$e^{2\pi in\cdot x}$是标准正交基.
+
+            <h4>(f)</h4>
+            f的连续性和$T^{d}$的紧性说明f一致连续, 从而容易证明$f\ast g_{\epsilon}$一致收敛于f, 根据(d)和(e)可得$$f\ast g_{\epsilon}=\sum_{n\in Z^{d}}a_{n}\prod_{j=1}^{d}\frac{1-e^{-2\pi in_{j}\epsilon}}{2\pi in_{j}\epsilon}e^{2\pi in\cdot x}$$
+
+            根据Cauchy-Schwarz不等式可得上面的系数是绝对收敛的, 且有一致界$\|f\|_{L^{2}(T^{d})}\|g_{\epsilon}\|_{L^{2}(T^{d})}=\|f\|_{L^{2}(T^{d})}$, 且$\prod_{j=1}^{d}\frac{1-e^{-2\pi in_{j}\epsilon}}{2\pi in_{j}\epsilon}$在$\epsilon\rightarrow0$时一致有界.
+
+            对任何$\eta>0$, 我们取$\epsilon$满足$$\underset{T^{d}}{sup}\lvert f-f\ast g\rvert< \frac{\eta}{2}$$ 然后取足够大的N满足$$\sum_{n\in Z_{d},\lvert n_{1}\rvert,..,\lvert n_{d}\rvert>
+                N}\lvert a_{n}\prod_{j=1}^{d}\frac{1-e^{-2\pi in_{j}\epsilon}}{2\pi in_{j}\epsilon}\rvert < \frac{\eta}{2}$$ 则$$\lvert f(x)-\sum_{n\in Z^{d}, \lvert n_{i}\rvert< N}a_{n}\prod_{j=1}^{d}\frac{1-e^{-2\pi in_{j}\epsilon}}{2\pi in_{j}\epsilon}e^{2\pi in\cdot x}\rvert< \eta$$
+        </div>
+
+        <!-- Exercise 17 -->
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>By reducing to the case \( d = 1 \), show that each "rotation" \( x \mapsto x + \alpha \) of the torus \( \mathbb{T}^d = \mathbb{R}^d / \mathbb{Z}^d \) is measure preserving, for any \( \alpha \in \mathbb{R}^d \).</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 设$\alpha=(\alpha_{1},..,\alpha_{d})$, 则$$\mu(\tau^{-1}(E))=\mu(\{x\big|x+\alpha\in E\})$$
+            根据乘积空间的$\sigma-$ algebra的结构和测度的连续性，我们只需对所有可测方体证明结论即可。 注意到$T^{d}=T^{d-1}\times T^{d}$, 所以可测方体形如$A\times B$, $A\in \mathcal{M}(T^{d-1}),B\in\mathcal{M}(T)$, 记$T^{d-1},T$上Lebesgue测度$m_{d-1},m_{1}$诱导出的测度为$\mu_{d-1}$和$\mu_{1}$(i.e $\mu_{k}(F)=m_{k}(F\cap(0,1])$), 则根据乘积空间的测度的定义可得$$\mu_{d}(A\times B)=m_{d}(A\cap [0,1]^{d-1}\times B\cap [0,1])=m_{d-1}(A\cap [0,1]^{d-1})\times m_{1}( B\cap [0,1])=\mu_{d-1}(A)\times\mu_{1}(B)$$
+
+            因此我们只需证$$\mu_{d-1}(A)\mu_{1}(B)=\mu_{d-1}(\tau_{d-1}^{-1}(A))\mu_{1}(\tau_{1}^{-1}(B))$$
+
+            然后我们证明$d=1$时结论成立. 为了简便，我们把Lebesgue测度和$T$上的测度记为$m,\mu$. 设$B\in\mathcal{M}(T)$, 任取$a\in R$, 因为$B\subseteq (0,1]$, 记f为$\mathcal{X}_{B}$进行周期为1的延拓得到的函数，那么$$\mu(\tau^{-1}(B))=\int_{-a}^{1-a}f\,dx=m(B)=\mu(B)$$
+            其中倒数第二个等号的证明就是把第二章exercise3的$[-\pi,\pi]$换成$[0,1]$, 证明思想不变. 由此我们证明了$d=1$的情形, 所以要使$$\mu_{d-1}(A)\mu_{1}(B)=\mu_{d-1}(\tau_{d-1}^{-1}(A))\mu_{1}(\tau_{1}^{-1}(B))$$成立, 只需证$$\mu_{d-1}(A)\mu_{1}(B)=\mu_{d-1}(\tau_{d-1}^{-1}(A))$$
+            这只需证明$\tau_{d-1}$是保测度的, 这说明$\tau_{d-1}$保持测度能推出$\tau_{d}$保持测度, 从而根据$d=1$时成立和归纳原理, 证毕.
+        </div>
+
+        <!-- Exercise 18 -->
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Suppose \( \tau \) is a measure-preserving transformation on a measure space \( (X, \mu) \) with \( \mu(X) = 1 \). Recall that a measurable set \( E \) is invariant if \( \tau^{-1}(E) \) and \( E \) differ by a set of measure zero. A sharper notion is to require that \( \tau^{-1}(E) \) equal \( E \). Prove that if \( E \) is any invariant set, there is a set \( E' \) so that \( E' = \tau^{-1}(E') \), and \( E \) and \( E' \) differ by a set of measure zero.</p>
+            <p>[Hint: Let \( E' = \limsup_{n \to \infty} \{\tau^{-n}(E)\} = \bigcap_{n=0}^\infty \left( \bigcup_{k \geq n} \tau^{-k}(E) \right) \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 按提示中的构造, $$\tau^{-1}(E')=\cap_{n=0}^{\infty}\tau^{-1}(\cup_{k\geq n}\tau^{-k}(E))$$
+            $$=\cap_{n=0}^{\infty}(\cup_{k\geq n}\tau^{-k-1}(E))=\cap_{n=0}^{\infty}(\cup_{k\geq n+1}\tau^{-k}(E))=\cap_{n=1}^{\infty}(\cup_{k\geq n}\tau^{-k}(E))$$
+            注意到$\cup_{k\geq n}\tau^{-k-1}(E)$关于n是渐降列, 所以有没有n=0的情形对取交集无影响, 即$$\cap_{n=1}^{\infty}(\cup_{k\geq n}\tau^{-k}(E))=\cap_{n=0}^{\infty}(\cup_{k\geq n}\tau^{-k}(E))=E'$$
+            这给出了$E'=\tau^{-1}(E')$。
+
+            另一方面, $\tau^{-1}(E)$和E相差零测集, 则根据$\tau$保测度可得$\tau^{-k}(E)$和$\tau^{-k+1}(E)$相差零测集, 传递下去可得$\tau^{-k}(E)$和E相差零测集, 再根据可数个零测集的并集还是零测集可得$\cup_{k\geq n}\tau^{-k}(E)$和E相差零测集, 再根据可数个零测集的并集还是零测集可得$\cap_{n=1}^{\infty}(\cup_{k\geq n}\tau^{-k}(E))$和E相差零测集.
+        </div>
+
+        <!-- Exercise 19 -->
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>Let \( \tau \) be a measure-preserving transformation on \( (X, \mu) \) with \( \mu(X) = 1 \). Then \( \tau \) is ergodic if and only if whenever \( \nu \) is absolutely continuous with respect to \( \mu \) and \( \nu \) is invariant (that is, \( \nu(\tau^{-1}(E)) = \nu(E) \) for all measurable sets \( E \)), then \( \nu = c\mu \), with \( c \) a constant.</p>
+        </div>
+        <div class="Proof-box">
+            Proof:$\Leftarrow$ 随便取一个在$\tau$下不变的特征函数f(设对应的可测集为A)=$\mathcal{X}_{A}$, 考虑$$\nu(E)=\int_{E}f\,d\mu=\int_{X}f\mathcal{X}_{E}\,d\mu$$
+则$\nu$关于$\mu$是绝对连续的, 且不变性说明$$\nu(E)=\int_{X}f\mathcal{X}_{E}\,d\mu\underset{\tau\text{的保测性}}{=}\int_{X}f(\tau(x))\mathcal{X}_{E}(\tau(x))\,d\mu=\mu(\tau^{-1}(A\cap E))$$
+$$\nu(\tau^{-1}(E))=\int_{X}f(x)\mathcal{X}_{\tau^{-1}(E)}(x)\,d\mu\underset{f\text{的不变性}}{=}\int_{X}f(\tau(x))\mathcal{X}_{\tau^{-1}(E)}(x)\,d\mu=\mu(\tau^{-1}(E\cap A))$$
+所以$\nu$是个不变的测度,从而根据条件可得存在常数c使得$$\int_{X}f\mathcal{X}_{E}\,\mu=\nu(E)=c\mu(E)=c\int_{X}\mathcal{X}_{E}\,d\mu\qquad\forall E\in\mathcal{M}$$
+这给出了$f$ a.e为常数. 又f是特征函数, 所以f在X上恒为0或1. 所以“任何保证在$\tau$下不变的特征函数都必须是0或1.” 假设$\tau$不是遍历的, 那么存在可测集E满足$E$和$\tau^{-1}(E)$差一个零测集但二者都不是零测的, 这时我们可以考虑f为$\mathcal{X}_{E}$, 则根据$\tau(x)$和x差一个零测集可知$f(x)=f(\tau(x))$对 a.e的x成立. 但根据上文的论述, f要么a.e.=0 要么a.e.=1, 也就是说$\mu(E)=\mu(X)$或$\mu(E)=0$, 前者说明$\mu(E^{c})=0$, 但是E和它的补集都不是零测的, 所以矛盾.
+
+<p></p>
+ $\Rightarrow$ 如果$\tau$是遍历的, 我们考虑radon-nikodym定理(因为测度空间中默认的测度$\mu$是正的, 参考本章初测度空间的定义. 且第五节强调了后文的测度空间都是$\sigma-$有限), 则存在$f\in L^{1}(\mu)$使得$$\nu(E)=\int f\mathcal{X}_{E}\,d\mu$$
+此外因为$\nu$不是符号测度, 所以f a.e非负(若无特殊说明, 此处和本题后面的a.e都是对$\mu$而言的). 如果$f=0$ a.e.成立, 那么结论显然, 此时$\nu=0,c=0$
+
+下面我们证明当$f$不a.e 为0时, $\mu$关于$\nu$也是绝对连续的. 这只需证明$\nu(A)=0$能推出$\mu(A)=0$.假设存在可测集$A\in\mathcal{M}$满足$\mu(A)>0,\nu(A)=0$, 那么根据f非负可得f在A上a.e.为0, 又$\nu(\tau^{-1}(A))=\nu(A)$, 所以$f$在$\tau^{-1}(A)$上 a.e.为0, 继续这个过程得到f在$\tau^{-n}(A)$上 a.e.为0对所有非负整数n成立. 
+
+然后我们注意到$$\mu(\cup_{n=1}^{\infty}\tau^{-n}(A))=\mu(\tau^{-1}(\cup_{n=0}^{\infty}\tau^{-n}(A)))=\mu(\cup_{n=0}^{\infty}\tau^{-n}(A))\qquad \cup_{n=1}^{\infty}\tau^{-n}(A)\subseteq \cup_{n=0}^{\infty}\tau^{-n}(A)$$
+这给出了对a.e的$x\in\tau^{-0}(A)$, 均有$$x\in \cup_{n=1}^{\infty}\tau^{-n}(A)$$
+也就是说在去掉一个零测集的意义下, $$\tau^{-0}(A)\subseteq \cup_{n=1}^{\infty}\tau^{-n}(A)$$
+
+一般地, $$\mu(\cup_{n=k}^{\infty}\tau^{-n}(A))=\mu(\tau^{-1}(\cup_{n=k-1}^{\infty}\tau^{-n}(A)))=\mu(\cup_{n=k-1}^{\infty}\tau^{-n}(A))\qquad \cup_{n=k}^{\infty}\tau^{-n}(A)\subseteq \cup_{n=k-1}^{\infty}\tau^{-n}(A)$$
+也就是说在去掉一个零测集的意义下, $$\tau^{-k+1}(A)\subseteq \cup_{n=k}^{\infty}\tau^{-n}(A)\qquad \cup_{n=k-1}^{\infty}\tau^{-n}(A)\subseteq \cup_{n=k}^{\infty}\tau^{-n}(A)$$
+对所有整数k成立, 又可数个零测集的并集还是零测集, 所以当取k是负数的时候, 层层传递, 我们有$$\cup_{n=k}^{\infty}\tau^{-n}(A)\subseteq \cup_{n=1}^{\infty}\tau^{-n}(A)$$
+在左边去掉一个零测集的意义下成立, 又可数个零测集的并集还是零测, 所以$$\cup_{n=-\infty}^{\infty}\tau^{-n}(A)\subseteq \cup_{n=1}^{\infty}\tau^{-n}(A)$$
+在左边去掉一个零测集的意义下成立. 注意到$\cup_{n=-\infty}^{\infty}\tau^{-n}(A)=\tau^{-1}(\cup_{n=-\infty}^{\infty}\tau^{-n}(A))$,
+所以根据$\tau$的遍历性, $\cup_{n=-\infty}^{\infty}\tau^{-n}(A)$和X相差一个$\mu-$零测集(不能是零测集否则和$\mu(A)>0$矛盾), 从而$$\mu(X-\cup_{n=1}^{\infty}\tau^{-n}(A))=0$$
+又$f$在$\tau^{-n}(A),n\geq 1$上为0, 所以f a.e为0, 这和f不是a.e为0矛盾. 因此当$f$不是a.e为0时, $\mu<< \nu$. 
+
+然后我们证明$\tau$关于$\nu$也是遍历的. 设$\nu(E\triangle\tau^{-1}(E))=0$, 那么根据绝对连续性, $\mu(E\triangle\tau^{-1}(E))=0$, 因此根据$\tau$关于$\mu$的遍历性可得$E$或$E^{c}$是$\mu-$零测集. 而$\nu<< \mu$则给出了$E$或$E^{c}$是$\nu-$零测集, 从而$\tau$关于$\nu$是遍历的.
+
+通过令$\nu_{1}=\frac{\nu}{\int_{X}f\,d\mu}$, 不妨设$\nu(X)=\mu(X)=1$, 然后只需证$\nu=\mu$. 事实上我们可以利用Corollary 5.6, 这给出了$$\frac{1}{m}\sum_{n=0}^{n-1}\mathcal{X}_{A}(\tau^{n}(x))\rightarrow\begin{cases}
+	\int_{X}\mathcal{X}_{A}(x)\,d\mu\\
+	\int_{X}\mathcal{X}_{A}(x)\,d\nu
+\end{cases}\qquad\forall A\in\mathcal{M},a.e. x\in A$$
+从而$\mu(A)=\nu(A)$对任何非零测集的$A\in\mathcal{M}$成立, 而A是零测集的情况可由两个测度互相绝对连续得出, 所以$\mu=\nu$, 对一般的情况则是$$\nu(E)=c\mu(E)\qquad c=\int_{X}f\,d\mu$$
+        </div>
+
+        <!-- Exercise 20 -->
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>Suppose \( \tau \) is a measure-preserving transformation on \( (X, \mu) \). If \( \mu(\tau^{-n}(E) \cap F) \to \mu(E)\mu(F) \) as \( n \to \infty \) for all measurable sets \( E \) and \( F \), then \( (T^n f, g) \to (f, 1)(1, g) \) whenever \( f, g \in L^2(X) \) with \( (T f)(x) = f(\tau(x)) \). Thus \( \tau \) is mixing.</p>
+            <p>[Hint: By linearity the hypothesis implies the conclusion whenever \( f \) and \( g \) are simple functions.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 当$f=\mathcal{X}_{E},g=\mathcal{X}_{F}$时, 有$$(T^{n}f,g)=\int_{X}\mathcal{X}_{E}(\tau^{n}(x))\mathcal{X}_{F}\,d\mu=\mu(\tau^{-1}(E)\cap F)\rightarrow \mu(E)\mu(F)=\int_{X}\mathcal{X}_{E}\cdot 1\,d\mu \int_{X}1\cdot\overline{\mathcal{X}_{F}}\,d\mu=(f,1)(g,1)$$
+            根据内积的线性性, 上式对所有简单函数成立(我们需要回忆一个简单函数都能写成互不相交的可测集的特征函数的线性组合,然后有了互不相交性质之后就能用刚才的结论)
+
+            注意T是等距, 所以$T^{n}$是等距, 从而$\|T^{n}\|\leq 1$,
+            然后设f是一般$L^{2}(X)$函数, g是简单函数, 对$\epsilon>0$, 取$h$是简单函数且满足$\|h-f\|< \frac{\epsilon}{3\|g\|}$, 那么对任何n, 注意$\mu(X)=1$, 从而根据Cauchy-Schwarz不等式可得$$\lvert < T^{n}f,g>-< T^{n}h,g>\rvert\leq \|g\|\|f-h\|< \frac{\epsilon}{3}\qquad \lvert (f,1)(1,g)-(h,1)(1,g)\rvert\leq \|f-h\|\|g\|< \frac{\epsilon}{3}$$
+然后取N满足$n>N$时, $$\lvert < T^{n}h,g>-(h,1)(1,g)\rvert< \frac{\epsilon}{3}$$
+则$n>N$时有$$\lvert < T^{n}f,g>-< f,1>< 1,g>\rvert< \epsilon$$
+这就证明了$f\in L^{2}(X)$,g简单函数的情形. 然后和上面的方法一样, 保持f不动, 用简单函数h逼近g,证毕.
+        </div>
+
+        <!-- Exercise 21 -->
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>Let \( \mathbb{T}^d \) be the torus, and \( \tau : x \mapsto x + \alpha \) the mapping arising in Exercise 17. Then \( \tau \) is ergodic if and only if \( \alpha = (\alpha_1, \dots, \alpha_d) \) with \( \alpha_1, \alpha_2, \dots, \alpha_d \), and \( 1 \) are linearly independent over the rationals. To do this show that:</p>
+            <ol type="a">
+                <li>\( \frac{1}{m} \sum_{k=0}^{m-1} f(\tau^k(x)) \to \int_{\mathbb{T}^d} f(x) dx \) as \( m \to \infty \), for each \( x \in \mathbb{T}^d \), whenever \( f \) is continuous and periodic and \( \alpha \) satisfies the hypothesis.</li>
+                <li>Prove as a result that in this case \( \tau \) is uniquely ergodic.</li>
+            </ol>
+            <p>[Hint: Use (f) in Exercise 16.]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            因为$\mu$就是Lebesgue测度诱导出来的, 所以我们不区分$dx$和$d\mu$. 注意结论在f是常数的时候显然. 先证明对$e^{2\pi in\cdot x}$, 结论成立. 事实上$$\frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))=\frac{1}{m}\sum_{k=0}^{m-1}e^{2\pi i n\cdot(x+k\alpha)}=\frac{e^{2\pi i n\cdot x}}{m}\sum_{k=0}^{m-1}e^{2\pi i n\cdot\alpha k}$$然后我们用等比级数得到$$\frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))=\frac{e^{2\pi i n\cdot x}}{m}\frac{1-e^{2\pi i n\cdot\alpha m}}{1-e^{2\pi i n\cdot\alpha }}$$
+            而$\alpha_{1},...,\alpha_{d}$和1之间关于有理数是线性无关的, 这说明$2n\cdot\alpha$不是整数, 从而$1-e^{2\pi i n\cdot\alpha }\neq 0$, 令$m\rightarrow\infty$我们知道结论对$f=e^{2\pi in\cdot x}$成立(毕竟$\int_{T^{d}}e^{2\pi in\cdot x}\,dx=0$)
+
+            从而, 根据线性性结果对$e^{2\pi in\cdot x},n\in Z^{d}$的线性组合也成立. 又根据Exercise 16的(f), 对任何$\epsilon>0$, 存在$e^{2\pi in\cdot x}$的多项式$P(x)$, 满足$$\underset{T^{d}}{sup}\lvert f(x)-P(x)\rvert< \frac{\epsilon}{3}$$
+            另一方面前面的情形给出了$\frac{1}{m}\sum_{k=0}^{m-1}P(\tau^{k}(x))\rightarrow0=\int_{T^{d}}P(x)\,dx$, 从而可以取M使得当$m>M$时, $$\lvert \frac{1}{m}\sum_{k=0}^{m-1}P(\tau^{k}(x))-\int_{T^{d}}P(x)\,dx\rvert< \frac{\epsilon}{3}$$
+            因此有$$\lvert \frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))-\int_{T^{d}}f(x)\,dx\rvert\leq$$
+            $$ \lvert \frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))-\frac{1}{m}\sum_{k=0}^{m-1}P(\tau^{k}(x))\rvert+\lvert \frac{1}{m}\sum_{k=0}^{m-1}P(\tau^{k}(x))-\int_{T^{d}}P(x)\,dx\rvert+\lvert \int_{T^{d}}P(x)-f(x)\,dx\rvert$$
+            $$\leq \frac{m\epsilon}{3m}+\frac{\epsilon}{3}+\mu(T^{d})\frac{\epsilon}{3}=\epsilon$$
+            (注意$\mu(T^{d})=m(T^{d})=1$) 证毕
+            <h4>(b)</h4>
+            假设有另一个测度$\nu$满足$\tau$不变且$\nu(T^{d})=1$, 那么对任何连续函数$f\in C(T^{d})$, Theorem 5.1说明$\frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))$存在极限. 设P是到不变子空间$\mathcal{S}=\{ f\in L^{2}(T^{d},\nu)\big| f(\tau)=f\}$的投影, Theorem 5.1说明了$\frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))\rightarrow P(f)$. 根据(a)的结论这个极限必定是$\int_{X}f\,dx$,用稠密性延拓到$f\in L^{2}(T^{d},\nu)$, 我们能得出$$P(f)=\int_{T^{d}}f\,dx\qquad\forall f\in L^{2}(T^{d},\nu)$$
+            这说明正交投影P的值域是全体常数.  所以在测度$\nu$下, $\tau$的不变子空间是全体常数, 这给出了$\tau$在$\nu$下是遍历的, 因此Corollary 5.6再次给出$$\frac{1}{m}\sum_{k=0}^{m-1}f(\tau^{k}(x))\rightarrow\int _{T^{d}}f(x)\,d\nu$$
+            从而$$\int_{T^{d}}f\,d\nu=\int_{T^{d}}f\,d\mu$$
+            根据f的任意性, $\nu=\mu$.所以$\tau$是唯一遍历的. 所以肯定是遍历的(这是因为, 结合不变测度的唯一性和Exercise 19, 可以知道$\tau$是遍历的).
+            <p></p>
+            另一方面, 如果$\tau$是遍历的, 如果$\alpha_{1},..,\alpha_{d},1$不是关于有理系数线性无关的, 那么存在非0的n使得$n\cdot \alpha$是整数, 记为$N=n\cdot \alpha$, 从而当$x=1=(1,...,1)$时, $$\frac{1}{m}\sum_{k=0}^{m-1}e^{2\pi in\cdot(x+k\alpha)}=\frac{1}{m}\sum_{k=0}^{m-1}e^{2\pi in\cdot(x+k\alpha)}=\frac{e^{2\pi in}}{m}\sum_{k=0}^{m-1}e^{2\pi iNk}=e^{2\pi in}\neq 0=\int_{T^{d}}e^{2\pi in\cdot x}\,dx$$
+            矛盾, 所以$\alpha_{1},..,\alpha_{d},1$关于有理系数线性无关.
+        </div>
+
+        <!-- Exercise 22 -->
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>Let \( X = \prod_{i=1}^\infty X_i \), where each \( (X_i, \mu_i) \) is identical to \( (X_1, \mu_1) \), with \( \mu_1(X_1) = 1 \), and let \( \mu \) be the corresponding product measure defined in Exercise 15. Define the shift \( \tau : X \to X \) by \( \tau((x_1, x_2, \dots)) = (x_2, x_3, \dots) \) for \( x = (x_i) \in \prod_{i=1}^\infty X_i \).</p>
+            <ol type="a">
+                <li>Verify that \( \tau \) is a measure-preserving transformation.</li>
+                <li>Prove that \( \tau \) is ergodic by showing that it is mixing.</li>
+                <li>Note that in general \( \tau \) is not uniquely ergodic.</li>
+            </ol>
+            <p>If we define the corresponding shift on the two-sided infinite product, then \( \tau \) is also a measure-preserving isomorphism.</p>
+            <p>[Hint: For (b) note that \( \mu(\tau^{-n}(E )\cap F) = \mu(E)\mu(F) \) whenever \( E \) and \( F \) are cylinder sets and \( n \) is sufficiently large. For (c) note that, for example, if we fix a point \( \overline{x} \in X_1 \), the set \( E = \{(x_i) : x_j = \overline{x} \text{ all } j\} \) is invariant.]</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            注意对$E\in\mathcal{M}$, $X_{1}\times E\in\mathcal{M}$, 且$$\tau^{-1}(E)=X_{1}\times E$$
+            且$$\mu(E)=inf\{\sum_{k=1}^{\infty}\mu_{0}(E_{k})\big|E_{k}\in\mathcal{A}, E\subseteq \cup_{k=1}^{\infty}E_{k}\}$$
+            $$\mu(\tau^{-1}(E))=\mu(X_{1}\times E)=inf\{\sum_{k=1}^{\infty}\mu_{0}(F_{k})\big|F_{k}\in\mathcal{A}, X_{1}\times E\subseteq \cup_{k=1}^{\infty}F_{k}\}$$
+            考虑新的空间$Y=X_{1}\times X$, 对应的方体上的预测度是$\nu_{0}=\mu_{1}\times\mu$, 那么我们发现$Y=X$, 且$\nu_{0}$和$\mu$在$\mathcal{A}$上相等, 这说明$\nu_{0}$在Y上的延拓$\nu$和$\mu$是相同的, 从而$$\nu(X_{1}\times E)=\mu(X_{1}\times E)$$另一方面, 因为$X_{1}\times E$是Y中的可测方体, 所以$$\nu(X_{1}\times E)=\nu_{0}(X_{1}\times E)=\mu_{1}(X_{1})\times \mu(E)=\mu(E)$$
+
+            这给出了$\mu(X_{1}\times E)=\mu(E)$.
+            <h4>(b)</h4>
+            注意到当E,F都是圆柱集的时候, 设$E=E_{1}\times \cdots$, $F=F_{1}\times\cdots$, 根据圆柱集的定义, 设指标K后面所有的$E_{i},F_{i}$都是$X_{i}$, 那么$$E=E_{1}\times\cdots E_{K}\times X_{K+1}\cdots \qquad F=F_{1}\times\cdots F_{K}\times X_{K+1}\cdots $$
+            当$n>K$时, $$\tau^{-n}(E)=X_{1}\cdots X_{n}\times E_{1}\times\cdots E_{K}\times X_{K+1}\cdots $$
+            此时$$\tau^{-n}(E)\cap F=F_{1}\times\cdots F_{K}\times X_{K+1}\times\cdots  E_{1}\times\cdots E_{K}\times X_{K+1}\cdots $$
+            因此$$\mu(\tau^{-n}(E)\cap F)=\mu_{1}(F_{1})\cdots \mu_{1}(F_{K})\mu_{1}(E_{1})\cdots \mu_{1}(E_{K})=\mu(F)\mu(E)\qquad\forall n>K$$
+            当$E\in\mathcal{A}$时, 因为$\mathcal{A}$中的元素能写成有限个互不相交的圆柱集的并集, 所以设$E=\cup_{k=1}^{N}V_{k}$, F是圆柱集, 那么用刚才的结论可得$$\mu(\tau^{-n}(E)\cap F)=\mu(\cup_{k=1}^{N}\tau^{-n}(V_{k})\cap F)=\sum_{k=1}^{N}\mu(\tau^{-n}(V_{k})\cap F)\rightarrow\sum_{k=1}^{N}\mu(V_{k})\mu(F)=\mu(E)\mu(F)$$
+            当E是一般可测集的时候,取覆盖E的$E_{k}\in\mathcal{A}$, 且满足$$\mu(\cup_{k=1}^{\infty}E_{k}-E)< \epsilon$$ 则根据保测性$$\epsilon>
+            \mu(\cup_{k=1}^{\infty}E_{k}-E)=\mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k}-E))$$
+            $$=\mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k})-\tau^{-n}(E))$$
+            这给出了$$\mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k})\cap F-\tau^{-n}(E)\cap F)\leq \mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k})-\tau^{-n}(E))< \epsilon$$ 也即$$\lvert \mu(\tau^{-n}(E)\cap F)-\mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k})\cap F)\rvert< \epsilon\qquad\forall n>0$$
+            又F是圆柱集, 所以$n>K$时有$\mu(\tau^{-n}(E_{k})\cap F)=\mu(E_{k})\mu(F)$对任何k成立. 另一方面, $F_{k}=E_{k}-\cup_{j=1}^{k-1}E_{j}\in\mathcal{A}$, 且$F_{k}$之间互不相交, 并集为$\cup_{k=1}^{\infty}E_{k}$, 所以$$\mu(\tau^{-n}(\cup_{k=1}^{\infty}E_{k})\cap F)=\mu(\tau^{-n}(\cup_{k=1}^{\infty}F_{k})\cap F)=\cup_{k=1}^{\infty}\mu(\tau^{-n}(F_{k})\cap F)=\cup_{k=1}^{\infty}\mu(F_{k})\mu(F)$$
+            $$=\mu(\cup_{k=1}^{\infty}F_{k})\mu(F)=\mu(\cup_{k=1}^{\infty}E_{k})\mu(F)\qquad\forall n>K$$
+
+            又$$\lvert \mu(\cup_{k=1}^{\infty}E_{k})\mu(F)-\mu(E)\mu(F)\rvert=\lvert \mu(F)\mu(\cup_{k=1}^{\infty}E_{k}-E)\rvert< \epsilon\mu(F)$$
+            所以根据$\mu$的任意性, 对任何圆柱集F和任何可测集E, 当$n$足够大时都有$$\mu(\tau^{-n}(E)\cap F)\rightarrow\mu(E)\mu(F)$$
+            和前面同理可得结论对$F\in\mathcal{A}$成立(回忆$\mathcal{A}$中元素可以写成有限多互不相交的圆柱集的并), 然后对一般的F, 用Proposition 1.6得出一组覆盖F的$F_{k}\in\mathcal{A}$满足$$\mu(\cup_{k=1}^{\infty}F_{k}-F)< \epsilon$$
+            通过和刚才一样令$F_{k}=F_{k}-\cup_{j=1}^{k-1}F_{j}$,不妨设$F_{k}$互不相交, 取足够大的N满足$\sum_{k=N+1}^{\infty}\mu(F_{k})< \epsilon$, 然后可得$$\mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})\rightarrow\mu(E)\mu(\cup_{k=1}^{N}F_{k})$$
+            $$\lvert \mu(\tau^{-n}(E)\cap F)-\mu(E)\mu(F)\rvert\leq \lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{\infty}F_{k})-\mu(\tau^{-n}(E)\cap F)\rvert$$
+            $$+\lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{\infty}F_{k})- \mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})\rvert+\lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})-\mu(E)\mu(\cup_{k=1}^{N}F_{k})\rvert+\lvert \mu(E)\mu(\cup_{k=1}^{N}F_{k})-\mu(E)\mu(F)\rvert$$
+            $$\leq \mu(\cup_{k=1}^{\infty}F_{k}-F)+\mu(\cup_{k=N+1}^{\infty}F_{k})+\lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})-\mu(E)\mu(\cup_{k=1}^{N}F_{k})\rvert+\lvert \mu(E)\mu(\cup_{k=1}^{N}F_{k})-\mu(E)\mu(F)\rvert$$
+            $$< 2\epsilon+\lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})-\mu(E)\mu(\cup_{k=1}^{N}F_{k})\rvert+\lvert \mu(E)\mu(\cup_{k=1}^{N}F_{k})-\mu(E)\mu(F)\rvert$$
+            又$$\sum_{k=1}^{\infty}\mu(F_{k})-\mu(F)< \epsilon\qquad \sum_{k=N+1}^{\infty}\mu(F_{k})< \epsilon$$
+            所以$\lvert\mu(\cup_{k=1}^{N}F_{k})-\mu(F)\rvert< 2\epsilon$, 又$\mu(X)= 1$, 所以$$\lvert \mu(\tau^{-n}(E)\cap F)-\mu(E)\mu(F)\rvert\leq 4\epsilon+\lvert \mu(\tau^{-n}(E)\cap \cup_{k=1}^{N}F_{k})-\mu(E)\mu(\cup_{k=1}^{N}F_{k})\rvert$$
+            最后一项趋于0, 结合$\epsilon$的任意性可得结论成立.
+            <h4>(c)</h4>
+            如果$\mu_{1}$的支集不是单点. 则定义$X_{1}$上的另一个测度$$\nu_{1}(A)=\begin{cases}
+            0&\overline{x}\in A^{c}\\
+            1&\overline{x}\in A
+            \end{cases}$$
+            然后考虑X上的测度$\nu$为$\nu_{1}\times\cdots\times\nu_{1}\cdots$的延拓. 则$\nu(A)=1,\nu(\tau^{-1}(A))$要么同时为1, 要么同时为0, 因此是不变测度.
+            但这个测度显然不等于$\mu$
+
+            如果$\mu_{1}$的支集是单点, 设为a, 取$\overline{x}\neq A$, 剩余步骤一样. 证毕.
+        </div>
+
+        <!-- Exercise 23 -->
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>Let \( X = \prod_{i=1}^\infty Z(2) \), where each factor is the two-point space \( Z(2) = \{0, 1\} \) with \( \mu_1(0) = \mu_1(1) = 1/2 \), and suppose \( \mu \) denotes the product measure on \( X \). Consider the mapping \( D : X \to [0, 1] \) given by \( D(\{a_j\}) \to \sum_{j=1}^\infty \frac{a_j}{2^j} \). Then there are denumerable sets \( Z_1 \subset X \) and \( Z_2 \subset [0, 1] \), such that:</p>
+            <ol type="a">
+                <li>\( D \) is a bijection from \( X - Z_1 \) to \( [0, 1] - Z_2 \).</li>
+                <li>A set \( E \) in \( X \) is measurable if and only if \( D(E) \) is measurable in \( [0, 1] \), and \( \mu(E) = m(D(E)) \), where \( m \) is Lebesgue measure on \( [0, 1] \).</li>
+                <li>The shift map on \( \prod_{i=1}^\infty Z(2) \) then becomes the doubling map of example (b) in Section 5.4.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            (c)是容易验证的,当$a_{0}=0$时, 这意味着$D(a)\in(0,\frac{1}{2}]$, 从而$$\tau(a)=\sum_{j=1}\frac{a_{j+1}}{2^{j}}=\sum_{j=2}\frac{2a_{j}}{2^{j}}=\sum_{j=1}\frac{2a_{j}}{2^{j}}=2a$$
+            当$a_{0}=1$时,$\tau$映射之后要模掉1, 所以要给结果减一. $$\tau(a)=\sum_{j=1}\frac{a_{j+1}}{2^{j}}-1=\sum_{j=2}\frac{2a_{j}}{2^{j}}-1=\sum_{j=1}\frac{2a_{j}}{2^{j}}-1=\sum_{j=2}\frac{2a_{j}}{2^{j}}=\sum_{j=1}\frac{a_{j+1}}{2^{j}}\in(0,1]$$所以$\tau(x)=2x(mod1)$.
+            <h4>(b)</h4>
+            然后验证(b),注意到X中测度不为0的方体必定是圆柱集(否则会有无穷多个$\frac{1}{2}$), 我们证明对于外测度来说, 必有$$\mu_{\ast}(E)=m_{\ast}(D(E))\qquad\forall E\in X$$
+            只要了证明了这一点, 结合D的双射性, 根据Caratheodory条件就能得出E可测当且仅当$D(E)$可测.
+            事实上, 当E是圆柱集的时候, 不妨设$E_{i_{1}},..,E_{i_{k}}$不是$Z(2)$, 此时$\mu_{0}(E)=\frac{1}{2^{k}}$, 而在$[0,1]$中, 容易看出每当给二进展开的某一位限制为0或1时, 满足条件的区间总长度减半, 所以$m(D(E))=\frac{1}{2^{k}}$(严谨一点还要去掉一个可数集, 这不影响测度). 又根据D的双射性[0,1]中的有理坐标的方体和E中的圆柱集一一对应,根据有理数的稠密性, 坐标为有理数的方体可以代替其他方体诱导外测度, 所以$\mu_{\ast}(E)=m_{\ast}(D(E))$在X的algebra上是成立的. 再根据D双射和外测度的定义可得对任何集合$E\in X$, 均有$\mu_{\ast}(E)=m_{\ast}(D(E))$
+            <h4>(c)</h4>
+            然后证明(a), 首先无理数的二进小数展开是唯一的, 有理数是不唯一的, 可以在X中直接把“二进展开中只有有限多个1的数”的全体去掉, 这样D就是$X-Z_{1}$到[0,1]去掉某个可数集的双射.
+        </div>
+
+        <!-- Exercise 24 -->
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>Consider the following generalization of the doubling map. For each integer \( m \), \( m \geq 2 \), we define the map \( \tau_m \) of \( (0, 1] \) by \( \tau(x) = mx \mod 1 \).</p>
+            <ol type="a">
+                <li>Verify that \( \tau \) is measure-preserving for Lebesgue measure.</li>
+                <li>Show that \( \tau \) is mixing, hence ergodic.</li>
+                <li>
+                    Prove as a consequence that almost every number \( x \) is normal in the scale \( m \), in the following sense. Consider the \( m \)-adic expansion of \( x \), \( x = \sum_{j=1}^\infty \frac{a_j}{m^j} \), where each \( a_j \) is an integer \( 0 \leq a_j \leq m - 1 \). Then \( x \) is normal if for each integer \( k \), \( 0 \leq k \leq m - 1 \),
+                    \[
+                    \frac{\#\{j : a_j = k, 1 \leq j \leq N\}}{N} \to \frac{1}{m} \quad \text{as } N \to \infty.
+                    \]
+                </li>
+            </ol>
+            <p>Note the analogy with the equidistribution statements in Section 2, Chapter 4, of Book I.</p>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            $$\tau^{-1}(x)=\{t\in(0,1]\big| mt-x\in Z\}=\{\frac{x}{m},\frac{x+1}{m},..,\frac{x+m-1}{m}\}$$
+            所以$$\tau^{-1}(E)=\cup_{i=0}^{m-1}\frac{E+i}{m}$$
+            注意根据$E\in(0,1]$可得$\frac{E+i}{m}$是互不相交的. 从而根据平移不变性和伸缩齐次性有$$m(\tau^{-1}(E))=m\frac{m(E)}{m}=m(E)$$
+            <h4>(b)</h4>
+            设$E,F$是可测集, 且测度均大于0. 又$\tau^{-1}(E)$中有m个部分, 第i部分位于$(\frac{i-1}{m},\frac{i}{m}]$之间, 所以$\tau^{-n}(E)$可以分成$m^{n}$个部分, 每一部分各自位于$(\frac{i-1}{m^{n}},\frac{i}{m^{n}}]$中, 且测度为$\frac{m(E)}{m^{n}}$, 然后我们证明对连续函数$f\in T^{1}=(0,1]$, 均有$$\int_{T^{1}}\mathcal{X}_{\tau^{-n}(E)}f(x)\,dx\rightarrow\mu(E)\int_{T^{1}}f(x)\,dx$$
+            对任何$\epsilon>0$, 因为$T^{1}$是紧集, 所以f一致连续,取N足够大使得当$\lvert x-y\rvert< \frac{1}{m^{n}}$时, $\lvert f(x)-f(y)\rvert< \epsilon$, 则对$x_{i}\in(\frac{i-1}{m^{n}},\frac{i}{m^{n}}]$, 有$$\sum_{i=1}^{m^{n}}\int_{\frac{i-1}{m^{n}}}^{\frac{i}{m^{n}}}\mathcal{X}_{\tau^{-n}(E)}\,dx=\sum_{i=1}^{m^{n}}\frac{1}{m^{n}}f(x_{i})\frac{\mu(E)}{m^{n}}$$
+            另一方面根据一致连续性$$\lvert \sum_{i=1}^{m^{n}}\frac{1}{m^{n}}f(x_{i})-\int_{T^{1}}f(x)\,dx\rvert\leq \sum_{i=1}^{m^{n}}\int_{\frac{i-1}{m^{n}}}^{\frac{i}{m^{n}}}\lvert f(x_{i})-f(x)\rvert\,dx< \epsilon$$
+            $$\lvert  \sum_{i=1}^{m^{n}}f(x_{i})\int_{\frac{i-1}{m^{n}}}^{\frac{i}{m^{n}}}\mathcal{X}_{\tau^{-n}(E)}\,dx-\int_{T^{1}}\mathcal{X}_{\tau^{-n}(E)}f(x)\,dx\rvert\leq \int_{T^{1}}\epsilon \mathcal{X}_{\tau^{-n}(E)}\,dx< \epsilon$$
+            从而$$\int_{T^{1}}\mathcal{X}_{\tau^{-n}(E)}f(x)\,dx\rightarrow\mu(E)\int_{T^{1}}f(x)\,dx$$
+            然后根据连续函数的稠密性, 我们知道结论对所有$f\in L^{1}(T^{1})$成立, 从而令$f=\mathcal{X}_{F}$, 就能得出结论.
+            <h4>(c)</h4>
+            令$f(x)=$: mx的整数部分为k时取1,否则取0. 显然f可测, 因为f是某个区间的特征函数. 那么$$\int_{0}^{1}f(x)\,dx=\sum_{i=1}^{\infty}\int_{\frac{i-1}{m}}^{\frac{i}{m}}f(x)\,dx=\frac{1}{m}$$
+            另一方面$$\mathcal{X}_{\{a_{j}=k\}}(x)=f(\tau^{j-1}(x))$$
+            从而根据Corollary 5.6可知$$\frac{1}{N}\sum_{i=0}^{N-1}f(\tau^{j-1}(x))\rightarrow\int_{0}^{1}f(x)\,dx=\frac{1}{m}$$
+            且$a_{j}=k$当且仅当$f(\tau^{j-1}(x))=1$, 所以证毕.
+        </div>
+
+        <!-- Exercise 25 -->
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>Show that the mean ergodic theorem still holds if we replace the assumption that \( T \) is an isometry by the assumption that \( T \) is a contraction, that is, \( \|T f\| \leq \|f\| \) for all \( f \in H \).</p>
+            <p>[Hint: Prove that \( T \) is a contraction if and only if \( T^* \) is a contraction, and use the identity \( (f, T^* f) = (T f, f) \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 注意到$\|T\|=\|T^{\ast}\|$(详见第四章Exercise 19), 所以$T$是压缩当且仅当$T^{\ast}$是压缩.
+
+            只需证明Lemma 5.2. 对(i), 注意到当Tf=f时, $$< f,T^{\ast}f>
+                =\|f\|^{2}$$
+                再根据$T^{\ast}$是压缩映射可得必有$T^{\ast}f=f$. 反之如果$T^{\ast}f=f$, 则$$< Tf,f>
+                    =\|f\|^{2}\|$$
+                    根据T是压缩映射可得$Tf=f$. (ii)的证明不需要修改, 定理的其他证明可照抄不变.
+        </div>
+
+        <!-- Exercise 26 -->
+        <div class="Exercise-box">
+            <h3>Exercise 26</h3>
+            <p>
+                There is an \( L^2 \) version of the maximal ergodic theorem. Suppose \( \tau \) is a measure-preserving transformation on \( (X, \mu) \). Here we do not assume that \( \mu(X) < \infty \). Then
+                \[
+                f^*(x) = \sup_m \frac{1}{m} \sum_{k=0}^{m-1} |f(\tau^k(x))|
+                \]
+                satisfies \( \|f^*\|_{L^2(X)} \leq c \|f\|_{L^2(X)} \), whenever \( f \in L^2(X) \).
+            </p>
+            <p>The proof is the same as outlined in Problem 6, Chapter 5 for the maximal function on \( \mathbb{R}^d \). With this, extend the pointwise ergodic theorem to the case where \( \mu(X) = \infty \), as follows:</p>
+            <ol type="a">
+                <li>Show that \( \lim_{m \to \infty} \frac{1}{m} \sum_{k=0}^{m-1} f(\tau^k(x)) \) converges for a.e. \( x \) to \( P(f)(x) \) for every \( f \in L^2(X) \), because this holds for a dense subspace of \( L^2(X) \).</li>
+                <li>Prove that the conclusion holds for every \( f \in L^1(X) \), because it holds for the dense subspace \( L^1(X) \cap L^2(X) \).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            <h4>(a)</h4>
+            根据Theorem 5.1, $\mathcal{H}=\mathcal{S}\oplus\overline{\mathcal{S}}_{1}$, 因此$f\in L^{2}(X)$可被分解为$$f=F+g\qquad F\in\mathcal{S},g\in\overline{\mathcal{S}}_{1} $$
+任取$\epsilon>0$, 则存在$h\in\mathcal{H}, G\in\mathcal{H}$满足$$g=(I-T)G+h\qquad \|h\|_{L^{2}}< \epsilon$$
+$F\in\mathcal{S}$给出了$A_{m}(F)(x)=F(x)$, 另一方面, 照抄课本证明可得$$A_{m}(F+(1-T)G)(x)\rightarrow F(x)$$
+然后和课本步骤相同, 我们只需证$\mu(E_{\alpha})=0$对任何$\alpha>0$成立(这里的$E_{\alpha}$和课本正文的一样), 又$$A_{n}(f)-A_{m}(f)=A_{n}(F+(1-T)G)-A_{m}(F+(1-T)G)+A_{n}(h)-A_{m}(h)$$
+且$A_{n}(F+(1-T)G)-A_{m}(F+(1-T)G)\rightarrow0$ a.e.成立, 
+所以$$E_{\alpha}\subseteq E_{\alpha}'=\{x\in X\big|\underset{n,m>N}{sup}\lvert A_{n}(h)-A_{m}(h)\rvert>\alpha\}\subseteq \{x\in X\big|2\underset{m}{sup}\lvert A_{m}(x)\rvert>\alpha\}$$
+$$=\{x\in X\big|2h^{\ast}(x)>\alpha\}$$
+又$$\mu(\{x\in X\big|2 h^{\ast}(x)>\alpha\})\frac{\alpha^{2}}{4}\leq \int_{\{x\in X\big|2h^{\ast}(x)>\alpha\}}\lvert h^{\ast}(x)\rvert^{2}\,dx\leq \|h^{\ast}\|_{L^{2}}^{2}\leq c\|h\|_{L^{2}}^{2}\leq c\epsilon^{2}$$
+(注意上述c是统一的, 和h无关)
+所以$$\mu(E_{\alpha})\leq \mu(\{x\in X\big|2h^{\ast}(x)>\alpha\})\leq \frac{4c\epsilon^{2}}{\alpha^{2}}$$
+根据$\epsilon$的任意性, 极限存在. 再根据Theorem 5.1, 极限为$P(f)(x)$.
+            <h4>(b)</h4>
+            只需证明$L^{1}(X)\cap L^{2}(X)$在$L^{1}(X)$中稠密. 考虑$$f_{n}=f\mathcal{X}_{\lvert f\rvert\leq n}$$则$$\int_{X}\lvert f_{n}\rvert^{2}\,d\mu=\int_{\lvert f(x)\rvert< 1}\lvert f(x)\rvert^{2}\,d\mu+\int_{1\leq \lvert f(x)\rvert\leq n}\lvert f(x)\rvert^{2}\,d\mu$$
+$$\leq \int_{\lvert f(x)\rvert< 1}\lvert f(x)\rvert\,d\mu+n^{2}\int_{\lvert f(x)\rvert\geq 1}\,d\mu\leq \int_{X}\lvert f(x)\rvert\,d\mu+n^{2} \int_{\lvert f(x)\rvert\geq 1}\lvert f(x)\rvert\,d\mu< \infty$$ 
+另一方面控制收敛给出了$\|f_{n}-f\|_{L^{1}}\rightarrow0$. 所以$L^{2}(X)\cap L^{1}(X)$在$L^{1}(X)$中稠密. 所以任取$\epsilon>0$, 可以把f拆成$$f=F+H\qquad F\in L^{1}(X)\cap L^{2}(X)\qquad \|H\|_{L^{1}}< \epsilon$$
+然后对F用(a)的结论, 对H用Theorem 5.3(这部分可以照抄课本关于$E_{\alpha}'$的论述),结合$\epsilon$的任意性, 证毕.
+        </div>
+
+        <!-- Exercise 27 -->
+        <div class="Exercise-box">
+            <h3>Exercise 27</h3>
+            <p>We saw that if \( \|f_n\|_{L^2} \leq 1 \), then \( \frac{f_n(x)}{n} \to 0 \) as \( n \to \infty \) for a.e. \( x \). However, show that the analogue where one replaces the \( L^2 \)-norm by the \( L^1 \)-norm fails, by constructing a sequence \( \{f_n\} \), \( f_n \in L^1(X) \), \( \|f_n\|_{L^1} \leq 1 \), but with \( \limsup_{n \to \infty} \frac{f_n(x)}{n} = \infty \) for a.e. \( x \).</p>
+            <p>[Hint: Find intervals \( I_n \subset [0, 1] \), so that \( m(I_n) = 1/(n \log n) \) but \( \limsup_{n \to \infty} \{I_n\} = [0, 1] \). Then take \( f_n(x) = n \log n \chi_{I_n} \).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 取$J_{2}=[0,\frac{1}{2log2}],J_{3}=(\frac{1}{2log2},\frac{1}{2log2}+\frac{1}{3log3}]$, ...., $J_{n}=(\sum_{j=2}^{n-1}\frac{1}{jlogj},\sum_{j=2}^{n}\frac{1}{jlogj}]$, 则根据级数$\sum_{n=2}\frac{1}{nlogn}$发散可得$$\cup_{n=2}^{\infty}J_{n}=[0,\infty)$$
+所以每个区间$[i,i+1]$都被盖住了, 且根据$m(J_{n})< 1$可知覆盖$[i,i+1]$的区间族$J_{N_{1}},...,J_{N_{1}+K_{i}}$肯定和$[i,i+2]$无交集, 这说明对$x\in [0,1]$, $x+i$属于唯一的一个$J_{N_{i}}$, 
+ 考虑$$I_{n}=\tau(J_{n})\qquad \tau(x)=x(mod1)$$
+则$x\in I_{N_{i}},i\geq 1$成立, 也就是说x属于无穷多个$I_{n}$, 
+所以$$\limsup_{n\rightarrow\infty}I_{n}=[0,1]$$
+且容易看出$m(J_{n})=m(I_{n})$(因为至多有一个整数含于$J_{n}$, 所以把$J_{n}$从这个整数开始分成左右两部分, 然后结合$m(J_{n})< 1$即可), 所以$\|f_{n}\|_{L^{1}}=1$, 但是$$\limsup_{n\rightarrow\infty}\frac{f_{n}(x)}{n}=\lim_{n \rightarrow\infty}logn=\infty$$ 
+        </div>
+
+        <!-- Exercise 28 -->
+        <div class="Exercise-box">
+            <h3>Exercise 28</h3>
+            <p>We know by the Borel-Cantelli lemma that if \( \{E_n\} \) is a collection of measurable sets in a measure space \( (X, \mu) \) and \( \sum_{n=1}^\infty \mu(E_n) < \infty \) then \( E = \limsup_{n \to \infty} \{E_n\} \) has measure zero.</p>
+            <p>In the opposite direction, if \( \tau \) is a mixing measure-preserving transformation on \( X \) (with \( \mu(X) = 1 \)), then whenever \( \sum_{n=1}^\infty \mu(E_n) = \infty \), there are integers \( m = m_n \) so that if \( E_n' = \tau^{-m_n}(E_n) \), then \( \limsup_{n \to \infty} (E_n') = X \), except for a set of measure 0.</p>
+        </div>
+        <div class="Proof-box">
+            Proof:
+
+
+取定一个$\epsilon>0$, 我们证明存在N使得$\cup_{n=1}^{N} E_{n}'$覆盖了X中测度为$1-\epsilon$的部分.
+
+抽出$E_{1}$, 并记为$E_{1}'=E_{1}$. 如果$\mu(E_{1})>1-\epsilon$, 就得到$N=1$. 否则根据$\tau$是混合的, 因此存在$m_{2}$满足$$\mu(E_{2}'\cap E_{1})< \mu(E_{2})\mu(E_{1})+\frac{\epsilon\mu(E_{2})}{2}=\mu(E_{2}')\mu(E_{1}')+\frac{\epsilon\mu(E_{2}')}{2}$$
+
+
+这时回忆$\mu(\tau^{-m}(A))=\mu(A)$, 可得
+$$\mu(E_{1}'\cup E_{2}')=\mu(E_{1}')+\mu(E_{2}')-\mu(E_{1}'\cap E_{2}')>\mu(E_{1}')+\mu(E_{2}')-\mu(E_{2}')\mu(E_{1}')-\frac{\epsilon\mu(E_{2}')}{2}$$
+根据假设, $\mu(E_{1}')< 1-\epsilon$, 所以$$\mu(E_{1}'\cup E_{2}')>\mu(E_{1}')+\frac{\epsilon}{2}\mu(E_{2}')$$
+
+考虑数学归纳法, 假设$\mu(\cup_{j=1}^{n}E_{j}')>\sum_{i=1}^{n}\frac{\epsilon\mu(E_{i}')}{2}$, 则n=2时结论成立, 
+记$K=\cup_{j=1}^{n}E_{j}'$, 如果$\mu(K)\geq 1-\epsilon$则停止, 否则存在$m_{n+1}$使得$$\mu(E_{n+1}'\cap K)< \mu(E_{n+1}')\mu(K)+\frac{\epsilon\mu(E_{n+1}')}{2}$$
+从而
+$$\mu(\cup_{j=1}^{n+1}E_{j}')>\mu(\cup_{j=1}^{n}E_{j}')+\mu(E_{n+1}')-\mu(E_{n+1}')\mu(\cup_{j=1}^{n}E_{j}')-\frac{\epsilon\mu(E_{n+1}')}{2}$$
+根据假设$\mu(\cup_{j=1}^{n}E_{j}')< 1-\epsilon$, 
+从而在$\mu(\cup_{j=1}^{n}E_{j}')< 1-\epsilon$的条件下, $$\mu(\cup_{j=1}^{n+1}E_{j}')>\mu(\cup_{j=1}^{n}E_{j}')+\frac{\epsilon\mu(E_{n+1}')}{2}>\sum_{i=1}^{n+1}\frac{\epsilon\mu(E_{i}')}{2}=\frac{\epsilon}{2}\sum_{i=1}^{n+1}\mu(E_{i})$$
+
+根据$\sum\mu(E_{i})=\infty$, 而左边小于等于, 我们知道以上关系不可能对所有n都成立, 所以存在N使得$$\mu(\cup_{j=1}^{N}E_{j}')\geq1-\epsilon$$
+记这个N为$N_{1}$, 然后把上文的$\epsilon$改成$\frac{\epsilon}{2}$, $\sum_{n=N_{1}+1}^{\infty}\mu(E_{n})=\infty$, 所以可以重复上述过程得到$N_{2}$, 满足$$\mu(\cup_{j=N_{1}+1}^{N_{2}}E_{j}')\geq1-\frac{\epsilon}{2}$$
+不断重复上述步骤, 对k, 存在$N_{k}$满足$$\mu(\cup_{j=N_{k-1}+1}^{N_{k}}E_{j}')\geq1-\frac{\epsilon}{2^{k-1}}$$
+然后我们记$(\cup_{j=N_{k-1}+1}^{N_{k}}E_{j}')^{c}=Y_{k}$,
+那么$$\mu(\cup_{n\geq k}Y_{n})\leq\sum_{n=k}^{\infty}\frac{\epsilon}{2^{n}}=\frac{\epsilon}{2^{k-1}}$$
+从而$$\mu(\cap_{k=1}^{\infty}\cup_{n\geq k}Y_{n})\leq \frac{\epsilon}{2^{k-1}}\qquad\forall k\geq 0$$
+因此$\mu(\cap_{k=1}^{\infty}\cup_{n\geq k}Y_{n})=0$, 取补集可得$$\mu(\cup_{k=1}\cap_{n\geq k}(\cup_{j=N_{n-1}+1}^{N_{n}}E_{j}'))=1$$
+所以对a.e.的x, 存在K使得$$x\in \cap_{n\geq K}(\cup_{j=N_{n-1}+1}^{N_{n}}E_{j}')$$
+从而对任何$i\geq K$, 存在整数$t_{i}\in (N_{i-1}+1,N_{i})$ ,满足$x\in E_{t_{i}}'$, 又这些$t_{i}$互不相等, 所以x属于无穷多个$E_{n}'$, 因此$$\mu(\cup_{k=1}\cap_{n\geq k}E_{n}')=1=\mu(X)$$
+        </div>
+
+
+
+    </div>
+
+
+        <div class="whole_page">
+
+        </div>
+        <div class="bg_box">
+            <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+        </div>
+
+
+</body>
+
+</html>

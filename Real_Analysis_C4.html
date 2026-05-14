@@ -1,0 +1,922 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实分析第四章习题解答</title>
+    <script>
+        MathJax = {
+            tex:
+
+        {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+
+        }
+
+        ;
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+
+
+        .navbox {
+            width: 100%;
+            background-color: #F5F5DC;
+            padding: 20px 10px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .bg_box {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 69px;
+            left: 0px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg_image {
+            width: 100%;
+        }
+
+
+        .whole_page {
+            top: 0px;
+            height: 2000px;
+        }
+
+        .nav-link {
+            color: #FF9933;
+            background-color: #f5f5dc;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            top: 3px;
+            font-size: 20px;
+        }
+
+            .nav-link:hover {
+                background-color: #e6e6c8;
+                color: #E67300;
+            }
+
+        .Exercise-box {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .Exercise-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .Exercise-box h4 {
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .Exercise-box p {
+            line-height: 1.6;
+        }
+        .Exercise-box ol {
+            margin-left: 20px;
+        }
+        .Exercise-box li {
+            margin-bottom: 10px;
+        }
+        .Proof-box {
+            max-width: 1000px;
+            margin: -60px auto 10px;
+            padding: 1rem;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .Chapter-box {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            line-height: 1.8;
+            color: #333;
+            border-radius: 10px;
+            border: 5px solid #FF9933;
+            min-height: 400px;
+            
+            margin: 80px auto 15px;
+            position: relative;
+            z-index: 0;
+        }
+
+            .Chapter-box h2 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9933;
+                margin: -10px;
+                border-bottom: 2px solid #FF9933;
+                padding-bottom: -5px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbox">
+        <a href="index.html" class="nav-link">主页</a>
+        <a href="NotePage.html" class="nav-link">讲义</a>
+        <a href="ExercisePage.html" class="nav-link">练习</a>
+    </nav>
+    
+    <div class="Chapter-box">
+        <h2>
+            第四章
+        </h2>
+
+
+        <!-- Exercise 1 -->
+        <div class="Exercise-box">
+            <h3>Exercise 1</h3>
+            <p>Show that properties (i) and (ii) in the definition of a Hilbert space (Section 2) imply property (iii): the Cauchy–Schwarz inequality \(|(f, g)| \le \|f\|\|g\|\) and the triangle inequality \(\|f+g\|\le \|f\|+\|g\|.\)</p>
+            <p>[Hint: For the first inequality, consider \((f + \lambda g, f + \lambda g)\) as a positive quadratic function of \(\lambda\). For the second, write \(\|f+g\|^2 = (f+g, f+g)\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $$< f+tg,f+tg>\geq 0$$
+            根据双线性性可得$$t^{2}\|g\|^{2}+2tRe< f,g>+\|f\|^{2}\geq 0$$
+            因此方程至多有一个实根, 因此$$4\lvert Re< f,g>\rvert^{2}\leq 4\|f\|^{2}\|g\|^{2}$$
+            从而$$\lvert Re< f,g>\rvert\leq \|f\|\|g\|$$
+            对一般的$< f,g>$, 考虑单位复数z满足$$< zf,g>=\lvert < f,g>\rvert$$
+            此时$< zf,g>$是个实数,
+            所以$$\lvert < f,g>\rvert=< zf,g>=Re< zf,g>\leq \|zf\|\|g\|=\|f\|\|g\|$$
+
+            然后注意到$$\|f+g\|^{2}=< f+g,f+g>=\|f\|^{2}+2Re< f,g>+\|g\|^{2}\leq \|f\|^{2}+2\|f\|\|g\|+\|g\|^{2}=(\|f\|+\|g\|^{2})$$
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="Exercise-box">
+            <h3>Exercise 2</h3>
+            <p>In the case of equality in the Cauchy–Schwarz inequality we have the following. If \(|(f, g)| = \|f\|\|g\|\) and \(g \neq 0\), then \(f = cg\) for some scalar \(c\).</p>
+            <p>[Hint: Assume \(\|f\| = \|g\| = 1\) and \((f, g) = 1\). Then \(f - g\) and \(g\) are orthogonal, while \(f = f - g + g\). Thus \(\|f\|^2 = \|f-g\|^2 + \|g\|^2.\)]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:此时$$\lvert < \frac{f}{\|f\|},\frac{g}{\|g\|}>\rvert=1$$ 因此不妨设$\lvert < f,g>\rvert=1,\|f\|=\|g\|=1$. 通过给f乘以一个单位复数, 不妨设$< f,g>=1$. 那么$$0=1-1=< f,g>-< g,g>\qquad f-g\perp g$$
+            又$f=f-g+g$, 所以根据勾股定理$$\|f\|^{2}=\|f-g\|^{2}+\|g\|^{2}\qquad f-g=0$$
+            从而$f=g$, 因此对一般的情形, 记$z=\frac{< f,g>}{\|f\|\|g\|}$是一个单位复数,  我们有$\frac{f}{\|f\|}=z\frac{g}{\|g\|}$ 所以$$f=z\frac{\|f\|}{\|g\|}g$$
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="Exercise-box">
+            <h3>Exercise 3</h3>
+            <p>Note that \(\|f+g\|^2 = \|f\|^2 + \|g\|^2 + 2\operatorname{Re}(f, g)\) for any pair of elements in a Hilbert space \(H\). As a result, verify the identity \(\|f+g\|^2 + \|f-g\|^2 = 2(\|f\|^2 + \|g\|^2).\)</p>
+        </div>
+        <div class="Proof-box">
+            Proof:$$\|f + g\|^2 = \|f\|^2 + \|g\|^2 + 2\text{Re}(f, -g)=\|f\|^{2}+\|g\|^{2}-2Re< f,g>$$ 两者相加即可得到结论
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="Exercise-box">
+            <h3>Exercise 4</h3>
+            <p>Prove from the definition that \(\ell^2(\mathbb{Z})\) is complete and separable.</p>
+        </div>
+        <div class="Proof-box">
+            Proof:假设$$\sum_{k=1}^{\infty}\lvert a_{k}^{i}-a_{k}^{j}\rvert^{2}$$关于i,j是Cauchy列, 那么对每个$a_{k}^{i}$来说, $\lim_{i\rightarrow\infty}a_{k}^{i}$存在, 设为$a_{k}$, 因为是Cauchy列, 所以存在K使得$i,j>K$时, $$\sum_{k=1}^{\infty}\lvert a_{k}^{i}-a_{k}^{j}\rvert^{2}< 1$$ 因此$$\sum_{k=1}^{N}\lvert a_{k}^{i}-a_{k}^{j}\rvert^{2}< 1\qquad\forall N$$
+            令i=K+1,左边对j取极限,可得$$\sum_{k=1}^{N}\lvert a_{k}^{K+1}-a_{k}\rvert^{2}< 1\qquad\forall N$$
+            这说明$\sum_{i=1}^{N}\lvert a_{i}\rvert^{2}\leq 2\sum_{i=1}^{N}\lvert a_{i}^{K+1}\rvert^{2}+\sum_{k=1}^{N}\lvert a_{k}^{K+1}-a_{k}\rvert^{2}$关于N一致有界, 所以$\sum_{i=1}^{\infty}\lvert a_{i}\rvert^{2}< \infty$, 因此$(a_{1},..,a_{n},..,)\in\ell_2(\mathbb{Z})$,
+
+            根据是Cauchy列可得存在$M$使得$i,j>M$时, $$ \sum_{k=1}^{\infty}\lvert a_{k}^{i}-a_{k}^{j}\rvert^{2}< \frac{\epsilon}{3}$$
+            所以$$\sum_{k=1}^{N}\lvert a_{k}^{i}-a_{k}^{j}\rvert^{2}< \frac{\epsilon}{3}\qquad\forall N$$
+            对j取极限可得$$\sum_{k=1}^{N}\lvert a_{k}^{i}-a_{k}\rvert^{2}< \frac{\epsilon}{3}\qquad\forall N$$
+            根据N的任意性可得$$\sum_{k=1}^{\infty}\lvert a_{k}^{i}-a_{k}\rvert^{2}< \frac{\epsilon}{3}\qquad\forall i>M$$
+            这说明$(a_{1}^{i},...,a_{n}^{i},...)\rightarrow(a_{1},..,a_{n},..,)$
+
+            然后说明可分性, 注意
+            $$\cup_{N=1}^{\infty}\{(b_{1},...,b_{N},...)\big| b_{j}=0,j\geq N+1, b_{i}\text{的实部虚部都是有理数}\}$$
+            是可数的, 且对任何$(a_{1},..,a_{n},...)$,先取N满足$\sum_{i=N+1}^{\infty}\lvert a_{i}\rvert^{2}< \frac{\epsilon}{2}$, 然后 取实部虚部都是有理数的复数$b_{i}$满足$\lvert a_{i}-b_{i}\rvert^{2}< \frac{\epsilon}{2^{i}},1\leq i\leq N$, 令其他的$b_{i}=0$, 那么$$\sum_{i=1}^{\infty}\lvert a_{i}-b_{i}\rvert^{2}< \epsilon+\sum_{i=1}^{N}\frac{\epsilon}{2^{i}}=2\epsilon$$
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="Exercise-box">
+            <h3>Exercise 5</h3>
+            <p>Establish the following relations between \(L^2(\mathbb{R}^d)\) and \(L^1(\mathbb{R}^d)\):</p>
+            <ol type="a">
+                <li>Neither the inclusion \(L^2(\mathbb{R}^d) \subset L^1(\mathbb{R}^d)\) nor the inclusion \(L^1(\mathbb{R}^d) \subset L^2(\mathbb{R}^d)\) is valid.</li>
+                <li>Note, however, that if \(f\) is supported on a set \(E\) of finite measure and if \(f \in L^2(\mathbb{R}^d)\), applying the Cauchy–Schwarz inequality to \(f\chi_E\) gives \(f \in L^1(\mathbb{R}^d)\), and \(\|f\|_{L^1(\mathbb{R}^d)} \le m(E)^{1/2}\|f\|_{L^2(\mathbb{R}^d)}\).</li>
+                <li>If \(f\) is bounded (\(|f(x)| \le M\)), and \(f \in L^1(\mathbb{R}^d)\), then \(f \in L^2(\mathbb{R}^d)\) with \(\|f\|_{L^2(\mathbb{R}^d)} \le M^{1/2}\|f\|_{L^1(\mathbb{R}^d)}^{1/2}\).</li>
+            </ol>
+            <p>[Hint: For (a) consider \(f(x) = |x|^{-\alpha}\), when \(|x| \le 1\) or when \(|x| > 1\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4> $\frac{1\mathcal{X}_{\lvert x\rvert\geq 1}}{x^{d}}$含于$L^{2}(R^{d})$但不含于$L^{1}(R^{d})$,  $\frac{1\mathcal{X}_{\lvert x\rvert\leq 1}}{x^{d/2}}$含于$L^{1}(R^{d})$但不含于$L^{2}(R^{d})$, 理由见第二章Exercise 10
+
+            <h4>(b)</h4>$$\|f\|_{L^{1}(R^{d})}=\int_{R^{d}}\lvert f(x)\rvert\mathcal{X}_{E}\,dx=< \lvert f\rvert,\mathcal{X}_{E}>
+            \leq \|f\|_{L^{2}(R^{d})}\|\mathcal{X}_{E}\|_{L^{2}(R^{d})}=m(E)^{\frac{1}{2}}\|f\|_{L^{2}(R^{d})}$$
+
+            <h4>(c)</h4>$$\|f\|_{L^{2}(R^{d})}=\sqrt{\int_{R^{d}}\lvert f\rvert\lvert f\rvert\,dx}\leq \sqrt{M}\sqrt{\int_{R^{d}}\lvert f(x)\rvert\,dx}=M^{\frac{1}{2}}\|f\|_{L^{1}(R^{d})}^{\frac{1}{2}}$$
+        </div>
+
+        <!-- Exercise 6 -->
+        <div class="Exercise-box">
+            <h3>Exercise 6</h3>
+            <p>Prove that the following are dense subspaces of \(L^2(\mathbb{R}^d)\).</p>
+            <ol type="a">
+                <li>The simple functions.</li>
+                <li>The continuous functions of compact support.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>通过把f分解为正部和负部, 我们只需证明f是非负可积函数的情形, 此时存在非负可测函数$f_{n}$ a.e. 收敛于f且$\leq f$, 因此$$\lvert f_{n}-f\rvert^{2}\leq 4\lvert f\rvert^{2}$$
+            根据DCT可得$$\lim_{n \to \infty}\|f-f_{n}\|_{L^{2}(R^{d})}=0$$
+                  <h4>(b)</h4>根据范数的三角不等式, 只需证对一个可测集E, 存在有限个方体$Q_{j}$满足$$\|\mathcal{X}_{E}-\sum_{i=1}^{K}\mathcal{X}_{Q_{i}}\|_{L^{2}(R^{d})}< \epsilon$$ 对任何$\epsilon>
+            0$, 我们知道存在有限个几乎互不相交的方体$Q_{i}$使得$$m(E\triangle \cup_{i=1}^{K}Q_{i})< \epsilon^{2}$$ 因此$\mathcal{X}_{E}$和$\sum_{i=1}^{K}\mathcal{X}_{Q_{i}}$至多在测度$\leq \epsilon^{2}$的集合上不相等, 因此$$\|\mathcal{X}_{E}-\sum_{i=1}^{K}\mathcal{X}_{Q_{i}}\|_{L^{2}(R^{d})}^{2}\leq \int_{\mathcal{X}_{E}\neq\sum_{i=1}^{K}\mathcal{X}_{Q_{i}} }2\,dx\leq 2\epsilon^{2}$$
+            从而阶梯函数在$L^{2}(R^{d})$中稠密.
+            根据范数的三角不等式和阶梯函数的稠密性, 只需正对正方体Q的特征函数$\mathcal{X}_{Q}$, 存在紧支集上的连续函数f使得$\|\mathcal{X}_{Q}-f\|_{L^{2}(R^{d})}< \epsilon$. 设$Q=[a_{i},a_{i}+h]^{d}$, 那么考虑线性函数$$g_{i}=\begin{cases}
+            0&x< a_{i}-\epsilon,x>a_{i}+h+\epsilon\\
+            1&x\in[a_{i},a_{i}+h]\\
+            linear&else
+            \end{cases}\qquad g(x)=g_{1}(x_{1})\cdots g_{d}(x_{d})$$
+            那么用Fubini定理可得$$\|\mathcal{X}_{E}-g\|_{L^{2}(R^{d})}^{2}\leq (h+2\epsilon)^{d}-h^{d}$$
+
+            证毕
+        </div>
+
+        <!-- Exercise 7 -->
+        <div class="Exercise-box">
+            <h3>Exercise 7</h3>
+            <p>Suppose \(\{\phi_k\}_{k=1}^\infty\) is an orthonormal basis for \(L^2(\mathbb{R}^d)\). Prove that the collection \(\{\phi_{k,j}\}_{1\le k,j< \infty}\) with \(\phi_{k,j}(x,y)=\phi_k(x)\phi_j(y)\) is an orthonormal basis of \(L^2(\mathbb{R}^d \times \mathbb{R}^d)\).</p>
+            <p>[Hint: First verify that the \(\{\phi_{k,j}\}\) are orthonormal, by Fubini's theorem. Next, for each \(j\) consider \(F_j(x) = \int_{\mathbb{R}^d} F(x,y)\phi_j(y)\,dy\). If one assumes that \((F, \phi_{k,j}) = 0\) for all \(j\), then \(\int F_j(x)\phi_k(x)\,dx = 0.\)]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $$< \phi_{k,j},\phi_{m,n}>
+            =\int_{R^{d}\times R^{d}}\phi_{k}(x)\phi_{m}(x)\phi_{j}(y)\phi_{n}(y)\,dxdy$$
+            $$=\int_{R^{d}R^{d}}\phi_{k}(x)\phi_{m}(x)\,dx\int_{R^{d}}\phi_{j}(y)\phi_{n}(y)\, dy$$
+            如果$\phi_{k,j}=\phi_{m,n}$, 那么$k=m,j=n$, 则上式为1,
+            如果$\phi_{k,j}\neq\phi_{m,n}$可知$k\neq m$或$n\neq j$, 因此上式为0, 从而$\phi_{k,j}$是标准正交的
+
+            为了证明是基底, 只需证如果对所有$k,j$, $\int_{R^{d}\times R^{d}}F(x,y)\phi_{k,j}(x,y)\,dxdy=0$可以推出$F(x,y)=0$. 按照提示中的思路, 我们知道$$< F_{j},\phi_{k}(x)>
+            =0\qquad\forall k$$
+            因此$F_{j}a.e.=0$对任何j成立(设不为0的集合为$E_{j}$), 可数个零测集的并还是零测集, 所以$E=\cup_{j}E_{j}$还是零测集, 且对$x\in E^{c}$,$F_{j}(x)=0$对任何j成立, 因此对这个x, $F(x,y)$ 关于y a.e. 为0, 记这样的y对应的集合是$E_{x}$, 那么不满足$F(x,y)=0$的集合的测度为$$\int_{x\in E^{c},y\in E_{x}^{c}}\,dxdy=\int_{E^{c}}m_{d}(E_{x}^{c})\,dx=\int_{E^{c}}0\,dx=0$$
+            从而$F(x,y)=0$ a.e成立, 又在$L^{2}$中f=g的意思是$f$a.e.=$g$, 所以$F(x,y)=0$
+        </div>
+
+        <!-- Exercise 8 -->
+        <div class="Exercise-box">
+            <h3>Exercise 8</h3>
+            <p>Let \(\eta(t)\) be a fixed strictly positive continuous function on \([a,b]\). Define \(H_\eta = L^2([a,b],\eta)\) to be the space of all measurable functions \(f\) on \([a,b]\) such that \(\int_a^b |f(t)|^2\eta(t)\,dt< \infty\). Define the inner product on \(H_\eta\) by \((f,g)_\eta=\int_a^b f(t)g(t)\eta(t)\,dt\).</p>
+            <ol type="a">
+                <li>Show that \(H_\eta\) is a Hilbert space, and that the mapping \(U : f \mapsto \eta^{1/2}f\) gives a unitary correspondence between \(H_\eta\) and the usual space \(L^2([a,b])\).</li>
+                <li>Generalize this to the case when \(\eta\) is not necessarily continuous.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>容易验证内积的三个性质.下面验证完备性, 注意根据$\eta$的连续性和严格正可得在紧集$[a,b]$上, 最小值是严格正的(最小值的存在性由[a,b]的紧性保证),所以可设$\eta\geq c>0$, 然后根据$$\|f_{n}-f_{m}\|_{\eta}^{2}\geq c\|f_{n}-f_{m}\|_{L^{2}([a,b])}^{2}$$可得如果$f_{n}$是$\mathcal{H}_{\eta}$中的Cauchy列,那么也是$L^{2}([a,b])$中的Cauchy列, 因此有极限f, 又$\eta$在[a,b]上有界, 所以$$\|f_{n}-f\|_{\eta}^{2}\leq M\|f_{n}-f\|_{L^{2}([a,b])}^{2}\rightarrow0$$
+            因此$\mathcal{H}_{\eta}$是完备的.
+            $$< f,f>
+            _{\eta}=\int_{a}^{b}\lvert f(x)\rvert^{2}\eta\,dx=< f\eta^{\frac{1}{2}},f\eta^{\frac{1}{2}}>
+            =< Uf,Uf>
+            $$
+                  <h4>(b)</h4>上述结论对有正的下界和正的上界的可测函数$\eta$都成立
+        </div>
+
+        <!-- Exercise 9 -->
+        <div class="Exercise-box">
+            <h3>Exercise 9</h3>
+            <p>Let \(H_1 = L^2([-\pi,\pi])\) be the Hilbert space of functions \(F(e^{i\theta})\) on the unit circle with inner product \((F,G) = \frac{1}{2\pi}\int_{-\pi}^\pi F(e^{i\theta})\overline{G(e^{i\theta})}\,d\theta\). Let \(H_2 = L^2(\mathbb{R})\). Using the mapping \(x \mapsto \frac{i-x}{i+x}\) of \(\mathbb{R}\) to the unit circle, show that:</p>
+            <ol type="a">
+                <li>The correspondence \(U : F \to f\), with \(f(x) = \frac{1}{\pi^{1/2}(i+x)}F\!\left(\frac{i-x}{i+x}\right)\) gives a unitary mapping of \(H_1\) to \(H_2\).</li>
+                <li>As a result, \(\left\{ \frac{1}{\pi^{1/2}}\frac{1}{i+x}\bigl(\frac{i-x}{i+x}\bigr)^n \right\}_{n=-\infty}^\infty\) is an orthonormal basis of \(L^2(\mathbb{R})\).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>第三章已经得出了Lebesgue积分的换元积分法, 所以$$\|f\|_{L^{2}(R)}^{2}=\frac{1}{\pi}\int_{-\infty}^{\infty}\lvert F(\frac{i-x}{i+x})\rvert^{2}\frac{1}{x^{2}+1}\,dx=\frac{1}{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\lvert F(\frac{i-tanx}{i+tanx})\rvert^{2}\,dx$$
+            计算$$\frac{i-tanx}{i+tanx}=\frac{icosx-sinx}{icosx+sinx}=cos^{2}x-sin^{2}x+2isinxcosx=cos2x+isin2x$$, 因此$$\|f\|_{L^{2}(R)}^{2}=\frac{1}{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\lvert F(cos2x+isin2x)\rvert^{2}\,dx$$
+            另一方面$$< F,F>
+            =\frac{1}{2\pi}\int_{-\pi}^{\pi}\lvert F(cos\theta+isin\theta)\rvert^{2}\,d\theta=\frac{1}{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\lvert F(cos2x+isin2x)\rvert^{2}\,dx$$
+            因此$U$是酉变换.
+
+                  <h4>(b)</h4>因为$e^{in\theta},n\in Z$是$L^{2}([-\pi,\pi])$的标准正交基, 所以记$F_{n}=x^{n}$, 则$F_{n}(e^{\i\theta})$是$L^{2}([-\pi,\pi])$的标准正交基, 又U是酉变换, 所以$UF_{n}$是$H_{2}$的标准正交基, 又$$UF_{n}=\frac{1}{\pi^{\frac{1}{2}}}\frac{1}{x+i}(\frac{i-x}{i+x})^{n}$$
+            因此证毕
+        </div>
+
+        <!-- Exercise 10 -->
+        <div class="Exercise-box">
+            <h3>Exercise 10</h3>
+            <p>Let \(\mathcal{S}\) denote a subspace of a Hilbert space \(\mathcal{H}\). Prove that \((S^\perp)^\perp\) is the smallest closed subspace of \(\mathcal{H}\) that contains \(\mathcal{S}\).</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 首先$\mathcal{S}^{\perp\perp}\supseteq\mathcal{S}$,且$\mathcal{S}^{\perp\perp}$是一个子空间. 因此$\mathcal{S}^{\perp\perp}$是包含$\mathcal{S}$的子空间.  反之对任何一个包含$\mathcal{S}$的闭子空间L, 我们证明$L^{\perp\perp}=L$, 前面的讨论给出了左边包含右边. 现在设$x\in L^{\perp\perp}$, 则对任何$y\in L^{\perp}$, $< x,y>=0$, 把x分解成$f+g,f\in L,g\in L^{\perp}$, 那么$$0=< x,g>=< f,g>+< g,g>$$
+            又$f\perp g$, 所以$\|g\|=0,g=0$, 因此$x=f\in L$, 这说明$L^{\perp\perp}\subseteq L$, 因此$L^{\perp\perp}=L$. 然后我们证明对两个集合$A\subseteq B$则有$A^{\perp}\supseteq B^{\perp}$, 这是显然的, 因为对任何$x\perp B$, 必有$x\perp A$(因为A是B的子集), 所以$x\in A^{\perp}$, 因此$$\mathcal{S}\subseteq L\qquad\rightarrow \mathcal{S}^{\perp}\supseteq L^{\perp}\qquad\rightarrow \mathcal{S}^{\perp\perp}\subseteq L^{\perp\perp}=L$$
+            从而$\mathcal{S}^{\perp\perp}$是包含$\mathcal{S}$的最小闭子空间.
+        </div>
+
+        <!-- Exercise 11 -->
+        <div class="Exercise-box">
+            <h3>Exercise 11</h3>
+            <p>Let \(P\) be the orthogonal projection associated with a closed subspace \(\mathcal{S}\) in a Hilbert space \(H\), i.e. \(P(f)=f\) if \(f\in\mathcal{S}\) and \(P(f)=0\) if \(f\in\mathcal{S}^\perp\).</p>
+            <ol type="a">
+                <li>Show that \(P^2 = P\) and \(P^* = P\).</li>
+                <li>Conversely, if \(P\) is any bounded operator satisfying \(P^2 = P\) and \(P^* = P\), prove that \(P\) is the orthogonal projection for some closed subspace of \(\mathcal{H}\).</li>
+                <li>Using \(P\), prove that if \(\mathcal{S}\) is a closed subspace of a separable Hilbert space, then \(\mathcal{S}\) is also a separable Hilbert space.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4> 根据定义, $Pf\in S$, 所以$P(Pf)=Pf$. 因为$\mathcal{S}$是闭子空间, 且$\mathcal{H}=\mathcal{S}\oplus\mathcal{S}^{\perp}$, 因此可取$\mathcal{S},\mathcal{S}^{\perp}$中的标准正交基, $e_{1},..,e_{n},..$和$v_{1},..,v_{n},..,$共同组成$\mathcal{H}$的标准正交基, 从而$$f=\sum_{i=1}^{\infty}< f,e_{i}>e_{i}+\sum_{i=1}^{\infty}< f,v_{i}>v_{i}\qquad\forall f\in\mathcal{H}$$
+            从而$$P^{\ast}f=\sum_{i=1}^{\infty}< P^{\ast}f,e_{i}>e_{i}+\sum_{i=1}^{\infty}< P^{\ast}f,v_{i}>v_{i}=\sum_{i=1}^{\infty}< f,Pe_{i}>e_{i}+\sum_{i=1}^{\infty}< f,Pv_{i}>v_{i}$$
+            $$=\sum_{i=1}^{\infty}< f,e_{i}>e_{i}=\sum_{i=1}^{\infty}< f,e_{i}>Pe_{i}=\sum_{i=1}^{\infty}< f,e_{i}>Pe_{i}+\sum_{i=1}^{\infty}< f,v_{i}>Pv_{i}=Pf$$
+
+                  <h4>(b)</h4>我们证明一个Lemma, 对有界线性算子T, $(ImT)^{\perp}=KerT^{\ast}$. 首先设$g\perp ImT$, 那么对任何f都有$$< g,Tf>=0$$
+            因此$$< T^{\ast}g,f>=0\qquad\forall f$$
+            取$f=T^{\ast}g$可得$\|T^{\ast}g\|=0,T^{\ast}g=0$, 因此$(ImT)^{\perp}\subseteq KerT^{\ast}$. 反之, 如果$g\in KerT^{\ast}$, 则对任何$f\in\mathcal{H}$, 都有$$0=< 0,f>=< T^{\ast}g,f>=< g,Tf>$$
+            因此$g\perp ImT$, 这给出了$KerT^{\ast}\subseteq (ImT)^{\perp}$, 从而$$KerT^{\ast}= (ImT)^{\perp}$$
+
+            回到正交投影的情况, 我们知道$$KerP=(ImP)^{\perp}$$
+            我们证明P是到ImP的正交投影, 为了说明这件事, 首先要说明ImP是个闭的. 是个$Pf_{n}$是ImP中的Cauchy列, $\|Pf_{n}-g\|\rightarrow0$, 那么根据P的有界性可得$$\|PPf_{n}-Pg\|\rightarrow0$$
+            又$PPf_{n}=Pf_{n}$, 因此$g=Pg$, 又$Pg\in ImP$, 所以$ImP$是闭的, 因此是闭子空间. 如果$f\in ImP$, 那么 设$f=Pg$, 则根据$$Pf=P^{2}g=Pg=f$$可得$$P(f)=f\qquad\forall f\in ImP$$
+            对$f\in(ImP)^{\perp}$, 刚才说过$KerP=(ImP)^{\perp}$, 所以$Pf=0$, 证毕
+
+                  <h4>(c)</h4>先证明$\|P\|\leq 1$, 首先用正交分解设$f=g+h,g\in\mathcal{S},h\in\mathcal{S}^{\perp}$, 那么$$Pf=Pg=g\qquad\|Pf\|^{2}=\|g\|^{2}\leq \|g\|^{2}+\|g\|^{2}=\|f\|^{2}$$
+            因此$\|P\|\leq 1$. 设$f_{1},..,f_{n},....$是$\mathcal{H}$的可数稠密子集, 对任何$g\in\mathcal{S}$. 取一列$f_{n_{k}}\rightarrow g$, 那么$$\|Pf_{n_{k}}-g\|=\|Pf_{n_{k}}-Pg\|\leq \|P\|\|f_{n_{k}}-g\|\leq \|f_{n_{k}}-g\|\rightarrow0$$
+            因此$Pf_{n}$就是$\mathcal{S}$的可数稠密子集, 因此$\mathcal{S}$可分
+        </div>
+
+        <!-- Exercise 12 -->
+        <div class="Exercise-box">
+            <h3>Exercise 12</h3>
+            <p>Let \(E\) be a measurable subset of \(\mathbb{R}^d\), and suppose \(S\) is the subspace of \(L^2(\mathbb{R}^d)\) of functions that vanish for a.e. \(x\notin E\). Show that the orthogonal projection \(P\) on \(S\) is given by \(P(f) = \chi_E f\), where \(\chi_E\) is the characteristic function of \(E\).</p>
+        </div>
+        <div class="Proof-box">
+            Proof:根据投影的定义, 如果$suppf\subseteq E$, 那么$Pf=f$, 如果$suppf\subseteq E^{c}$, 那么我们发现$f\perp\mathcal{S}$, 从而$Pf=0$. 对任何$f$, $f-\mathcal{X}_{E}f$在$\mathcal{S}^{\perp}$中(因为其支集在$E^{c}$上), 所以$$P(f-\mathcal{X}_{E}f)=0\qquad Pf=P(\mathcal{X}_{E}f)$$
+            但$\mathcal{X}_{E}f\in\mathcal{S}$, 所以$P(\mathcal{X}_{E}f)=\mathcal{X}_{E}f$, 所以$$Pf=\mathcal{X}_{E}\cdot f$$
+        </div>
+
+        <!-- Exercise 13 -->
+        <div class="Exercise-box">
+            <h3>Exercise 13</h3>
+            <p>Suppose \(P_1\) and \(P_2\) are a pair of orthogonal projections on \(S_1\) and \(S_2\), respectively. Then \(P_1P_2\) is an orthogonal projection if and only if \(P_1\) and \(P_2\) commute, that is, \(P_1P_2 = P_2P_1\). In this case, \(P_1P_2\) projects onto \(S_1\cap S_2\).</p>
+        </div>
+        <div class="Proof-box">
+            Proof:$\Leftarrow$ Exercise 11的(c)中我们证明了正交投影都是有界的, 所以$P_{i}$有界, 所以$P_{1}P_{2}$还是有界的, 因此只需对$P_{1}P_{2}$验证Exercise 11(b)的条件, 首先$$(P_{1}P_{2})^{\ast}=P_{2}^{\ast}P_{1}^{\ast}=P_{2}P_{1}=P_{1}P_{2}$$
+            $$P_{1}P_{2}P_{1}P_{2}=P_{1}P_{1}P_{2}P_{2}=P_{1}^{2}P_{2}^{2}=P_{1}P_{2}$$
+            所以$P_{1}P_{2}$是到$ImP_{1}P_{2}$的正交投影, 而$ImP_{1}P_{2}=ImP_{1}\cap ImP_{2}$
+
+            $\Rightarrow$ 此时$P_{1}P_{2}$是自伴算子, 所以$$P_{1}P_{2}=(P_{1}P_{2})^{\ast}=P_{2}^{\ast}P_{1}^{\ast}=P_{2}P_{1}$$
+        </div>
+
+        <!-- Exercise 14 -->
+        <div class="Exercise-box">
+            <h3>Exercise 14</h3>
+            <p>Suppose \(\mathcal{H}\) and \(\mathcal{H}'\) are two completions of a pre‑Hilbert space \(\mathcal{H}_0\). Show that there is a unitary mapping from \(\mathcal{H}\) to \(\mathcal{H}'\) that is the identity on \(\mathcal{H}_0\).</p>
+            <p>[Hint: If \(f\in\mathcal{H}\), pick a Cauchy sequence \(\{f_n\}\) in \(\mathcal{H}_0\) that converges to \(f\) in \(\mathcal{H}\). This sequence will also converge to an element \(f'\) in \(\mathcal{H}'\). The mapping \(f\mapsto f'\) gives the required unitary mapping.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:$$\|f\|_{\mathcal{H}}=\lim_{n\rightarrow\infty}\|f_{n}\|_{\mathcal{H}}=\lim_{n\rightarrow\infty}\|f_{n}\|_{\mathcal{H}_{0}}=\lim_{n\rightarrow\infty}\|f_{n}\|_{\mathcal{H}'}=\|f'\|_{\mathcal{H}'}$$
+        </div>
+
+        <!-- Exercise 15 -->
+        <div class="Exercise-box">
+            <h3>Exercise 15</h3>
+            <p>Let \(T\) be any linear transformation from \(\mathcal{H}_1\) to \(\mathcal{H}_2\). If we suppose that \(H_1\) is finite‑dimensional, then \(T\) is automatically bounded. (If \(\mathcal{H}_1\) is not assumed to be finite‑dimensional this may fail; see Problem 1 below.)</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 设$\mathcal{H}_{1}$的基底为$e_{1},..,e_{n}$, 那么$$Tf=\sum_{i=1}^{n}< f,e_{i}>Te_{i}$$
+            从而$$\|Tf\|\leq \sum_{i=1}^{n}\lvert < f,e_{i}>\rvert\|Te_{i}\|$$
+            记$M=max\{\|Te_{1}\|,...,\|Te_{n}\|\}$, 那么$$\|Tf\|\leq M\sum_{i=1}^{n}\lvert < f,e_{i}>\rvert\leq M\sqrt{n}\sqrt{\sum_{i=1}^{n}\lvert <f,e_{i}>
+                \rvert^{2}}=M\sqrt{n}\|f\|$$
+                因此T有界.
+        </div>
+
+        <!-- Exercise 16 -->
+        <div class="Exercise-box">
+            <h3>Exercise 16</h3>
+            <p>Let \(F_0(z)=1/(1-z)^i\).</p>
+            <ol type="a">
+                <li>Verify that \(|F_0(z)|\le e^{\pi/2}\) in the unit disc, but that \(\lim_{r\to1}F_0(r)\) does not exist.</li>
+                <li>Let \(\{\alpha_n\}_{n=1}^\infty\) be an enumeration of the rationals, and let \(F(z)=\sum_{j=1}^\infty \delta^j F_0(z e^{-i\alpha_j})\), where \(\delta\) is sufficiently small. Show that \(\lim_{r\to1}F(re^{i\theta})\) fails to exist whenever \(\theta=\alpha_j\), and hence \(F\) fails to have a radial limit for a dense set of points on the unit circle.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>$(1-z)$落在开的右半平面, 在logz的主支中, 因此$$(1-z)^{i}=e^{ilog(1-z)}=e^{-arg(1-z)}e^{ilog\lvert 1-z\rvert}$$
+            从而$\lvert F_{0}(z)\rvert=e^{arg(1-z)}$, 又$1-z$落在右半平面, 所以辐角$\in(-\frac{\pi}{2},\frac{\pi}{2})$, 这给出了$$\lvert F_{0}(z)\rvert\leq e^{\frac{\pi}{2}}$$
+
+            $$F_{0}(r)=e^{-ilog(1-r)}$$ 可以考虑$r_{n}=1-\frac{1}{n\pi}$, 则$$F_{0}(r_{n})=e^{in\pi}=cosn\pi=\pm1$$
+
+
+                  <h4>(c)</h4> 当$\theta=\alpha_{j}$时, 考虑(a)中构造的$r_{n}$, 固定$\epsilon=\frac{\delta^{j}}{2}$, 那么$$F(r_{n+1}e^{i\theta})-F(r_{n}e^{i\theta})=(-1)^{n}2\delta^{j}+\sum_{i\neq j}\delta^{i}(F(r_{n+1}e^{i(\alpha_{j}-\alpha_{i})})-F(r_{n}e^{i(\alpha_{j}-\alpha_{i})}))$$
+            取N使得$\sum_{i>N}^{\infty}\delta^{i}2e^{\frac{\pi}{2}}< \frac{\epsilon}{2}$, 又注意到$\lim_{r\rightarrow 1}e^{-ilog\lvert 1-re^{i(\alpha_{j}-\alpha_{i})\rvert}}$对$i\neq j,i\leq N$都存在,所以取$N_{2}$满足$n>
+            N_{2}$时, $$\lvert  F(r_{n+1}e^{i(\alpha_{j}-\alpha_{i})})-F(r_{n}e^{i(\alpha_{j}-\alpha_{i})})\rvert\leq \frac{\epsilon}{N\delta}\qquad\forall i\leq N,i\neq j$$
+            那么$$\lvert \sum_{i\neq j}\delta^{i}(F(r_{n+1}e^{i(\alpha_{j}-\alpha_{i})})-F(r_{n}e^{i(\alpha_{j}-\alpha_{i})}))\rvert\leq 2\epsilon$$ 从而$$\lvert F(r_{n+1}e^{i\theta})-F(r_{n}e^{i\theta})\rvert\geq \delta^{j}\qquad\forall n>N_{2}$$
+        </div>
+
+        <!-- Exercise 17 -->
+        <div class="Exercise-box">
+            <h3>Exercise 17</h3>
+            <p>Fatou's theorem can be generalized by allowing a point to approach the boundary in larger regions, as follows.</p>
+            <p>For each \(0< s< 1\) and point \(z\) on the unit circle, consider the region \(\Gamma_s(z)\) defined as the smallest closed convex set that contains \(z\) and the closed disc \(D_s(0)\). In other words, \(\Gamma_s(z)\) consists of all lines joining \(z\) with points in \(D_s(0)\). Near the point \(z\), the region \(\Gamma_s(z)\) looks like a triangle. (See Figure 2.)</p>
+            <p>We say that a function \(F\) defined in the open unit disc has a <em>non‑tangential limit</em> at a point \(z\) on the circle, if for every \(0< s< 1\), the limit \(\lim_{\substack{w\to z\\ w\in\Gamma_s(z)}}F(w)\) exists.</p>
+            <p>Prove that if \(F\) is holomorphic and bounded on the open unit disc, then \(F\) has a non‑tangential limit for almost every point on the unit circle.</p>
+            <p>[Hint: Show that the Poisson integral of a function \(f\) has non‑tangential limits at every point of the Lebesgue set of \(f\).]</p>
+            <div style="text-align: center;">
+                <img src="figs/C4F2.png" width="20%">
+
+            </div>
+        </div>
+        
+        <div class="Proof-box">
+            Proof: 按照和课本同样的推导, 设$$F(re^{i\theta})=\sum_{n=0}^{\infty}a_{n}r^{n}e^{in\theta}\qquad\forall r< 1,\theta\in[-\pi,\pi]]$$ 那么$\sum_{n=0}^{\infty}\lvert a_{n}\rvert^{2}< \infty$, 然后考虑$f\in L^{2}([-\pi,\pi])$满足f的Fourier系数为$a_{n}$($n< 0$时为0), 则根据poisson积分公式可得$$F(re^{ix})=\sum_{n=0}^{\infty}a_{n}r^{n}e^{inx}=\int_{-\pi}^{\pi}f(x-y)P_{r}(y)\,dy$$
+则$$\lvert F(re^{iz})-F(re^{ix})\rvert\leq\int_{-\pi}^{\pi}\lvert f(z-y)-f(x-y)\rvert P_{r}(y)\,dy$$
+根据$\Gamma_{s}(x)$的几何形状, 我们知道要使$re^{iz}\in\Gamma_{s}(x)$, 那么$$\lvert sin(z-x)\rvert\leq \frac{1-r}{r}$$
+因此对足够接近1的r, 必有$\lvert z-x\rvert< 2(1-r)$. 考虑$$\mathcal{T}(z,t)=\frac{1}{t}\int_{\lvert y\rvert\leq t  }\lvert f(z-y)-f(x-y)\rvert\,dt\qquad \lvert z-x\rvert\leq Mt$$
+则$$\mathcal{T}(z,t)\leq \frac{1}{t}\int_{\lvert y\rvert\leq t}\lvert f(z-y)-f(x)\rvert\,dy+\frac{1}{t}\int_{\lvert y\rvert\leq t}\lvert f(x-y)-f(x)\rvert\,dy$$
+我们发现对任何$z\in B(x,Mt)$, 均有$z-y\subseteq B(x,(M+1)t)$, 因此$$\mathcal{T}(z,t)\leq \frac{1}{t}\int_{y\in B(x,(M+1)t)}\lvert f(y)-f(x)\rvert\,dy+\frac{1}{t}\int_{\lvert y\rvert\leq t}\lvert f(x-y)-f(x)\rvert\,dy$$
+$$=\frac{M+1}{m(B(x,(M+1)t))}\int_{y\in B(x,(M+1)t)}\lvert f(y)-f(x)\rvert\,dy+\mathcal{A}(t)$$
+右边和z无关, 由于x是f的Lebesgue点, 所以令$t\rightarrow0$可得$\mathcal{T}(z,t)\rightarrow0$对$z\in B(x,Mt)$一致成立.
+因此$\mathcal{T}(z,t)$在t=0附近是一致有界的(关于z,t一致), 下面证明当$\pi\geq \lvert t\rvert>\delta$时, $\mathcal{T}(z,t)$也是关于z,t一致有界的. 这很容易: $$\mathcal{T}(z,t)\leq \frac{1}{\delta}\int_{-2\pi}^{2\pi}\lvert f(y)\rvert\,dy+\frac{1}{\delta}\int_{-2\pi}^{2\pi}\lvert f(y)\rvert\,dy< \infty$$
+然后按照课本第三章的方法, 可以知道$$\lvert F(re^{iz})-F(re^{ix})\rvert\leq c\mathcal{T}(z,\delta)+c'\sum_{k=0}^{\infty}\frac{1}{2^{k}}\mathcal{T}(z,2^{k+1}\delta)\qquad\delta=1-r$$
+(其实这个求和不是无穷, 因为到$2^{k+1}\delta\geq\pi$时k就不会再增长了)
+
+取N满足$\sum_{k>N}\frac{1}{2^{k}}< \frac{\epsilon}{c'B}$, 其中B是$\mathcal{T}(z,t)$的一致界, 那么$$\lvert F(re^{iz})-F(re^{ix})\rvert\leq c\mathcal{T}(z,\delta)+\frac{\epsilon}{2}+c'\sum_{k=0}^{N}\frac{1}{2^{k}}\mathcal{T}(z,2^{k+1}\delta)$$
+取$\delta_{0}$使得对任何$t< \delta_{0}$,$\mathcal{T}(z,t)\leq \frac{\epsilon}{2(c+c')(N+1)}$对任何$z\in B(x,Mt)$成立, 则对任何$\delta< \frac{1}{2^{N+1}}\delta_{0}$, 都有$$\lvert F(re^{iz})-F(re^{ix})\rvert\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\qquad\forall \delta< \frac{1}{2^{N+1}}\delta_{0}$$
+这给出了, 对任何$\epsilon>0$, 存在$\delta$使得当$1-r< \delta$时, $$\lvert F(re^{iz})-F(re^{ix})\rvert\leq\epsilon$$
+又对f的Lebesgue点x, 径向极限$\lim_{r\rightarrow1}F(re^{ix})$存在, 设为a, 那么对任何$\epsilon>0$, 存在$\delta_{1}$使得对任何$1-r< \delta_{1}$, $$\lvert F(re^{ix})-a\rvert< \epsilon$$
+
+设$z=e^{ix}$, 其中x是f的Lebesgue点,
+这说明当$1-r< min\{\delta,\delta_{1}\}$时, 对任何$y=we^{i\theta}\in\Gamma_{s}(x)\cap B(z,1-r)$, 均有$w>r$, 因此$\lvert F(we^{ix})-a\rvert< \epsilon$, 从而$$\lvert F(y)-a\rvert\leq \lvert F(y)-F(we^{ix})\rvert+\lvert F(we^{ix})-a\rvert< \epsilon+\epsilon=2\epsilon$$
+从而$$\lim_{y\in\Gamma_{s}(z),y\rightarrow z}F(y)=a$$
+又f的Lebesgue点是a.e.存在的, 所以$\lim_{y\in\Gamma_{s}(z),y\rightarrow z}F(y)$存在, 对a.e.的$z\in S^{1}$成立.
+        </div>
+
+        <!-- Exercise 18 -->
+        <div class="Exercise-box">
+            <h3>Exercise 18</h3>
+            <p>Let \(\mathcal{H}\) denote a Hilbert space, and \(\mathcal{L}(\mathcal{H})\) the vector space of all bounded linear operators on \(\mathcal{H}\). Given \(T\in\mathcal{L}(\mathcal{H})\), we define the operator norm \(\|T\| = \inf\{B : \|Tv\|\le B\|v\|\ \text{for all }v\in\mathcal{H}\}\).</p>
+            <ol type="a">
+                <li>Show that \(\|T_1+T_2\|\le\|T_1\|+\|T_2\|\) whenever \(T_1,T_2\in\mathcal{L}(\mathcal{H})\).</li>
+                <li>Prove that \(d(T_1,T_2)=\|T_1-T_2\|\) defines a metric on \(\mathcal{L}(\mathcal{H})\).</li>
+                <li>Show that \(\mathcal{L}(\mathcal{H})\) is complete in the metric \(d\).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>根据范数的定义, 取一组序列$B_{n}\downarrow \|T\|$, 那么$$\|Tf\|\leq B_{n}\|f\|$$
+            用极限的保号性可得$$\|Tf\|\leq \|T\|\|f\|$$
+            $$\|T_{1}f+T_{2}f\|\leq \|T_{1}f\|+\|T_{2}f\|\leq \|T_{1}\|\|f\|+\|T_{2}\|\|f\|$$
+            因此$\|T_{1}+T_{2}\|\leq \|T_{1}\|+\|T_{2}\|$
+
+                  <h4>(b)</h4>又$\|T\|\geq 0$恒成立, 所以$d(T_{1},T_{2})\geq 0$恒成立. 然后注意到$$\|T_{1}f-T_{2}f\|=\|T_{2}f-T_{1}f\|$$ 所以$d(T_{1},T_{2})=d(T_{2},T_{1})$.
+
+            又如果$d(A,B)=0$, 那么$$\|Af-Bf\|\leq \|A-B\|\|f\|=0\qquad Af=Bf\qquad\forall  f$$
+            所以$A=B$.
+
+                  <h4>(c)</h4>设$T_{n}$在$\|\cdot\|$下是Cauchy列, 那么$$\|T_{n}f-T_{m}f\|\leq \|T_{n}-T_{m}\|\|f\|\rightarrow0$$
+            因此$T_{n}f$收敛到一个极限, 记为$Tf$, 只需证T是有界线性算子, 事实上$$\|Tf\|=\lim_{n \to \infty}\|T_{n}f\|=\liminf_{n\rightarrow\infty}\|T_{n}f\|\leq\liminf_{n\rightarrow\infty}\|T_{n}\|\|f\|$$
+            所以$$\|T\|\leq \liminf_{n\rightarrow\infty}\|T_{n}\|$$
+            因此$\mathcal{L}(\mathcal{H})$完备
+        </div>
+
+        <!-- Exercise 19 -->
+        <div class="Exercise-box">
+            <h3>Exercise 19</h3>
+            <p>If \(T\) is a bounded linear operator on a Hilbert space, prove that \(\|TT^*\| = \|T^*T\| = \|T\|^2 = \|T^*\|^2\).</p>
+        </div>
+        <div class="Proof-box">
+            Proof: Proposition 5.4已经给出了$\|T\|=\|T^{\ast}$, 又$TT^{\ast}$是自伴算子, 所以用第184页的(7)可得$$\|TT^{\ast}\|=sup\{\lvert < TT^{\ast}f,f>
+                \rvert\bigg|\|f\|=1\}$$
+                而$$\lvert < TT^{\ast}f,f>
+                    \rvert=\|T^{\ast}f\|^{2}$$
+                    所以$$\|TT^{\ast}\|=sup\{\|T^{\ast}f\|^{2}\bigg|\|f\|=1\}$$
+                    而$$\|T^{\ast}\|=inf\{B\bigg|\|T^{\ast}f\|\leq B\|f\|\}=inf\{B\big|\|T^{\ast}\frac{f}{\|f\|}\|\leq B\}=inf\{B\big|\|T^{\ast}f\|\leq B,\|f\|=1\}$$
+                    $$=sup\{\|T^{\ast}f\|\big|\|f\|=1\}$$
+                    我们只需要解释最后一个等号, 显然$sup\{\|T^{\ast}f\|\big|\|f\|=1\}\leq inf\{B\big|\|T^{\ast}f\|\leq B,\|f\|=1\}$, 另一方面对任何范数为1的f,都有$$\|T^{\ast}f\|\leq sup\{\|T^{\ast}f\|\big|\|f\|=1\}$$
+                    所以$inf\{B\big|\|T^{\ast}f\|\leq B,\|f\|=1\}\leq  sup\{\|T^{\ast}f\|\big|\|f\|=1\}$, 从而二者相等. 从而$$\|T^{\ast}\|^{2}=\|TT^{\ast}\|$$
+                    把T换成$T^{\ast}$就得出了$\|T\|^{2}=\|T^{\ast}T\|$, 因此四个值相等.
+        </div>
+
+        <!-- Exercise 20 -->
+        <div class="Exercise-box">
+            <h3>Exercise 20</h3>
+            <p>Suppose \(\mathcal{H}\) is an infinite‑dimensional Hilbert space. We have seen an example of a sequence \(\{f_n\}\) in \(\mathcal{H}\) with \(\|f_n\|=1\) for all \(n\), but for which no subsequence of \(\{f_n\}\) converges in \(H\). However, show that for any sequence \(\{f_n\}\) in \(\mathcal{H}\) with \(\|f_n\|=1\) for all \(n\), there exist \(f\in\mathcal{H}\) and a subsequence \(\{f_{n_k}\}\) such that for all \(g\in\mathcal{H}\), \(\lim_{k\to\infty}(f_{n_k},g)=(f,g)\). (One says that \(\{f_{n_k}\}\) converges weakly to \(f\).)</p>
+            <p>[Hint: Let \(g\) run through a basis for \(\mathcal{H}\), and use a diagonalization argument. One can then define \(f\) by giving its series expansion with respect to the chosen basis.]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 因为我们讨论的Hilbert空间都是可分的, 所以取$\mathcal{H}$的一组基$e_{1},...,e_{n},...,$, 因为$< f_{n},e_{i}>$是有界序列, 所以必有收敛子列. 记子列$f_{n}^{1}$满足$$< f^{1}_{n},e_{1}>\rightarrow a_{1}$$
+现在设$f_{n}^{k}$满足$< f^{k}_{n},e_{i}>\rightarrow a_{i}$对任何$1\leq i\leq k$成立, 然后取$f_{n}^{k}$的子列$f_{n}^{k+1}$满足$$< f^{k+1}_{n},e_{k+1}>\rightarrow a_{k+1}$$
+那么此时$< f_{n}^{k+1},e_{i}>\rightarrow a_{i}$对$1\leq i\leq k$还是成立的, 由此获得了可数个$f_{n}$的子序列. 然后我们考虑$$h_{n}=f_{n}^{n}$$
+然后任取$g=\sum_{i=1}^{\infty}v_{i}e_{i}$, 对任何$\epsilon>0$, 存在N使得对任何$t>N$, $$\|g-\sum_{i=1}^{t}v_{i}e_{i}\|=\sqrt{\sum_{i=t+1}^{\infty}\lvert v_{i}\rvert^{2}}< \epsilon/2$$
+记$f=\sum_{i=1}^{\infty}a_{i}e_{i}$, 首先我们要说明这个级数收敛, 事实上根据$$h_{n}=\sum_{i=1}^{\infty}< h_{n},e_{i}>e_{i}\qquad1=\|h_{n}\|^{2}=\sum_{i=1}^{\infty}\lvert < h_{n},e_{i}>\rvert^{2}\geq \sum_{i=1}^{K}\lvert < h_{n},e_{i}>\rvert^{2}$$
+对每个固定的K, 第二个式子最右边都是有限求和, 所以求和和对n取极限能交换次序, 这给出了$$\sum_{i=1}^{K}\lvert a_{i}\rvert^{2}\leq 1$$
+
+因此根据K的任意性, $\sum_{i=1}^{\infty}\lvert a_{i}\rvert^{2}\leq 1$, 因此f是良定义的. 取$N_{1}$满足$\sum_{i>N_{1}}\lvert a_{i}\rvert^{2}< \frac{\epsilon}{2}$, 下面证明$< h_{n},g>\rightarrow < f,g>$, 取$N_{1}$满足$\sum_{i>N_{1}}\lvert a_{i}\rvert^{2}< \frac{\epsilon}{2}$,  事实上$$< h_{n},g>=< h_{n},\sum_{i=1}^{N}v_{i}e_{i}>+< h_{n},g-\sum_{i=1}^{N}v_{i}e_{i}>$$
+
+因为对$n>M=max\{N_{1},N\}$, $f_{n}^{n}$是$f_{n}^{i}$的子列, $1\leq i\leq M$, 
+
+根据$f_{n}^{n}$的构造可得$< h_{n},e_{i}>\rightarrow a_{i}$对任何$1\leq i\leq M$成立, 因此存在$N_{2}>M$使得当$n>N_{2}$时, $$\lvert < h_{n},e_{i}>-a_{i}\rvert< \frac{\epsilon}{M}\qquad\forall n\geq N_{2}$$
+
+
+因此当$n>N_{2}$时, $$\lvert < h_{n},g>-< f,g>\rvert=\lvert < h_{n},g>-\sum_{i=1}^{M}a_{i}v_{i}-\sum_{i>M}a_{i}v_{i}\rvert\leq \sum_{i=1}^{M}\lvert < h_{n},e_{i}>v_{i}-a_{i}v_{i}\rvert+\|h_{n}\|\|g-\sum_{i=1}^{M}v_{i}e_{i}\|+\sum_{i>M}\lvert a_{i}v_{i}\rvert$$
+$$< \epsilon+\frac{\epsilon}{2}+\sqrt{\sum_{i>M}\lvert a_{i}\rvert^{2}}\sqrt{\sum_{i>M}\lvert v_{i}\rvert^{2}}< \frac{3\epsilon}{2}+\sqrt{\sum_{i>N_{2}}\lvert a_{i}\rvert^{2}}\sqrt{\sum_{i>N}\lvert v_{i}\rvert^{2}}=\frac{3\epsilon}{2}+\frac{\epsilon}{2}=2\epsilon$$
+这说明$h_{n}$弱收敛于f.
+        </div>
+
+        <!-- Exercise 21 -->
+        <div class="Exercise-box">
+            <h3>Exercise 21</h3>
+            <p>There are several senses in which a sequence of bounded operators \(\{T_n\}\) can converge to a bounded operator \(T\) (in a Hilbert space \(\mathcal{H}\)). First, there is convergence in the <em>norm</em>, that is, \(\|T_n-T\|\to0\) as \(n\to\infty\). Next, there is a weaker convergence, which happens to be called <em>strong convergence</em>, that requires that \(T_n f\to T f\) as \(n\to\infty\) for every vector \(f\in\mathcal{H}\). Finally, there is <em>weak convergence</em> (see also Exercise 20) that requires \((T_n f,g)\to(T f,g)\) for every pair of vectors \(f,g\in\mathcal{H}\).</p>
+            <ol type="a">
+                <li>Show by examples that weak convergence does not imply strong convergence, nor does strong convergence imply convergence in the norm.</li>
+                <li>Show that for any bounded operator \(T\) there is a sequence \(\{T_n\}\) of bounded operators of finite rank so that \(T_n\to T\) strongly as \(n\to\infty\).</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>考虑无穷维可分Hilber空间.设$\mathcal{H}$的标准正交基为$e_{1},..$, 记$T_{i}$是到$span\{e_{i}\}$的投影算子, 那么$$\|T_{n}f\|=\lvert < f,e_{n}>\rvert\|e_{n}\|=\lvert < f,e_{n}>\rvert\rightarrow0$$
+(因为$\sum_{i=1}^{\infty}\lvert < f,e_{i}>\rvert^{2}=\|f\|$对任何$f\in\mathcal{H}$成立, 所以求和的单项要趋于0)
+
+这说明$T_{n}$强收敛于0. 但是$$\|T_{n}e_{n}\|=\|e_{n}\|=1$$ 因此$\|T_{n}\|\geq 1$, 从而$T_{n}$并不是按范数收敛到0的.因此强收敛不能得到算子范数收敛.
+
+然后考虑位移算子$$T_{n}f=\sum_{i=1}^{\infty}< f,e_{i}>e_{i+n}$$
+则$$< T_{n}f,g>=\sum_{i=1}^{\infty}< f,e_{i}>< g,e_{i+n}>\leq\sqrt{\sum_{i=1}^{\infty}\lvert < f,e_{i}>\rvert^{2}}\sqrt{\sum_{i=n}^{\infty}\lvert < g,e_{i}>\rvert^{2}}=\|f\|\sqrt{\sum_{i=n}^{\infty}\lvert < g,e_{i}>\rvert^{2}}\rightarrow0$$
+因此$T_{n}f$弱收敛于0, 但是$$\|T_{n}f\|^{2}=\sum_{i=1}^{\infty}< f,e_{i}>\rvert^{2}=\|f\|$$
+因此$T_{n}f$不是依范数收敛于0的, 因此弱收敛不能得出强收敛
+
+                  <h4>(b)</h4>取一组标准正交基$e_{1},..,e_{n},...,$, 定义$$T_{n}f=\sum_{i=1}^{n}< f,e_{i}>Te_{i}$$
+则$$\|T_{n}f\|\leq \sum_{i=1}^{n}\|f\|\|T\|=n\|T\|\|f\|$$
+所以$\|T_{n}\|\leq n\|T\|$, 因此$T_{n}$是有界的. 又$T_{n}$的值域含于$span\{Te_{1},..,Te_{n}\}$, 所以$T_{n}$是有限秩的.
+
+又$$\|T_{n}f-Tf\|=\|\sum_{i=1}^{n}< f,e_{i}>Te_{i}-\sum_{i=1}^{\infty}< f,e_{i}>Te_{i}\|=\|\sum_{i>n}< f,e_{i}>Te_{i}\|=\|T\sum_{i>n}< f,e_{i}>e_{i}\|\leq \|T\|\sqrt{\sum_{i>n}\lvert < f,e_{i}>\rvert^{2}}$$
+根据$\sum_{i=1}^{\infty}\lvert < f,e_{i}>\rvert^{2}< \infty$可得上式右边$\rightarrow0$, 因此$T_{n}f\rightarrow Tf$
+        </div>
+
+        <!-- Exercise 22 -->
+        <div class="Exercise-box">
+            <h3>Exercise 22</h3>
+            <p>An operator \(T\) is an <em>isometry</em> if \(\|Tf\|=\|f\|\) for all \(f\in\mathcal{H}\).</p>
+            <ol type="a">
+                <li>Show that if \(T\) is an isometry, then \((Tf,Tg)=(f,g)\) for every \(f,g\in\mathcal{H}\). Prove as a result that \(T^*T=I\).</li>
+                <li>If \(T\) is an isometry and \(T\) is surjective, then \(T\) is unitary and \(TT^*=I\).</li>
+                <li>Give an example of an isometry that is not unitary.</li>
+                <li>Show that if \(T^*T\) is unitary then \(T\) is an isometry.</li>
+            </ol>
+            <p>[Hint: Use the fact that \((Tf,Tf)=(f,f)\) for \(f\) replaced by \(f\pm g\) and \(f\pm ig\).]</p>
+        </div>
+        <div class="Proof-box">
+           Proof:<h4>(a)</h4>根据提示用极化恒等式$$< Tf\pm Tg,Tf\pm Tg>=\|Tf\|^{2}+\|Tg\|^{2}\pm< Tf,Tg>\pm< Tg,Tf>$$
+$$=< f\pm g,f\pm g>=\|f\|^{2}+\|g\|^{2}\pm< f,g>\pm< g,f>$$
+$$< Tf\pm iTg,Tf\pm iTg>=\|Tf\|^{2}+\|Tg\|^{2}\pm < Tf,iTg>\pm i< Tg,Tf>$$
+$$=< f\pm ig,f\pm ig>=\|f\|^{2}+\|g\|^{2}\pm< f,ig>\pm i< g,f>$$
+又$$< f,g>=\frac{< f+g,f+g>-< f-g,f-g>-\frac{1}{i}< f+ig,f+ig>+\frac{1}{i}< f-ig,f-ig>}{4}$$
+对任何$f,g$成立, 因此把f改成Tf, g改成Tg又有
+从而$$< Tf,Tg>=\frac{< Tf+Tg,Tf+Tg>-< Tf-Tg,Tf-Tg>-\frac{1}{i}< Tf+Tig,f+Tig>+\frac{1}{i}< Tf-Tig,Tf-Tig>}{4}$$
+根据等距$$=\frac{< f+g,f+g>-< f-g,f-g>-\frac{1}{i}< f+ig,f+ig>+\frac{1}{i}< f-ig,f-ig>}{4}=< f,g>$$
+
+从而$$< T^{\ast}Tf,g>=0\qquad\forall g\in\mathcal{H}$$
+这说明$T^{\ast}T=I$
+
+ <h4>(b)</h4>首先$\|Tf\|=\|f\|$可知如果$Tf=0$, 则f=0, 因此T是单的. 又T是满的且是等距, 所以T是酉变换
+
+ <h4>(c)</h4>设$\mathcal{S}$是$\mathcal{H}$的一个真闭子空间, 那么$\mathcal{S}\rightarrow\mathcal{H}$的恒等映射, 显然是等距, 但不是满射.
+
+ <h4>(d)</h4>首先注意到酉算子的范数恒为1, 即$\|T^{\ast}T\|=1$, 所以$\|T^{\ast}\|=\|T\|=1$. 另一方面$$\|Tf\|=\|T^{\ast}\|\|Tf\|\geq \|T^{\ast}Tf\|=\|f\|$$
+且$\|Tf\|\leq \|T\|\|f\|=\|f\|$, 所以$$\|Tf\|=\|f\|$$
+        </div>
+
+        <!-- Exercise 23 -->
+        <div class="Exercise-box">
+            <h3>Exercise 23</h3>
+            <p>Suppose \(\{T_k\}\) is a collection of bounded operators on a Hilbert space \(\mathcal{H}\), with \(\|T_k\|\le 1\) for all \(k\). Suppose also that \(T_k T_j^* = T_k^* T_j = 0\) for all \(k\neq j\). Let \(S_N = \sum_{k=-N}^N T_k\).</p>
+            <p>Show that \(S_N(f)\) converges as \(N\to\infty\) for every \(f\in\mathcal{H}\). If \(T(f)\) denotes the limit, prove that \(\|T\|\le 1\).</p>
+            <p>(A generalization is given in Problem 8* below.)</p>
+            <p>[Hint: Consider first the case when only finitely many of the \(T_k\) are non‑zero, and note that the ranges of the \(T_k\) are mutually orthogonal.]</p>
+        </div>
+        <div class="Proof-box">
+           Proof:$$Tf=\sum_{i=1}^{\infty}T_{i}f$$
+根据题目条件可得$$< T_{k}x,T_{j}y>=< T_{j}^{\ast}T_{k}x,y>=0\qquad\forall x,y\in\mathcal{H}$$
+这给出了$T_{k}$的值域之间是互相正交的, 所以$T_{i}f\perp T_{k}f$对任何$i\neq k$成立. 
+另一方面, $$< T_{k}^{\ast}x,T_{j}^{\ast}y>=< T_{j}T_{k}^{\ast}x,y>=0\qquad\forall x,y\in\mathcal{H}$$
+这给出了$T_{k}^{\ast}$的值域之间是互相正交的, 所以$T_{i}^{\ast}f\perp T_{k}^{\ast}f$对任何$i\neq k$成立.
+<p></p>
+先证明两个算子求和的情形是正确的. 不妨设为$T_{1},T_{2}$, 则考虑正交补$$\mathcal{H}=KerT_{1}\oplus(KerT_{1})^{\perp}\qquad \mathcal{H}=KerT_{2}\oplus(KerT_{2})^{\perp}$$
+设$f=f_{1}+h,f_{1}\in KerT_{1}$, 那么$h=h_{1}+h_{2},h_{1}\in KerT_{2}\cap (KerT_{1})^{\perp}$, $h_{2}\in (KerT_{2})^{\perp}\cap (KerT_{1})^{\perp}$, 从而$$f=f_{1}+h_{1}+h_{2}$$
+且$f_{1},h_{1},h_{2}$是两两正交的, $$Tf=T_{1}h+T_{2}(f_{1}+h_{2})$$
+又$(KerT_{i})^{\perp}=(ImT_{i}^{\ast})^{\perp\perp}\subseteq \overline{Im T_{i}^{\ast}}$, 因此$$h_{2}\in\overline{ImT_{1}^{\ast}}\cap\overline{ImT_{2}^{\ast}}$$
+设$T_{1}^{\ast}x_{i}\rightarrow h_{2},T_{2}^{\ast}y_{i}\rightarrow h_{2}$, 那么根据$< h_{2},T_{2}^{\ast}y_{j}>=\lim_{x\rightarrow\infty}< T_{1}^{\ast}x_{i},T_{2}^{\ast}y_{j}>=0$可得$< h,T_{2}^{\ast}y_{j}>=0$对任何j成立, 因此$$< h_{2},h_{2}>=\lim_{j\rightarrow\infty}< h_{2},T_{2}^{\ast}y_{j}>=0$$
+从而$h_{2}=0$, 因此$$f=f_{1}+h_{1}\qquad f_{1}\in KerT_{1},h_{1}\in KerT_{2}, f_{1}\perp h_{1}$$
+这给出了$$Tf=T_{1}h_{1}+T_{2}f_{1}$$
+根据$T_{1}h_{1}\perp T_{2}f_{1}$可得$$\|Tf\|^{2}=\|T_{1}h_{1}\|^{2}+\|T_{2}f_{1}\|^{2}\leq \|h_{1}\|^{2}+\|f_{1}\|^{2}=\|f\|^{2}$$
+因此$\|T\|\leq 1$. 所以我们证明了$k=2$时结论成立. 
+<p></p>
+下面运用数学归纳法, 假设结论对k个$T_{i}$成立, 那么记$G=\sum_{i=1}^{k}T_{i}$,$\|G\|\leq 1$ 则根据题意可得$$ImG\perp ImT_{k+1}\qquad ImG^{\ast}\perp ImT_{k+1}^{\ast}$$
+从而用k=2的情形可得$$\|T\|=\|G+T_{k+1}\|\leq 1$$
+因此$$\|S_{N}f\|\leq \|f\|\qquad\forall N\geq 1$$
+又根据$T_{i}f$正交可得$$\|S_{N}f\|^{2}=\sum_{i=1}^{N}\|T_{i}f\|^{2}$$
+递增有上界的序列必有极限, 且根据极限的保号性可得$$\|\sum_{i=1}^{\infty}T_{i}f\|\leq \|f\|$$
+因此$$\|T\|\leq 1$$
+        </div>
+
+        <!-- Exercise 24 -->
+        <div class="Exercise-box">
+            <h3>Exercise 24</h3>
+            <p>Let \(\{e_k\}_{k=1}^\infty\) denote an orthonormal set in a Hilbert space \(\mathcal{H}\). If \(\{c_k\}_{k=1}^\infty\) is a sequence of positive real numbers such that \(\sum c_k^2< \infty\), then the set \(A=\left\{\sum_{k =1}^\infty a_k e_k : |a_k|\le c_k\right\}\) is compact in \(\mathcal{H}\).</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 用标准的对角讨论. 或许A能视为某个紧算子在单位闭球下的值域.
+
+            显然A是个有界闭集, 又在度量空间中只需证明列紧性. 任取A中的序列$$f_{n}=\sum_{i=1}^{\infty}a_{i}^{n}e_{i}$$
+            根据有界性, 取$f_{n}^{1}$满足第一个分量$a_{1}^{n_{1}}$收敛,... 继续这个过程, 设$f_{n}^{k}$是$f_{n}^{k-1}$的子列, 且满足对前k个分量都收敛的序列, 那么取其子列$f_{n}^{k+1}$满足第k+1个分量收敛.  定义$$g_{n}=f_{n}^{n}$$
+            设每个分量收敛到$a_{i}$, 根据极限的保号性, $\lvert a_{i}\rvert\leq c_{i}$, 令$$g=\sum_{i=1}^{\infty}a_{i}e_{i}$$
+            设$g_{n}$的第i个分量为$g_{n}^{i}$,
+            我们证明$\|g_{n}-g\|\rightarrow0$. 对任何$\epsilon>0$, 我们知道$$\sum_{i=1}^{\infty}\lvert g_{n}^{i}-a_{i}\rvert^{2}\leq 4\sum_{i=1}^{\infty}\lvert c_{i}\rvert^{2}< \infty$$ 因此可取N使得$4\sum_{i=N+1}^{\infty}\lvert c_{i}\rvert^{2}< \epsilon$, 又对$f_{n}^{N}$来说, $f_{n}^{N}$的前N个分量都收敛, 所以存在$N_{2}$使得当$n>N_{2}$时, $f_{n}^{N}$的前N个分量分别和$a_{i}$的差的绝对值小于$\frac{\epsilon}{N}$, 又对$n>max\{N_{2},N\}$, $g_{n}$是$f_{n}^{N}$的子列, 因此$g_{n}$的前N个分量, 记为$g_{n}^{i}$, 也满足$$\lvert g_{n}^{i}-a_{i}\rvert< \frac{\epsilon}{N}$$
+这给出了$$\|g_{n}-g\|^{2}=\sum_{i=1}^{N}\lvert g_{n}^{i}-a_{i}\rvert^{2}+\sum_{i>N}^{\infty}\lvert g_{n}^{i}-a_{i}\rvert^{2}< N\frac{\epsilon}{N^{2}}+\epsilon=2\epsilon\qquad\forall\epsilon< 1$$
+因此$f_{n}$有收敛子列. 所以A是紧的
+        </div>
+
+        <!-- Exercise 25 -->
+        <div class="Exercise-box">
+            <h3>Exercise 25</h3>
+            <p>Suppose \(T\) is a bounded operator that is diagonal with respect to a basis \(\{\phi_k\}\), with \(T\phi_k = \lambda_k\phi_k\). Then \(T\) is compact if and only if \(\lambda_k\to0\).</p>
+            <p>[Hint: If \(\lambda_k\to0\), then note that \(\|P_nT-T\|\to0\), where \(P_n\) is the orthogonal projection on the subspace spanned by \(\phi_1,\phi_2,\dots,\phi_n\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $\Leftarrow$ 设$P_{n}$是到$span\{\phi_{1},...,\phi_{n}\}$的正交投影, 那么$$\|P_{n}Tf-Tf\|^{2}=\|\sum_{i=n+1}^{\infty}\lambda_{i}< f,\phi_{i}>
+                \phi_{i}\|^{2}=\sum_{i=n+1}\lvert \lambda_{k}\rvert^{2}\lvert < f,\phi_{i}>
+                    \rvert^{2}\leq \underset{i\geq n+1}{sup}\lvert \lambda_{i}\rvert^{2}\|f\|$$
+                    又$\lambda_{k}$极限存在, 且为0, 所以上极限也存在且为0, 从而$$\lim_{n \to \infty}\|P_{n}T-T\|^{2}=\limsup_{n\rightarrow\infty}\lvert \lambda_{n}\rvert^{2}=0$$
+                    而$P_{n}T$是有限秩的.
+            <p>
+            </p>
+                    $\Rightarrow$ 如果T紧, 且$\lambda_{k}$不收敛于0, 则存在正数和子列$\lvert \lambda_{n_{k}}\rvert>c$,  那么根据$\phi_{n_{k}}$是有界序列可得$T\phi_{n_{k}}$存在收敛子列,因此不妨设$T\phi_{n_{k}}$收敛, 因此$\lambda_{n_{k}}\phi_{n_{k}}$收敛, 因此是Cauchy列. 但是$$\|\lambda_{n_{k}}\phi_{n_{k}}-\lambda_{n_{j}}\phi_{n_{j}}\|^{2}=\lvert\lambda_{n_{k}}^{2}\rvert+\lvert \lambda_{n_{j}}\rvert^{2}\geq 2c$$
+                    这和Cauchy列矛盾, 因此$\lambda_{n}\rightarrow0$
+        </div>
+
+        <!-- Exercise 26 -->
+        <div class="Exercise-box">
+            <h3>Exercise 26</h3>
+            <p>Suppose \(w\) is a measurable function on \(\mathbb{R}^d\) with \(0< w(x)< \infty\) for a.e. \(x\), and \(K\) is a measurable function on \(\mathbb{R}^{2d}\) that satisfies:</p>
+            <ol type="i">
+                <li>\(\int_{\mathbb{R}^d} |K(x,y)|\,w(y)\,dy \le A\,w(x)\) for almost every \(x\in\mathbb{R}^d\),</li>
+                <li>\(\int_{\mathbb{R}^d} |K(x,y)|\,w(x)\,dx \le A\,w(y)\) for almost every \(y\in\mathbb{R}^d\).</li>
+            </ol>
+            <p>Prove that the integral operator defined by \(Tf(x)=\int_{\mathbb{R}^d}K(x,y)f(y)\,dy\) is bounded on \(L^2(\mathbb{R}^d)\) with \(\|T\|\le A\).</p>
+            <p>(As a special case, if \(\int|K(x,y)|\,dy\le A\) for all \(x\) and \(\int|K(x,y)|\,dx\le A\) for all \(y\), then \(\|T\|\le A\).)</p>
+            <p>[Hint: Show that if \(f\in L^2(\mathbb{R}^d)\), then \(\int|K(x,y)||f(y)|\,dy \le A^{1/2}w(x)^{1/2}\bigl(\int|K(x,y)||f(y)|^2 w(y)^{-1}dy\bigr)^{1/2}\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof: 按照提示, $$\int |K(x, y)| |f(y)| dy =\int_{R^{d}}w(y)^{-1/2}\lvert K(x,y)\rvert w(y)^{\frac{1}{2}}\lvert f(y)\rvert\,dy\leq \sqrt{\int_{R^{d}}\lvert K(x,y)\rvert w(y)\,dy}\sqrt{\int_{R^{d}}\lvert K(x,y)\rvert w(y)^{-1}\lvert f(y)\rvert^{2}\,dy}$$
+            $$\leq A^{\frac{1}{2}}w(x)^{\frac{1}{2}}\sqrt{\int_{R^{d}}\lvert K(x,y)\rvert w(y)^{-1}\lvert f(y)\rvert^{2}\,dy}$$
+            两边平方然后对x积分可得$$\|Tf\|_{L^{2}(R^{d})}^{2}\leq\int\lvert \int |K(x, y)| |f(y)| dy\rvert^{2}\,dx\leq A\int_{R^{d}}w(x)\int_{R^{d}}\lvert K(x,y)\rvert\lvert f(y)\rvert^{2}\frac{1}{w(y)}\,dy\,dx$$
+            $$=A\int_{R^{d}}\frac{\lvert f(y)\rvert^{2}}{w(y)}\int_{R^{d}}\lvert K(x,y)\rvert w(x)\,dx\,dy\leq A^{2}\int_{R^{d}}\lvert f(y)\rvert^{2}\,dy=A^{2}\|f\|_{L^{2}(R^{d})}^{2}$$
+        </div>
+
+        <!-- Exercise 27 -->
+        <div class="Exercise-box">
+            <h3>Exercise 27</h3>
+            <p>Prove that the operator \(Tf(x)=\frac{1}{\pi}\int_0^\infty\frac{f(y)}{x+y}\,dy\) is bounded on \(L^2(0,\infty)\) with norm \(\|T\|\le1\).</p>
+            <p>[Hint: Use Exercise 26 with an appropriate \(w\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:令$$K(x,y)=\frac{1}{\pi}\frac{\mathcal{X}_{x>0,y>0}}{x+y}$$
+            令$w(x)=\frac{1}{\sqrt{x}}$, 那么$$\int_{R^{d}}\lvert K(x,y)\rvert w(y)\,dy=\frac{1}{\pi}\int_{0}^{\infty}\frac{1}{y\sqrt{y}+x\sqrt{y}}\,dy$$
+            $$=2\frac{1}{\pi}\int_{0}^{\infty}\frac{1}{y+x}d(\sqrt{y})=2\int_{0}^{\infty}\frac{1}{t^{2}+x}\,dt$$
+            $$=\frac{1}{\pi}\frac{2}{\sqrt{x}}\int_{0}^{\infty}\frac{1}{(\frac{t}{\sqrt{x}})^{2}+1}\,d(\frac{t}{\sqrt{x}})=\frac{1}{\pi}\frac{2}{\sqrt{x}}\int_{0}^{\infty}\frac{1}{t^{2}+1}\,dt=\frac{1}{\sqrt{x}}$$
+            又$K$是关于x,y对称的, 所以$$\int_{R^{d}}\lvert K(x,y)\rvert w(x)\,dx\leq \frac{1}{\sqrt{y}}$$
+            从而$\|T\|\leq 1$
+        </div>
+
+        <!-- Exercise 28 -->
+        <div class="Exercise-box">
+            <h3>Exercise 28</h3>
+            <p>Suppose \(\mathcal{H}=L^2(B)\), where \(B\) is the unit ball in \(\mathbb{R}^d\). Let \(K(x,y)\) be a measurable function on \(B\times B\) that satisfies \(|K(x,y)|\le A|x-y|^{-d+\alpha}\) for some \(\alpha>0\), whenever \(x,y\in B\). Define \(Tf(x)=\int_B K(x,y)f(y)\,dy\).</p>
+            <ol type="a">
+                <li>Prove that \(T\) is a bounded operator on \(\mathcal{H}\).</li>
+                <li>Prove that \(T\) is compact.</li>
+                <li>Note that \(T\) is a Hilbert–Schmidt operator if and only if \(\alpha>d/2\).</li>
+            </ol>
+            <p>[Hint: For (b), consider the operators \(T_n\) associated with the truncated kernels \(K_n(x,y)=K(x,y)\) if \(|x-y|\ge1/n\) and \(0\) otherwise. Show that each \(T_n\) is compact, and that \(\|T_n-T\|\to0\) as \(n\to\infty\).]</p>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>我们知道$$K(x,y)=\mathcal{X}_{\lvert x\rvert< 1,\lvert y\rvert< 1} K(x,y)$$
+
+又$$\int_{R^{d}}\frac{A\mathcal{X}_{\lvert x\rvert< 1,\lvert y\rvert< 1}}{\lvert x-y\rvert^{d-\alpha}}\,dy\leq \mathcal{X}_{\lvert x\rvert< 1}\int_{B(x,1)}\frac{1}{\lvert t\rvert^{d-\alpha}}\,dt\leq \mathcal{X}_{\lvert x\rvert< 1}\int_{B(0,2)}\frac{1}{\lvert t\rvert^{d-\alpha}}\leq A$$
+又x,y的位置是对称的, 所以$$\int_{R^{d}}\frac{A\mathcal{X}_{\lvert x\rvert< 1,\lvert y\rvert< 1}}{\lvert x-y\rvert^{d-\alpha}}\,dx\leq A$$
+又$Tf$的支集在B中, 所以
+$$\|Tf\|_{L^{2}(B)}=\|Tf\|_{L^{2}(R^{d})}\leq A\|\mathcal{X}_{\lvert y\rvert< 1}f(y)\|_{L^{2}(R^{d})}=A\|f\|_{L^{2}(B)}$$
+
+                  <h4>(b)</h4>考虑$$K_{n}(x,y)=\begin{cases}
+	0&\lvert x-y\rvert< \frac{1}{n}\\
+	K(x,y)&else
+\end{cases}$$
+则$K_{n}\in L^{2}(B\times B)$, 因此$T_{n}$是紧的, 又$$\|T_{n}f-Tf\|_{L^{2}(B)}^{2}\leq \int_{B}\lvert \int_{\lvert x-y\rvert< \frac{1}{n}}\frac{1}{\lvert x-y\rvert^{d-\alpha}}f(y)\,dy\rvert^{2}\,dx$$
+然后我们考虑$$\int_{\lvert x-y\rvert< \frac{1}{n}}\frac{A}{\lvert x-y\rvert^{d-\alpha}}\,dy=\int_{\lvert t\rvert< \frac{1}{n}}\frac{A}{\lvert t\rvert^{d-\alpha}}\,dt=\frac{1}{n^{\alpha}}\int_{\lvert t\rvert< 1}\frac{1}{\lvert t\rvert^{d-\alpha}}\,dt=\frac{C}{n^{\alpha}}$$
+因此$$\|T_{n}-T\|\leq \frac{C}{n^{\alpha}}\rightarrow0$$
+从而T是一列紧算子的极限,也是紧的
+
+                  <h4>(c)</h4>考虑$$\int_{B}\int_{B}\frac{1}{\lvert x-y\rvert^{2d-2\alpha}}\,dxdy$$
+如果$\alpha\leq \frac{d}{2}$, 则$$\frac{1}{\lvert x-y\rvert^{2d-2\alpha}}\geq \frac{1}{\lvert x-y\rvert^{d}}\qquad\forall x,y\in B(0,\frac{1}{2})$$
+因此$$\int_{B}\int_{B}\frac{1}{\lvert x-y\rvert^{2d-2\alpha}}\,dxdy\geq \int_{B(0,\frac{1}{2})}\int_{B(0,\frac{1}{2})}\frac{1}{\lvert x-y\rvert^{d}}\,dxdy\geq \int_{B(0,\frac{1}{8})}\int_{B(0,\frac{1}{2})}\frac{1}{\lvert x-y\rvert^{d}}\,dxdy$$
+$$=\int_{B(0,\frac{1}{8})}\int_{B(y,\frac{1}{2})}\frac{1}{\lvert x\rvert^{d}}\,dxdy\geq \int_{B(0,\frac{1}{8})}\int_{B(0,\frac{1}{4})}\frac{1}{\lvert x\rvert^{d}}\,dxdy=\int_{B(0,\frac{1}{8})}\infty\,dy=\infty$$
+
+如果$\alpha< \frac{d}{2}$, 那么$$\int_{B}\int_{B}\frac{1}{\lvert x-y\rvert^{2d-2\alpha}}\,dxdy= \int_{B}\int_{B(y,1)}\frac{1}{\lvert x\rvert^{2d-2\alpha}}\,dxdy\leq \int_{B}\int_{B(0,2)}\frac{1}{\lvert x\rvert^{2d-2\alpha}}\,dxdy$$
+$$\leq m_{d}(B)\int_{B(0,2)}\frac{1}{\lvert x\rvert^{2d-2\alpha}}\,dx< \infty$$
+        </div>
+
+        <!-- Exercise 29 -->
+        <div class="Exercise-box">
+            <h3>Exercise 29</h3>
+            <p>Let \(T\) be a compact operator on a Hilbert space \(H\), and assume \(\lambda\neq0\).</p>
+            <ol type="a">
+                <li>Show that the range of \(\lambda I-T\) defined by \(\{g\in H : g=(\lambda I-T)f \text{ for some } f\in H\}\) is closed. [Hint: Suppose \(g_j\to g\), where \(g_j=(\lambda I-T)f_j\). Let \(V_\lambda\) denote the eigenspace of \(T\) corresponding to \(\lambda\), that is, the kernel of \(\lambda I-T\). Why can one assume that \(f_j\in V_\lambda^\perp\)? Under this assumption prove that \(\{f_j\}\) is a bounded sequence.]</li>
+                <li>Show by example that this may fail when \(\lambda=0\).</li>
+                <li>Show that the range of \(\lambda I-T\) is all of \(H\) if and only if the null‑space of \(\lambda I-T^*\) is trivial.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>不妨设$f_{i}\in V_{\lambda}^{\perp}$,否则考虑正交分解$f_{j}=a_{j}+h_{j}$, $a_{j}\in V_{\lambda},h_{j}\in V_{\lambda}^{\perp}$, 则$g_{j}=(\lambda I-T)f_{j}=(\lambda I-T)h_{j}$, 所以通过令$f_{j}=h_{j}$, 不妨设$f_{j}\in V_{\lambda}^{\perp}$
+
+            假设存在一组$h_{j}\in V_{\lambda}^{\perp}$满足$$\|h_{j}\|=1\qquad\|(\lambda I-T)h_{j}\|\leq \frac{1}{j}$$
+            那么$\lambda h_{j}-Th_{j}\rightarrow0$
+            又$Th_{j}$有收敛子列, 所以$h_{j}$也有收敛子列, 所以不妨设$h_{j}$收敛, 设$h_{j}\rightarrow h$, 那么$(I\lambda-T)h=0$, 因此$h\in V_{\lambda}^{\perp}\cap V_{\lambda}$, 所以$\|h\|=0$, 但$\|h_{j}\|=1$, 所以矛盾, 因此存在$c>0$使得对任何$\|h\|=1,h\in V_{\lambda}^{\perp}$, 都有$$\|(\lambda I-T)h\|\geq c$$
+            又$\|\frac{f_{j}}{\|f_{j}\|}\|=1$, 所以$$\|(\lambda I-T)\frac{f_{j}}{\|f_{j}\|}\|\geq c\qquad \|(\lambda I-T)f_{j}\|\geq c\|f_{j}\|$$
+            又$\|g_{j}\|$有界, 所以$\|f_{j}\|\leq \frac{\|g_{j}\|}{c}$, 因此$f_{j}$有界. 又T是紧算子, 所以不妨设$Tf_{j}$收敛(否则抽子列), 从而$\lambda f_{j}=g_{j}+Tf_{j}$收敛, 所以$f_{j}$收敛, 设收敛于f, 则$f\in \mathcal{H}$, 且$$g=(\lambda I-T)f$$
+
+                  <h4>(b)</h4>考虑$\ell_2(\mathbb{Z})$上的算子T满足$$T(a_{1},..,a_{n},...,)=(a_{1},\frac{a_{2}}{2},..,\cdots,..\frac{a_{n}}{n},...)$$
+            则设$\phi_{k}$是第k个分量为1, 其他分量为0的向量, 则组成一组标准正交基, 且$T\phi_{k}=\frac{1}{k}\phi_{k}$, 所以根据Exercise 25的结论, T是紧算子, 只需证T的值域不是闭的. 首先考虑$y_{n}=\sum_{k=1}^{n}\phi_{k}$, 则$$Ty_{n}=(1,\frac{1}{2},..,\frac{1}{n},0,...)$$
+            且$Ty_{n}$是Cauchy列, 收敛于$z=\sum_{i=1}^{\infty}\frac{1}{i}\phi_{i}$, 但z不落在ImT中, 因为只有$T(1,...,1,...)=z$, 但$(1,...,1,..)$不在$\ell^{2}(\mathbb{Z})$中.
+
+                  <h4>(c)</h4>根据 Exercise 11(b)中证明的结论:$$KerT=(ImT^{\ast})^{\perp}$$
+            可得$Im(\lambda I-T)=\mathcal{H}$则$Ker(\overline{\lambda} I-T^{\ast})=\{0\}$, 反之如果$Ker(\overline{\lambda} I-T^{\ast})=\{0\}$, 则$(Im(\lambda I-T))^{\perp}=\{0\}$, 但$\mathcal{H}$中所有元素都和0正交, 从而$Im(\lambda I-T)=\mathcal{H}$
+        </div>
+
+        <!-- Exercise 30 -->
+        <div class="Exercise-box">
+            <h3>Exercise 30</h3>
+            <p>Let \(\mathcal{H}=L^2([-\pi,\pi])\) with \([-\pi,\pi]\) identified as the unit circle. Fix a bounded sequence \(\{\lambda_n\}_{n=-\infty}^\infty\) of complex numbers, and define an operator \(Tf\) by \(Tf(x)\sim\sum_{n=-\infty}^\infty \lambda_n a_n e^{inx}\) whenever \(f(x)\sim\sum_{n=-\infty}^\infty a_n e^{inx}\). Such an operator is called a <em>Fourier multiplier operator</em>, and the sequence \(\{\lambda_n\}\) is called the multiplier sequence.</p>
+            <ol type="a">
+                <li>Show that \(T\) is a bounded operator on \(\mathcal{H}\) and \(\|T\|=\sup_n|\lambda_n|\).</li>
+                <li>Verify that \(T\) commutes with translations, that is, if we define \(\tau_h f(x)=f(x-h)\) then \(T\circ\tau_h = \tau_h\circ T\) for every \(h\in\mathbb{R}\).</li>
+                <li>Conversely, prove that if \(T\) is any bounded operator on \(H\) that commutes with translations, then \(T\) is a Fourier multiplier operator. [Hint: Consider \(T(e^{inx})\).]</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>$$\|Tf\|^{2}\leq \sum_{i=1}^{\infty}\lvert \lambda_{i}\rvert^{2}\lvert a_{i}\rvert^{2}\leq \sup_{n}\lvert \lambda_{n}\rvert^{2} \sum_{i=1}^{\infty}\lvert a_{i}\rvert^{2}=\sup_{n}\lvert \lambda_{n}\rvert^{2}\|f\|$$
+            所以$\|T\|\leq \sup_{n}\lvert \lambda_{n}\rvert$, 另一方面, 取一组$n_{k}$满足$$\lvert \lambda_{n_{k}}\rvert\rightarrow \sup_{n}\lvert \lambda_{n}\rvert$$
+            则$$\|Te^{in_{k}x}\|=\lvert\lambda_{n_{k}}\rvert\rightarrow  \sup_{n}\lvert \lambda_{n}\rvert$$
+            所以$\|T\|=\sup_{n}\lvert \lambda_{n}\rvert$
+
+                  <h4>(b)</h4>这是显然的.
+
+                  <h4>(c)</h4>固定x, $$T(e^{iny})=T\circ\tau_{y-x}(e^{inx})=\tau_{y-x}\circ T(e^{inx})$$
+            记$\lambda_{n}=\frac{T(e^{inx})}{e^{inx}}$, 则$$T(e^{iny})=\lambda_{n}e^{iny}\qquad\lvert \lambda_{n}\rvert\leq \|T\|$$
+            从而$$Tf(y)=\sum_{i=1}^{\infty}\lambda_{n}a_{n}e^{iny}$$
+        </div>
+
+        <!-- Exercise 31 -->
+        <div class="Exercise-box">
+            <h3>Exercise 31</h3>
+            <p>Consider a version of the sawtooth function defined on \([-\pi,\pi)\) by \(K(x)=i(\operatorname{sgn}(x)\pi-x)\), and extended to \(\mathbb{R}\) with period \(2\pi\). Suppose \(f\in L^1([-\pi,\pi])\) is extended to \(\mathbb{R}\) with period \(2\pi\), and define \(Tf(x)=\frac{1}{2\pi}\int_{-\pi}^\pi K(x-y)f(y)\,dy = \frac{1}{2\pi}\int_{-\pi}^\pi K(y)f(x-y)\,dy\). (The symbol \(\operatorname{sgn}(x)\) denotes the sign function: it equals \(1\) or \(-1\) if \(x\) is positive or negative respectively, and \(0\) if \(x=0\).)</p>
+            <ol type="a">
+                <li>Show that \(F(x)=Tf(x)\) is absolutely continuous, and if \(\int_{-\pi}^\pi f(y)\,dy=0\), then \(F'(x)=if(x)\) a.e. \(x\).</li>
+                <li>Show that the mapping \(f\mapsto Tf\) is compact and symmetric on \(L^2([-\pi,\pi])\).</li>
+                <li>Prove that \(\phi(x)\in L^2([-\pi,\pi])\) is an eigenfunction for \(T\) if and only if \(\phi(x)\) is (up to a constant multiple) equal to \(e^{inx}\) for some integer \(n\neq0\) with eigenvalue \(1/n\), or \(\phi(x)=1\) with eigenvalue \(0\).</li>
+                <li>Show as a result that \(\{e^{inx}\}_{n\in\mathbb{Z}}\) is an orthonormal basis of \(L^2([-\pi,\pi])\). (Note that in Book I, Chapter 2, Exercise 8, it is shown that the Fourier series of \(K\) is \(K(x)\sim\sum_{n\neq0}\frac{e^{inx}}{n}\).)</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>$$Tf(x)=\frac{1}{2\pi}\int_{-\pi}^{x}i(\pi-x+y)f(y)\,dy+\frac{1}{2\pi}\int_{x}^{\pi}i(-\pi-x+y)f(y)\,dy$$
+            $$=\frac{1}{2\pi}\int_{-\pi}^{x}i\pi f(y)\,dy-\frac{1}{2\pi }\int_{x}^{\pi}i\pi f(y)\,dy-\frac{x}{2\pi}\int_{-\pi}^{\pi}f(y)\,dy+\frac{i}{2\pi}\int_{-\pi}^{\pi}yf(y)\,dy$$
+            $$=\frac{1}{2\pi}\int_{-\pi}^{x}i\pi f(y)\,dy-\frac{1}{2\pi }\int_{x}^{\pi}i\pi f(y)\,dy+\frac{i}{2\pi}\int_{-\pi}^{\pi}yf(y)\,dy$$
+            因此$Tf$是两个不定积分和一个常数的和, 因此绝对连续, 且$$F'(x)=\frac{if(x)}{2}+\frac{if(x)}{2\pi}=if(x)$$
+            <h4>(b)</h4>$G(x,y)=\mathcal{X}_{(x,y)\in[-\pi,\pi]^{2}}K(x-y)\in L^{2}([-\pi,\pi]^{2})$, 因此T是Hilbert-Schmidt算子, 从而T是紧的. 另一方面根据Proposition 5.5,$T^{\ast}$的核是$\overline{K(y-x)}=K(x-y)$, 所以自伴.
+
+            <h4>(c)</h4>如果$\phi(x)$是特征函数, 那么$$T\phi(x)=\lambda\phi(x)$$
+            因此$$\lambda\phi'(x)=i\phi(x)$$
+            解这个一阶ode得到$$\begin{cases}
+            \phi(x)=Ce^{inx}&\lambda=\frac{1}{n}\neq 0\\
+            \phi(x)=C&\lambda=0
+            \end{cases}$$
+
+            <h4>(d)</h4>根据紧算子的谱定理, T的特征向量构成一组标准正交基, 因此我们考虑每个模长为1的特征向量$\phi_{n}=e^{inx}$(即取C=1), 从而$e^{inx},n\in Z$是$L^{2}([-\pi,\pi])$的一组基
+        </div>
+
+        <!-- Exercise 32 -->
+        <div class="Exercise-box">
+            <h3>Exercise 32</h3>
+            <p>Consider the operator \(T:L^2([0,1])\to L^2([0,1])\) defined by \(T(f)(t)=tf(t)\).</p>
+            <ol type="a">
+                <li>Prove that \(T\) is a bounded linear operator with \(T=T^*\), but that \(T\) is not compact.</li>
+                <li>However, show that \(T\) has no eigenvectors.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+           Proof:<h4>(a)</h4>$$\|Tf\|^{2}=\int_{0}^{1}t^{2}\lvert f\rvert^{2}\leq \int_{0}^{1}\lvert f\rvert^{2}\,dt=\|f\|^{2}$$
+
+$$< Tf,g>=\int_{0}^{1}tf(t)\overline{g}(t)\,dt=\int_{0}^{1}f(t)\overline{tg(t)}\,dt=< f,tg(t)>=< f,Tg>$$
+所以$T^{\ast}=T$.  要证明不是紧的, 只需证T把一组范数为1的序列映射没有收敛子列的序列, 考虑$$f_{n}=\sqrt{2^{n}}\mathcal{X}_{[\sum_{i=1}^{n-1}\frac{1}{2^{i}},\sum_{i=1}^{n}\frac{1}{2^{i}}]}\qquad\|f\|=1$$
+且$$\|Tf_{n}-Tf_{m}\|^{2}\geq \frac{1}{2}+\frac{1}{2}=1$$
+因此$Tf_{n}$没有任何一组子列收敛, 从T不是紧的
+
+                 <h4>(b)</h4>设$$tf(x)=\lambda f(x)$$
+则$t=\lambda$, 矛盾
+        </div>
+
+        <!-- Exercise 33 -->
+        <div class="Exercise-box">
+            <h3>Exercise 33</h3>
+            <p>Let \(H\) be a Hilbert space with basis \(\{\phi_k\}_{k=1}^\infty\). Verify that the operator \(T\) defined by \(T(\phi_k)=\frac{1}{k}\phi_{k+1}\) is compact, but has no eigenvectors.</p>
+        </div>
+        <div class="Proof-box">
+            Proof: $$Tf=\sum_{i=1}^{\infty}\frac{< f,\phi_{i}>}{i}\phi_{i+1}$$
+记$T_{n}$满足$$T_{n}f=\sum_{i=1}^{n}\frac{< f,\phi_{i}>}{i}\phi_{i+1}$$
+则$T_{n}$是有限秩的, 且$$\|T_{n}f-Tf\|^{2}=\|\sum_{i>n}\frac{< f,\phi_{i}>}{i}\phi_{i+1}\|^{2}\leq \frac{1}{n^{2}}\sum_{i>n}^{\infty}\lvert < f,\phi_{i}>\rvert^{2}\leq \frac{\|f\|^{2}}{n^{2}}$$
+这给出了$$\|T_{n}-T\|\leq \frac{1}{n}\rightarrow0$$
+从而T是紧的.
+
+设$Tf=\lambda f$, 则$$\sum_{i=1}^{\infty}\frac{< f,\phi_{i}>}{i}\phi_{i+1}=\lambda\sum_{i=1}^{\infty}< f,\phi_{i}>\phi_{i}$$
+左边没有$\phi_{1}$, 所以右边$\phi_{1}$的系数为0, 所以$< f,\phi_{1}>=0$, 这说明左边$\phi_{2}$的系数为0, 所以右边$< f,\phi_{2}>=0$, 不断继续这个过程, 得到$< f,\phi_{i}>=0$, 因此f=0, 所以T没有非平凡特征向量. 
+
+        </div>
+
+        <!-- Exercise 34 -->
+        <div class="Exercise-box">
+            <h3>Exercise 34</h3>
+            <p>Let \(K\) be a Hilbert–Schmidt kernel which is real and symmetric. Then, as we saw, the operator \(T\) whose kernel is \(K\) is compact and symmetric. Let \(\{\phi_k(x)\}\) be the eigenvectors (with eigenvalues \(\lambda_k\)) that diagonalize \(T\). Then:</p>
+            <ol type="a">
+                <li>\(\sum_k|\lambda_k|^2< \infty\).</li>
+                <li>\(K(x,y)\sim\sum\lambda_k\phi_k(x)\phi_k(y)\) is the expansion of \(K\) in the basis \(\{\phi_k(x)\phi_k(y)\}\).</li>
+                <li>Suppose \(T\) is a compact operator which is symmetric. Then \(T\) is of Hilbert–Schmidt type if and only if \(\sum_n|\lambda_n|^2< \infty\), where \(\{\lambda_n\}\) are the eigenvalues of \(T\) counted according to their multiplicities.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+            Proof:<h4>(a)</h4>$$T\phi_{k}(x)=\lambda_{k}\phi_{k}(x)$$
+从而$$\int_{R^{d}\times R^{d}}K(x,y)\phi_{k}(y)\phi_{j}(x)\,dydx=\int_{R^{d}}T\phi_{k}(x)\phi_{j}(x)\,dx=\delta_{kj}\lambda_{k}$$ 其中$\delta_{kj}$表示$k=j$时为1, 其他为0的数. 根据Exercise 7的结果, 我们知道$$\|K(x,y)\|_{L^{2}(R^{d}\times R^{d})}^{2}=\sum_{i,j=1}^{\infty}\lvert < K,\phi_{k}\phi_{j}>\rvert^{2}=\sum_{k=1}^{\infty}\lvert \lambda_{k}\rvert^{2}$$
+左边$< \infty$, 所以右边$< \infty$
+
+                  <h4>(b)</h4>利用Exercise 7的结论和(a)中的计算可得$$K(x, y) \sim \sum \lambda_k \phi_k(x) \phi_k(y)$$
+
+                  <h4>(c)</h4>$\Rightarrow$ 是(a)的结论, 只需证$\Leftarrow$, 根据$\phi_{k}(x)\phi_{j}(y)$是$L^{2}(R^{d}\times R^{d})$的基底可以知道$$\sum_{k=1}^{\infty}\lambda_{k}\phi_{k}(x)\phi_{k}(y)$$是收敛的, 因此令其值为$K(x,y)$, 则$K\in L^{2}(R^{d}\times R^{d})$.
+
+ 对$f=\sum_{i=1}^{\infty}a_{i}\phi_{i}(x)$, 都有$$Tf=\sum_{i=1}^{\infty}a_{i}\lambda_{i}\phi_{i}(x)=\sum_{i=1}^{\infty}a_{i}\lambda_{i}\int_{R^{d}}\sum_{k=1}^{\infty}\lambda_{k}\phi_{k}(x)\phi_{k}(y)\phi_{j}(y)\,dy$$
+ $$=\sum_{i=1}^{\infty}a_{i}\int_{R^{d}}K(x,y)\phi_{j}(y)\,dy=\int_{R^{d}}K(x,y)f(y)\,dy$$
+求和和积分能交换次序是因为收敛性, 具体的说, 根据$K\in L^{2}$和Fubini定理可得对a.e的x, $K(x,y)\in L^{2}(R^{d})$, 所以$$\int_{R^{d}}\lvert K(x,y)(f(y)-\sum_{i=1}^{n}a_{i}\phi_{i}(y))\rvert\,dy\leq [\int_{R^{d}}\lvert K(x,y)\rvert^{2}]^{\frac{1}{2}}\,dy\sqrt{\sum_{i>n}\lvert a_{i}\rvert^{2}}\rightarrow0$$
+所以对a.e.的x, 都有$$\sum_{i=1}^{\infty}a_{i}\int_{R^{d}}K(x,y)\phi_{j}(y)\,dy=\int_{R^{d}}K(x,y)f(y)\,dy$$
+
+因此T是Hilbert-Schmidt算子
+        </div>
+
+        <!-- Exercise 35 -->
+        <div class="Exercise-box">
+            <h3>Exercise 35</h3>
+            <p>Let \(\mathcal{H}\) be a Hilbert space. Prove the following variants of the spectral theorem.</p>
+            <ol type="a">
+                <li>If \(T_1\) and \(T_2\) are two linear symmetric and compact operators on \(\mathcal{H}\) that commute (that is, \(T_1T_2=T_2T_1\)), show that they can be diagonalized simultaneously. In other words, there exists an orthonormal basis for \(\mathcal{H}\) which consists of eigenvectors for both \(T_1\) and \(T_2\).</li>
+                <li>A linear operator on \(H\) is <em>normal</em> if \(TT^*=T^*T\). Prove that if \(T\) is normal and compact, then \(T\) can be diagonalized. [Hint: Write \(T=T_1+iT_2\) where \(T_1\) and \(T_2\) are symmetric, compact and commute.]</li>
+                <li>If \(U\) is unitary, and \(U=\lambda I-T\), where \(T\) is compact, then \(U\) can be diagonalized.</li>
+            </ol>
+        </div>
+        <div class="Proof-box">
+           Proof:<h4>(a)</h4>$\lambda_{i}$是$T_{2}$的互不相同的特征值. 记$V_{\lambda_{i}}$是T2关于$\lambda_{i}$的特征子空间, 即$Ker(\lambda_{i}I-T_{2})$, 所以根据$T_{2}$的有界性, 这是个闭的子空间, 又根据紧自伴算子从属于不同特征值的特征向量正交可得$$V_{\mu}\perp V_{\lambda}\qquad \mu\neq\lambda$$
+而且这些单位特征向量$e_{i}$构成$\mathcal{H}$的标准正交基.
+<p></p>
+又对任何$x\in V_{\lambda_{i}}$, 都有
+$$T_{1}T_{2}x=\lambda_{i}T_{1}x\qquad T_{2}T_{1}x=\lambda_{i}T_{1}x$$
+因此$T_{1}x\in V_{\lambda_{i}}$, 
+这说明$T_{2}$的每个特征子空间$V_{\lambda_{i}}$都是$T_{1}$的不变子空间,即$$T_{1}(V_{\lambda_{i}})\subseteq V_{\lambda_{i}}$$
+又这些特征子空间是闭的, 所以也是Hilbert空间, 因此$T_{1}$也是$V_{\lambda_{i}}$上的紧算子, 因此可对角化, 所以存在一组$$u^{i}_{1},...,u^{i}_{n},...\in V_{\lambda_{i}}$$使得$u_{j}^{i}$都是$T_{1}$的特征向量,即存在复数$\mu_{j}^{i}$使得$$T_{1}u_{j}^{i}=\mu_{j}^{i}u_{j}^{i}$$
+且$u_{j}^{i}$关于不同的j正交. 对所有$V_{\lambda_{i}}$进行这样的过程, 得到了$T_{1}$的可数个单位特征向量$$u_{j}^{i}\in V_{\lambda_{i}}$$
+又这些向量都含于$T_{2}$的某个特征子空间中, 所以也是$T_{2}$的特征向量. 且根据$V_{\lambda_{i}}\perp V_{\lambda_{j}}$, 可得$u_{j}^{i}$对于不同的j也是相互正交的, 所以不同的$u_{j}^{i}$相互正交, 因此$u_{j}^{i}$是一组标准正交向量. 只需证它是基底, 这是显然的.
+<p></p>
+假设对任何$i,j$, 都有$$< f,u_{j}^{i}>=0$$
+要证明f=0, 此时对任何$e_{k}$,$e_{k}$必定含于某个特征子空间中(因为是$T_{2}$的特征向量),  设$e_{k}$是$V_{\lambda_{i}}$中的元素.根据$u_{j}^{i}$是 $V_{\lambda_{i}}$的基底可得$$< f,e_{k}>=0$$根据k的任意性, $< f,e_{k}>=0$对所有k成立, 
+又$e_{k}$是基底, 所以$$f=0$$
+从而$u_{j}^{i}$是基底. 
+
+从而$T_{1},T_{2}$在基底$u_{j}^{i}$下可同时对角化.
+
+
+
+
+                 <h4>(b)</h4>令$$T_{1}=\frac{T+T^{\ast}}{2},T_{2}=\frac{T-T^{\ast}}{2i}$$
+则$T_{1},T_{2}$都是自伴算子. 又$T$紧可以推出$T^{\ast}$紧, 且紧算子的和还是紧的, 所以$T_{1},T_{2}$也是紧的. 又$T_{1}T_{2}=T_{2}T_{1}$, 所以$T_{1},T_{2}$可同时对角化, 设特征向量为$e_{k}$, 特征值分别为$\lambda_{k},\mu_{k}$, 所以$$T=T_{1}+iT_{2}$$
+可以对角化. 特征值为$$\lambda_{k}+i\mu_{k}$$
+
+
+                 <h4>(c)</h4>U是酉变换说明$U^{\ast}U=I,U^{\ast}U=I$, 因此$$(\overline{\lambda}I-T^{\ast})(\lambda I-T)=I\qquad(\lambda I-T)(\overline{\lambda}I-T^{\ast})=I$$
+从而$$\lvert\lambda\rvert^{2}I-\overline{\lambda}T-\lambda T^{\ast}+T^{\ast}T=I\qquad \lvert\lambda\rvert^{2}I-\lambda T^{\ast}-\overline{\lambda} T+TT^{\ast}=I$$
+因此$TT^{\ast}=T^{\ast}T$, 从而根据(b)可得T可对角化, 取其特征向量组成的标准正交基$e_{i}$,特征值为$\lambda_{i}$, 则$$Ue_{i}=(\lambda-\lambda_{i})e_{i}$$
+因此U也能对角化.
+        </div>
+
+
+
+
+    </div>
+
+
+        <div class="whole_page">
+
+        </div>
+        <div class="bg_box">
+            <img src="./images/main_cover2.png" alt="封面" class="bg_image" />
+        </div>
+
+
+</body>
+
+</html>
